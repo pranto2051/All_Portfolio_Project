@@ -23,10 +23,12 @@ h1,h2,h3{line-height:1.15}
 .orb{position:fixed;z-index:0;border-radius:50%;filter:blur(90px);opacity:.25;background:var(--accent);pointer-events:none;animation:fl 14s ease-in-out infinite alternate}
 .o1{width:340px;height:340px;top:-100px;right:-80px}.o2{width:280px;height:280px;bottom:4%;left:-110px;animation-delay:-6s}
 @keyframes fl{to{transform:translate(40px,60px) scale(1.15)}}
-main{position:relative;z-index:1;overflow-x:clip;max-width:1120px;margin:0 auto;padding:96px 18px 60px}
-:root{--gx:28px;-webkit-text-size-adjust:100%}
-section{padding:50px var(--gx);margin:0 calc(var(--gx)*-1);scroll-margin-top:50px;content-visibility:auto;contain-intrinsic-size:auto 700px}
-#home{content-visibility:visible}
+/* main is full-width (100%) so reveal animations are only cut by the screen edge, never by an inner box.
+   Content is centered to 1120px through the sections' side padding instead. */
+main{position:relative;z-index:1;width:100%;max-width:100%;margin:0;padding:96px 0 60px}
+:root{--gx:18px;--cw:1120px;-webkit-text-size-adjust:100%}
+section{width:100%;padding:50px max(var(--gx),calc((100% - var(--cw))/2 + var(--gx)));scroll-margin-top:50px}
+footer,.rib{max-width:100%}
 .sh{display:flex;align-items:center;gap:14px;margin-bottom:28px;font-size:1.4rem;color:var(--accent)}
 .sh b{font-size:2.8rem;font-weight:800;color:var(--bg);text-shadow:4px 4px 7px var(--lo),-4px -4px 7px var(--hi)}
 .card{background:var(--bg);border-radius:30px;box-shadow:var(--out);padding:26px;transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .4s cubic-bezier(.2,.8,.2,1),box-shadow .45s,opacity .9s}
@@ -91,7 +93,7 @@ section{padding:50px var(--gx);margin:0 calc(var(--gx)*-1);scroll-margin-top:50p
 @keyframes cr{from{transform:rotate(calc(var(--a)*-1))}to{transform:rotate(calc(var(--a)*-1 - 360deg))}}
 .planet:hover .ringc,.planet:hover .cp{animation-play-state:paused}
 /* ribbon */
-.rib{margin:20px -18px;overflow:hidden;transform:rotate(-2deg);padding:16px 0;box-shadow:var(--in);background:var(--bg)}
+.rib{margin:20px 0;overflow:hidden;transform:rotate(-2deg);padding:16px 0;box-shadow:var(--in);background:var(--bg)}
 .rib div{display:flex;gap:46px;width:max-content;animation:mq 26s linear infinite;font-weight:800;font-size:1.5rem;letter-spacing:.08em;color:var(--bg);text-shadow:3px 3px 5px var(--lo),-3px -3px 5px var(--hi);white-space:nowrap}
 @keyframes mq{to{transform:translateX(-50%)}}
 /* about tabs */
@@ -140,7 +142,7 @@ section{padding:50px var(--gx);margin:0 calc(var(--gx)*-1);scroll-margin-top:50p
 .stamp{display:inline-block;padding:5px 16px;border-radius:30px;background:var(--accent);color:var(--bg);font-weight:800;font-size:.75rem;margin-bottom:12px;box-shadow:var(--out)}
 .ev h3{font-size:1.05rem;color:var(--accent);margin-bottom:6px}.ev p,.ev li{color:var(--mute);font-size:.9rem}.ev ul{padding-left:18px}
 /* 3D goals ring */
-.stage{perspective:1200px;height:270px;display:grid;place-items:center;overflow:hidden;margin:0 -18px}
+.stage{perspective:1200px;height:270px;display:grid;place-items:center;overflow:hidden;margin:0}
 .stage{cursor:grab;touch-action:pan-y;user-select:none;-webkit-user-select:none}.stage.drag{cursor:grabbing}
 .spin{--R:165px;position:relative;width:170px;height:200px;transform-style:preserve-3d}
 .nv{display:flex;justify-content:center;align-items:center;gap:18px;margin-top:6px}
@@ -252,13 +254,13 @@ input::placeholder,textarea::placeholder{color:var(--mute)}textarea{min-height:1
 .ir>div{flex:1;min-width:0}.ir small{display:block;color:var(--mute);line-height:1.3}.ir b{font-weight:600;font-size:.9rem;word-break:break-word}
 .ic{width:42px;height:42px;flex:none;border-radius:50%;display:grid;place-items:center;box-shadow:var(--out);color:var(--accent)}.ic svg{width:20px;height:20px}
 .copy{padding:8px 14px;font-size:.78rem}
-footer{text-align:center;color:var(--mute);font-size:.85rem;padding-top:30px}
+footer{text-align:center;color:var(--mute);font-size:.85rem;padding:30px 18px 0}
 @media(max-width:860px){.hero{grid-template-columns:1fr;min-height:0}.planet{order:-1}.ct{grid-template-columns:1fr}}
 @media(max-width:640px){
   main{padding-top:84px}.planet{--r:122px}.cp{width:50px;height:50px;margin:-25px;font-size:.66rem}
   .tl:before{left:16px}.ev{width:auto;margin-left:36px!important}.ev:before,.ev:nth-child(even):before{left:-31px;right:auto}
   .rv.rl:not(.in){transform:perspective(900px) translateX(-70px) rotateY(14deg)}.rv.rr:not(.in){transform:perspective(900px) translateX(70px) rotateY(-14deg)}
-  :root{--gx:18px}.card{padding:20px;border-radius:26px}.rib div{font-size:1.1rem;gap:30px}
+  .card{padding:20px;border-radius:26px}.rib div{font-size:1.1rem;gap:30px}
   .hero>.rv:first-child{text-align:center}.hero p{margin-inline:auto}.cta,.pills,.socials{justify-content:center}
   .ib small{font-size:.68rem}.stage{height:250px}
   .tw{--w:30px;--d:14px;--k:2.5px;font-size:.62rem}.sh b{font-size:2.2rem}
