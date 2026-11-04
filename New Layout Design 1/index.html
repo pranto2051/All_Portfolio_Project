@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MD Pranto Ali – Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f2eee5;--card:#fbf9f4;--ink:#111a2e;--mute:#586177;--acc:#ff5a1f;--acc2:#2347ff;--soft:#e9e4d8;--line2:rgba(17,26,46,.2);--grid:rgba(17,26,46,.055);--sh:rgba(255,90,31,.5);
+  --mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0a0f1f;--card:#111933;--ink:#e9edf8;--mute:#93a0bf;--acc:#ff7a45;--acc2:#7b93ff;--soft:#18224a;--line2:rgba(233,237,248,.17);--grid:rgba(233,237,248,.05);--sh:rgba(255,122,69,.45)}}
+:root[data-theme="dark"]{--bg:#0a0f1f;--card:#111933;--ink:#e9edf8;--mute:#93a0bf;--acc:#ff7a45;--acc2:#7b93ff;--soft:#18224a;--line2:rgba(233,237,248,.17);--grid:rgba(233,237,248,.05);--sh:rgba(255,122,69,.45)}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;background-color:var(--bg)}
+html,body,main{overflow-x:clip;max-width:100%}
+body{background-color:var(--bg);background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:36px 36px;background-attachment:fixed;transition:background-color .4s,color .4s;color:var(--ink);font:400 1rem/1.65 "Space Grotesk",system-ui,sans-serif;padding-top:84px}
+::selection{background:var(--acc);color:#fff}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:3px solid var(--acc);outline-offset:3px}
+h1,h2,h3{font-family:"Space Grotesk",system-ui,sans-serif;line-height:1.1}
+main.wrap{width:100%;padding:0}
+main>section{max-width:1080px;margin-left:auto;margin-right:auto;padding:44px 22px;scroll-margin-top:70px}
+h2{font-size:clamp(2rem,5vw,3.2rem);font-weight:700;letter-spacing:-.035em;margin-bottom:26px}
+h2::before{content:attr(data-no) " /";display:block;font:500 .78rem var(--mono);letter-spacing:.16em;color:var(--acc);margin-bottom:8px}
+h3{font-size:1.12rem;font-weight:700;margin-bottom:8px;letter-spacing:-.01em}
+p{color:var(--mute)}p+p{margin-top:12px}
+
+/* menu: floating top bar on desktop, bottom dock on mobile */
+.rail{transition:background-color .4s,border-color .4s;position:fixed;top:14px;left:0;right:0;margin:0 auto;width:max-content;max-width:calc(100% - 24px);z-index:30;display:flex;align-items:center;gap:2px;padding:6px;background:color-mix(in srgb,var(--card) 80%,transparent);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border:1px solid var(--line2);border-radius:99px}
+.rail a,.rail button{display:flex;align-items:center;gap:6px;padding:7px 15px;border:0;background:none;color:var(--ink);border-radius:99px;font:500 .78rem var(--mono);letter-spacing:.06em;text-transform:uppercase;cursor:pointer;transition:background .2s,color .2s}
+.rail svg{width:18px;height:18px;display:none}
+.rail #theme svg{display:block;width:15px;height:15px}
+.rail a:hover,.rail button:hover{background:var(--soft)}
+.rail a.on{background:var(--acc);color:#fff}
+.rail hr{width:1px;height:18px;border:0;background:var(--line2);margin:0 4px}
+
+/* hero */
+.hero{display:grid;grid-template-columns:1.3fr .7fr;gap:44px;align-items:center;padding:20px 0 30px}
+.hero .tag{display:inline-flex;align-items:center;gap:8px;font:500 .8rem var(--mono);letter-spacing:.08em;text-transform:uppercase;border:1px solid var(--line2);background:var(--card);padding:5px 14px;border-radius:99px;margin-bottom:20px}
+.hero .tag::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--acc)}
+.hero h1{font-size:clamp(3rem,9.5vw,6.6rem);font-weight:700;letter-spacing:-.05em;line-height:.9}
+.hero h1 em{font-style:normal;color:var(--acc)}
+.hero .role{font:500 1rem var(--mono);margin:18px 0 12px;color:var(--acc2)}
+.hero .role::before{content:"> ";opacity:.6}
+.hero p{max-width:50ch}
+.disc{position:relative;justify-self:center;width:min(310px,100%);aspect-ratio:4/5;padding:10px;border:2px solid var(--ink);border-radius:999px 999px 28px 28px;background:var(--card);box-shadow:0 2px 0 var(--line2),0 28px 46px -22px var(--sh),0 12px 26px -14px rgba(0,0,0,.4);transition:transform .35s cubic-bezier(.22,.7,.25,1),box-shadow .35s}
+.disc:hover{transform:translateY(-6px);box-shadow:0 2px 0 var(--line2),0 38px 56px -22px var(--sh),0 16px 30px -14px rgba(0,0,0,.45)}
+.disc img{position:relative;z-index:1;width:100%;height:100%;border:2px solid var(--acc);border-radius:999px 999px 18px 18px;object-fit:cover;object-position:50% 20%;display:block}
+.disc .pa{position:absolute;inset:10px;border:2px solid var(--acc);border-radius:999px 999px 18px 18px;display:grid;place-items:center;color:#fff;background:linear-gradient(160deg,var(--acc),var(--acc2));font:700 clamp(3.5rem,10vw,5.5rem) "Space Grotesk",sans-serif;letter-spacing:-.04em}
+.socials{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+.socials a{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:var(--card);border:1px solid var(--line2);transition:transform .2s,background .2s,color .2s}
+.socials a:hover{transform:translateY(-3px) rotate(-4deg);background:var(--acc);color:#fff;border-color:var(--acc)}
+.socials svg{width:20px;height:20px}
+.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:14px;align-items:start}
+.fact{display:flex;flex-direction:column;gap:2px;padding:18px 20px;height:auto;min-height:0}
+.fact::after{display:none}
+.fact b{font:700 1.9rem "Space Grotesk",sans-serif;line-height:1;letter-spacing:-.03em}
+.fact>span{color:var(--mute);font-size:.88rem;line-height:1.35}
+.fact.red{background:var(--acc);border-color:var(--acc)}.fact.red b,.fact.red>span{color:#fff}
+.fact.clock b{font-family:var(--mono);font-size:1.7rem}
+.fact.clock b small{font-size:.9rem;font-weight:500}
+
+/* ticker */
+.ticker{margin:26px 0 18px;background:var(--ink);color:var(--bg);transform:rotate(-1.2deg);overflow:hidden;border-block:3px solid var(--acc)}
+.ticker div{display:flex;width:max-content;padding:12px 0;font:500 .9rem var(--mono);text-transform:uppercase;letter-spacing:.14em;animation:tick 30s linear infinite}
+.ticker span{padding:0 22px;white-space:nowrap}
+.ticker span::after{content:"✦";margin-left:44px;color:var(--acc)}
+@keyframes tick{to{transform:translateX(-50%)}}
+
+/* cards */
+.card{position:relative;background:var(--card);border:1px solid var(--line2);border-radius:16px;padding:24px;transition:transform .25s,border-color .25s,box-shadow .25s,background-color .4s,color .4s}
+.card::after{content:"";position:absolute;top:14px;right:14px;width:7px;height:7px;border-radius:50%;background:var(--acc)}
+.card:hover{transform:translateY(-5px);border-color:var(--acc);box-shadow:0 18px 36px -20px var(--sh)}
+.card:active{transform:translateY(-1px)}
+.two{display:grid;grid-template-columns:1.4fr 1fr;gap:20px;align-items:start}
+.two+.two,.wide{margin-top:20px}
+.lang{margin-top:14px}
+.lang div{display:flex;justify-content:space-between;font-weight:700;margin-bottom:6px}
+.lang div span{color:var(--mute);font:400 .8rem var(--mono)}
+.bar{height:8px;border-radius:9px;background:var(--soft);overflow:hidden}
+.bar i{display:block;height:100%;width:0;border-radius:9px;background:linear-gradient(90deg,var(--acc),var(--acc2));transition:width 1.2s cubic-bezier(.2,.8,.2,1)}
+.bar+div{margin-top:16px}
+.kv{display:grid;gap:1px;margin-top:12px}
+.kv small{color:var(--acc);font:500 .72rem var(--mono);letter-spacing:.1em;text-transform:uppercase}
+.kv b{font-weight:500}
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px}
+.skills .card>p{font-size:.93rem}
+.pills,.tg{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}
+.pills span,.tg span{background:var(--soft);border:1px solid var(--line2);border-radius:7px;padding:1px 11px;font:500 .8rem var(--mono)}
+.rows{display:grid;gap:18px;position:relative;padding-left:26px}
+.rows::before{content:"";position:absolute;left:5px;top:10px;bottom:10px;width:2px;background:repeating-linear-gradient(var(--line2) 0 6px,transparent 6px 12px)}
+.rows .card::before{content:"";position:absolute;left:-26px;top:28px;width:12px;height:12px;border-radius:50%;background:var(--bg);border:3px solid var(--acc)}
+.when{display:inline-block;font:500 .78rem var(--mono);color:#fff;background:var(--acc2);border-radius:6px;padding:1px 10px;margin-bottom:10px}
+.sub{font-weight:500;color:var(--ink)}.sub+p{margin-top:4px}
+.goals{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;counter-reset:g}
+.goal{counter-increment:g;font:700 1.35rem/1.2 "Space Grotesk",sans-serif;letter-spacing:-.02em;min-height:170px;display:flex;flex-direction:column;justify-content:space-between;gap:30px}
+.goal::before{content:"0" counter(g);font:500 .85rem var(--mono);color:var(--acc);letter-spacing:.1em}
+.goal:nth-child(2){background:var(--ink);color:var(--bg)}
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
+form{display:grid;gap:16px;margin-top:8px}
+input,textarea{width:100%;font:400 1rem "Space Grotesk",sans-serif;color:var(--ink);background:transparent;border:0;border-bottom:1px solid var(--line2);border-radius:0;padding:12px 2px;transition:border-color .2s}
+input:focus,textarea:focus{outline:0;border-color:var(--acc)}
+input::placeholder,textarea::placeholder{color:var(--mute)}
+textarea{min-height:120px;resize:vertical}
+.btn{font:700 .92rem "Space Grotesk",sans-serif;cursor:pointer;color:var(--bg);background:var(--ink);border:0;border-radius:99px;padding:11px 24px;transition:transform .2s,background .2s,color .2s}
+.btn:hover{background:var(--acc);color:#fff;transform:translateY(-2px)}
+.btn:active{transform:translateY(0)}
+#msg{color:var(--acc);font-weight:700;min-height:1.5em}
+.info{display:grid;gap:12px}
+.irow{display:flex;align-items:center;gap:12px;border:1px solid var(--line2);border-radius:12px;padding:10px 12px}
+.irow>div{flex:1;min-width:0}
+.irow small{display:block;color:var(--mute);line-height:1.3;font:400 .72rem var(--mono);text-transform:uppercase;letter-spacing:.08em}
+.irow b{font-weight:500;word-break:break-word}
+.ic{width:40px;height:40px;flex:none;border-radius:10px;background:var(--soft);color:var(--acc);display:grid;place-items:center}
+.ic svg{width:20px;height:20px}
+.copy{padding:6px 14px;font-size:.8rem;background:var(--soft);color:var(--ink)}
+.copy.done{background:var(--acc2);color:#fff}
+.info .socials{margin-top:0}
+footer{text-align:center;color:var(--mute);padding:30px 0 44px;font:400 .8rem var(--mono);letter-spacing:.06em}
+#up{position:fixed;right:18px;bottom:18px;width:46px;height:46px;padding:0;border-radius:50%;font-size:1.15rem;display:none;z-index:25;background:var(--acc);color:#fff}
+
+/* projects + certificates */
+[hidden]{display:none!important}
+.head{display:flex;align-items:flex-end;justify-content:space-between;gap:14px;margin-bottom:26px}
+.head h2{margin:0}
+.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:20px;counter-reset:c}
+.empty{grid-column:1/-1;text-align:center;padding:20px}
+.pcard{padding:0;overflow:hidden;cursor:pointer;display:flex;flex-direction:column;counter-increment:c}
+.pcard::after{z-index:2;background:#fff}
+.pcard .media{position:relative;aspect-ratio:16/10;border-bottom:1px solid var(--line2);background:var(--soft);overflow:hidden}
+.pcard .media::after{content:"0" counter(c);position:absolute;left:10px;bottom:8px;font:500 .75rem var(--mono);color:#fff;background:rgba(0,0,0,.5);padding:0 8px;border-radius:5px}
+.pcard .media img{width:100%;height:100%;object-fit:cover;display:block}
+.pcard .body{padding:16px 18px 18px;display:flex;flex-direction:column;flex:1}
+.pcard h3{font-size:1.05rem;margin-bottom:6px}
+.pcard .body p{font-size:.92rem}
+.ph{width:100%;height:100%;display:grid;place-items:center;color:#fff;font:700 2.6rem "Space Grotesk",sans-serif;letter-spacing:-.04em;background:linear-gradient(135deg,hsl(var(--h,150),70%,48%),hsl(calc(var(--h,150) + 50),70%,30%))}
+.tg{margin-top:auto;padding-top:12px}
+.demo{display:block;width:100%;margin-top:14px;padding:9px 14px;text-align:center}
+.pager{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:28px}
+.pg{width:42px;height:42px;border-radius:12px;border:1px solid var(--line2);background:var(--card);color:var(--ink);font:500 .95rem var(--mono);cursor:pointer;transition:transform .2s,background .2s}
+.pg:hover{transform:translateY(-3px)}
+.pg.on{background:var(--acc);color:#fff;border-color:var(--acc)}
+
+/* popup */
+.modal{position:fixed;inset:0;z-index:60;display:none;align-items:center;justify-content:center;padding:18px;background:rgba(6,10,24,.66);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);overscroll-behavior:contain}
+.modal.open{display:flex;animation:mfade .35s ease}
+.mbox{position:relative;width:min(720px,100%);max-height:calc(100vh - 36px);max-height:calc(100dvh - 36px);overflow:auto;overscroll-behavior:contain;background:var(--card);border:1px solid var(--line2);border-radius:20px;animation:mpop .45s cubic-bezier(.22,.7,.25,1)}
+@keyframes mfade{from{opacity:0}to{opacity:1}}
+@keyframes mpop{from{opacity:0;transform:translateY(24px) scale(.96)}to{opacity:1;transform:none}}
+.mx{position:absolute;top:10px;right:10px;z-index:2;width:40px;height:40px;padding:0;border-radius:50%;font-size:1.05rem;line-height:1;background:var(--ink)}
+.mmedia{background:var(--soft);border-bottom:1px solid var(--line2);overflow:hidden}
+.mmedia img{display:block;width:100%;height:auto;max-height:55vh;object-fit:contain;margin:0 auto}
+.mmedia .ph{aspect-ratio:16/9;height:auto}
+.mtxt{padding:20px 24px 24px}
+.mtxt h3{font-size:1.5rem}
+.mmeta{color:var(--acc);font:500 .82rem var(--mono);margin-bottom:10px}
+.mtxt .tg{margin-top:16px;padding-top:0}
+.lock,.lock body{overflow:hidden}
+
+/* scroll-reveal (JS adds the start state) */
+.rv{opacity:0;will-change:transform,opacity;transition:opacity var(--fd,1.9s) cubic-bezier(.22,.7,.25,1) var(--dl,0s),transform var(--du,2.3s) cubic-bezier(.22,.7,.25,1) var(--dl,0s)}
+.rv.kcard,.rv.kpage{transform:perspective(1200px) translate3d(var(--x,0),var(--y,0),0) rotateY(var(--ry,0deg)) scale(.92)}
+.rv.khead{transform:perspective(1000px) translate3d(var(--x,0),var(--y,0),0) rotateY(var(--ry,0deg)) scale(.96)}
+.rv.ktag{transform:translate3d(0,var(--y,36px),0)}
+.rv.in{opacity:1;transform:none}
+
+.pal{position:fixed;top:72px;left:0;right:0;margin:0 auto;width:min(440px,calc(100% - 24px));z-index:35;background:var(--card);border:1px solid var(--line2);border-radius:18px;padding:16px;box-shadow:0 24px 60px -20px rgba(0,0,0,.45);animation:mpop .3s cubic-bezier(.22,.7,.25,1)}
+.pal h4{display:flex;justify-content:space-between;font:500 .75rem var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin-bottom:12px}
+.pal .grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.sw{display:flex;align-items:center;gap:10px;padding:9px 11px;border:1px solid var(--line2);border-radius:12px;background:transparent;color:var(--ink);font:500 .86rem "Space Grotesk",sans-serif;cursor:pointer;transition:transform .2s,border-color .2s}
+.sw:hover{transform:translateY(-2px)}
+.sw.on{border-color:var(--acc);box-shadow:inset 0 0 0 1px var(--acc)}
+.sw i{display:flex;font-style:normal}
+.sw i b{width:15px;height:15px;border-radius:50%;margin-right:-5px;border:2px solid var(--card)}
+.rail #palbtn svg{display:block;width:15px;height:15px}
+@media(max-width:899px){.pal{top:auto;bottom:calc(92px + env(safe-area-inset-bottom,0px))}.rail #pl{display:none}.rail #palbtn svg{width:21px;height:21px}}
+@media(max-width:899px){
+  body{padding-top:20px;padding-bottom:calc(92px + env(safe-area-inset-bottom,0px))}
+  .rail{top:auto;bottom:calc(12px + env(safe-area-inset-bottom,0px));width:auto;left:12px;right:12px;max-width:none;justify-content:space-around;padding:6px 4px}
+  .rail a,.rail button{padding:9px 0;flex:1;justify-content:center}
+  .rail a span,.rail #tl{display:none}
+  .rail svg,.rail #theme svg{display:block;width:21px;height:21px}
+  .rail hr{display:none}
+  #up{bottom:calc(88px + env(safe-area-inset-bottom,0px));right:14px}
+}
+@media(max-width:760px){
+  .hero{grid-template-columns:1fr;text-align:center;gap:30px}
+  .hero .role,.hero p{margin-left:auto;margin-right:auto}
+  .hero .socials{justify-content:center}
+  .disc{order:-1;width:min(230px,62vw)}
+  .two,.contact{grid-template-columns:1fr}
+  .facts{grid-template-columns:1fr 1fr}
+  .head{align-items:flex-start}
+  .mtxt{padding:16px 18px 20px}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.ticker div{animation:none}}
+</style>
+</head>
+<body>
+<nav class="rail" id="links" aria-label="Main menu">
+  <a href="#top" data-id="top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg><span>Home</span></a>
+  <a href="#about"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg><span>About</span></a>
+  <a href="#skills"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 7-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/></svg><span>Skills</span></a>
+  <a href="#journey"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2.500 9 2.500 12 0v-5"/></svg><span>Journey</span></a>
+  <a href="#projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 21h8M12 16v5"/></svg><span>Projects</span></a>
+  <a href="#certs"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="6"/><path d="m8.5 14-1.5 7 5-3 5 3-1.5-7"/></svg><span>Certs</span></a>
+  <a href="#goals"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/></svg><span>Goals</span></a>
+  <a href="#contact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m3 7 9 6 9-6"/></svg><span>Contact</span></a>
+  <hr>
+  <button id="palbtn" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Choose colour theme"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="8" cy="11" r="1"/><circle cx="12" cy="7.5" r="1"/><circle cx="16" cy="11" r="1"/></svg><span id="pl">Themes</span></button>
+  <button id="theme" aria-label="Switch light and dark theme"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 13A9 9 0 1 1 11 3a7 7 0 0 0 10 10z"/></svg><span id="tl">Dark</span></button>
+</nav>
+
+<main class="wrap">
+  <section id="top" style="padding-top:0">
+    <div class="hero">
+      <div>
+        <span class="tag">Kushtia, Bangladesh</span>
+        <h1>MD <em>Pranto Ali</em></h1>
+        <div class="role">CSE student &amp; web designer</div>
+        <p>I’m studying Computer Science and Engineering and building websites with HTML, CSS and JavaScript. I’m honest, ready to work hard and eager to learn.</p>
+        <div class="socials" data-socials></div>
+      </div>
+      <div class="disc"><span class="pa" aria-hidden="true">PA</span><img id="photo" alt="MD Pranto Ali" referrerpolicy="no-referrer" onerror="this.remove()"></div>
+    </div>
+    <div class="facts">
+      <div class="card fact red"><b>3.72</b><span>Diploma result, out of 4.00</span></div>
+      <div class="card fact"><b>1.5 years</b><span>Super shop experience</span></div>
+      <div class="card fact"><b>IUBAT</b><span>B.Sc. in CSE, running</span></div>
+      <div class="card fact clock" aria-label="Current local time"><b><span id="time">--:--</span> <small id="ampm"></small></b><span>Your local time</span></div>
+    </div>
+  </section>
+
+  <div class="ticker" aria-hidden="true"><div><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Windows</span><span>Linux</span><span>Microsoft Office</span><span>Photoshop</span><span>PC hardware</span><span>Web design</span><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Windows</span><span>Linux</span><span>Microsoft Office</span><span>Photoshop</span><span>PC hardware</span><span>Web design</span></div></div>
+
+  <section id="about">
+    <h2 data-no="01">About me</h2>
+    <div class="two">
+      <div class="card">
+        <p>I’m a Computer Science and Engineering student at the International University of Business Agriculture and Technology (IUBAT), after finishing a Diploma in Engineering in Computer Technology in 2023.</p>
+        <p>I want to grow my professional career and be part of a positive learning environment. I’m honest, I work hard, and I’m dedicated to the goals of the organization I join.</p>
+      </div>
+      <div class="card" id="langs">
+        <h3>Languages</h3>
+        <div class="lang"><div>Bengali <span>Excellent</span></div><div class="bar"><i data-w="100"></i></div></div>
+        <div class="lang"><div>English <span>Medium</span></div><div class="bar"><i data-w="60"></i></div></div>
+        <p style="font-size:.9rem;margin-top:14px">Speaking, reading and writing</p>
+      </div>
+    </div>
+    <div class="two">
+      <div class="card">
+        <h3>Career objective</h3>
+        <p>I am very much interested in developing my professional career. I would welcome the opportunity to help create a positive learning environment. I am honest and prepared to work hard for the organization and achieve my goals.</p>
+      </div>
+      <div class="card">
+        <h3>Personal details</h3>
+        <div class="kv"><small>Name</small><b>Md. Pranto Ali</b></div>
+        <div class="kv"><small>Present address</small><b>House No-18, Road No: 10, Uttara Sector 10, Dhaka-1230</b></div>
+        <div class="kv"><small>Permanent address</small><b>Vill: Hridoypur, P.O: Satarpara, District: Kushtia, Division: Khulna</b></div>
+      </div>
+    </div>
+    <div class="card wide">
+      <h3>Hobbies</h3>
+      <div class="pills"><span>Reading storybooks and learning new skills</span><span>Exploring new technologies and software</span><span>Listening to music</span></div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2 data-no="02">Skills</h2>
+    <div class="skills">
+      <div class="card"><h3>Web design</h3><p>Four-month web design and development course at Kodeeo.</p><div class="pills"><span>HTML</span><span>CSS</span><span>JavaScript</span></div></div>
+      <div class="card"><h3>Operating systems</h3><div class="pills"><span>Windows XP to 11</span><span>Linux</span></div></div>
+      <div class="card"><h3>Software</h3><div class="pills"><span>Microsoft Office 2007</span><span>Office 2013</span><span>Office 2016</span><span>Photoshop 7</span><span>Photoshop CS6</span></div></div>
+      <div class="card"><h3>Hardware</h3><p>PC configuration: processor, motherboard, memory, and input and output devices.</p></div>
+      <div class="card"><h3>Internet &amp; email</h3><div class="pills"><span>Browsing</span><span>Sending mail</span><span>Downloading files</span><span>LAN / wireless</span></div></div>
+    </div>
+  </section>
+
+  <section id="journey">
+    <h2 data-no="03">Education &amp; experience</h2>
+    <div class="two" style="align-items:stretch">
+      <div class="rows">
+        <div class="card"><span class="when">Running</span><h3>B.Sc. in Computer Science and Engineering</h3><p>International University of Business Agriculture and Technology</p></div>
+        <div class="card"><span class="when">2023</span><h3>Diploma in Engineering, Computer Technology</h3><p>Kamrul Islam Siddiqui Polytechnic Institute</p><p class="sub">Result: 3.72 out of 4.00</p></div>
+        <div class="card"><span class="when">2018</span><h3>Secondary School Certificate</h3><p>Satarpara High School, Arts group</p><p class="sub">GPA: 3.06 out of 5.00</p></div>
+      </div>
+      <div class="rows" style="align-content:start">
+        <div class="card"><span class="when">1 year 6 months</span><h3>Account manager</h3><p>Worked in a super shop for a year and a half, with experience as a salesman.</p></div>
+        <div class="card"><span class="when">4 months</span><h3>Web design and development</h3><p>Completed a four-month course at Kodeeo.</p></div>
+        <div class="card"><span class="when">Dec 2022 – May 2023</span><h3>Intern</h3><p>Kodeeo Limited</p><p class="sub">Duration: 6 months</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="head"><h2 data-no="04">Projects</h2><button class="btn" id="pmore" type="button" hidden>See more</button></div>
+    <div class="pgrid" id="pgrid"></div>
+    <nav class="pager" id="ppager" aria-label="Project pages" hidden></nav>
+  </section>
+
+  <section id="certs">
+    <div class="head"><h2 data-no="05">Certificates &amp; achievements</h2></div>
+    <div class="pgrid" id="cgrid"></div>
+  </section>
+
+  <section id="goals">
+    <h2 data-no="06">Where I’m heading</h2>
+    <div class="goals">
+      <div class="card goal">Grow my professional career</div>
+      <div class="card goal">Help create a positive learning environment</div>
+      <div class="card goal">Work hard and honestly for the team</div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2 data-no="07">Get in touch</h2>
+    <div class="contact">
+      <div class="card">
+        <h3>Send a message</h3>
+        <form id="form">
+          <input id="n" placeholder="Your name" required aria-label="Your name">
+          <input id="e" type="email" placeholder="Your email" required aria-label="Your email">
+          <textarea id="m" placeholder="Your message" required aria-label="Your message"></textarea>
+          <div><button class="btn" type="submit">Send message</button></div>
+          <div id="msg" role="status"></div>
+        </form>
+      </div>
+      <div class="card info">
+        <h3 style="margin-bottom:0">Contact information</h3>
+        <div class="irow">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.800 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span>
+          <div><small>Location</small><b>Hridoypur, Satarpara, Kushtia</b></div>
+        </div>
+        <div class="irow">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.500 1.500a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg></span>
+          <div><small>Phone</small><b id="phone"></b></div>
+          <button class="btn copy" type="button" data-target="phone" aria-label="Copy phone number">Copy</button>
+        </div>
+        <div class="irow">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m3 7 9 6 9-6"/></svg></span>
+          <div><small>Email</small><b id="email"></b></div>
+          <button class="btn copy" type="button" data-target="email" aria-label="Copy email address">Copy</button>
+        </div>
+        <h3 style="margin:6px 0 0">Find me online</h3>
+        <div class="socials" data-socials></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>© <span id="yr"></span> MD Pranto Ali</footer>
+<div class="pal" id="pal" role="dialog" aria-label="Colour theme" hidden>
+  <h4><span>Colour theme</span><span id="pmode"></span></h4>
+  <div class="grid" id="palgrid"></div>
+</div>
+<div class="modal" id="modal">
+  <div class="mbox" role="dialog" aria-modal="true" aria-labelledby="mt">
+    <button class="btn mx" id="mx" type="button" aria-label="Close">✕</button>
+    <div class="mmedia" id="mm"></div>
+    <div class="mtxt">
+      <h3 id="mt"></h3>
+      <div class="mmeta" id="mmeta"></div>
+      <p id="md"></p>
+      <div class="tg" id="mtg"></div>
+      <a class="btn demo" id="mdemo" hidden>Demo</a>
+    </div>
+  </div>
+</div>
+<button class="btn" id="up" aria-label="Back to top">↑</button>
+
+<script>
+// ===== EDIT YOUR DETAILS HERE =====
+const CONFIG = {
+  photo: "https://plain-apac-prod-public.komododecks.com/202611/02/J53acXZYBTZMw8ts4DLN/image.png", // profile photo: change only this line
+  email: "prantoislamnt51@gmail.com",
+  phone: "+880 1979-728818",
+  whatsapp: "8801979728818", // country code + number, digits only
+  social: { // add your profile links; empty ones stay hidden
+    linkedin: "https://www.linkedin.com/in/",   // TODO: put your own profile link
+    facebook: "https://www.facebook.com/",      // TODO: put your own profile link
+    instagram: "https://www.instagram.com/",    // TODO: put your own profile link
+    github: ""
+  }
+};
+const EMAIL = CONFIG.email;
+
+const fillIcon = p => '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="'+p+'"/></svg>';
+const lineIcon = s => '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+s+'</svg>';
+const ICONS = {
+  linkedin: ["LinkedIn", fillIcon("M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 1 1 0-4.125 2.062 2.062 0 0 1 0 4.125zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z")],
+  facebook: ["Facebook", fillIcon("M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z")],
+  instagram: ["Instagram", lineIcon('<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="currentColor"/>')],
+  github: ["GitHub", fillIcon("M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12")],
+  whatsapp: ["WhatsApp", lineIcon('<path d="M3 21l1.65-4.9A9 9 0 1 1 8 19.400L3 21z"/><path d="M9 9c0 3.500 2.500 6 6 6l1-1.500-2-1-1 .8c-1-.4-1.800-1.200-2.200-2.200l.8-1-1-2L9 9z"/>')]
+};
+document.querySelectorAll("[data-socials]").forEach(box=>{
+  box.innerHTML = Object.keys(ICONS).map(k=>{
+    const href = k==="whatsapp" ? (CONFIG.whatsapp ? "https://wa.me/"+CONFIG.whatsapp : "") : CONFIG.social[k];
+    return href ? '<a href="'+href+'" target="_blank" rel="noopener noreferrer" aria-label="'+ICONS[k][0]+'" title="'+ICONS[k][0]+'">'+ICONS[k][1]+'</a>' : "";
+  }).join("");
+});
+document.getElementById("phone").textContent = CONFIG.phone;
+document.getElementById("email").textContent = CONFIG.email;
+
+// copy buttons
+document.querySelectorAll(".copy").forEach(b=>b.addEventListener("click", async ()=>{
+  const text = document.getElementById(b.dataset.target).textContent.trim();
+  try { await navigator.clipboard.writeText(text); }
+  catch(e){ const a=document.createElement("textarea"); a.value=text; document.body.appendChild(a); a.select(); document.execCommand("copy"); a.remove(); }
+  b.classList.add("done"); b.textContent = "Copied";
+  setTimeout(()=>{ b.classList.remove("done"); b.textContent = "Copy"; }, 1600);
+}));
+
+// live clock
+function tick(){
+  const d = new Date(), h = d.getHours();
+  document.getElementById("time").textContent = String(h%12||12).padStart(2,"0")+":"+String(d.getMinutes()).padStart(2,"0");
+  document.getElementById("ampm").textContent = h<12?"AM":"PM";
+}
+tick(); setInterval(tick,1000);
+document.getElementById("yr").textContent = new Date().getFullYear();
+
+// theme toggle
+const root = document.documentElement, tb = document.getElementById("theme");
+function dark(){ return root.dataset.theme ? root.dataset.theme==="dark" : matchMedia("(prefers-color-scheme: dark)").matches; }
+function label(){ document.getElementById("tl").textContent = dark() ? "Light" : "Dark"; }
+tb.onclick = ()=>{ root.dataset.theme = dark() ? "light" : "dark"; label(); };
+label();
+
+// animate language bars when visible
+const io = new IntersectionObserver(es=>es.forEach(e=>{
+  if(!e.isIntersecting) return;
+  e.target.querySelectorAll("[data-w]").forEach(i=>i.style.width=i.dataset.w+"%");
+  io.unobserve(e.target);
+}),{threshold:.3});
+io.observe(document.getElementById("langs"));
+
+// active menu item + back to top
+const up = document.getElementById("up");
+const navLinks = [...document.querySelectorAll("#links a")];
+const spy = new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting) navLinks.forEach(a=>a.classList.toggle("on",a.getAttribute("href")==="#"+e.target.id));
+}),{rootMargin:"-45% 0px -50% 0px"});
+document.querySelectorAll("section[id]").forEach(s=>spy.observe(s));
+addEventListener("scroll",()=>{ up.style.display = scrollY>500?"block":"none"; },{passive:true});
+up.onclick = ()=>scrollTo({top:0,behavior:"smooth"});
+
+// contact form opens the visitor's email app
+document.getElementById("form").addEventListener("submit",ev=>{
+  ev.preventDefault();
+  const n=document.getElementById("n").value, e=document.getElementById("e").value, m=document.getElementById("m").value;
+  const body = encodeURIComponent(m+"\n\n— "+n+" ("+e+")");
+  location.href = "mailto:"+EMAIL+"?subject="+encodeURIComponent("Portfolio message from "+n)+"&body="+body;
+  document.getElementById("msg").textContent = "Opening your email app…";
+});
+// profile photo (CONFIG.photo only). If it fails to load, onerror removes the <img> and the "PA" initials show.
+if (CONFIG.photo) document.getElementById("photo").src = CONFIG.photo;
+
+// ===== PROJECTS: add one line per project; cards and page numbers are built automatically =====
+// t = title, s = short card line, d = full description, m = meta line, tags = [..], img = image link ("" = colourful placeholder), h = placeholder hue (0-360)
+// demo = link for the full-width "Demo" button ("#" for now; put your real demo link later, "" hides the button)
+const PER = 4; // projects per page
+const PROJECTS = [
+  { t:"Smart Attendance Management System", s:"Automated attendance tracking with reports.", d:"A smart attendance system that records who is present, keeps the attendance history in one place and makes daily and monthly reports easy to view. (Demo text – edit me.)", m:"Demo project · Attendance system", demo:"#", tags:["Attendance","Reports","Automation"], img:"", h:150 },
+  { t:"Inventory Management System", s:"Track stock, items and updates in one place.", d:"An inventory system to add items, update stock levels and see what is available or running low at a glance. (Demo text – edit me.)", m:"Demo project · Inventory system", demo:"#", tags:["Inventory","Database","Dashboard"], img:"", h:25 },
+  { t:"Entry Pass Using RFID & Fingerprint Sensor", s:"Secure entry with an RFID card and fingerprint.", d:"An entry pass device that checks an RFID card together with a fingerprint sensor before allowing access. (Demo text – edit me.)", m:"Demo project · Hardware device", demo:"#", tags:["RFID","Fingerprint sensor","Hardware"], img:"", h:215 },
+  { t:"Personal Portfolio Website", s:"This one-page site, built with plain HTML, CSS and JavaScript.", d:"A responsive one-page portfolio with light and dark themes, a side menu, animated cards and a contact form that opens the visitor’s email app. Built with plain HTML, CSS and JavaScript.", m:"Web design · HTML, CSS, JavaScript", demo:"#", tags:["HTML","CSS","JavaScript"], img:"", h:260 },
+  { t:"Library Management System", s:"Books, members and borrowing records.", d:"A simple system to keep a list of books and members and to record who borrowed what and when it is due. (Demo text – edit me.)", m:"Demo project · Library system", demo:"#", tags:["Library","Records"], img:"", h:330 },
+  { t:"Online Quiz App", s:"Quick quizzes with instant scores.", d:"A small quiz app where a user answers multiple-choice questions and sees the score at the end. (Demo text – edit me.)", m:"Demo project · Web app", demo:"#", tags:["Quiz","JavaScript"], img:"", h:185 }
+  // { t:"", s:"", d:"", m:"", demo:"#", tags:[], img:"", h:200 },
+];
+
+// ===== CERTIFICATES & ACHIEVEMENTS (same fields as projects) =====
+const CERTS = [
+  { t:"Web Design and Development for Freelancing – Level 3", s:"NSDA (Govt. of Bangladesh)", m:"Achievement · Level 3 · 29 Aug 2026 · Touch And Solve", d:"Successfully passed the assessment under the National Skills Development Authority (NSDA), Government of the People’s Republic of Bangladesh, held at Touch And Solve on 29 August 2026.", tags:["NSDA","Achievement","Web design","Freelancing"], img:"", h:150 },
+  { t:"Introduction to Generative AI Studio", s:"Google", m:"Google · Sep 17, 2026", d:"Certificate from Google for completing Introduction to Generative AI Studio on September 17, 2026.", tags:["Google","Generative AI"], img:"", h:215 },
+  { t:"Copilot Foundation", s:"Microsoft", m:"Microsoft · Sep 18, 2026", d:"Certificate from Microsoft for completing Copilot Foundation on September 18, 2026.", tags:["Microsoft","Copilot"], img:"", h:200 },
+  { t:"Introduction to Prompt Engineering with GitHub Copilot", s:"Microsoft", m:"Microsoft · Sep 17, 2026", d:"Certificate from Microsoft for completing Introduction to Prompt Engineering with GitHub Copilot on September 17, 2026.", tags:["Microsoft","GitHub Copilot","Prompt engineering"], img:"", h:260 },
+  { t:"Introduction to MS Excel", s:"Microsoft", m:"Microsoft · Sep 18, 2026", d:"Certificate from Microsoft for completing Introduction to MS Excel on September 18, 2026.", tags:["Microsoft","Excel"], img:"", h:130 },
+  { t:"Understanding Placement Groups", s:"AWS", m:"AWS · Sep 18, 2026", d:"Certificate from AWS for completing Understanding Placement Groups on September 18, 2026.", tags:["AWS","Cloud"], img:"", h:30 },
+  { t:"Teacher Essentials", s:"Canva", m:"Canva · Jul 31, 2024", d:"Certificate from Canva for completing Teacher Essentials on July 31, 2024.", tags:["Canva","Design"], img:"", h:185 },
+  { t:"Canva Essentials", s:"Canva", m:"Canva · Sep 10, 2026", d:"Certificate from Canva for completing Canva Essentials on September 10, 2026.", tags:["Canva","Design"], img:"", h:170 }
+];
+
+// ===== SCROLL-REVEAL SPEED (milliseconds / pixels). Change these numbers to tune the motion =====
+const ANIM = {
+  card:2300, cardFade:1900, cardStep:220,   // big cards: move time, fade time, gap between cards revealed together
+  head:2200, headFade:1800,                 // section titles
+  tag:1300, tagStep:140,                    // tags and pills: time, gap between each
+  page:1500, pageFade:1200, pageStep:180,   // project cards after changing page
+  dx:170, dy:110, mdx:70,                   // card start offset: side, from below, side on mobile (<=640px)
+  hx:120, hy:30, mhx:50,                    // title start offset: side, from below, side on mobile
+  pdx:130, pdy:80, tagY:36                  // page-change cards, tag rise
+};
+const mobileQ = matchMedia("(max-width:640px)");
+let soloCount = 0, headCount = 0;
+
+function prep(el, kind, side){
+  if (el._rv) return; el._rv = 1;
+  const m = mobileQ.matches;
+  let x = 0, y = 0, ry = 0;
+  if (kind === "card"){ x = side*(m?ANIM.mdx:ANIM.dx); y = ANIM.dy; ry = -side*16; }
+  else if (kind === "page"){ x = side*(m?ANIM.mdx:ANIM.pdx); y = ANIM.pdy; ry = -side*16; }
+  else if (kind === "head"){ x = side*(m?ANIM.mhx:ANIM.hx); y = ANIM.hy; ry = -side*10; }
+  else { y = ANIM.tagY; }
+  el.style.setProperty("--x", x+"px");
+  el.style.setProperty("--y", y+"px");
+  el.style.setProperty("--ry", ry+"deg");
+  el.classList.add("rv", "k"+kind);
+}
+function reveal(el, delay, dur, fade){
+  el.style.setProperty("--dl", delay+"ms");
+  el.style.setProperty("--du", dur+"ms");
+  el.style.setProperty("--fd", fade+"ms");
+  void el.offsetWidth; // commit the hidden start state first so the transition really plays
+  el.classList.add("in");
+  // when finished, drop the reveal classes so the card's own hover / tilt / shadow transitions work again (fast)
+  setTimeout(()=>{
+    el.classList.remove("rv","in","kcard","kpage","khead","ktag");
+    ["--x","--y","--ry","--dl","--du","--fd"].forEach(p=>el.style.removeProperty(p));
+  }, delay + dur + 80);
+}
+function run(el, i){
+  if (el._group){ [...el.children].forEach((c,j)=>reveal(c, 320 + j*ANIM.tagStep, ANIM.tag, ANIM.tag)); return; }
+  const c = el.classList;
+  if (c.contains("kcard")) reveal(el, i*ANIM.cardStep, ANIM.card, ANIM.cardFade);
+  else if (c.contains("khead")) reveal(el, 0, ANIM.head, ANIM.headFade);
+  else reveal(el, 200 + i*ANIM.tagStep, ANIM.tag, ANIM.tag);
+}
+// starts when 20% is visible and the element is ~12% inside the bottom edge
+const rvIO = new IntersectionObserver(es=>{
+  const groups = new Map();
+  es.forEach(e=>{
+    if (!e.isIntersecting) return;
+    rvIO.unobserve(e.target);
+    const p = e.target.parentElement;
+    if (!groups.has(p)) groups.set(p, []);
+    groups.get(p).push(e.target);
+  });
+  groups.forEach(list=>{
+    list.sort((a,b)=> a.compareDocumentPosition(b) & 4 ? -1 : 1);
+    list.forEach((el,i)=>run(el,i)); // items entering together come one after another
+  });
+},{threshold:.2, rootMargin:"0px 0px -12% 0px"});
+function watch(el, kind, side){ prep(el, kind, side); rvIO.observe(el); }
+
+// static elements
+document.querySelectorAll("main .card, main .hero").forEach(el=>{
+  const sib = [...el.parentElement.children].filter(c=>c.matches(".card,.hero"));
+  const idx = sib.length > 1 ? sib.indexOf(el) : soloCount++;
+  watch(el, "card", idx%2 ? 1 : -1);
+});
+document.querySelectorAll("main h2").forEach(h=>watch(h, "head", (headCount++%2) ? 1 : -1));
+document.querySelectorAll("main .pills").forEach(g=>{
+  [...g.children].forEach(c=>prep(c, "tag"));
+  g._group = 1; g._rv = 1; rvIO.observe(g); // pills rise one after another
+});
+document.querySelectorAll("main .tag, main .when").forEach(t=>watch(t, "tag"));
+
+// ===== cards (projects + certificates) =====
+const esc = s => String(s==null?"":s).replace(/[&<>"']/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const initials = t => String(t).replace(/[^A-Za-z0-9\s]/g,"").split(/\s+/).filter(Boolean).slice(0,2).map(w=>w[0]).join("").toUpperCase() || "•";
+const tagSpans = t => (t||[]).map(x=>"<span>"+esc(x)+"</span>").join("");
+function phEl(it, i){
+  const d = document.createElement("div");
+  d.className = "ph";
+  d.style.setProperty("--h", typeof it.h==="number" ? it.h : (i*47+150)%360);
+  d.textContent = initials(it.t);
+  d.setAttribute("aria-hidden","true");
+  return d;
+}
+function mediaEl(it, i, lazy){
+  if (!it.img) return phEl(it, i);
+  const im = new Image();
+  im.alt = it.t || "";
+  im.referrerPolicy = "no-referrer";
+  if (lazy) im.loading = "lazy";
+  im.onerror = ()=>im.replaceWith(phEl(it, i));
+  im.src = it.img;
+  return im;
+}
+function demoLink(it){ return it.demo===undefined ? "#" : it.demo; }
+function setDemo(a, url){
+  a.hidden = !url;
+  if (!url) return;
+  a.href = url;
+  if (url.charAt(0)==="#"){ a.removeAttribute("target"); a.removeAttribute("rel"); }
+  else { a.target = "_blank"; a.rel = "noopener noreferrer"; }
+}
+function cardEl(it, i, withDemo){
+  const c = document.createElement("div");
+  c.className = "card pcard"; c.tabIndex = 0;
+  c.setAttribute("role","button"); c.setAttribute("aria-haspopup","dialog");
+  const m = document.createElement("div"); m.className = "media"; m.appendChild(mediaEl(it, i, true));
+  const b = document.createElement("div"); b.className = "body";
+  b.innerHTML = "<h3>"+esc(it.t)+"</h3>" + (it.s ? "<p>"+esc(it.s)+"</p>" : "") + (it.tags&&it.tags.length ? '<div class="tg">'+tagSpans(it.tags)+"</div>" : "");
+  if (withDemo && demoLink(it)){ const a = document.createElement("a"); a.className = "btn demo"; a.textContent = "Demo"; a.setAttribute("aria-label","Demo: "+(it.t||"")); setDemo(a, demoLink(it)); b.appendChild(a); }
+  c.append(m, b); c._item = it; c._idx = i; c._demo = !!withDemo;
+  return c;
+}
+function fillGrid(grid, items, startIdx, mode, emptyText, withDemo){
+  grid.textContent = "";
+  if (!items.length){ grid.innerHTML = '<p class="empty">'+emptyText+"</p>"; return; }
+  items.forEach((it,i)=>grid.appendChild(cardEl(it, startIdx+i, withDemo)));
+  [...grid.children].forEach((c,i)=>{
+    const side = i%2 ? 1 : -1;
+    if (mode === "page"){ prep(c, "page", side); reveal(c, i*ANIM.pageStep, ANIM.page, ANIM.pageFade); }
+    else watch(c, "card", side);
+  });
+}
+
+// projects with pages
+const pgrid = document.getElementById("pgrid"), pmore = document.getElementById("pmore"), ppager = document.getElementById("ppager");
+let page = 0;
+function pages(){ return Math.max(1, Math.ceil(PROJECTS.length/PER)); }
+function renderProjects(mode){
+  const total = pages();
+  if (page >= total) page = 0;
+  fillGrid(pgrid, PROJECTS.slice(page*PER, page*PER+PER), page*PER, mode, "Projects will appear here soon.", true);
+  pmore.hidden = total <= 1;
+  pmore.textContent = page >= total-1 ? "Back to first" : "See more";
+  ppager.hidden = total <= 1;
+  ppager.innerHTML = "";
+  for (let n=0; n<total; n++){
+    const b = document.createElement("button");
+    b.type = "button"; b.className = "pg"+(n===page?" on":""); b.textContent = n+1;
+    b.setAttribute("aria-label","Page "+(n+1));
+    if (n===page) b.setAttribute("aria-current","page");
+    b.onclick = ()=>{ if (n!==page){ page = n; renderProjects("page"); } };
+    ppager.appendChild(b);
+  }
+}
+pmore.onclick = ()=>{ page = page >= pages()-1 ? 0 : page+1; renderProjects("page"); };
+renderProjects("scroll");
+
+// certificates
+const cgrid = document.getElementById("cgrid");
+fillGrid(cgrid, CERTS, 0, "scroll", "Certificates will appear here soon.");
+
+// ===== popup (one box for projects and certificates) =====
+const modal = document.getElementById("modal"), mx = document.getElementById("mx");
+let lastFocus = null;
+function openModal(it, i, from, withDemo){
+  lastFocus = from || null;
+  const mm = document.getElementById("mm");
+  mm.textContent = ""; mm.appendChild(mediaEl(it, i, false));
+  document.getElementById("mt").textContent = it.t || "";
+  const meta = document.getElementById("mmeta"); meta.textContent = it.m || ""; meta.hidden = !it.m;
+  const d = document.getElementById("md"); d.textContent = it.d || it.s || ""; d.hidden = !(it.d || it.s);
+  const tg = document.getElementById("mtg"); tg.innerHTML = tagSpans(it.tags); tg.hidden = !(it.tags && it.tags.length);
+  setDemo(document.getElementById("mdemo"), withDemo ? demoLink(it) : "");
+  const sw = innerWidth - document.documentElement.clientWidth;
+  if (sw > 0) document.body.style.paddingRight = sw+"px"; // no layout jump when the scrollbar disappears
+  document.documentElement.classList.add("lock");
+  modal.classList.add("open");
+  modal.querySelector(".mbox").scrollTop = 0;
+  mx.focus();
+}
+function closeModal(){
+  if (!modal.classList.contains("open")) return;
+  modal.classList.remove("open");
+  document.documentElement.classList.remove("lock");
+  document.body.style.paddingRight = "";
+  if (lastFocus) lastFocus.focus({preventScroll:true});
+}
+[pgrid, cgrid].forEach(g=>{
+  g.addEventListener("click", e=>{ const c = e.target.closest(".pcard"); if (c && !e.target.closest(".demo")) openModal(c._item, c._idx, c, c._demo); });
+  g.addEventListener("keydown", e=>{
+    if (e.key!=="Enter" && e.key!==" ") return;
+    const c = e.target.closest(".pcard"); if (!c || e.target.closest(".demo")) return;
+    e.preventDefault(); openModal(c._item, c._idx, c, c._demo);
+  });
+});
+mx.onclick = closeModal;
+modal.addEventListener("click", e=>{ if (e.target===modal) closeModal(); });
+addEventListener("keydown", e=>{
+  if (!modal.classList.contains("open")) return;
+  if (e.key==="Escape") closeModal();
+  else if (e.key==="Tab"){ e.preventDefault(); mx.focus(); }
+});
+
+// ===== COLOUR THEMES: 10 palettes x day/night = 20 themes. Colours: [bg, card, ink, text-mute, accent, accent2, soft] =====
+const PALETTES = [
+  { n:"Blueprint", l:["#f2eee5","#fbf9f4","#111a2e","#586177","#ff5a1f","#2347ff","#e9e4d8"], d:["#0a0f1f","#111933","#e9edf8","#93a0bf","#ff7a45","#7b93ff","#18224a"] },
+  { n:"Forest",    l:["#eef1e6","#f9fbf4","#0f2a1e","#556a5d","#d7263d","#0f6b4f","#e0e8d6"], d:["#08140f","#10231b","#e5f0e8","#97ad9f","#ff6b7a","#1f9d73","#17342a"] },
+  { n:"Ocean",     l:["#e8f3f6","#f7fcfd","#0a2a3a","#4f6b78","#e86a1c","#0077b6","#d6e9ef"], d:["#061a24","#0c2937","#e2f2f8","#8fb0bf","#ff8a47","#1b8fd0","#123a4d"] },
+  { n:"Sunset",    l:["#fbefe6","#fffaf5","#3a1620","#7a5560","#e8412c","#b4237a","#f6dccf"], d:["#1c0d14","#2a1420","#fbe9e2","#c4a0a8","#ff6a4d","#d63a8c","#3b1c2c"] },
+  { n:"Lavender",  l:["#f1eefb","#fbfaff","#221a47","#645d85","#7c3aed","#db2777","#e4def6"], d:["#120e24","#1c1636","#ece8ff","#a39bc9","#8b5cf6","#ec4899","#2a2250"] },
+  { n:"Mono",      l:["#f4f4f2","#ffffff","#111111","#5f5f5f","#e11d48","#475569","#e6e6e3"], d:["#0d0d0d","#171717","#f2f2f2","#9a9a9a","#f43f5e","#64748b","#242424"] },
+  { n:"Mint",      l:["#e9f7f1","#f8fefb","#0b2e26","#52726a","#e4572e","#00805f","#d3eee3"], d:["#06201b","#0c2f28","#e0f6ee","#8fb8ac","#ff7b54","#12a37f","#12403a"] },
+  { n:"Gold",      l:["#f7f0dc","#fffaec","#2b2208","#7a6a3a","#c2410c","#a16207","#efe3bd"], d:["#17120a","#241c0e","#f6ecd2","#bba97d","#ea6a1a","#b7791f","#32270f"] },
+  { n:"Rose",      l:["#fbeaf0","#fff8fb","#3a0f24","#80566a","#e11d63","#6d28d9","#f5d5e1"], d:["#1d0a14","#2c1120","#fde8f1","#c79bb0","#f43f7f","#8b5cf6","#40182f"] },
+  { n:"Cyber",     l:["#e9edf2","#f7f9fc","#0f172a","#526074","#0d9488","#4f46e5","#d9e0ea"], d:["#050816","#0b1230","#dff7ff","#86a3b8","#14b8a6","#8b5cf6","#12204a"] }
+];
+const PKEYS = ["--bg","--card","--ink","--mute","--acc","--acc2","--soft"];
+const palBtn = document.getElementById("palbtn"), pal = document.getElementById("pal"), palGrid = document.getElementById("palgrid");
+let pIdx = 0;
+PALETTES.forEach((p,i)=>{
+  const b = document.createElement("button");
+  b.type = "button"; b.className = "sw";
+  b.innerHTML = "<i><b></b><b></b><b></b></i><span>"+p.n+"</span>";
+  b.onclick = ()=>{ pIdx = i; applyTheme(); };
+  palGrid.appendChild(b);
+});
+function applyTheme(){
+  const dk = dark(), st = root.style;
+  st.colorScheme = dk ? "dark" : "light";
+  const c = (dk ? PALETTES[pIdx].d : PALETTES[pIdx].l);
+  PKEYS.forEach((k,i)=>st.setProperty(k, c[i]));
+  st.setProperty("--line2","color-mix(in srgb,"+c[2]+" 20%,transparent)");
+  st.setProperty("--grid","color-mix(in srgb,"+c[2]+" 6%,transparent)");
+  st.setProperty("--sh","color-mix(in srgb,"+c[4]+" 50%,transparent)");
+  [...palGrid.children].forEach((b,i)=>{
+    const q = dk ? PALETTES[i].d : PALETTES[i].l, dots = b.querySelectorAll("b");
+    [0,4,5].forEach((k,j)=>dots[j].style.background = q[k]);
+    b.classList.toggle("on", i===pIdx);
+    b.setAttribute("aria-pressed", i===pIdx);
+  });
+  document.getElementById("pmode").textContent = PALETTES[pIdx].n+" · "+(dk?"Night":"Day");
+  try{ localStorage.setItem("pa-theme", JSON.stringify({p:pIdx, m:root.dataset.theme||""})); }catch(e){}
+}
+// day / night button now also re-applies the chosen palette
+tb.onclick = ()=>{ root.dataset.theme = dark() ? "light" : "dark"; label(); applyTheme(); };
+matchMedia("(prefers-color-scheme: dark)").addEventListener("change", ()=>{ label(); applyTheme(); });
+try{
+  const sv = JSON.parse(localStorage.getItem("pa-theme")||"null");
+  if (sv){ if (sv.p>=0 && sv.p<PALETTES.length) pIdx = sv.p; if (sv.m==="dark"||sv.m==="light") root.dataset.theme = sv.m; }
+}catch(e){}
+label(); applyTheme();
+function togglePal(open){
+  pal.hidden = !open;
+  palBtn.setAttribute("aria-expanded", open);
+}
+palBtn.onclick = e=>{ e.stopPropagation(); togglePal(pal.hidden); };
+document.addEventListener("click", e=>{ if (!pal.hidden && !pal.contains(e.target)) togglePal(false); });
+addEventListener("keydown", e=>{ if (e.key==="Escape" && !pal.hidden){ togglePal(false); palBtn.focus(); } });
+</script>
+</body>
+</html>

@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Student ID Card Generator</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#eef2f7;--pn:#fff;--tx:#15222f;--mu:#5d6b7a;--bd:#dbe3ec;--ac:#12304a;--ac2:#1f6fb2;--ok:#1a8f5a;--er:#c0392b;--wr:#b7791f}
+[data-theme=dark]{--bg:#0e1520;--pn:#17212e;--tx:#e5ecf3;--mu:#93a3b5;--bd:#263446;--ac:#2f7fc4;--ac2:#5aa9ee}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:Manrope,system-ui,sans-serif;font-size:14px}
+button,input,select{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--ac2);outline-offset:2px}
+.top{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:16px;padding:10px 20px;background:var(--pn);border-bottom:1px solid var(--bd)}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:16px}
+.brand img{width:32px;height:32px;object-fit:contain;border-radius:6px}
+nav{display:flex;gap:6px;margin:0 auto}
+nav a{padding:7px 14px;border-radius:8px;color:var(--mu);text-decoration:none;font-weight:600}
+nav a:hover{background:var(--bg);color:var(--tx)}
+.tools{display:flex;gap:6px}
+.burger{display:none}
+.ic,.btn{border:1px solid var(--bd);background:var(--pn);border-radius:9px;padding:8px 13px;cursor:pointer;font-weight:600;transition:transform .15s,background .15s}
+.ic:hover,.btn:hover{transform:translateY(-1px);background:var(--bg)}
+.btn.pri{background:var(--ac);border-color:var(--ac);color:#fff}
+.btn.pri:hover{filter:brightness(1.1)}
+.btn.dng{color:var(--er)}
+.btn.sm{padding:6px 9px}
+main{max-width:1240px;margin:0 auto;padding:20px;display:grid;gap:20px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.stat{background:var(--pn);border:1px solid var(--bd);border-radius:14px;padding:16px}
+.stat b{display:block;font-size:26px}.stat span{color:var(--mu)}
+.work{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,580px);gap:20px;align-items:start}
+.panel{background:var(--pn);border:1px solid var(--bd);border-radius:16px;padding:20px;box-shadow:0 6px 24px rgba(18,48,74,.07)}
+.panel h2{margin:0 0 14px;font-size:18px}
+.fgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.fld{display:flex;flex-direction:column;gap:4px;min-width:0}
+.fld label,.lbl{font-weight:600;font-size:12px;color:var(--mu)}
+input[type=text],input[type=url],input[type=date],input[type=email],input[type=tel],input[type=search],select,.fld input{width:100%;padding:9px 11px;border:1px solid var(--bd);border-radius:9px;background:var(--bg)}
+input[type=color]{width:100%;height:38px;padding:2px;border:1px solid var(--bd);border-radius:9px;background:var(--bg)}
+.err{color:var(--er);font-size:12px;min-height:0}
+.row{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap;align-items:center}
+.row.between{justify-content:space-between;margin-top:0}
+.seg{display:inline-flex;border:1px solid var(--bd);border-radius:9px;overflow:hidden;margin:6px 0}
+.seg button{border:0;background:none;padding:7px 12px;cursor:pointer;font-weight:600}
+.seg button.on{background:var(--ac);color:#fff}
+.prow{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.pth{width:64px;height:78px;object-fit:cover;border-radius:8px;border:1px solid var(--bd)}
+.drop{flex:1;min-width:180px;border:2px dashed var(--bd);border-radius:12px;padding:18px;text-align:center;color:var(--mu);cursor:pointer}
+.drop.hot,.drop:hover{border-color:var(--ac2);background:var(--bg)}
+.urlrow{display:flex;gap:8px;flex:1;min-width:200px}
+#photoBox{margin-top:14px}
+#previewHost{margin:14px 0;display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
+.cw{width:100%;margin-bottom:12px}
+.card{width:540px;height:340px;position:relative;overflow:hidden;background:var(--bg);color:var(--tx);border:1px solid rgba(0,0,0,.12);border-radius:var(--r);transform-origin:top left;font-family:Manrope,system-ui,sans-serif;box-shadow:0 8px 24px rgba(0,0,0,.15)}
+.card *{box-sizing:border-box}
+.c-head{height:70px;background:var(--p);color:#fff;display:flex;align-items:center;gap:12px;padding:0 20px;border-bottom:4px solid var(--s)}
+.tpl-minimal .c-head{background:transparent;color:var(--p);border-bottom:2px solid var(--p)}
+.tpl-modern .c-head{border-bottom:0;border-left:10px solid var(--s)}
+.tpl-corporate .c-head{border-radius:0 0 40px 0}
+.tpl-royal .c-head{justify-content:center;border-bottom:6px double var(--s)}
+.tpl-royal .c-ht{align-items:center;text-align:center}
+.tpl-emerald .c-head{border-bottom:0;border-radius:0 0 0 44px}
+.tpl-crimson .c-head{border-bottom:0;padding-left:30px;box-shadow:inset 12px 0 0 var(--s)}
+.tpl-ocean .c-head{background:linear-gradient(110deg,var(--p),var(--s));border-bottom:0}
+.tpl-sunset .c-head{background:linear-gradient(110deg,var(--p),var(--s));border-bottom:0;border-radius:0 0 30px 30px}
+.tpl-slate .c-head{height:62px;border-bottom:0;border-top:8px solid var(--s)}
+.tpl-midnight .c-head{background:linear-gradient(90deg,var(--p),#1e293b);border-bottom:2px solid var(--s)}
+.tpl-lavender .c-head{margin:10px 12px 0;border-radius:40px;height:58px;border-bottom:0}
+.tpl-graphite .c-head{border-bottom:3px solid var(--s)}
+.tpl-rose .c-head{border-bottom:0;border-radius:0 0 50% 50%/0 0 16px 16px}
+.tpl-midnight .c-name,.tpl-graphite .c-name{color:var(--s)}
+.card.portrait{width:340px;height:540px}
+.card.portrait .c-head{height:auto!important;min-height:92px;flex-direction:column;justify-content:center;text-align:center;gap:6px;padding:12px 16px!important}
+.card.portrait .c-ht{align-items:center}
+.card.portrait .c-body{flex-direction:column;align-items:center;gap:8px;padding:14px 20px 0}
+.card.portrait .c-photo{width:120px;height:148px}
+.card.portrait.shape-circle .c-photo{width:140px;height:140px}
+.card.portrait .c-info{width:100%}
+.card.portrait .c-name{text-align:center;font-size:19px}
+.card.portrait .c-addr{text-align:center}
+.card.portrait .c-foot{height:128px;flex-direction:column;justify-content:center;gap:8px}
+.card.portrait .c-meta{flex-direction:row;flex-wrap:wrap;justify-content:center;align-items:center;gap:8px}
+.card.portrait .c-bar{max-width:170px;height:46px}
+.card.portrait .c-back{padding:18px 20px}
+.card.portrait .sig{right:50%;transform:translateX(50%)}
+.card.portrait{display:flex;flex-direction:column}
+.card.portrait .c-head{flex:none;min-height:0;padding:10px 14px!important;gap:5px}
+.card.portrait .c-logo{width:40px;height:40px}
+.card.portrait .c-ht b{font-size:calc(15px*var(--k,1));line-height:1.2}
+.card.portrait .c-ht small{font-size:10px}
+.card.portrait .c-body{flex:1 1 0;min-height:0;overflow:hidden;padding:10px 18px 6px;gap:calc(8px*var(--k,1))}
+.card.portrait .c-photo,.card.portrait.shape-circle .c-photo{width:auto;height:auto;max-width:100%;flex:0 1 150px;min-height:64px;aspect-ratio:4/5}
+.card.portrait.shape-circle .c-photo{aspect-ratio:1/1}
+.card.portrait .c-info{flex:none}
+.card.portrait .c-name{font-size:calc(19px*var(--k,1))}
+.card.portrait .c-grid{gap:calc(4px*var(--k,1)) 12px}
+.card.portrait .c-grid dd{font-size:calc(12.5px*var(--k,1))}
+.card.portrait .c-grid dt{font-size:calc(9px*var(--k,1))}
+.card.portrait .c-foot{position:static;flex:none;height:auto;min-height:0;padding:8px 18px 12px}
+.card.portrait .c-codes{flex-wrap:wrap;justify-content:center}
+.card.portrait .c-back{flex:1}
+.tpl-iubat{font-family:Arial,Helvetica,sans-serif;background-repeat:no-repeat}
+.iu-brand{position:absolute;left:32px;top:58px;height:52px;display:flex;align-items:center;gap:8px}
+.iu-brand img{height:50px;max-width:80px;object-fit:contain}
+.iu-brand b{font:800 46px/1 Arial,Helvetica,sans-serif;color:#2a7a52;letter-spacing:1px}
+.iu-photo{position:absolute;left:31px;top:126px;width:123px;height:140px;object-fit:cover;border:2px solid #34406b;border-radius:6px;background:#fff}
+.iu-info{position:absolute;left:165px;right:28px;top:124px;color:var(--tx)}
+.iu-name{font-weight:700;white-space:nowrap;line-height:1.15;text-transform:uppercase}
+.iu-id{font-size:15px;font-weight:700;margin:3px 0 7px}
+.iu-r{display:flex;justify-content:space-between;gap:8px;height:20px;line-height:19px;border-bottom:1px dotted #555;font-size:12px}
+.iu-r span{text-transform:uppercase;font-weight:600;white-space:nowrap}.iu-r b{font-weight:500;white-space:nowrap}
+.iu-bar{position:absolute;left:0;right:0;bottom:0;height:45px;background:var(--p);color:#fff;text-align:center;font-weight:700;font-size:20px;letter-spacing:5px;line-height:45px;border-radius:0 0 var(--r) var(--r)}
+.iu-back{position:absolute;inset:0;padding:30px 30px 0;text-align:center;color:#111}
+.iu-bar2{background:#111;color:#fff;font-weight:700;font-size:13px;line-height:20px;margin-bottom:5px}
+.iu-n{font-weight:700;font-size:12.5px;line-height:1.25}
+.iu-ad{font-size:10.5px;line-height:1.25;margin-top:4px}
+.iu-ct{font-size:10px;margin-top:3px;padding-bottom:3px;border-bottom:1.5px solid #111;white-space:nowrap}
+.iu-ac{font-size:10px;margin-top:5px}
+.iu-qrw{position:absolute;left:36px;top:172px;text-align:left;font-size:8.5px}
+.iu-qrw .c-qr{width:70px;height:70px;padding:0;margin-bottom:6px}
+.iu-sig{position:absolute;left:380px;width:120px;top:236px;border-top:1px solid #111;font-size:10px;font-weight:600;letter-spacing:2px;padding-top:4px}
+.iu-sn{position:absolute;right:40px;top:288px;font:13px 'Courier New',monospace;letter-spacing:1px}
+.c-logo{width:46px;height:46px;border-radius:8px;background:#fff;object-fit:contain;display:flex;align-items:center;justify-content:center;font-weight:800;color:#12304a;font-size:22px}
+.c-ht{display:flex;flex-direction:column;min-width:0}.c-ht b{font-size:18px;line-height:1.15}.c-ht small{opacity:.85;font-size:11px}
+.c-body{display:flex;gap:16px;padding:14px 20px}
+.c-photo{width:104px;height:130px;object-fit:cover;flex:none;border:3px solid var(--s);border-radius:8px;background:#fff}
+.shape-circle .c-photo{border-radius:50%;width:116px;height:116px}.shape-square .c-photo{border-radius:0}
+.c-info{min-width:0;flex:1}
+.c-name{font-size:21px;font-weight:800;color:var(--p);line-height:1.15;margin-bottom:6px}
+.tpl-dark .c-name{color:var(--s)}
+.c-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px 12px;margin:0}
+.c-grid div{border-bottom:1px dashed rgba(128,128,128,.4);padding-bottom:2px;min-width:0}
+.c-grid dt{font-size:9px;opacity:.65;font-weight:600}.c-grid dd{margin:0;font-size:12.5px;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.c-addr{font-size:11px;margin-top:6px;opacity:.85}
+.c-foot{position:absolute;left:0;right:0;bottom:0;height:84px;padding:8px 20px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(128,128,128,.35)}
+.c-meta{display:flex;flex-direction:column;gap:5px;font-size:11.5px;font-weight:600}
+.pill{background:var(--s);color:#fff;padding:2px 9px;border-radius:99px;width:max-content}
+.ok{color:#1a8f5a}
+.c-codes{display:flex;align-items:center;gap:12px}
+.c-bar{height:52px;width:auto;max-width:210px;background:#fff;padding:3px;border-radius:4px}
+.c-qr{width:66px;height:66px;background:#fff;padding:3px;border-radius:4px}
+.c-qr img,.c-qr canvas{width:100%!important;height:100%!important;display:block}
+.c-qr canvas{display:none!important}
+.c-back{padding:16px 20px;font-size:12px;line-height:1.5}
+.c-back .t{font-weight:700}
+.c-back p{margin:0 0 8px}
+.sig{position:absolute;right:24px;bottom:24px;width:170px;border-top:1px solid currentColor;text-align:center;font-size:10px;padding-top:3px}
+.wm{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;transform:rotate(-25deg);font-size:34px;font-weight:800;white-space:nowrap;color:var(--p);pointer-events:none;z-index:2}
+#stage{position:fixed;left:-10000px;top:0}
+#printArea{display:none}
+.mgr-bar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
+.mgr-bar input[type=search]{max-width:240px}.mgr-bar select{width:auto}
+.list{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px;margin-top:14px}
+.sc{display:flex;gap:10px;border:1px solid var(--bd);border-radius:12px;padding:12px;background:var(--bg);transition:box-shadow .15s}
+.sc:hover{box-shadow:0 4px 14px rgba(0,0,0,.1)}.sc.on{border-color:var(--ac2)}
+.sc img{width:48px;height:58px;object-fit:cover;border-radius:6px}
+.sc .m{flex:1;min-width:0}.sc .m b{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.sc .m span{color:var(--mu);font-size:12px}
+.acts{display:flex;gap:4px;flex-wrap:wrap;margin-top:8px}
+.empty{text-align:center;padding:40px 10px;color:var(--mu)}.empty h3{color:var(--tx);margin:0 0 6px}
+.ov{position:fixed;inset:0;background:rgba(10,20,30,.55);z-index:50;display:flex;align-items:center;justify-content:center;padding:14px;animation:fd .15s}
+.mbox{background:var(--pn);border-radius:16px;width:min(460px,100%);max-height:92vh;display:flex;flex-direction:column;animation:pop .18s}
+.mbox.wide{width:min(720px,100%)}
+.mh,.mf{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;gap:8px}.mh h3{margin:0}.mf{justify-content:flex-end;border-top:1px solid var(--bd)}
+.mb{padding:16px 18px;overflow:auto}
+.tabs{display:flex;gap:4px;margin-bottom:14px;flex-wrap:wrap}.tab{border:0;background:none;padding:7px 12px;border-radius:8px;cursor:pointer;font-weight:600;color:var(--mu)}.tab.on{background:var(--ac);color:#fff}
+.tg{display:flex;gap:8px;align-items:center;padding:5px 0}
+.tpls{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+#toasts{position:fixed;right:18px;bottom:18px;z-index:80;display:flex;flex-direction:column;gap:8px}
+.toast{background:var(--pn);border:1px solid var(--bd);border-left:4px solid var(--ac2);padding:11px 15px;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.2);animation:sl .25s;max-width:340px}
+.toast.success{border-left-color:var(--ok)}.toast.error{border-left-color:var(--er)}.toast.warning{border-left-color:var(--wr)}
+#busy{position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:90;display:none;align-items:center;justify-content:center;color:#fff;font-weight:700}
+#busy.on{display:flex}#busy i{margin-right:10px}
+@keyframes fd{from{opacity:0}}@keyframes pop{from{transform:scale(.96);opacity:0}}@keyframes sl{from{transform:translateY(12px);opacity:0}}
+@media(max-width:900px){.work{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr}.burger{display:block;margin-left:auto}nav{display:none;position:absolute;top:100%;left:0;right:0;background:var(--pn);flex-direction:column;padding:10px;border-bottom:1px solid var(--bd)}nav.on{display:flex}.tools{margin-left:0}.top{flex-wrap:wrap}}
+@media(max-width:560px){.fgrid{grid-template-columns:1fr}.btn.pri,.row .btn{flex:1}#toasts{left:12px;right:12px;align-items:center}.mbox{max-height:100vh;height:100%;border-radius:0}.ov{padding:0}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@page{margin:10mm}
+@media print{*{-webkit-print-color-adjust:exact;print-color-adjust:exact}body>*:not(#printArea){display:none!important}#printArea{display:flex;flex-wrap:wrap;gap:6mm}body{background:#fff}.pc{width:85.6mm;height:53.98mm;overflow:hidden;break-inside:avoid;outline:.2mm dashed #aaa}.pc .card{transform:scale(.599);box-shadow:none}.pc.pp{width:53.98mm;height:85.6mm}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="brand"><img id="hLogo" alt="" hidden><i class="fa-solid fa-id-card" id="hIcon"></i><span id="hName"></span></div>
+  <button class="ic burger" id="burger" aria-label="Open menu"><i class="fa-solid fa-bars"></i></button>
+  <nav id="nav"><a href="#dash">Dashboard</a><a href="#work">Student cards</a><a href="#mgr">Manager</a><a href="#" id="navSet">Settings</a></nav>
+  <div class="tools">
+    <button class="ic" id="themeBtn" aria-label="Toggle dark mode"><i class="fa-solid fa-moon"></i></button>
+    <button class="ic" id="setBtn" aria-label="Settings"><i class="fa-solid fa-gear"></i></button>
+    <button class="ic" id="resetBtn" aria-label="Reset all data"><i class="fa-solid fa-rotate-left"></i></button>
+  </div>
+</header>
+<main>
+  <section id="dash" class="stats" aria-label="Statistics"></section>
+  <section id="work" class="work">
+    <div class="panel">
+      <h2><i class="fa-solid fa-id-card"></i> Student details</h2>
+      <div id="form" class="fgrid"></div>
+      <div id="photoBox"></div>
+      <div class="row">
+        <button class="btn pri" id="genBtn"><i class="fa-solid fa-wand-magic-sparkles"></i> Generate ID card</button>
+        <button class="btn" id="newBtn"><i class="fa-solid fa-plus"></i> Add new card</button>
+      </div>
+    </div>
+    <div class="panel">
+      <div class="row between"><h2>Live preview</h2>
+        <div class="row" style="margin:0"><div class="seg" id="orientSeg" role="group" aria-label="Card layout"></div><div class="seg" id="viewSeg" role="group" aria-label="Card side"></div></div></div>
+      <div id="previewHost"></div>
+      <div class="tpls" id="quickTpl"></div>
+      <div class="row">
+        <button class="btn" id="pPng"><i class="fa-solid fa-image"></i> Download PNG</button>
+        <button class="btn" id="pPdf"><i class="fa-solid fa-file-pdf"></i> Download PDF</button>
+        <button class="btn" id="pPrint"><i class="fa-solid fa-print"></i> Print</button>
+      </div>
+    </div>
+  </section>
+  <section id="mgr" class="panel">
+    <h2>Student cards</h2>
+    <div class="mgr-bar">
+      <input type="search" id="q" placeholder="Search name, ID, roll, class, department" aria-label="Search students">
+      <select id="fCls" aria-label="Filter by class"></select>
+      <select id="sort" aria-label="Sort"><option value="recent">Recently added</option><option value="az">Name A-Z</option><option value="za">Name Z-A</option><option value="id">Student ID</option></select>
+      <label class="tg"><input type="checkbox" id="selAll"> Select all</label>
+    </div>
+    <div class="mgr-bar">
+      <select id="perPage" aria-label="Cards per A4 page"><option value="1">1 card / page</option><option value="2">2 cards / page</option><option value="4">4 cards / page</option><option value="8">8 cards / page</option></select>
+      <select id="orient" aria-label="Orientation"><option value="portrait">A4 portrait</option><option value="landscape">A4 landscape</option></select>
+      <label class="tg"><input type="checkbox" id="inclBack"> Include back side</label>
+      <button class="btn pri" id="bPdf"></button>
+      <button class="btn" id="bPrint"><i class="fa-solid fa-print"></i> Print</button>
+      <button class="btn" id="bCsv"><i class="fa-solid fa-file-csv"></i> Import CSV</button>
+      <button class="btn" id="bSave"><i class="fa-solid fa-floppy-disk"></i> Save all</button>
+      <button class="btn dng" id="bClear"><i class="fa-solid fa-trash"></i> Clear all</button>
+    </div>
+    <div id="list" class="list"></div>
+  </section>
+</main>
+<div id="toasts" aria-live="polite"></div>
+<div id="busy"><i class="fa-solid fa-spinner fa-spin"></i> Working…</div>
+<div id="stage"></div><div id="printArea"></div>
+<input type="file" id="csvIn" accept=".csv,text/csv" hidden>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jsbarcode/3.11.6/JsBarcode.all.min.js"></script>
+<script>
+"use strict";
+/* ---------- Helpers ---------- */
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+function h(t,a={},...c){const e=document.createElement(t);for(const k in a){const v=a[k];if(k==='class')e.className=v;else if(k==='text')e.textContent=v;else if(k.startsWith('on'))e.addEventListener(k.slice(2),v);else e.setAttribute(k,v)}c.flat().forEach(x=>{if(x!=null&&x!==false)e.append(x)});return e}
+const btn=(t,cls,fn)=>h('button',{class:'btn '+cls,onclick:fn},t);
+const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,6);
+const safe=s=>(s||'card').replace(/[^\w-]+/g,'_');
+const fmt=d=>{if(!d)return'';const x=new Date(d+'T00:00');return isNaN(x)?d:x.toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'})};
+const AVATAR='data:image/svg+xml;utf8,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 125"><rect width="100" height="125" fill="#dfe6ee"/><circle cx="50" cy="48" r="20" fill="#9fb0c3"/><path d="M12 125c0-30 18-44 38-44s38 14 38 44z" fill="#9fb0c3"/></svg>');
+
+/* ---------- Storage ---------- */
+const KEYS={inst:'institutionSettings',design:'designSettings',students:'students',theme:'theme',prefs:'applicationPreferences'};
+const store={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},
+ set(k,v){try{localStorage.setItem(k,JSON.stringify(v));return true}catch(e){toast('Browser storage is full or unavailable. Use Settings > Data to export a backup.','warning');return false}}};
+
+/* ---------- Defaults & state ---------- */
+const TPL={classic:{n:'Classic academic',p:'#1d3b5c',s:'#c9a227',bg:'#ffffff',tx:'#1b2733'},
+ modern:{n:'Modern university',p:'#0f766e',s:'#14b8a6',bg:'#f7fbfa',tx:'#12302c'},
+ minimal:{n:'Minimal',p:'#2b2f36',s:'#8a94a3',bg:'#ffffff',tx:'#2b2f36'},
+ corporate:{n:'Corporate academic',p:'#4a2c82',s:'#d9a93a',bg:'#ffffff',tx:'#241a3a'},
+ dark:{n:'Dark professional',p:'#0b1220',s:'#38bdf8',bg:'#131c2e',tx:'#e6edf5'},
+ royal:{n:'Royal gold',p:'#1a1f4d',s:'#d4af37',bg:'#fffdf6',tx:'#1a1f3a'},
+ emerald:{n:'Emerald heritage',p:'#0b5d3b',s:'#e3c565',bg:'#fbfdf9',tx:'#10291d'},
+ crimson:{n:'Crimson honors',p:'#8b1e2d',s:'#e8c9a0',bg:'#fffaf7',tx:'#3a1a1f'},
+ ocean:{n:'Ocean wave',p:'#0369a1',s:'#38bdf8',bg:'#f4fafe',tx:'#0c2a3d'},
+ sunset:{n:'Sunset warm',p:'#c2410c',s:'#f59e0b',bg:'#fffaf5',tx:'#3b1d0e'},
+ slate:{n:'Slate modern',p:'#334155',s:'#64748b',bg:'#f8fafc',tx:'#1e293b'},
+ midnight:{n:'Midnight cyan',p:'#0f172a',s:'#22d3ee',bg:'#0b1220',tx:'#e2e8f0'},
+ lavender:{n:'Soft lavender',p:'#6d28d9',s:'#a78bfa',bg:'#faf8ff',tx:'#2a1650'},
+ graphite:{n:'Graphite gold',p:'#18181b',s:'#eab308',bg:'#1f1f23',tx:'#f4f4f5'},
+ rose:{n:'Rose scholar',p:'#9d174d',s:'#f472b6',bg:'#fff7fa',tx:'#3d1028'},
+ iubat:{n:'IUBAT',p:'#c41e3a',s:'#f0a030',bg:'#ffffff',tx:'#111111',show:{name:1,id:1,dept:1,admission:1,expiry:1,blood:1,phone:1,qr:1}}};
+const DEF_INST={name:'TechNova Academy',tagline:'Knowledge • Discipline • Excellence',address:'Dhaka, Bangladesh',phone:'+880 1700 000000',email:'info@example.com',website:'www.example.com',code:'123456',logo:''};
+const DEF_DESIGN={template:'classic',orient:'landscape',p:TPL.classic.p,s:TPL.classic.s,bg:TPL.classic.bg,tx:TPL.classic.tx,radius:14,shape:'rounded',wm:false,wmText:'Property of TechNova Academy',wmOp:.08,
+ show:{name:1,id:1,roll:1,cls:1,section:1,dept:1,session:1,blood:1,dob:0,phone:0,address:0,admission:0,expiry:1,qr:1,barcode:1}};
+const FIELDS=[['name','Student name','text',1],['id','Student ID','text',1],['roll','Roll number'],['reg','Registration number'],['cls','Class','text',1],['section','Section'],['dept','Department'],['session','Session','text',1],['dob','Date of birth','date'],['blood','Blood group','select'],['gender','Gender','select'],['phone','Phone','tel'],['email','Email','email'],['address','Address'],['guardian','Guardian name'],['gphone','Guardian phone','tel'],['admission','Admission date','date'],['expiry','Expiry date','date']];
+const OPTS={blood:['','A+','A-','B+','B-','AB+','AB-','O+','O-'],gender:['','Male','Female','Other']};
+const LABELS={id:'ID',roll:'Roll',cls:'Class',section:'Section',dept:'Department',session:'Session',dob:'Born',phone:'Phone',admission:'Admitted'};
+const SHOWLBL={name:'Student name',id:'Student ID',roll:'Roll',cls:'Class',section:'Section',dept:'Department',session:'Session',blood:'Blood group',dob:'Date of birth',phone:'Phone',address:'Address',admission:'Admission date',expiry:'Expiry date',qr:'QR code',barcode:'Barcode'};
+
+const S={inst:{...DEF_INST,...store.get(KEYS.inst,{})},
+ design:(()=>{const d=store.get(KEYS.design,{});return{...DEF_DESIGN,...d,show:{...DEF_DESIGN.show,...(d.show||{})}}})(),
+ students:store.get(KEYS.students,null),prefs:{per:'1',orient:'portrait',back:false,...store.get(KEYS.prefs,{})}};
+if(!S.students)S.students=[{uid:uid(),name:'John Anderson',id:'STU-2026-001',roll:'01',cls:'10',section:'A',dept:'Science',session:'2026',blood:'O+',expiry:'2027-12-31',photo:'',created:Date.now()}];
+let draft=blank(),view='front',sel=new Set(),photoTab='file';
+
+function blank(){const n=(S.students?S.students.length:0)+1;return{uid:uid(),name:'',id:'STU-'+new Date().getFullYear()+'-'+String(n).padStart(3,'0'),roll:'',reg:'',cls:'',section:'',dept:'',session:String(new Date().getFullYear()),dob:'',blood:'',gender:'',phone:'',email:'',address:'',guardian:'',gphone:'',admission:'',expiry:'',photo:'',created:Date.now()}}
+function persist(){store.set(KEYS.inst,S.inst);store.set(KEYS.design,S.design);store.set(KEYS.students,S.students);store.set(KEYS.prefs,S.prefs)}
+
+/* ---------- Toast / busy / modal ---------- */
+function toast(msg,type='success'){const icon={success:'✓ ',error:'✕ ',warning:'⚠ ',info:'ℹ '}[type]||'';const t=h('div',{class:'toast '+type,role:'status',text:icon+msg});$('#toasts').append(t);setTimeout(()=>t.remove(),4200)}
+const busy=on=>$('#busy').classList.toggle('on',on);
+function modal({title,body,actions=[],wide}){const ov=h('div',{class:'ov',role:'dialog','aria-modal':'true','aria-label':title});
+ const close=()=>ov.remove();
+ ov.append(h('div',{class:'mbox'+(wide?' wide':'')},h('div',{class:'mh'},h('h3',{text:title}),h('button',{class:'ic',onclick:close,'aria-label':'Close'},h('i',{class:'fa-solid fa-xmark'}))),h('div',{class:'mb'},body),actions.length?h('div',{class:'mf'},actions):null));
+ ov.addEventListener('mousedown',e=>{if(e.target===ov)close()});document.body.append(ov);return close}
+function confirmBox(msg,yes,label='Confirm'){let close;close=modal({title:'Please confirm',body:h('p',{text:msg}),actions:[btn('Cancel','',()=>close()),btn(label,'pri',()=>{close();yes()})]})}
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){const o=$$('.ov');o.length&&o[o.length-1].remove()}});
+
+/* ---------- Images ---------- */
+function loadImg(src,cors){return new Promise((res,rej)=>{const i=new Image();if(cors)i.crossOrigin='anonymous';i.onload=()=>res(i);i.onerror=()=>rej(new Error('load'));i.src=src})}
+async function shrink(src,max=500,cors=false,type='image/jpeg'){const i=await loadImg(src,cors);const k=Math.min(1,max/Math.max(i.width,i.height));const c=document.createElement('canvas');c.width=Math.round(i.width*k);c.height=Math.round(i.height*k);c.getContext('2d').drawImage(i,0,0,c.width,c.height);return c.toDataURL(type,.9)}
+async function fileToData(f,max,type){if(!f.type.startsWith('image/')){toast('Choose an image file (JPG, PNG or WebP).','error');return null}const u=URL.createObjectURL(f);try{return await shrink(u,max,false,type)}catch(e){toast('This image could not be read.','error');return null}finally{URL.revokeObjectURL(u)}}
+async function urlToData(url,max,type){try{const u=new URL(url);if(!/^https?:$/.test(u.protocol))throw 0}catch(e){toast('Enter a full image URL starting with http:// or https://','error');return null}
+ try{return await shrink(url,max,true,type)}catch(e){toast('The image could not be loaded. The site may block downloads (CORS) - upload the file instead.','error');return null}}
+async function photoFile(f){const d=await fileToData(f,500,'image/jpeg');if(d){draft.photo=d;renderPhoto();renderPreview()}}
+async function photoUrl(u){if(!u)return toast('Enter an image URL first.','warning');busy(true);const d=await urlToData(u,500,'image/jpeg');busy(false);if(d){draft.photo=d;renderPhoto();renderPreview()}}
+
+/* ---------- Card renderer ---------- */
+const qrText=st=>['Name: '+st.name,'ID: '+st.id,'Roll: '+st.roll,'Class: '+st.cls,'Department: '+st.dept,'Session: '+st.session,'Institution: '+S.inst.name].join('\n');
+function qrEl(text){const w=h('div',{class:'c-qr'});try{new QRCode(w,{text,width:150,height:150,correctLevel:QRCode.CorrectLevel.M})}catch(e){w.textContent='QR'}return w}
+const dmy=v=>{const m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(v||'');return m?m[3]+'-'+m[2]+'-'+m[1]:(v||'')};
+const acronym=n=>{const a=(n||'').split(/\s+/).filter(w=>/^[A-Z]/.test(w)).map(w=>w[0]).join('');return a.length>1?a:(n||'').slice(0,6)};
+function iubatBg(d){const svg='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 340" preserveAspectRatio="none"><path d="M210 0H540V30C500 22 470 30 440 50C400 78 360 92 320 80C280 68 250 40 210 0Z" fill="'+d.p+'"/><path d="M0 6C80 0 190 10 258 45C190 25 90 22 0 36Z" fill="'+d.s+'"/><path d="M395 84C440 76 500 62 528 24C536 24 540 28 540 34V118C490 98 440 88 395 84Z" fill="'+d.s+'"/><g fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round"><path d="M492 52q9 14 0 28"/><path d="M501 46q13 20 0 40"/><path d="M510 40q17 26 0 52"/></g></svg>';return 'url("data:image/svg+xml;utf8,'+encodeURIComponent(svg)+'")'}
+/* IUBAT template (landscape): wavy header, photo left, dotted detail rows, STUDENT bar; back with return notice, QR and registrar line */
+function buildIubat(st,side){
+ const d=S.design,i=S.inst,sh=d.show,ac=acronym(i.name);
+ const card=h('div',{class:'card tpl-iubat'});
+ card.style.cssText=`--p:${d.p};--s:${d.s};--bg:${d.bg};--tx:${d.tx};--r:${d.radius}px`;
+ if(d.wm)card.append(h('div',{class:'wm',style:'opacity:'+d.wmOp,text:d.wmText}));
+ if(side==='front'){
+  card.style.backgroundImage=iubatBg(d);card.style.backgroundSize='100% 100%';
+  card.append(h('div',{class:'iu-brand'},i.logo?h('img',{src:i.logo,alt:''}):null,h('b',{text:ac})));
+  card.append(h('img',{class:'iu-photo',src:st.photo||AVATAR,alt:''}));
+  const nm=(st.name||'Student name'),info=h('div',{class:'iu-info'});
+  if(sh.name)info.append(h('div',{class:'iu-name',style:'font-size:'+(nm.length>24?15:nm.length>18?18:21)+'px',text:nm}));
+  if(sh.id)info.append(h('div',{class:'iu-id',text:'ID: '+(st.id||'')}));
+  [['Program',st.dept,'dept'],['Issued on',dmy(st.admission),'admission'],['Valid through',dmy(st.expiry),'expiry'],['Blood group',st.blood,'blood'],['Emergency no',st.gphone||st.phone,'phone']].forEach(([l,v,k])=>{if(sh[k]&&v)info.append(h('div',{class:'iu-r'},h('span',{text:l}),h('b',{text:v})))});
+  card.append(info,h('div',{class:'iu-bar',text:'STUDENT'}));
+ }else{
+  card.append(h('div',{class:'iu-back'},
+   h('div',{class:'iu-bar2',text:'If this Card is Found, Please Return to'}),
+   h('div',{class:'iu-n',text:(ac&&ac!==i.name?ac+' – ':'')+(i.name||'')}),
+   h('div',{class:'iu-ad',text:i.address||''}),
+   h('div',{class:'iu-ct',text:[i.phone&&'Phone: '+i.phone,i.email&&'E-mail: '+i.email,i.website].filter(Boolean).join(', ')}),
+   h('div',{class:'iu-ac',text:'This card is activated/deactivated based on Registration in Every Semester'})));
+  card.append(h('div',{class:'iu-qrw'},sh.qr?qrEl(qrText(st)):null,h('div',{text:'Scan the QR for validity of this card'}),h('div',{style:'margin-top:8px',text:'ID: '+(st.id||'')})));
+  card.append(h('div',{class:'iu-sig',text:'REGISTRAR'}));
+  if(st.reg)card.append(h('div',{class:'iu-sn',text:st.reg}));
+ }
+ return card}
+function buildCard(st,side='front'){
+ const d=S.design,i=S.inst,sh=d.show;
+ if(d.template==='iubat'&&d.orient!=='portrait')return buildIubat(st,side);
+ const card=h('div',{class:'card tpl-'+d.template+' shape-'+d.shape+(d.orient==='portrait'?' portrait':'')});
+ card.style.cssText=`--p:${d.p};--s:${d.s};--bg:${d.bg};--tx:${d.tx};--r:${d.radius}px`;
+ if(d.wm)card.append(h('div',{class:'wm',style:'opacity:'+d.wmOp,text:d.wmText}));
+ card.append(h('div',{class:'c-head'},i.logo?h('img',{class:'c-logo',src:i.logo,alt:''}):h('div',{class:'c-logo',text:(i.name||'?')[0]}),
+  h('div',{class:'c-ht'},h('b',{text:i.name||'Institution name'}),h('small',{text:i.tagline||''}))));
+ if(side==='front'){
+  const info=h('div',{class:'c-info'}),grid=h('dl',{class:'c-grid'});
+  if(sh.name)info.append(h('div',{class:'c-name',text:st.name||'Student name'}));
+  ['id','roll','cls','section','dept','session','dob','phone','admission'].forEach(k=>{if(sh[k]&&st[k])grid.append(h('div',{},h('dt',{text:LABELS[k]}),h('dd',{text:k==='dob'||k==='admission'?fmt(st[k]):st[k]})))});
+  info.append(grid);if(sh.address&&st.address)info.append(h('div',{class:'c-addr',text:st.address}));
+  card.append(h('div',{class:'c-body'},h('img',{class:'c-photo',src:st.photo||AVATAR,alt:''}),info));
+  const meta=h('div',{class:'c-meta'});
+  if(sh.blood&&st.blood)meta.append(h('span',{class:'pill',text:'Blood '+st.blood}));
+  if(sh.expiry&&st.expiry)meta.append(h('span',{text:'Valid until '+fmt(st.expiry)}));
+  meta.append(h('span',{class:'ok',text:'● Active'}));
+  const codes=h('div',{class:'c-codes'});
+  if(sh.barcode&&st.id){const cv=h('canvas',{class:'c-bar'});try{JsBarcode(cv,st.id,{format:'CODE128',height:34,width:1.5,fontSize:10,margin:0,displayValue:true});codes.append(cv)}catch(e){}}
+  if(sh.qr)codes.append(qrEl(qrText(st)));
+  card.append(h('div',{class:'c-foot'},meta,codes));
+ }else{
+  card.append(h('div',{class:'c-back'},
+   h('p',{class:'t',text:'This card is the property of '+(i.name||'the institution')+'. If found, please return it to:'}),
+   h('p',{text:[i.address,i.phone].filter(Boolean).join(' • ')}),
+   h('p',{text:[i.email,i.website].filter(Boolean).join(' • ')}),
+   st.guardian||st.gphone?h('p',{},h('b',{text:'Guardian: '}),[st.guardian,st.gphone].filter(Boolean).join(' • ')):null,
+   i.code?h('p',{text:'Institution code: '+i.code}):null,
+   h('p',{text:'Use of this card is limited to the card holder and is non-transferable.'}),
+   h('div',{class:'sig'},'Authorized signature')));
+ }
+ if(d.orient==='portrait'&&side==='front')fitPortrait(card);return card}
+/* Portrait: photo shrinks via flex; if text still overflows, scale text down until everything fits */
+function fitPortrait(card){$('#stage').append(card);const b=card.querySelector('.c-body');if(b){let k=1;while(b.scrollHeight>b.clientHeight+1&&k>.66){k=Math.round((k-.05)*100)/100;card.style.setProperty('--k',k)}}card.remove()}
+const dims=()=>S.design.orient==='portrait'?[340,540]:[540,340];
+function setOrient(o){S.design.orient=o;persist();$$('#orientSeg button').forEach(b=>b.classList.toggle('on',b.dataset.o===o));renderPreview()}
+function fit(){const host=$('#previewHost'),[cw,ch]=dims();const k=Math.min(1,(host.clientWidth||cw)/cw);$$('#previewHost .cw').forEach(w=>{w.style.width=cw*k+'px';w.style.height=ch*k+'px';w.style.margin='0';w.firstChild.style.transform='scale('+k+')'})}
+function renderPreview(){const host=$('#previewHost');host.replaceChildren();(view==='both'?['front','back']:[view]).forEach(sd=>host.append(h('div',{class:'cw'},buildCard(draft,sd))));fit()}
+window.addEventListener('resize',fit);
+
+/* ---------- Form ---------- */
+function buildForm(){const f=$('#form');f.replaceChildren();
+ FIELDS.forEach(([k,l,type='text',req])=>{const id='f_'+k;let inp;
+  if(type==='select'){inp=h('select',{id},OPTS[k].map(o=>h('option',{value:o,text:o||'Select'})))}else inp=h('input',{id,type});
+  inp.value=draft[k]||'';
+  inp.addEventListener('input',()=>{draft[k]=inp.value;$('#e_'+k).textContent='';renderPreview()});
+  inp.addEventListener('change',()=>{draft[k]=inp.value;renderPreview()});
+  f.append(h('div',{class:'fld'},h('label',{for:id,text:l+(req?' *':'')}),inp,h('span',{class:'err',id:'e_'+k,role:'alert'})))})}
+function validate(){let ok=true;$$('.err').forEach(e=>e.textContent='');
+ FIELDS.filter(x=>x[3]).forEach(([k,l])=>{if(!String(draft[k]||'').trim()){$('#e_'+k).textContent='Enter the '+l.toLowerCase()+'.';ok=false}});
+ if(draft.id.trim()&&S.students.some(s=>s.uid!==draft.uid&&s.id.trim().toLowerCase()===draft.id.trim().toLowerCase())){$('#e_id').textContent='Student ID already exists. Use a unique ID.';toast('Student ID already exists.','warning');ok=false}
+ if(!ok)toast('Please fix the highlighted fields.','error');return ok}
+function renderPhoto(){const box=$('#photoBox');box.replaceChildren();
+ const seg=h('div',{class:'seg'},['file','url'].map(t=>h('button',{class:photoTab===t?'on':'',onclick:()=>{photoTab=t;renderPhoto()}},t==='file'?'Upload photo':'Image URL')));
+ let ctl;
+ if(photoTab==='file'){const fi=h('input',{type:'file',accept:'image/*',hidden:''});fi.addEventListener('click',e=>e.stopPropagation());fi.onchange=()=>fi.files[0]&&photoFile(fi.files[0]);
+  ctl=h('div',{class:'drop',tabindex:'0',role:'button','aria-label':'Upload student photo',onclick:()=>fi.click(),onkeydown:e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();fi.click()}}},'Drag & drop student photo here, or click to upload',fi);
+  ['dragover','dragenter'].forEach(ev=>ctl.addEventListener(ev,e=>{e.preventDefault();ctl.classList.add('hot')}));
+  ['dragleave','drop'].forEach(ev=>ctl.addEventListener(ev,e=>{e.preventDefault();ctl.classList.remove('hot')}));
+  ctl.addEventListener('drop',e=>{const f=e.dataTransfer.files[0];f&&photoFile(f)})}
+ else{const u=h('input',{type:'url',placeholder:'https://example.com/student.jpg','aria-label':'Image URL'});ctl=h('div',{class:'urlrow'},u,btn('Load','',()=>photoUrl(u.value.trim())))}
+ box.append(h('div',{class:'lbl',text:'Student photo'}),seg,h('div',{class:'prow'},h('img',{class:'pth',src:draft.photo||AVATAR,alt:'Photo preview'}),ctl,draft.photo?btn('Remove','dng',()=>{draft.photo='';renderPhoto();renderPreview()}):null))}
+
+/* ---------- Student manager ---------- */
+function visible(){const q=$('#q').value.trim().toLowerCase(),c=$('#fCls').value,so=$('#sort').value;
+ let l=S.students.filter(s=>(!c||s.cls===c)&&(!q||[s.name,s.id,s.roll,s.cls,s.dept].some(x=>String(x||'').toLowerCase().includes(q))));
+ const by={az:(a,b)=>a.name.localeCompare(b.name),za:(a,b)=>b.name.localeCompare(a.name),id:(a,b)=>a.id.localeCompare(b.id),recent:(a,b)=>(b.created||0)-(a.created||0)};
+ return l.sort(by[so])}
+function renderList(){
+ const cur=$('#fCls').value,classes=[...new Set(S.students.map(s=>s.cls).filter(Boolean))].sort();
+ $('#fCls').replaceChildren(h('option',{value:'',text:'All classes'}),...classes.map(c=>h('option',{value:c,text:'Class '+c})));$('#fCls').value=classes.includes(cur)?cur:'';
+ const list=$('#list');list.replaceChildren();
+ sel=new Set([...sel].filter(u=>S.students.some(s=>s.uid===u)));
+ $('#bPdf').innerHTML='<i class="fa-solid fa-file-pdf"></i> '+(sel.size?'Download selected PDF':'Download all as PDF');
+ if(!S.students.length){list.append(h('div',{class:'empty',style:'grid-column:1/-1'},h('h3',{text:'No student cards yet'}),h('p',{text:'Add your first student to generate an ID card.'}),btn('+ Add first card','pri',newCard)));return}
+ const v=visible();if(!v.length){list.append(h('div',{class:'empty',style:'grid-column:1/-1',text:'No students match your search.'}));return}
+ v.forEach(st=>{const cb=h('input',{type:'checkbox','aria-label':'Select '+st.name});cb.checked=sel.has(st.uid);
+  cb.onchange=()=>{cb.checked?sel.add(st.uid):sel.delete(st.uid);renderList()};
+  const ab=(ic,t,fn,c='')=>h('button',{class:'btn sm '+c,title:t,'aria-label':t,onclick:fn},h('i',{class:'fa-solid fa-'+ic}));
+  list.append(h('div',{class:'sc'+(sel.has(st.uid)?' on':'')},cb,h('img',{src:st.photo||AVATAR,alt:''}),
+   h('div',{class:'m'},h('b',{text:st.name}),h('span',{text:st.id+' • Class '+st.cls+(st.section?'-'+st.section:'')}),
+    h('div',{class:'acts'},ab('pen','Edit',()=>editStudent(st.uid)),ab('copy','Duplicate',()=>dupStudent(st.uid)),ab('eye','Preview',()=>previewStudent(st)),ab('image','Download PNG',()=>exportPNG(st)),ab('file-pdf','Download PDF',()=>exportPDF([st],'card')),ab('print','Print',()=>printCards([st])),ab('trash','Delete',()=>confirmBox('Delete '+st.name+'?',()=>{S.students=S.students.filter(x=>x.uid!==st.uid);persist();renderAll();toast('Student deleted','info')},'Delete'),'dng')))))})}
+function renderStats(){const s=S.students;const c=[['Total cards',s.length],['Exported',s.filter(x=>x.exported).length],['Without photo',s.filter(x=>!x.photo).length],['Institution status',S.inst.name?'Configured':'Not set']];
+ $('#dash').replaceChildren(...c.map(([l,v])=>h('div',{class:'stat'},h('b',{text:String(v)}),h('span',{text:l}))))}
+function renderHeader(){$('#hName').textContent=S.inst.name||'ID Card Generator';const l=$('#hLogo');if(S.inst.logo){l.src=S.inst.logo;l.hidden=false;$('#hIcon').style.display='none'}else{l.hidden=true;$('#hIcon').style.display=''}}
+function renderAll(){renderHeader();renderStats();renderList();renderPreview()}
+function newCard(){draft=blank();buildForm();renderPhoto();renderPreview();$('#work').scrollIntoView({behavior:'smooth'});$('#f_name').focus()}
+function editStudent(u){const s=S.students.find(x=>x.uid===u);if(!s)return;draft={...s};buildForm();renderPhoto();renderPreview();$('#work').scrollIntoView({behavior:'smooth'})}
+function dupStudent(u){const s=S.students.find(x=>x.uid===u);if(!s)return;let n=2,id;do{id=s.id+'-'+n++}while(S.students.some(x=>x.id===id));S.students.push({...s,uid:uid(),id,exported:0,created:Date.now()});persist();renderAll();toast('Card duplicated with ID '+id,'info')}
+function previewStudent(st){const body=h('div',{});const w=h('div',{class:'cw'},buildCard(st,'front'));const w2=h('div',{class:'cw'},buildCard(st,'back'));body.append(w,w2);modal({title:st.name,body,wide:true});
+ const [cw,ch]=dims(),k=Math.min(1,(Math.min(innerWidth,720)-70)/cw);[w,w2].forEach(x=>{x.style.width=cw*k+'px';x.style.height=ch*k+'px';x.style.margin='0 auto 12px';x.firstChild.style.transform='scale('+k+')'})}
+function generate(){if(!validate())return;const st={...draft};const i=S.students.findIndex(s=>s.uid===st.uid);
+ if(i>=0){S.students[i]={...S.students[i],...st};toast('Student updated successfully')}else{S.students.push(st);toast('Student added successfully')}
+ if(!st.photo)toast('Please upload a student photo','warning');persist();renderAll()}
+
+/* ---------- Export ---------- */
+const libsOk=()=>{if(window.html2canvas&&window.jspdf)return true;toast('Export libraries did not load. Check your internet connection and reload.','error');return false};
+async function capture(st,side,scale){const c=buildCard(st,side);c.style.boxShadow='none';$('#stage').append(c);await new Promise(r=>setTimeout(r,80));try{return await html2canvas(c,{scale,backgroundColor:null,useCORS:true})}finally{c.remove()}}
+function dl(url,name){const a=h('a',{href:url,download:name});document.body.append(a);a.click();a.remove()}
+function markExported(list){list.forEach(s=>{const r=S.students.find(x=>x.uid===s.uid);if(r)r.exported=1});persist();renderStats()}
+async function exportPNG(st){if(!libsOk())return;busy(true);try{dl((await capture(st,'front',4)).toDataURL('image/png'),safe(st.id)+'-front.png');
+  if(S.prefs.back)dl((await capture(st,'back',4)).toDataURL('image/png'),safe(st.id)+'-back.png');markExported([st]);toast('PNG downloaded')}catch(e){toast('PNG export failed. If the photo came from a URL, upload it as a file.','error')}busy(false)}
+const GRIDP={portrait:{1:[1,1],2:[2,1],4:[2,2],8:[3,3]},landscape:{1:[1,1],2:[2,1],4:[2,2],8:[4,2]}};
+const GRID={portrait:{1:[1,1],2:[1,2],4:[2,2],8:[2,4]},landscape:{1:[1,1],2:[2,1],4:[2,2],8:[3,3]}};
+async function exportPDF(list,mode){if(!libsOk()||!list.length)return;busy(true);
+ try{const pt=S.design.orient==='portrait',W=pt?53.98:85.6,H=pt?85.6:53.98,imgs=[];
+  for(const st of list){imgs.push((await capture(st,'front',3)).toDataURL('image/jpeg',.95));if(S.prefs.back||(mode==='card'&&false))imgs.push((await capture(st,'back',3)).toDataURL('image/jpeg',.95))}
+  const {jsPDF}=window.jspdf;let pdf;
+  if(mode==='card'){pdf=new jsPDF({orientation:pt?'portrait':'landscape',unit:'mm',format:[W,H]});imgs.forEach((im,i)=>{if(i)pdf.addPage([W,H],pt?'portrait':'landscape');pdf.addImage(im,'JPEG',0,0,W,H)})}
+  else{const land=S.prefs.orient==='landscape',pw=land?297:210,ph=land?210:297,per=+S.prefs.per,[cols,rows]=(pt?GRIDP:GRID)[S.prefs.orient][per],gap=6;
+   const gw=cols*W+(cols-1)*gap,rr=Math.ceil(per/cols),gh=Math.min(rows,rr)*H+(Math.min(rows,rr)-1)*gap,x0=(pw-gw)/2,y0=(ph-gh)/2;
+   pdf=new jsPDF({orientation:S.prefs.orient,unit:'mm',format:'a4'});pdf.setDrawColor(150);pdf.setLineWidth(.1);
+   imgs.forEach((im,i)=>{if(i&&i%per===0)pdf.addPage();const p=i%per,x=x0+(p%cols)*(W+gap),y=y0+Math.floor(p/cols)*(H+gap);pdf.addImage(im,'JPEG',x,y,W,H);if(per>1)pdf.rect(x,y,W,H)})}
+  pdf.save(list.length===1?safe(list[0].id)+'.pdf':'student-id-cards.pdf');markExported(list);toast('PDF generated')}
+ catch(e){toast('PDF export failed. If photos came from a URL, upload them as files.','error')}busy(false)}
+function printCards(list){if(!list.length)return;const pa=$('#printArea');pa.replaceChildren();
+ list.forEach(st=>['front',...(S.prefs.back?['back']:[])].forEach(sd=>pa.append(h('div',{class:'pc'+(S.design.orient==='portrait'?' pp':'')},buildCard(st,sd)))));setTimeout(()=>window.print(),200)}
+window.addEventListener('afterprint',()=>$('#printArea').replaceChildren());
+const target=()=>sel.size?S.students.filter(s=>sel.has(s.uid)):visible();
+
+/* ---------- CSV / JSON ---------- */
+function parseCSV(t){const rows=[];let r=[],f='',q=false;for(let i=0;i<t.length;i++){const c=t[i];
+  if(q){if(c==='"'){if(t[i+1]==='"'){f+='"';i++}else q=false}else f+=c}
+  else if(c==='"')q=true;else if(c===','){r.push(f);f=''}
+  else if(c==='\n'||c==='\r'){if(c==='\r'&&t[i+1]==='\n')i++;r.push(f);f='';if(r.some(x=>x.trim()))rows.push(r);r=[]}else f+=c}
+ r.push(f);if(r.some(x=>x.trim()))rows.push(r);return rows}
+const CSVMAP={name:'name',studentname:'name',id:'id',studentid:'id',roll:'roll',reg:'reg',registration:'reg',class:'cls',cls:'cls',section:'section',department:'dept',dept:'dept',session:'session',bloodgroup:'blood',blood:'blood',dob:'dob',dateofbirth:'dob',gender:'gender',phone:'phone',email:'email',address:'address',guardian:'guardian',guardianphone:'gphone',admission:'admission',expiry:'expiry'};
+function importCSV(text){try{const rows=parseCSV(text);if(rows.length<2)throw 0;const keys=rows[0].map(x=>CSVMAP[x.toLowerCase().replace(/[^a-z]/g,'')]);
+  if(!keys.includes('name')||!keys.includes('id'))throw 0;let add=0,skip=0;
+  rows.slice(1).forEach(r=>{const s={...blank(),uid:uid(),id:'',session:'',created:Date.now()+add};keys.forEach((k,i)=>{if(k)s[k]=(r[i]||'').trim()});
+   if(!s.name||!s.id||S.students.some(x=>x.id.toLowerCase()===s.id.toLowerCase())){skip++;return}S.students.push(s);add++});
+  persist();renderAll();toast(add+' students imported'+(skip?', '+skip+' skipped (missing or duplicate ID)':''),skip?'warning':'success')}
+ catch(e){toast('Invalid CSV. The first row must include at least "name" and "id" columns.','error')}}
+function exportData(){const b=new Blob([JSON.stringify({inst:S.inst,design:S.design,students:S.students},null,1)],{type:'application/json'});const u=URL.createObjectURL(b);dl(u,'id-card-data.json');setTimeout(()=>URL.revokeObjectURL(u),2000);toast('Data exported')}
+function importData(file){const r=new FileReader();r.onload=()=>{try{const d=JSON.parse(r.result);if(!d||!Array.isArray(d.students))throw 0;
+  confirmBox('Replace all current data with the imported file?',()=>{S.inst={...DEF_INST,...d.inst};S.design={...DEF_DESIGN,...d.design,show:{...DEF_DESIGN.show,...((d.design||{}).show||{})}};S.students=d.students.map(s=>({...s,uid:s.uid||uid()}));persist();draft=blank();buildForm();renderPhoto();renderAll();toast('Data imported')},'Replace')}
+ catch(e){toast('Invalid JSON file. Use a file created by Export data.','error')}};r.onerror=()=>toast('The file could not be read.','error');r.readAsText(file)}
+
+/* ---------- Settings modal ---------- */
+function fld(label,obj,key,type='text',attrs={}){const id='s_'+key;const inp=h('input',{id,type,...attrs});inp.value=obj[key]??'';
+ inp.addEventListener('input',()=>{obj[key]=type==='range'?+inp.value:inp.value;renderHeader();renderPreview()});return h('div',{class:'fld'},h('label',{for:id,text:label}),inp)}
+function tog(label,obj,key,id){const c=h('input',{type:'checkbox',id});c.checked=!!obj[key];c.onchange=()=>{obj[key]=c.checked?1:0;renderPreview()};return h('div',{class:'tg'},c,h('label',{for:id,text:label}))}
+function openSettings(tab='inst'){const tabs=h('div',{class:'tabs',role:'tablist'}),body=h('div');const d=S.design;
+ const panes={
+  inst:()=>{const prev=h('img',{class:'pth',alt:'Logo preview',src:S.inst.logo||AVATAR}),u=h('input',{type:'url',placeholder:'Logo image URL','aria-label':'Logo URL'});
+   const fi=h('input',{type:'file',accept:'image/*',hidden:''});fi.onchange=async()=>{const x=fi.files[0];if(!x)return;const r=await fileToData(x,300,'image/png');if(r){S.inst.logo=r;prev.src=r;renderAll()}};
+   return h('div',{},h('div',{class:'fgrid'},fld('Institution name',S.inst,'name'),fld('Tagline',S.inst,'tagline'),fld('Address',S.inst,'address'),fld('Phone',S.inst,'phone','tel'),fld('Email',S.inst,'email','email'),fld('Website',S.inst,'website'),fld('EIIN / code',S.inst,'code')),
+    h('div',{class:'lbl',style:'margin-top:14px',text:'Institution logo'}),h('div',{class:'prow'},prev,btn('Upload','',()=>fi.click()),fi,u,btn('Load URL','',async()=>{const r=await urlToData(u.value.trim(),300,'image/png');if(r){S.inst.logo=r;prev.src=r;renderAll()}}),btn('Remove','dng',()=>{S.inst.logo='';prev.src=AVATAR;renderAll()})))},
+  design:()=>{const t=h('div',{class:'tpls'},Object.entries(TPL).map(([k,v])=>btn(v.n,d.template===k?'pri':'',()=>{Object.assign(d,{template:k,p:v.p,s:v.s,bg:v.bg,tx:v.tx});if(v.show)Object.assign(d.show,v.show);renderPreview();show('design')})));
+   const shape=h('select',{id:'s_shape','aria-label':'Photo shape'},['rounded','circle','square'].map(o=>h('option',{value:o,text:o})));shape.value=d.shape;shape.onchange=()=>{d.shape=shape.value;renderPreview()};
+   return h('div',{},t,h('div',{class:'fgrid'},fld('Primary color',d,'p','color'),fld('Secondary color',d,'s','color'),fld('Text color',d,'tx','color'),fld('Background color',d,'bg','color'),fld('Corner radius',d,'radius','range',{min:0,max:28}),h('div',{class:'fld'},h('label',{text:'Card layout'}),(()=>{const o=h('select',{'aria-label':'Card layout'},[['landscape','Landscape (horizontal)'],['portrait','Portrait (vertical)']].map(([v,l])=>h('option',{value:v,text:l})));o.value=d.orient;o.onchange=()=>setOrient(o.value);return o})()),h('div',{class:'fld'},h('label',{for:'s_shape',text:'Photo shape'}),shape)),
+    h('div',{style:'margin-top:12px'},tog('Show watermark',d,'wm','t_wm')),h('div',{class:'fgrid'},fld('Watermark text',d,'wmText'),fld('Watermark opacity',d,'wmOp','range',{min:.03,max:.3,step:.01})))},
+  fields:()=>h('div',{},Object.keys(SHOWLBL).map(k=>tog(SHOWLBL[k],d.show,k,'sh_'+k))),
+  data:()=>{const ji=h('input',{type:'file',accept:'application/json,.json',hidden:''});ji.onchange=()=>ji.files[0]&&importData(ji.files[0]);
+   return h('div',{},h('p',{text:'Everything is stored only in this browser. Export a backup to move your data to another computer.'}),h('div',{class:'row'},btn('Export data (JSON)','',exportData),btn('Import data (JSON)','',()=>ji.click()),ji,btn('Clear all students','dng',clearAll)))}};
+ const T=[['inst','Institution'],['design','Card design'],['fields','Fields'],['data','Data']];
+ function show(t){tabs.replaceChildren(...T.map(([k,l])=>h('button',{class:'tab'+(k===t?' on':''),role:'tab',onclick:()=>show(k)},l)));body.replaceChildren(panes[t]())}
+ show(tab);let close;close=modal({title:'Settings',wide:true,body:h('div',{},tabs,body),actions:[btn('Close','',()=>close()),btn('Save settings','pri',()=>{persist();toast('Settings saved')})]})}
+function clearAll(){confirmBox('Delete all student cards? This cannot be undone.',()=>{S.students=[];sel.clear();persist();renderAll();toast('All cards cleared','info')},'Delete all')}
+
+/* ---------- Init ---------- */
+function setTheme(t){document.documentElement.dataset.theme=t;store.set(KEYS.theme,t);$('#themeBtn').innerHTML='<i class="fa-solid fa-'+(t==='dark'?'sun':'moon')+'"></i>'}
+function init(){
+ setTheme(store.get(KEYS.theme,'light'));buildForm();renderPhoto();
+ $('#orientSeg').append(...[['landscape','Landscape'],['portrait','Portrait']].map(([k,l])=>h('button',{class:S.design.orient===k?'on':'','data-o':k,onclick:()=>setOrient(k)},l)));
+ $('#viewSeg').append(...[['front','Front'],['back','Back'],['both','Both']].map(([k,l])=>h('button',{class:view===k?'on':'',onclick:e=>{view=k;$$('#viewSeg button').forEach(b=>b.classList.remove('on'));e.currentTarget.classList.add('on');renderPreview()}},l)));
+ $('#quickTpl').append(...Object.entries(TPL).map(([k,v])=>btn(v.n,'sm',()=>{Object.assign(S.design,{template:k,p:v.p,s:v.s,bg:v.bg,tx:v.tx});if(v.show)Object.assign(S.design.show,v.show);persist();renderPreview()})));
+ $('#perPage').value=S.prefs.per;$('#orient').value=S.prefs.orient;$('#inclBack').checked=S.prefs.back;
+ $('#perPage').onchange=e=>{S.prefs.per=e.target.value;persist()};$('#orient').onchange=e=>{S.prefs.orient=e.target.value;persist()};$('#inclBack').onchange=e=>{S.prefs.back=e.target.checked;persist()};
+ ['q','fCls','sort'].forEach(i=>$('#'+i).addEventListener('input',renderList));
+ $('#selAll').onchange=e=>{sel=e.target.checked?new Set(visible().map(s=>s.uid)):new Set();renderList()};
+ $('#genBtn').onclick=generate;$('#newBtn').onclick=newCard;
+ $('#pPng').onclick=()=>exportPNG(draft);$('#pPdf').onclick=()=>exportPDF([draft],'card');$('#pPrint').onclick=()=>printCards([draft]);
+ $('#bPdf').onclick=()=>exportPDF(target(),'sheet');$('#bPrint').onclick=()=>printCards(target());
+ $('#bCsv').onclick=()=>$('#csvIn').click();$('#csvIn').onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>importCSV(String(r.result));r.readAsText(f);e.target.value=''};
+ $('#bSave').onclick=()=>{persist();toast('All data saved')};$('#bClear').onclick=clearAll;
+ $('#setBtn').onclick=()=>openSettings();$('#navSet').onclick=e=>{e.preventDefault();openSettings()};
+ $('#themeBtn').onclick=()=>setTheme(document.documentElement.dataset.theme==='dark'?'light':'dark');
+ $('#resetBtn').onclick=()=>confirmBox('Reset the app? This deletes settings and all student cards stored in this browser.',()=>{Object.values(KEYS).forEach(k=>{try{localStorage.removeItem(k)}catch(e){}});location.reload()},'Reset');
+ $('#burger').onclick=()=>$('#nav').classList.toggle('on');$$('#nav a').forEach(a=>a.addEventListener('click',()=>$('#nav').classList.remove('on')));
+ persist();renderAll();
+}
+init();
+</script>
+</body>
+</html>

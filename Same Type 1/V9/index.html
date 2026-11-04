@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Md. Pranto Ali — Portfolio</title>
+<style>
+:root{--bg:#1f1f1f;--card:#242424;--tx:#ececec;--mu:#8d8d8d;--g:#00f03c;--sh:8px 8px 18px rgba(0,0,0,.55),-6px -6px 14px rgba(255,255,255,.035);--in:inset 5px 5px 12px rgba(0,0,0,.6),inset -4px -4px 10px rgba(255,255,255,.035)}
+@media(prefers-color-scheme:light){:root:not([data-theme]){--bg:#e4e6ea;--card:#e9ebef;--tx:#23262b;--mu:#6a707a;--g:#00b82e;--sh:8px 8px 18px rgba(0,0,0,.16),-8px -8px 16px rgba(255,255,255,.9);--in:inset 5px 5px 10px rgba(0,0,0,.14),inset -5px -5px 10px rgba(255,255,255,.9)}}
+:root[data-theme=light]{--bg:#e4e6ea;--card:#e9ebef;--tx:#23262b;--mu:#6a707a;--g:#00b82e;--sh:8px 8px 18px rgba(0,0,0,.16),-8px -8px 16px rgba(255,255,255,.9);--in:inset 5px 5px 10px rgba(0,0,0,.14),inset -5px -5px 10px rgba(255,255,255,.9)}
+:root[data-theme=dark]{--bg:#1f1f1f;--card:#242424;--tx:#ececec;--mu:#8d8d8d;--g:#00f03c;--sh:8px 8px 18px rgba(0,0,0,.55),-6px -6px 14px rgba(255,255,255,.035);--in:inset 5px 5px 12px rgba(0,0,0,.6),inset -4px -4px 10px rgba(255,255,255,.035)}
+*{box-sizing:border-box;margin:0}
+html,body{overflow-x:clip;max-width:100%;scroll-behavior:smooth}
+body{background:var(--bg);color:var(--tx);font:15px/1.6 'Montserrat',system-ui,sans-serif;padding-bottom:110px}
+main{display:block;width:100%;max-width:100%;margin:0;padding:28px max(18px,calc((100% - 1040px)/2)) 0;overflow:visible}
+.card{background:var(--card);border-radius:26px;box-shadow:var(--sh);padding:22px}
+h2{font-size:1.5rem;margin:56px 0 18px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+h2 span:first-child::before{content:"";display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--g);box-shadow:0 0 12px var(--g);margin-right:10px}
+.mu{color:var(--mu);font-size:.88rem}
+.grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr))}
+.pill{display:inline-block;padding:5px 13px;border-radius:99px;box-shadow:var(--sh);font-size:.76rem;margin:4px 6px 4px 0;background:var(--card)}
+.btn{border:0;cursor:pointer;color:var(--tx);background:var(--card);box-shadow:var(--sh);border-radius:99px;padding:9px 18px;font:600 .82rem inherit;font-family:inherit;text-decoration:none;display:inline-block;transition:.3s}
+.btn:hover{color:var(--g)}.btn:active{box-shadow:var(--in)}
+.hero{display:grid;gap:18px;grid-template-columns:1.1fr 1fr}
+.clock{grid-column:1/-1;display:flex;flex-direction:row;flex-wrap:nowrap;align-items:center;justify-content:space-between;gap:14px;padding:20px 26px}
+.time{font-size:clamp(1.7rem,7vw,2.8rem);font-weight:700;letter-spacing:1px;padding:10px clamp(14px,3vw,28px);border-radius:99px;background:rgba(128,128,128,.15);box-shadow:var(--in);white-space:nowrap}
+.time small{font-size:.45em;color:var(--g);margin-left:6px}
+.date{display:flex;align-items:center;gap:clamp(10px,2.5vw,18px);text-align:left}
+.date .dn{font-size:clamp(2rem,8vw,3.2rem);font-weight:700;line-height:1}
+.date .dm{display:flex;flex-direction:column;line-height:1.3;font-size:clamp(.78rem,3.2vw,1rem);font-weight:600}
+.date .dm span:last-child{color:var(--mu);font-weight:500}
+.prof{display:flex;gap:20px;align-items:center}
+.av{width:150px;height:150px;flex:none;border-radius:50%;box-shadow:var(--sh);border:5px solid var(--card);position:relative;overflow:hidden;display:grid;place-items:center;font-size:2.4rem;font-weight:700;color:var(--g);background:var(--card)}
+.av img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:inherit}
+.prof h1{font-size:1.7rem;line-height:1.2}.prof p{color:var(--g);font-weight:600;margin:4px 0 12px}
+.ct a{display:flex;gap:10px;align-items:center;color:var(--tx);text-decoration:none;margin:6px 0;word-break:break-all}
+.ct i{width:38px;height:38px;border-radius:50%;box-shadow:var(--sh);display:grid;place-items:center;font-style:normal;flex:none}
+.tl{display:grid;gap:18px}.tl .card{border-left:4px solid var(--g)}
+.tl b{display:block;font-size:1.02rem}
+.pc{cursor:pointer;padding:0;overflow:hidden;display:flex;flex-direction:column}
+.pc:focus-visible{outline:2px solid var(--g)}
+.th{height:140px;background:linear-gradient(135deg,hsl(var(--h) 80% 45%),hsl(calc(var(--h) + 50) 70% 22%));display:grid;place-items:center;font-size:2.2rem;font-weight:700;color:#fff8;position:relative}
+.th img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.pc .bd{padding:16px 18px 20px}.pc h3{font-size:1rem;margin-bottom:4px}
+.pc.done:hover{transform:translateY(-6px)}
+.pg{display:flex;justify-content:center;gap:12px;margin-top:26px;flex-wrap:wrap}
+.pg button{width:42px;height:42px;border-radius:50%;border:0;cursor:pointer;background:var(--card);color:var(--tx);box-shadow:var(--sh);font:700 .9rem inherit;font-family:inherit}
+.pg button.on{color:var(--g);box-shadow:var(--in)}
+.dock{position:fixed;bottom:14px;left:0;right:0;margin:0 auto;width:max-content;max-width:94%;z-index:20;display:flex;gap:8px;padding:10px 14px;border-radius:30px;background:var(--card);box-shadow:var(--sh),0 0 0 1px rgba(128,128,128,.12)}
+.dock a{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;text-decoration:none;color:var(--tx);box-shadow:var(--in);font-size:1.15rem;transition:.3s}
+.dock a:hover{color:var(--g)}
+/* reveal */
+.rv,.rt,.rp{opacity:0;will-change:transform,opacity}
+.rv{--dx:-170px;transform:perspective(1000px) translate3d(var(--dx),110px,0) rotateY(var(--ry,14deg)) scale(.92);transition:transform 2.3s cubic-bezier(.22,.7,.25,1) var(--d,0s),opacity 1.9s cubic-bezier(.22,.7,.25,1) var(--d,0s)}
+.rv.r{--dx:170px;--ry:-14deg}
+.rt{transform:translate3d(-120px,40px,0);transition:transform 2.2s cubic-bezier(.22,.7,.25,1),opacity 1.8s cubic-bezier(.22,.7,.25,1)}
+.rp{transform:translateY(26px);transition:transform 1.3s cubic-bezier(.22,.7,.25,1) var(--d,0s),opacity 1.1s cubic-bezier(.22,.7,.25,1) var(--d,0s)}
+.rv.in,.rt.in,.rp.in{opacity:1;transform:none}
+.rv.done{transition:transform .4s,box-shadow .4s,opacity .4s}
+.rv.pgs{transition-duration:1.5s,1.2s}
+@media(max-width:640px){.rv{--dx:-70px}.rv.r{--dx:70px}.hero{grid-template-columns:1fr}.prof{flex-direction:column;text-align:center}.card{padding:18px;border-radius:22px}.clock{padding:16px 14px}h2{font-size:1.2rem;margin:42px 0 14px;flex-wrap:wrap}.av{width:130px;height:130px}.gl .im{height:200px}.gl .tx{padding:6px 18px 22px}.dock{gap:4px;padding:8px 10px}.dock a{width:42px;height:42px}.th{height:120px}.md{padding:12px}.gl{border-radius:28px}}
+/* liquid glass modal */
+.md{position:fixed;inset:0;z-index:50;display:none;place-items:center;padding:18px;background:radial-gradient(circle at 30% 20%,rgba(0,240,60,.12),transparent 55%),rgba(10,10,10,.28);backdrop-filter:blur(6px)}
+.md.o{display:grid;animation:fi .5s ease}
+@keyframes fi{from{opacity:0}}
+.gl{position:relative;width:min(640px,100%);max-height:90vh;overflow:auto;border-radius:34px;color:#fff;background:linear-gradient(135deg,rgba(255,255,255,.2),rgba(255,255,255,.05) 45%,rgba(255,255,255,.1));backdrop-filter:blur(26px) saturate(190%) brightness(1.08);-webkit-backdrop-filter:blur(26px) saturate(190%) brightness(1.08);border:1px solid rgba(255,255,255,.35);box-shadow:0 30px 70px rgba(0,0,0,.4),inset 0 1.5px 0 rgba(255,255,255,.7),inset 0 -1.5px 0 rgba(255,255,255,.18),inset 0 0 40px rgba(255,255,255,.08);animation:pop .7s cubic-bezier(.22,.7,.25,1)}
+@keyframes pop{from{opacity:0;transform:scale(.9) translateY(24px)}}
+.gl::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:radial-gradient(120% 60% at 20% 0,rgba(255,255,255,.35),transparent 50%)}
+.gl .im{margin:12px;height:260px;border-radius:24px;overflow:hidden;position:relative;display:grid;place-items:center;font-size:3rem;font-weight:700;background:linear-gradient(135deg,hsl(var(--h) 80% 50%),hsl(calc(var(--h) + 50) 70% 28%));box-shadow:inset 0 0 0 1px rgba(255,255,255,.3)}
+.gl .im img{width:100%;height:100%;object-fit:contain;background:rgba(0,0,0,.2)}
+.gl .tx{padding:8px 26px 28px;position:relative}.gl h3{font-size:1.35rem}.gl .m{opacity:.8;font-size:.85rem;margin:4px 0 12px}.gl p{opacity:.95}
+.gl .pill{background:rgba(255,255,255,.16);box-shadow:inset 0 1px 0 rgba(255,255,255,.5);color:#fff}
+.x{position:absolute;top:22px;right:22px;z-index:3;width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,.5);background:rgba(255,255,255,.2);backdrop-filter:blur(10px);color:#fff;font-size:1.1rem;cursor:pointer}
+body.lock{overflow:hidden}
+body{transition:background .4s,color .4s}
+.tg{position:fixed;top:14px;right:14px;z-index:30;width:48px;height:48px;border-radius:50%;border:0;cursor:pointer;background:var(--card);color:var(--tx);box-shadow:var(--sh);font-size:1.25rem;display:grid;place-items:center;transition:.35s}
+.tg:hover{color:var(--g)}.tg:active{box-shadow:var(--in)}
+.bar{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+.demo{background:transparent;color:var(--g);box-shadow:inset 0 0 0 1.5px var(--g);padding:7px 16px;font-size:.78rem}
+.demo:hover{background:var(--g);color:#04210d;box-shadow:0 0 16px var(--g)}
+.demo.clk{background:#2f9bff;color:#fff;box-shadow:0 0 16px #2f9bff}
+.demo.off{opacity:.45;cursor:not-allowed}
+.gl .demo{color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.8);margin:0 26px 26px}
+.gl .demo:hover{background:#fff;color:#111}
+.soc{display:flex;gap:14px;flex-wrap:wrap;margin-top:14px}
+.sb{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;color:var(--tx);background:var(--card);box-shadow:var(--sh);text-decoration:none}
+.sb svg{width:24px;height:24px;fill:currentColor}.sb svg.st{fill:none;stroke:currentColor;stroke-width:2}
+.sb:hover{color:var(--c);box-shadow:var(--in),0 0 16px var(--c)}
+.form{display:grid;gap:12px}
+.form input,.form textarea{width:100%;border:0;outline:0;border-radius:16px;padding:13px 16px;background:var(--card);color:var(--tx);box-shadow:var(--in);font:inherit;resize:vertical}
+.form input:focus,.form textarea:focus{box-shadow:var(--in),0 0 0 2px var(--g)}
+.form .btn{justify-self:start;color:#04210d;background:var(--g);box-shadow:var(--sh)}
+.form .btn:hover{filter:brightness(1.1);color:#04210d}
+#fs{font-size:.85rem;min-height:1.2em}
+</style><script>try{var th=localStorage.getItem('theme');if(th)document.documentElement.setAttribute('data-theme',th)}catch(e){}</script></head><body>
+<main>
+<section class="hero">
+ <div class="card clock rv" id="clk"><div class="time" id="t">--:--</div><div class="date"><div class="dn" id="dd">--</div><div class="dm"><span id="dw"></span><span id="dmy"></span></div></div></div>
+ <div class="card prof rv r">
+  <div class="av"><span>PA</span><img id="photo" alt="MD Pranto Ali" referrerpolicy="no-referrer" onerror="this.remove()"></div>
+  <div><h1>Md. Pranto Ali</h1><p>B.Sc. CSE · Web Designer</p><a class="btn" href="#projects">View Projects</a></div>
+ </div>
+ <div class="card ct rv" id="ct"></div>
+</section>
+
+<h2 class="rt"><span>Career Objective</span></h2>
+<div class="card rv"><p>I am very much interested in developing my professional career. I would welcome the opportunity to help create a positive learning environment. I am honest and prepared to work hard for the organization and achieve my goals.</p></div>
+
+<h2 class="rt" id="edu"><span>Education</span></h2>
+<div class="tl">
+ <div class="card rv"><b>B.Sc. in Computer Science &amp; Engineering <span class="mu">(Running)</span></b><span class="mu">International University of Business Agriculture and Technology (IUBAT)</span></div>
+ <div class="card rv r"><b>Diploma in Engineering, Computer Technology — 2023</b><span class="mu">Kamrul Islam Siddiqui Polytechnic Institute</span><br><span class="pill rp">CGPA 3.72 / 4.00</span></div>
+ <div class="card rv"><b>Secondary School Certificate (SSC), Arts — 2018</b><span class="mu">Satarpara High School</span><br><span class="pill rp">GPA 3.06 / 5.00</span></div>
+</div>
+
+<h2 class="rt"><span>Experience</span></h2>
+<div class="card rv"><b>Intern — Kodeeo Limited</b><br><span class="mu">6 Months · Dec 2022 – May 2023</span></div>
+
+<h2 class="rt" id="projects"><span>Projects</span><button class="btn" id="more">See more</button></h2>
+<div class="grid" id="pg"></div><div class="pg" id="nums"></div>
+
+<h2 class="rt" id="certs"><span>Certificates &amp; Achievements</span></h2>
+<div class="grid" id="cg"></div>
+
+<h2 class="rt" id="skills"><span>Skills</span></h2>
+<div class="grid">
+ <div class="card rv"><b>Operating System</b><p class="mu">Microsoft Windows XP to Windows 11, Linux</p></div>
+ <div class="card rv r"><b>Internet &amp; E-mail</b><p class="mu">Internet browsing, sending mail, downloading files, LAN/Wireless</p></div>
+ <div class="card rv"><b>Application Software</b><p class="mu">Microsoft Office 2007/2013/2016, Adobe Photoshop-7, CS6, etc.</p></div>
+ <div class="card rv r"><b>Hardware</b><p class="mu">Configuration of PC (processor, motherboard, memory, input/output devices)</p></div>
+ <div class="card rv"><b>Web Design</b><div><span class="pill rp">HTML</span><span class="pill rp">CSS</span><span class="pill rp">JavaScript</span></div></div>
+ <div class="card rv r"><b>Languages</b><div><span class="pill rp">Bengali</span><span class="pill rp">English</span></div></div>
+</div>
+
+<h2 class="rt"><span>Hobbies</span></h2>
+<div class="card rv"><span class="pill rp">Reading storybooks &amp; learning new skills</span><span class="pill rp">Exploring new technologies and software</span><span class="pill rp">Listening to music</span></div>
+
+<h2 class="rt" id="contact"><span>Contact</span></h2>
+<div class="grid">
+ <div class="card rv"><b>Present Address</b><p class="mu">House No-18, Road No: 10, Uttara Sector 10, Dhaka-1230</p></div>
+ <div class="card rv r"><b>Permanent Address</b><p class="mu">Vill: Hridoypur, P.O: Satarpara, District: Kushtia, Division: Khulna</p></div>
+</div>
+<div class="card rv" style="margin-top:18px"><b style="font-size:1.1rem">Find me on social media</b><div class="soc" id="sc"></div></div>
+<div class="card rv" style="margin-top:18px"><b style="font-size:1.1rem">Send me a message</b><p class="mu" style="margin-bottom:14px">Fill in the form and hit send — I will get back to you soon.</p>
+<form class="form" id="cf" novalidate><input id="fn" name="name" placeholder="Your name" autocomplete="name" required><input id="fe" name="email" type="email" placeholder="Your email address" autocomplete="email" required><textarea id="fm" name="message" rows="5" placeholder="Your message" required></textarea><button class="btn" type="submit" id="fb">Send message ➤</button><div id="fs" class="mu"></div></form></div>
+</main>
+
+<button class="tg" id="tg" aria-label="Toggle day/night mode" title="Day / Night">☾</button>
+<nav class="dock"><a href="#top" title="Home">⌂</a><a href="#edu" title="Education">🎓</a><a href="#projects" title="Projects">▦</a><a href="#certs" title="Certificates">★</a><a href="#contact" title="Contact">✉</a></nav>
+
+<div class="md" id="md"><div class="gl" role="dialog" aria-modal="true"><button class="x" id="x" aria-label="Close">✕</button><div class="im" id="mi"></div><div class="tx"><h3 id="mt"></h3><div class="m" id="mm"></div><p id="md2"></p><div id="mg"></div></div><a class="btn demo" id="mdemo" target="_blank" rel="noopener" style="display:none">Demo ↗</a></div></div>
+
+<script>
+const CONFIG={photo:"https://plain-apac-prod-public.komododecks.com/202611/02/J53acXZYBTZMw8ts4DLN/image.png",email:"prantoislamnt51@gmail.com",phone:"+8801979728818",social:{facebook:"https://www.facebook.com/",instagram:"https://www.instagram.com/",linkedin:"https://www.linkedin.com/",github:"https://github.com/",whatsapp:"https://wa.me/8801979728818"},formEndpoint:"" /* e.g. https://formspree.io/f/xxxxxx — empty = opens your mail app */};
+// Social: replace each default link in CONFIG.social with your own profile URL
+// Add one line per project (demo: your live project link, "" = button disabled): t title, s short line, d full description, m meta, tags, img (leave "" for colour placeholder), h hue
+const PROJECTS=[
+{t:"AB IT Smart Inventory",s:"Electronics shop inventory single-page app.",d:"A single-page inventory and sales app for an electronics shop, built with Google Apps Script and Google Sheets, with a clean responsive interface.",m:"Google Apps Script · Web App",tags:["Apps Script","Sheets","Inventory"],img:"",h:150},
+{t:"Mess Manager",s:"Bengali-language mess management app.",d:"A Bengali-language web app for managing a boarding house (mess): members, meals, expenses and monthly accounts.",m:"Google Apps Script · Bengali UI",tags:["Apps Script","Bengali","Management"],img:"",h:200},
+{t:"PassVault",s:"Password manager web app.",d:"A password manager built on Google Apps Script with organised credential storage and a simple, fast interface.",m:"Google Apps Script · Security",tags:["Apps Script","Passwords"],img:"",h:260},
+{t:"POS Master",s:"Retail POS & inventory system.",d:"Retail point-of-sale and inventory system using Google Apps Script and Sheets for billing, stock and sales tracking.",m:"Apps Script · Sheets · Retail",tags:["POS","Retail","Sheets"],img:"",h:30},
+{t:"Gmail Vault",s:"Gmail account manager with card UI.",d:"Stores many Gmail accounts as neat cards in a Google Apps Script app with a modern interface.",m:"Google Apps Script · UI",tags:["Apps Script","Cards"],img:"",h:0},
+{t:"PRANTO MONITOR",s:"ESP32-S3 website keep-alive pinger.",d:"An ESP32-S3 Arduino project that pings a website to keep it alive, with a liquid-glass web dashboard hosted on the board itself.",m:"ESP32-S3 · Arduino · IoT",tags:["ESP32","Arduino","Dashboard"],img:"",h:180},
+{t:"Fingerprint Attendance",s:"ESP32 + R307S member attendance.",d:"An ESP32-WROOM and R307S fingerprint attendance system with member enrollment and an attendance API.",m:"ESP32 · R307S · Arduino",tags:["ESP32","Fingerprint","IoT"],img:"",h:310},
+{t:"Student ID Card Generator",s:"Single-file ID card maker.",d:"A single-file web app in vanilla JavaScript that designs student ID cards and exports them as image or PDF.",m:"HTML · JS · html2canvas · jsPDF",tags:["Vanilla JS","PDF"],img:"",h:60}
+];
+const CERTS=[
+{t:"NSDA — Web Design & Development for Freelancing (Level 3)",s:"Govt. of Bangladesh · Achievement",d:"Successfully passed the assessment under the National Skills Development Authority (NSDA), Government of the People's Republic of Bangladesh, held at Touch And Solve.",m:"29 Aug 2026",tags:["NSDA","Level 3","Achievement"],img:"",h:140},
+{t:"Google — Introduction to Generative AI Studio",s:"Sep 17, 2026",d:"Completed Google's course on Generative AI Studio.",m:"Sep 17, 2026",tags:["Google","AI"],img:"",h:215},
+{t:"Microsoft — Copilot Foundation",s:"Sep 18, 2026",d:"Completed Microsoft's Copilot Foundation course.",m:"Sep 18, 2026",tags:["Microsoft","Copilot"],img:"",h:200},
+{t:"Microsoft — Intro to Prompt Engineering with GitHub Copilot",s:"Sep 17, 2026",d:"Completed Microsoft's introduction to prompt engineering with GitHub Copilot.",m:"Sep 17, 2026",tags:["Microsoft","GitHub Copilot"],img:"",h:250},
+{t:"Microsoft — Introduction to MS Excel",s:"Sep 18, 2026",d:"Completed Microsoft's introduction to MS Excel.",m:"Sep 18, 2026",tags:["Microsoft","Excel"],img:"",h:120},
+{t:"AWS — Understanding Placement Groups",s:"Sep 18, 2026",d:"Completed the AWS course on Understanding Placement Groups.",m:"Sep 18, 2026",tags:["AWS","Cloud"],img:"",h:30},
+{t:"Canva — Teacher Essentials",s:"Jul 31, 2024",d:"Completed Canva's Teacher Essentials course.",m:"Jul 31, 2024",tags:["Canva","Design"],img:"",h:280},
+{t:"Canva — Canva Essentials",s:"Sep 10, 2026",d:"Completed Canva's Canva Essentials course.",m:"Sep 10, 2026",tags:["Canva","Design"],img:"",h:320}
+];
+const $=s=>document.querySelector(s),PER=4,esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+document.getElementById("photo").src=CONFIG.photo;
+$("#ct").innerHTML=`<a href="mailto:${CONFIG.email}"><i>✉</i>${CONFIG.email}</a><a href="tel:${CONFIG.phone}"><i>☎</i>${CONFIG.phone}</a>`;
+function tick(){const n=new Date();const h=n.getHours()%12||12,m=String(n.getMinutes()).padStart(2,"0");$("#t").innerHTML=String(h).padStart(2,"0")+":"+m+"<small>"+(n.getHours()<12?"AM":"PM")+"</small>";$("#dd").textContent=String(n.getDate()).padStart(2,"0");$("#dw").textContent=n.toLocaleDateString("en-US",{weekday:"long"});$("#dmy").textContent=n.toLocaleDateString("en-US",{month:"long"})+" "+n.getFullYear()}
+tick();setInterval(tick,30000);
+/* reveal */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;const el=e.target;io.unobserve(el);el.classList.add("in");setTimeout(()=>el.classList.add("done"),2500)}),{threshold:.2,rootMargin:"0px 0px -12% 0px"});
+function prep(root){
+ root.querySelectorAll(".rt,.rv").forEach(el=>io.observe(el));
+ root.querySelectorAll(".rv .rp").forEach(p=>io.observe(p));
+}
+function stagger(){
+ document.querySelectorAll(".grid,.tl").forEach(g=>[...g.children].forEach((c,i)=>{if(c.classList.contains("rv")){c.style.setProperty("--d",(i%4*.18)+"s")}}));
+ document.querySelectorAll(".card").forEach(c=>c.querySelectorAll(".rp").forEach((p,i)=>p.style.setProperty("--d",i*.14+"s")));
+}
+let alt=0;
+function card(o,i,cls,pj){return `<article class="card pc rv ${cls||""}${(i%2)?" r":""}" tabindex="0" role="button" data-i="${i}"><div class="th">${o.img?`<img src="${esc(o.img)}" alt="" referrerpolicy="no-referrer" onerror="this.remove()">`:""}<span>${esc(o.t.trim()[0])}</span></div><div class="bd"><h3>${esc(o.t)}</h3><div class="mu">${esc(o.s)}</div>${pj?demoBtn(o):""}</div></article>`}
+function demoBtn(o){return o.demo?`<div class="bar"><a class="btn demo" href="${esc(o.demo)}" target="_blank" rel="noopener">Demo ↗</a></div>`:`<div class="bar"><a class="btn demo off" aria-disabled="true" title="Demo link coming soon">Demo ↗</a></div>`}
+let page=0;
+function showP(){
+ const n=Math.ceil(PROJECTS.length/PER);page=Math.min(page,n-1);
+ const g=$("#pg");g.innerHTML=PROJECTS.slice(page*PER,page*PER+PER).map((o,k)=>card(o,k,"pgs",1)).join("");
+ g.querySelectorAll(".pc").forEach((el,k)=>{el.dataset.i=page*PER+k;el.style.setProperty("--d",k*.18+"s");el.dataset.src="p"});
+ $("#nums").innerHTML=n>1?Array.from({length:n},(_,i)=>`<button class="${i==page?"on":""}" data-p="${i}">${i+1}</button>`).join(""):"";
+ $("#more").style.display=n>1?"":"none";$("#more").textContent=page>=n-1?"Back to first":"See more";
+ prep(g);
+}
+$("#more").onclick=()=>{const n=Math.ceil(PROJECTS.length/PER);page=page>=n-1?0:page+1;showP()};
+$("#nums").onclick=e=>{const b=e.target.closest("button");if(b){page=+b.dataset.p;showP()}};
+$("#cg").innerHTML=CERTS.map((o,i)=>card(o,i)).join("");
+$("#cg").querySelectorAll(".pc").forEach(el=>{el.dataset.src="c"});
+/* modal */
+function open_(o){
+ $("#mi").style.setProperty("--h",o.h||150);
+ $("#mi").innerHTML=(o.img?`<img src="${esc(o.img)}" alt="" referrerpolicy="no-referrer" onerror="this.remove()">`:"")+`<span>${esc(o.t.trim()[0])}</span>`;
+ $("#mt").textContent=o.t;$("#mm").textContent=o.m||"";$("#md2").textContent=o.d||"";
+ $("#mg").innerHTML=(o.tags||[]).map(t=>`<span class="pill">${esc(t)}</span>`).join("");
+ const md=$("#mdemo");md.classList.remove("clk","off");if(o.live){md.style.display="inline-block";if(o.demo){md.href=o.demo}else{md.removeAttribute("href");md.classList.add("off")}}else md.style.display="none";
+ $("#md").classList.add("o");document.body.classList.add("lock");$("#x").focus();
+}
+const close_=()=>{$("#md").classList.remove("o");document.body.classList.remove("lock")};
+document.addEventListener("click",e=>{const d=e.target.closest(".demo");if(d){if(d.classList.contains("off"))e.preventDefault();else d.classList.add("clk");return}const c=e.target.closest(".pc");if(c){open_((c.dataset.src=="p"?PROJECTS.map(o=>({...o,live:1})):CERTS)[c.dataset.i])}});
+document.addEventListener("keydown",e=>{if(e.key=="Escape")close_();if(e.key=="Enter"){const c=document.activeElement;if(c&&c.classList.contains("pc"))c.click()}});
+$("#x").onclick=close_;$("#md").onclick=e=>{if(e.target.id=="md")close_()};
+/* thumbnail hue */
+const hs=(el,arr)=>el.querySelectorAll(".th").forEach((t,i)=>t.style.setProperty("--h",arr[i].h||150));
+showP();hs($("#cg"),CERTS);document.querySelectorAll("#pg .th").forEach((t,i)=>t.style.setProperty("--h",PROJECTS[page*PER+i].h||150));
+const fixHue=()=>document.querySelectorAll("#pg .th").forEach((t,i)=>{const o=PROJECTS[page*PER+i];if(o)t.style.setProperty("--h",o.h||150)});
+new MutationObserver(fixHue).observe($("#pg"),{childList:true});
+const SOC=[["facebook","Facebook","#1877f2",'<svg viewBox="0 0 24 24"><path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.8-4.7 4.55-4.7 1.31 0 2.69.24 2.69.24v2.97h-1.52c-1.5 0-1.96.93-1.96 1.89v2.26h3.33l-.53 3.49h-2.8V24C19.61 23.1 24 18.1 24 12.07z"/></svg>'],
+["instagram","Instagram","#e4405f",'<svg class="st" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>'],
+["linkedin","LinkedIn","#0a66c2",'<svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 110-4.12 2.06 2.06 0 010 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>'],
+["github","GitHub","#a371f7",'<svg viewBox="0 0 24 24"><path d="M12 .3a12 12 0 00-3.8 23.38c.6.12.83-.26.83-.57v-2c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.09-.73.09-.73 1.2.09 1.83 1.24 1.83 1.24 1.07 1.83 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 016 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22v3.29c0 .32.22.7.83.58A12 12 0 0012 .3z"/></svg>'],
+["whatsapp","WhatsApp","#25d366",'<svg viewBox="0 0 24 24"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.7.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35zM12.05 21.8a9.9 9.9 0 01-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 01-1.51-5.26c0-5.45 4.44-9.88 9.9-9.88 2.64 0 5.12 1.03 6.99 2.9a9.82 9.82 0 012.89 6.99c0 5.45-4.44 9.88-9.9 9.88zM20.5 3.49A11.8 11.8 0 0012.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 005.68 1.45h.01c6.55 0 11.89-5.34 11.89-11.89 0-3.18-1.24-6.16-3.44-8.42z"/></svg>']];
+$("#sc").innerHTML=SOC.filter(x=>CONFIG.social[x[0]]).map(x=>`<a class="sb rp" style="--c:${x[2]}" href="${esc(CONFIG.social[x[0]])}" target="_blank" rel="noopener" aria-label="${x[1]}" title="${x[1]}">${x[3]}</a>`).join("");
+const root=document.documentElement;
+function curTheme(){return root.getAttribute("data-theme")||(matchMedia("(prefers-color-scheme:light)").matches?"light":"dark")}
+function paintTg(){$("#tg").textContent=curTheme()=="dark"?"☀":"☾"}
+$("#tg").onclick=()=>{const n=curTheme()=="dark"?"light":"dark";root.setAttribute("data-theme",n);try{localStorage.setItem("theme",n)}catch(e){}paintTg()};
+paintTg();
+$("#cf").addEventListener("submit",async e=>{e.preventDefault();
+ const n=$("#fn").value.trim(),m=$("#fe").value.trim(),g=$("#fm").value.trim(),st=$("#fs");
+ if(!n||!/^\S+@\S+\.\S+$/.test(m)||!g){st.style.color="#ff6b6b";st.textContent="Please enter your name, a valid email and a message.";return}
+ if(CONFIG.formEndpoint){const b=$("#fb");b.disabled=true;st.style.color="";st.textContent="Sending…";
+  try{const r=await fetch(CONFIG.formEndpoint,{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify({name:n,email:m,message:g})});
+   if(!r.ok)throw 0;st.style.color="var(--g)";st.textContent="Thank you! Your message has been sent.";$("#cf").reset()}
+  catch(x){st.style.color="#ff6b6b";st.textContent="Could not send. Please try again."}b.disabled=false}
+ else{location.href="mailto:"+CONFIG.email+"?subject="+encodeURIComponent("Portfolio message from "+n)+"&body="+encodeURIComponent(g+"\n\n— "+n+" ("+m+")");st.style.color="var(--g)";st.textContent="Opening your mail app to send…"}});
+stagger();prep(document);
+</script></body></html>

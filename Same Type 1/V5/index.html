@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MD Pranto Ali – Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#e0e0e0; --hi:#f5f5f5; --lo:#bebebe; --ink:#4a4a4a; --mute:#8a8a8a; --accent:#516c96;
+  --out:8px 8px 16px var(--lo),-8px -8px 16px var(--hi);
+  --in:inset 6px 6px 12px var(--lo),inset -6px -6px 12px var(--hi);
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#2b2f36;--hi:#353a43;--lo:#1f2227;--ink:#d6d9de;--mute:#8f96a1;--accent:#8fb0e3}}
+:root[data-theme="dark"]{--bg:#2b2f36;--hi:#353a43;--lo:#1f2227;--ink:#d6d9de;--mute:#8f96a1;--accent:#8fb0e3}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+*{box-sizing:border-box;margin:0}
+body{background:var(--bg);color:var(--ink);font-family:Roboto,system-ui,sans-serif;line-height:1.65;min-height:100%}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+.card{background:var(--bg);border-radius:28px;box-shadow:var(--out);padding:28px}
+.inset{box-shadow:var(--in);border-radius:18px}
+h1,h2,h3{color:var(--accent);line-height:1.2}
+h2{font-size:1.6rem;margin-bottom:22px}
+section{padding:36px 0}
+
+/* smooth hover effects */
+.card,.chip,.tags span,.clock,.goal,.skill .tube,.socials a,.irow{transition:transform .45s cubic-bezier(.2,.8,.2,1),box-shadow .45s cubic-bezier(.2,.8,.2,1),color .3s ease}
+.card:hover{transform:translateY(-6px);box-shadow:14px 14px 28px var(--lo),-14px -14px 28px var(--hi),0 0 0 1px color-mix(in srgb,var(--accent) 28%,transparent)}
+.chip:hover,.tags span:hover,.clock:hover{transform:translateY(-4px);box-shadow:11px 11px 22px var(--lo),-11px -11px 22px var(--hi)}
+.goal:hover{transform:translateY(-4px);color:var(--accent)}
+.skill:hover .tube{transform:scale(1.07)}
+.irow:hover{transform:translateX(4px)}
+
+/* contact */
+.contact{display:grid;grid-template-columns:1.1fr 1fr;gap:24px;align-items:stretch}
+.contact h3{margin-bottom:18px;font-size:1.2rem}
+.info{display:flex;flex-direction:column;gap:14px}
+.irow{display:flex;align-items:center;gap:14px;padding:12px 14px;border-radius:20px;box-shadow:var(--in)}
+.irow>div{flex:1;min-width:0}
+.irow small{display:block;color:var(--mute);line-height:1.3}
+.irow b{font-weight:500;word-break:break-word}
+.ic{width:44px;height:44px;flex:none;border-radius:50%;display:grid;place-items:center;box-shadow:var(--out);color:var(--accent)}
+.ic svg{width:20px;height:20px}
+.copy{padding:8px 14px;font-size:.85rem}
+.copy.done{color:var(--accent)}
+.socials{display:flex;gap:14px;flex-wrap:wrap}
+.socials a{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;box-shadow:var(--out);color:var(--ink)}
+.socials a:hover{transform:translateY(-5px);color:var(--accent);box-shadow:10px 10px 20px var(--lo),-10px -10px 20px var(--hi)}
+.socials svg{width:22px;height:22px}
+
+/* nav */
+nav{position:sticky;top:0;z-index:20;background:var(--bg);padding:18px 0 16px;padding-top:calc(18px + env(safe-area-inset-top,0px))}
+nav .bar{display:flex;gap:12px;align-items:center;justify-content:space-between;max-width:1000px;width:calc(100% - 40px);margin:0 auto;min-height:78px;padding:14px 26px;border-radius:32px;box-shadow:var(--out)}
+.brand{font-weight:900;font-size:1.65rem;letter-spacing:.01em;color:var(--accent)}
+.brand span{color:var(--ink)}
+.links{display:flex;gap:12px}
+.links a{padding:12px 20px}
+.tools{display:flex;gap:10px;align-items:center}
+.burger{display:none;width:46px;height:46px;border:0;border-radius:14px;background:var(--bg);box-shadow:6px 6px 12px var(--lo),-6px -6px 12px var(--hi);cursor:pointer;position:relative;padding:0;transition:box-shadow .3s}
+.burger span{position:absolute;left:13px;width:20px;height:2.5px;border-radius:2px;background:var(--ink);transition:transform .45s cubic-bezier(.2,.8,.2,1),opacity .25s,top .45s cubic-bezier(.2,.8,.2,1)}
+.burger span:nth-child(1){top:15px}.burger span:nth-child(2){top:22px}.burger span:nth-child(3){top:29px}
+.open .burger{box-shadow:var(--in)}
+.open .burger span:nth-child(1){top:22px;transform:rotate(45deg)}
+.open .burger span:nth-child(2){opacity:0;transform:scaleX(0)}
+.open .burger span:nth-child(3){top:22px;transform:rotate(-45deg)}
+@media(max-width:860px){
+  .burger{display:block}
+  .links{position:absolute;left:20px;right:20px;top:100%;flex-direction:column;gap:10px;padding:18px;border-radius:26px;background:var(--bg);box-shadow:var(--out);opacity:0;visibility:hidden;transform:translateY(-14px) scale(.97);transform-origin:top right;transition:opacity .35s ease,transform .45s cubic-bezier(.2,.8,.2,1),visibility 0s .45s}
+  .open .links{opacity:1;visibility:visible;transform:none;transition-delay:0s}
+  .links a{text-align:center;padding:13px;opacity:0;transform:translateX(-18px);transition:opacity .4s ease,transform .5s cubic-bezier(.2,.8,.2,1),box-shadow .15s}
+  .open .links a{opacity:1;transform:none;transition-delay:calc(var(--i)*60ms + 120ms)}
+}
+.btn{font:500 .92rem Roboto,sans-serif;color:var(--ink);background:var(--bg);border:0;border-radius:14px;padding:9px 16px;cursor:pointer;box-shadow:6px 6px 12px var(--lo),-6px -6px 12px var(--hi);transition:box-shadow .15s}
+.btn:hover,.btn.on{box-shadow:var(--in);color:var(--accent)}
+.btn:active{box-shadow:var(--in)}
+
+/* hero */
+.hero{display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:center;border-radius:48px;padding:34px 40px}
+.avatar{width:150px;height:150px;border-radius:50%;box-shadow:var(--out);display:grid;place-items:center;padding:12px}
+.avatar span{width:100%;height:100%;border-radius:50%;background:var(--accent);color:var(--bg);display:grid;place-items:center;font:900 2.6rem Roboto}
+.hero h1{font-size:clamp(2rem,5vw,3.2rem)}
+.hero .role{font-size:1.15rem;font-weight:500;margin:4px 0 14px}
+.hero p{color:var(--mute);max-width:56ch}
+.row{display:grid;grid-template-columns:1fr auto;gap:20px;margin-top:20px}
+.clock{display:flex;align-items:baseline;gap:10px;padding:16px 28px;border-radius:22px;box-shadow:var(--out)}
+.clock b{font-size:2.6rem;font-weight:900;letter-spacing:.02em}
+.clock small{font-size:1.2rem;font-weight:700;color:var(--mute)}
+.stats{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.chip{padding:10px 18px;border-radius:16px;box-shadow:var(--out);font-weight:500}
+.chip em{font-style:normal;color:var(--accent);font-weight:700}
+
+.avatar span{overflow:hidden}
+.avatar img{width:100%;height:100%;object-fit:cover;display:block}
+
+/* projects */
+.filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:24px}
+.pgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+.proj{display:flex;flex-direction:column;gap:10px;animation:pop .5s cubic-bezier(.2,.8,.2,1) backwards}
+.proj[hidden]{display:none}
+.proj .no{font:900 2.2rem Roboto,sans-serif;color:var(--accent);opacity:.35;line-height:1}
+.proj .kind{font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
+.proj h3{font-size:1.2rem}
+.proj p{color:var(--mute);flex:1}
+.proj .tags{margin-top:4px}
+.proj .tags span{padding:5px 12px;font-size:.8rem;box-shadow:var(--in)}
+@keyframes pop{from{opacity:0;transform:translateY(16px) scale(.97)}to{opacity:1;transform:none}}
+
+/* project cards + detail modal */
+.proj{cursor:pointer}
+.proj .demo{align-self:flex-start;margin-top:8px}
+.thumb{border-radius:18px;overflow:hidden;box-shadow:var(--in);aspect-ratio:16/10}
+.thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.modal{position:fixed;inset:0;z-index:50;display:grid;place-items:center;padding:20px;visibility:hidden;opacity:0;transition:opacity .35s ease,visibility 0s .35s}
+.modal.show{visibility:visible;opacity:1;transition-delay:0s}
+.mback{position:absolute;inset:0;background:rgba(20,24,30,.55);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px)}
+.mbox{position:relative;width:min(980px,100%);max-height:calc(100vh - 40px);max-height:calc(100dvh - 40px);overflow:auto;display:grid;grid-template-columns:1fr 1fr;gap:30px;padding:30px;border-radius:34px;transform:translateY(28px) scale(.96);transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.modal.show .mbox,.modal.show .mbox:hover{transform:none;box-shadow:var(--out)}
+.mclose{position:absolute;top:16px;right:16px;width:44px;height:44px;padding:0;border-radius:50%;z-index:2;font-size:1.1rem}
+.mimg{border-radius:24px;box-shadow:var(--in);overflow:hidden;min-height:280px;display:grid;place-items:center;align-self:stretch}
+.mimg img{width:100%;height:100%;object-fit:cover;display:block}
+.ph{text-align:center;color:var(--mute)}
+.ph b{display:block;font:900 4rem Roboto,sans-serif;color:var(--accent);opacity:.35;line-height:1}
+.minfo{display:flex;flex-direction:column;justify-content:center}
+.minfo h3{font-size:1.6rem;margin:6px 0 10px;padding-right:44px}
+.minfo p{color:var(--mute)}
+.minfo ul{list-style:none;padding:0;margin:16px 0;display:grid;gap:8px}
+.minfo li::before{content:"\2713";color:var(--accent);font-weight:900;margin-right:10px}
+.mbtns{margin-top:22px}
+
+/* certificates */
+.certs{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+.cert{display:flex;gap:14px;align-items:flex-start;padding:20px 22px}
+.cert b{display:block;font-weight:500;line-height:1.4}
+.cert small{color:var(--mute)}
+.ck{flex:none;width:36px;height:36px;border-radius:50%;box-shadow:var(--in);display:grid;place-items:center;color:var(--accent);font-weight:900}
+
+/* about */
+.grid2{display:grid;grid-template-columns:1.4fr 1fr;gap:24px}
+.grid2 p+p{margin-top:12px}
+.now{display:flex;flex-direction:column;gap:14px}
+.now h3{font-size:1.1rem}
+.bar{height:14px;border-radius:10px;box-shadow:var(--in);overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--accent);border-radius:10px;transition:width 1.2s cubic-bezier(.2,.8,.2,1)}
+.now small{color:var(--mute)}
+
+/* skills */
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:22px}
+.skill{display:flex;flex-direction:column;align-items:center;gap:12px;font-weight:500;text-align:center}
+.tube{width:64px;height:190px;border-radius:24px;box-shadow:var(--in);padding:6px;display:flex;align-items:flex-end}
+.tube i{display:block;width:100%;height:0;background:var(--accent);border-radius:18px;transition:height 1.2s cubic-bezier(.2,.8,.2,1)}
+.skill small{color:var(--mute);font-weight:400}
+.tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.tags span{padding:8px 16px;border-radius:14px;box-shadow:var(--out);font-size:.92rem}
+
+/* timeline */
+.tl{display:grid;gap:22px}
+.item{display:grid;grid-template-columns:150px 1fr;gap:20px}
+.item time{color:var(--accent);font-weight:700}
+.item h3{color:var(--ink);font-size:1.1rem}
+.item p,.item li{color:var(--mute)}
+.item ul{padding-left:18px;margin-top:6px}
+
+/* goals / contact */
+.goals{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:18px}
+.goal{padding:20px;border-radius:22px;box-shadow:var(--in);text-align:center;font-weight:500}
+form{display:grid;gap:16px}
+input,textarea{width:100%;font:400 1rem Roboto,sans-serif;color:var(--ink);background:var(--bg);border:0;border-radius:16px;padding:14px 18px;box-shadow:var(--in)}
+input::placeholder,textarea::placeholder{color:var(--mute)}
+textarea{min-height:120px;resize:vertical}
+#msg{color:var(--accent);font-weight:500;min-height:1.5em}
+footer{text-align:center;color:var(--mute);padding:30px 0 40px;font-size:.9rem}
+#up{position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom,0px));width:48px;height:48px;border-radius:50%;padding:0;font-size:1.2rem;display:none}
+
+@media(max-width:760px){
+  .hero{grid-template-columns:1fr;justify-items:center;text-align:center;padding:28px 22px;border-radius:36px}
+  .row,.grid2,.contact{grid-template-columns:1fr}
+  nav .bar{min-height:68px;padding:10px 14px 10px 20px;border-radius:26px}
+  .brand{font-size:1.45rem}
+  .mbox{grid-template-columns:1fr;gap:20px;padding:20px;border-radius:28px}
+  .mimg{min-height:0;aspect-ratio:16/10}
+  .minfo h3{font-size:1.35rem}
+  .hero .socials{justify-content:center}
+  .stats{justify-content:center}.clock{justify-content:center}
+  .item{grid-template-columns:1fr;gap:4px}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<nav id="nav"><div class="wrap bar">
+  <a class="brand" href="#top">Pranto<span>.</span></a>
+  <div class="links" id="links">
+    <a class="btn" href="#about">About</a><a class="btn" href="#skills">Skills</a><a class="btn" href="#projects">Projects</a><a class="btn" href="#journey">Journey</a><a class="btn" href="#certs">Certificates</a><a class="btn" href="#contact">Contact</a>
+  </div>
+  <div class="tools">
+    <button class="btn" id="theme" aria-label="Switch light and dark theme">Dark mode</button>
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="links"><span></span><span></span><span></span></button>
+  </div>
+</div></nav>
+
+<main class="wrap">
+  <section id="top" style="padding-top:20px">
+    <div class="card hero">
+      <div class="avatar"><span id="photo">PA</span></div>
+      <div>
+        <h1>MD Pranto Ali</h1>
+        <div class="role">CSE student &amp; aspiring full-stack software engineer</div>
+        <p>I turn ideas into practical digital solutions: websites, automation scripts and database-driven tools.</p>
+        <div class="socials" data-socials style="margin-top:20px"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="stats">
+        <div class="chip"><em>3.72</em> / 4.00 Diploma CGPA</div>
+        <div class="chip"><em>1.5 yrs</em> retail operations</div>
+        <div class="chip">IUBAT, B.Sc. CSE</div>
+      </div>
+      <div class="clock" aria-label="Current time"><b id="time">--:--</b><small id="ampm"></small></div>
+    </div>
+  </section>
+
+  <section id="about">
+    <h2>About me</h2>
+    <div class="grid2">
+      <div class="card">
+        <p>I’m a Computer Science and Engineering student at IUBAT – International University of Business Agriculture and Technology, with a strong passion for software development, web technologies, automation, databases and emerging technologies.</p>
+        <p>I enjoy learning new technologies, solving real-world problems and turning ideas into practical digital solutions.</p>
+        <div class="tags"><span>Languages: Bengali, English</span><span>Hobbies: reading, learning new skills, exploring technology, music</span></div>
+      </div>
+      <div class="card now">
+        <h3>Currently growing in</h3>
+        <div><div class="bar"><i data-w="80"></i></div><small>Full-stack development</small></div>
+        <div><div class="bar"><i data-w="65"></i></div><small>Automation</small></div>
+        <div><div class="bar"><i data-w="40"></i></div><small>AI &amp; IoT</small></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2>Technical skills</h2>
+    <div class="card">
+      <div class="skills">
+        <div class="skill"><div class="tube"><i data-h="88"></i></div>HTML</div>
+        <div class="skill"><div class="tube"><i data-h="85"></i></div>CSS</div>
+        <div class="skill"><div class="tube"><i data-h="75"></i></div>JavaScript</div>
+        <div class="skill"><div class="tube"><i data-h="65"></i></div>PHP</div>
+        <div class="skill"><div class="tube"><i data-h="70"></i></div>Apps Script</div>
+        <div class="skill"><div class="tube"><i data-h="72"></i></div>Database</div>
+      </div>
+      <div class="tags"><span>Web design &amp; development</span><span>Windows XP to 11</span><span>Linux</span><span>MS Office 2007/2013/2016</span><span>Adobe Photoshop 7 / CS6</span><span>Canva</span><span>PC hardware configuration</span><span>Internet, email, LAN &amp; wireless</span></div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="filters" role="group" aria-label="Filter projects">
+      <button class="btn on" data-f="all">All</button><button class="btn" data-f="web">Web</button><button class="btn" data-f="iot">IoT</button><button class="btn" data-f="app">Software &amp; apps</button>
+    </div>
+    <div class="pgrid">
+      <article class="card proj" data-c="web app"><div class="no">01</div><div class="kind">Web software</div><h3>School Management System</h3><p>A complete platform for schools to manage students, teachers, classes, fees, results and notices from one dashboard.</p><div class="tags"><span>PHP</span><span>MySQL</span><span>JavaScript</span></div></article>
+      <article class="card proj" data-c="web"><div class="no">02</div><div class="kind">Website</div><h3>Professional School Website</h3><p>A clean, fast and fully responsive public website with admission info, notices, gallery, staff pages and a contact form.</p><div class="tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div></article>
+      <article class="card proj" data-c="web app"><div class="no">03</div><div class="kind">Web software</div><h3>Attendance Management System</h3><p>Records daily attendance for students and employees, with absentee tracking and monthly reports ready to print or export.</p><div class="tags"><span>PHP</span><span>Database</span><span>Reports</span></div></article>
+      <article class="card proj" data-c="iot"><div class="no">04</div><div class="kind">IoT project</div><h3>Attendance Device</h3><p>A smart device that marks attendance with a fingerprint or RFID card and sends the record straight to the system.</p><div class="tags"><span>IoT</span><span>Fingerprint</span><span>RFID</span></div></article>
+      <article class="card proj" data-c="iot"><div class="no">05</div><div class="kind">IoT project</div><h3>Gate Pass Device</h3><p>Access control for school gates, garments and offices. Students and employees pass with a fingerprint or RFID card, and every entry is logged.</p><div class="tags"><span>IoT</span><span>Access control</span><span>Entry log</span></div></article>
+      <article class="card proj" data-c="web app"><div class="no">06</div><div class="kind">Business software + mobile app</div><h3>Shop, POS, Inventory &amp; Hostel Management</h3><p>Web software with companion mobile apps for shop management, point of sale, stock control and hostel management.</p><div class="tags"><span>POS</span><span>Inventory</span><span>Hostel</span><span>Mobile app</span></div></article>
+    </div>
+  </section>
+
+  <section id="journey">
+    <h2>Education &amp; experience</h2>
+    <div class="tl">
+      <div class="card item"><time>Present</time><div><h3>B.Sc. in Computer Science and Engineering</h3><p>IUBAT – International University of Business Agriculture and Technology</p></div></div>
+      <div class="card item"><time>2023</time><div><h3>Diploma in Engineering, Computer Technology</h3><p>Kamrul Islam Siddiqui Polytechnic Institute · CGPA 3.72 / 4.00</p></div></div>
+      <div class="card item"><time>Dec 2022 – May 2023</time><div><h3>Intern</h3><p>Kodeeo Limited · 6 months</p></div></div>
+      <div class="card item"><time>1 yr 6 mo</time><div><h3>Retail operations</h3>
+        <ul><li>Entered sales data on computer systems</li><li>Maintained sales records</li><li>Assisted customers and sold products</li><li>Supported daily business and financial activities</li></ul></div></div>
+      <div class="card item"><time>2018</time><div><h3>Secondary School Certificate (SSC), Arts</h3><p>Satarpara High School · GPA 3.06 / 5.00</p></div></div>
+    </div>
+  </section>
+
+  <section id="certs">
+    <h2>Certificates</h2>
+    <div class="certs">
+      <div class="card cert"><span class="ck">✓</span><div><b>Web Design and Development for Freelancing, Level 3</b><small>NSDA, Government of Bangladesh · Aug 29, 2026</small></div></div>
+      <div class="card cert"><span class="ck">✓</span><div><b>Introduction to Generative AI Studio</b><small>Google · Sep 17, 2026</small></div></div>
+      <div class="card cert"><span class="ck">✓</span><div><b>Copilot Foundation</b><small>Microsoft · Sep 18, 2026</small></div></div>
+      <div class="card cert"><span class="ck">✓</span><div><b>Introduction to Prompt Engineering with GitHub Copilot</b><small>Microsoft · Sep 17, 2026</small></div></div>
+      <div class="card cert"><span class="ck">✓</span><div><b>Introduction to MS Excel</b><small>Microsoft · Sep 18, 2026</small></div></div>
+      <div class="card cert"><span class="ck">✓</span><div><b>Understanding Placement Groups</b><small>AWS · Sep 18, 2026</small></div></div>
+      <div class="card cert"><span class="ck">✓</span><div><b>Canva Essentials</b><small>Canva · Sep 10, 2026</small></div></div>
+      <div class="card cert"><span class="ck">✓</span><div><b>Teacher Essentials</b><small>Canva · Jul 31, 2024</small></div></div>
+    </div>
+  </section>
+
+  <section id="goals">
+    <h2>Where I’m heading</h2>
+    <div class="goals">
+      <div class="goal">Full-stack development</div><div class="goal">Software engineering</div><div class="goal">Automation</div><div class="goal">AI</div><div class="goal">IoT</div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Get in touch</h2>
+    <div class="contact">
+    <div class="card">
+      <h3>Send a message</h3>
+      <form id="form">
+        <input id="n" placeholder="Your name" required aria-label="Your name">
+        <input id="e" type="email" placeholder="Your email" required aria-label="Your email">
+        <textarea id="m" placeholder="Your message" required aria-label="Your message"></textarea>
+        <div><button class="btn" type="submit">Send message</button></div>
+        <div id="msg" role="status"></div>
+      </form>
+    </div>
+    <div class="card info">
+      <h3 style="margin-bottom:6px">Contact information</h3>
+      <div class="irow">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.800 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span>
+        <div><small>Location</small><b>House 18, Road 10, Sector 10, Uttara, Dhaka-1230</b></div>
+      </div>
+      <div class="irow">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.500 1.500a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg></span>
+        <div><small>Phone</small><b id="phone"></b></div>
+        <button class="btn copy" type="button" data-target="phone" aria-label="Copy phone number">Copy</button>
+      </div>
+      <div class="irow">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m3 7 9 6 9-6"/></svg></span>
+        <div><small>Email</small><b id="email"></b></div>
+        <button class="btn copy" type="button" data-target="email" aria-label="Copy email address">Copy</button>
+      </div>
+      <h3 style="margin:10px 0 0">Find me online</h3>
+      <div class="socials" data-socials></div>
+    </div>
+    </div>
+  </section>
+</main>
+
+<div class="modal" id="modal" aria-hidden="true">
+  <div class="mback" data-close></div>
+  <div class="card mbox" role="dialog" aria-modal="true" aria-labelledby="mtitle">
+    <button class="btn mclose" data-close aria-label="Close">✕</button>
+    <div class="mimg" id="mimg"></div>
+    <div class="minfo">
+      <div class="kind" id="mkind"></div>
+      <h3 id="mtitle"></h3>
+      <p id="mdesc"></p>
+      <ul id="mfeat"></ul>
+      <div class="tags" id="mtags" style="margin-top:0"></div>
+      <div class="mbtns"><a class="btn demo" id="mdemo" href="#">View demo ↗</a></div>
+    </div>
+  </div>
+</div>
+
+<footer>© <span id="yr"></span> MD Pranto Ali</footer>
+<button class="btn" id="up" aria-label="Back to top">↑</button>
+
+<script>
+// ===== EDIT YOUR DETAILS HERE =====
+const CONFIG = {
+  photo: "https://plain-apac-prod-public.komododecks.com/202611/02/J53acXZYBTZMw8ts4DLN/image.png", // direct image URL (must end in .png/.jpg etc). Replace it any time
+  email: "prantoislamnt51@gmail.com",
+  phone: "+8801979728818",
+  whatsapp: "8801979728818", // country code + number, digits only (no + or spaces)
+  social: {
+    linkedin: "https://www.linkedin.com",
+    facebook: "https://www.facebook.com",
+    instagram: "https://www.instagram.com",
+    github: "https://github.com"
+  }
+};
+const EMAIL = CONFIG.email;
+
+const fillIcon = p => '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="'+p+'"/></svg>';
+const lineIcon = s => '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+s+'</svg>';
+const ICONS = {
+  linkedin: ["LinkedIn", fillIcon("M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 1 1 0-4.125 2.062 2.062 0 0 1 0 4.125zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z")],
+  facebook: ["Facebook", fillIcon("M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z")],
+  instagram: ["Instagram", lineIcon('<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="currentColor"/>')],
+  github: ["GitHub", fillIcon("M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12")],
+  whatsapp: ["WhatsApp", lineIcon('<path d="M3 21l1.65-4.9A9 9 0 1 1 8 19.400L3 21z"/><path d="M9 9c0 3.500 2.500 6 6 6l1-1.500-2-1-1 .8c-1-.4-1.800-1.200-2.200-2.200l.8-1-1-2L9 9z"/>')]
+};
+document.querySelectorAll("[data-socials]").forEach(box=>{
+  box.innerHTML = Object.keys(ICONS).map(k=>{
+    const href = k==="whatsapp" ? "https://wa.me/"+CONFIG.whatsapp : CONFIG.social[k];
+    return '<a href="'+href+'" target="_blank" rel="noopener noreferrer" aria-label="'+ICONS[k][0]+'" title="'+ICONS[k][0]+'">'+ICONS[k][1]+'</a>';
+  }).join("");
+});
+document.getElementById("phone").textContent = CONFIG.phone;
+document.getElementById("email").textContent = CONFIG.email;
+
+// profile photo (falls back to the PA initials if the image cannot load)
+(function(){
+  const box = document.getElementById("photo");
+  if(!CONFIG.photo) return;
+  const im = new Image();
+  im.referrerPolicy = "no-referrer";
+  im.alt = "MD Pranto Ali";
+  im.onload = ()=>{ box.textContent = ""; box.appendChild(im); };
+  im.src = CONFIG.photo;
+})();
+
+// copy buttons
+document.querySelectorAll(".copy").forEach(b=>b.addEventListener("click", async ()=>{
+  const text = document.getElementById(b.dataset.target).textContent.trim();
+  try { await navigator.clipboard.writeText(text); }
+  catch(e){ const a=document.createElement("textarea"); a.value=text; document.body.appendChild(a); a.select(); document.execCommand("copy"); a.remove(); }
+  b.classList.add("done"); b.textContent = "Copied";
+  setTimeout(()=>{ b.classList.remove("done"); b.textContent = "Copy"; }, 1600);
+}));
+
+// live clock
+function tick(){
+  const d = new Date(), h = d.getHours();
+  document.getElementById("time").textContent = String(h%12||12).padStart(2,"0")+":"+String(d.getMinutes()).padStart(2,"0");
+  document.getElementById("ampm").textContent = h<12?"AM":"PM";
+}
+tick(); setInterval(tick,1000);
+document.getElementById("yr").textContent = new Date().getFullYear();
+
+// theme toggle
+const root = document.documentElement, tb = document.getElementById("theme");
+function dark(){ return root.dataset.theme ? root.dataset.theme==="dark" : matchMedia("(prefers-color-scheme: dark)").matches; }
+function label(){ tb.textContent = dark() ? "Light mode" : "Dark mode"; }
+tb.onclick = ()=>{ root.dataset.theme = dark() ? "light" : "dark"; label(); };
+label();
+
+// animate bars when visible
+const io = new IntersectionObserver(es=>es.forEach(e=>{
+  if(!e.isIntersecting) return;
+  e.target.querySelectorAll("[data-w]").forEach(i=>i.style.width=i.dataset.w+"%");
+  e.target.querySelectorAll("[data-h]").forEach(i=>i.style.height=i.dataset.h+"%");
+  io.unobserve(e.target);
+}),{threshold:.3});
+document.querySelectorAll("#about,#skills").forEach(s=>io.observe(s));
+
+// active nav + back to top
+const up = document.getElementById("up");
+const navLinks = [...document.querySelectorAll("#links a")];
+const spy = new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting) navLinks.forEach(a=>a.classList.toggle("on",a.getAttribute("href")==="#"+e.target.id));
+}),{rootMargin:"-45% 0px -50% 0px"});
+document.querySelectorAll("section[id]").forEach(s=>spy.observe(s));
+
+// hamburger menu
+const navEl = document.getElementById("nav"), burger = document.getElementById("burger");
+navLinks.forEach((a,i)=>a.style.setProperty("--i",i));
+function setMenu(o){ navEl.classList.toggle("open",o); burger.setAttribute("aria-expanded",o); burger.setAttribute("aria-label",o?"Close menu":"Open menu"); }
+burger.addEventListener("click",e=>{ e.stopPropagation(); setMenu(!navEl.classList.contains("open")); });
+navLinks.forEach(a=>a.addEventListener("click",()=>setMenu(false)));
+document.addEventListener("click",e=>{ if(!navEl.contains(e.target)) setMenu(false); });
+addEventListener("keydown",e=>{ if(e.key==="Escape") setMenu(false); });
+addEventListener("resize",()=>{ if(innerWidth>860) setMenu(false); });
+
+// project filters
+const fbtns = document.querySelectorAll(".filters .btn");
+fbtns.forEach(b=>b.addEventListener("click",()=>{
+  fbtns.forEach(x=>x.classList.toggle("on",x===b));
+  document.querySelectorAll(".proj").forEach(p=>{ p.hidden = !(b.dataset.f==="all" || p.dataset.c.split(" ").includes(b.dataset.f)); });
+}));
+
+// ===== PROJECT DETAILS (same order as the cards above) =====
+// demo: your live demo link  |  image: project screenshot URL
+const PROJECTS = [
+  { demo:"", image:"", desc:"An all-in-one platform that helps a school run its daily work digitally, from admission to results, with simple dashboards for admins, teachers and parents.",
+    features:["Student and teacher records","Class, subject and routine management","Fee collection and due tracking","Exam results and report cards","Notices and parent communication"] },
+  { demo:"", image:"", desc:"A modern public website that presents the school professionally and keeps parents and students informed on any device.",
+    features:["Fully responsive on mobile, tablet and desktop","Admission information, notices and events","Photo gallery and staff pages","Contact form and location map","Fast loading and SEO friendly"] },
+  { demo:"", image:"", desc:"A web system that records daily attendance for students and employees and turns it into clear, ready-to-use reports.",
+    features:["Daily attendance for students and staff","Absent and late tracking","Monthly and custom reports","Printable and exportable sheets","Works together with the attendance device"] },
+  { demo:"", image:"", desc:"A smart IoT device that marks attendance in a second with a fingerprint or an RFID card and sends the record straight to the system.",
+    features:["Fingerprint or RFID card check-in","Real-time sync with the database","Instant on-device confirmation","Low cost and easy to install"] },
+  { demo:"", image:"", desc:"An access-control device for school gates, garments factories and offices. Students and employees pass with a fingerprint or RFID card before entering.",
+    features:["Fingerprint or RFID card entry","Students, employees and visitors","Entry and exit time logging","Suitable for schools, garments and offices","Blocks unauthorized access"] },
+  { demo:"", image:"", desc:"Business software with companion mobile apps for running a shop or a hostel: billing, stock, rooms and reports in one place.",
+    features:["Shop management and POS billing","Inventory and stock control","Hostel rooms, residents and rent","Sales and profit reports","Companion mobile apps"] }
+];
+
+const cards = [...document.querySelectorAll(".proj")];
+const modal = document.getElementById("modal");
+let lastFocus = null;
+
+function loadImg(src, alt, cb){
+  if(!src) return;
+  const im = new Image(); im.referrerPolicy = "no-referrer"; im.alt = alt;
+  im.onload = ()=>cb(im); im.src = src;
+}
+function wireDemo(a, x){
+  if(x.demo){ a.href = x.demo; a.target = "_blank"; a.rel = "noopener noreferrer"; }
+  else {
+    a.href = "#";
+    a.addEventListener("click", e=>{ e.preventDefault(); const t = a.textContent; a.textContent = "Demo link coming soon"; setTimeout(()=>{ a.textContent = t; },1600); });
+  }
+}
+cards.forEach((c,i)=>{
+  const x = PROJECTS[i], title = c.querySelector("h3").textContent;
+  c.tabIndex = 0; c.setAttribute("role","button"); c.setAttribute("aria-label","Open project details: "+title);
+  const a = document.createElement("a"); a.className = "btn demo"; a.textContent = "View demo ↗"; wireDemo(a,x); c.appendChild(a);
+  loadImg(x.image, title, im=>{ const t = document.createElement("div"); t.className = "thumb"; t.appendChild(im); c.prepend(t); });
+  c.addEventListener("click", e=>{ if(!e.target.closest("a")) openModal(i); });
+  c.addEventListener("keydown", e=>{ if((e.key==="Enter"||e.key===" ") && e.target===c){ e.preventDefault(); openModal(i); } });
+});
+
+function openModal(i){
+  const c = cards[i], x = PROJECTS[i], t = c.querySelector("h3").textContent;
+  lastFocus = document.activeElement;
+  document.getElementById("mkind").textContent = c.querySelector(".kind").textContent;
+  document.getElementById("mtitle").textContent = t;
+  document.getElementById("mdesc").textContent = x.desc;
+  document.getElementById("mfeat").innerHTML = x.features.map(f=>"<li>"+f+"</li>").join("");
+  document.getElementById("mtags").innerHTML = c.querySelector(".tags").innerHTML;
+  const mimg = document.getElementById("mimg");
+  mimg.innerHTML = '<div class="ph"><b>'+c.querySelector(".no").textContent+'</b><span>Project image</span></div>';
+  loadImg(x.image, t, im=>{ mimg.innerHTML = ""; mimg.appendChild(im); });
+  const old = document.getElementById("mdemo"), a = old.cloneNode(false);
+  a.textContent = "View demo ↗"; old.replaceWith(a); wireDemo(a,x);
+  modal.querySelector(".mbox").scrollTop = 0;
+  modal.classList.add("show"); modal.setAttribute("aria-hidden","false");
+  document.body.style.overflow = "hidden";
+  modal.querySelector(".mclose").focus({preventScroll:true});
+}
+function closeModal(){
+  if(!modal.classList.contains("show")) return;
+  modal.classList.remove("show"); modal.setAttribute("aria-hidden","true");
+  document.body.style.overflow = "";
+  if(lastFocus) lastFocus.focus({preventScroll:true});
+}
+modal.querySelectorAll("[data-close]").forEach(el=>el.addEventListener("click",closeModal));
+addEventListener("keydown", e=>{ if(e.key==="Escape") closeModal(); });
+addEventListener("scroll",()=>{ up.style.display = scrollY>500?"block":"none"; },{passive:true});
+up.onclick = ()=>scrollTo({top:0,behavior:"smooth"});
+
+// contact form opens the visitor's email app
+document.getElementById("form").addEventListener("submit",ev=>{
+  ev.preventDefault();
+  const n=document.getElementById("n").value, e=document.getElementById("e").value, m=document.getElementById("m").value;
+  const body = encodeURIComponent(m+"\n\n— "+n+" ("+e+")");
+  location.href = "mailto:"+EMAIL+"?subject="+encodeURIComponent("Portfolio message from "+n)+"&body="+body;
+  document.getElementById("msg").textContent = "Opening your email app…";
+});
+</script>
+</body>
+</html>
