@@ -1,0 +1,1290 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="day" data-palette="espresso" data-bg="matt" data-shadow="default" data-lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Portfolio | Md. Pranto Ali</title>
+<meta name="description" content="Portfolio of Md. Pranto Ali: CSE student and web developer. Education, skills, certificates and contact.">
+<meta property="og:title" content="Portfolio | Md. Pranto Ali">
+<meta property="og:description" content="Portfolio of Md. Pranto Ali, CSE student and web developer.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://plain-apac-prod-public.komododecks.com/202611/02/uiplXWZt9IfIsd4agYeL/image.png">
+<meta name="theme-color" content="#EFE2CF">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+<script>
+/* সংরক্ষিত সেটিং আগেই প্রয়োগ (ফ্ল্যাশ এড়াতে)। কিছু সেভ না থাকলে ডিফল্ট: ম্যাট + ডে + ডিফল্ট শ্যাডো */
+(function(){try{var s=JSON.parse(localStorage.getItem("portfolio-settings")||"{}"),r=document.documentElement,
+V={bg:["matt","leather"],theme:["night","day"],palette:["espresso","chestnut","mocha"],shadow:["default","inner","outer"],lang:["en","bn"]};
+for(var k in V){if(V[k].indexOf(s[k])>-1)r.setAttribute("data-"+k,s[k])}}catch(e){}})();
+</script>
+<style>
+/* =====================================================================
+   ১. ডিজাইন টোকেন (কালার প্যালেট)
+   কালার বদলাতে শুধু এই অংশ এডিট করুন।
+   প্যালেট লেদার রেফারেন্স ছবিগুলো থেকে নেওয়া (এসপ্রেসো, চেস্টনাট, ট্যান, ক্রিম)।
+   ===================================================================== */
+:root{
+  --font-body:"Hind Siliguri","Noto Sans Bengali",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --font-head:"Playfair Display","Hind Siliguri",Georgia,serif;
+  --radius:1rem;
+  --maxw:90rem;
+  --gutter:clamp(1rem,3.2vw,3rem);
+  --ease:cubic-bezier(.22,.8,.3,1);
+}
+/* নাইট + এসপ্রেসো (ডিফল্ট) */
+:root,
+:root[data-theme="night"][data-palette="espresso"]{
+  --bg:#1E140F; --bg2:#2A1C14; --card:#33231A; --card2:#3D2A1F;
+  --text:#F3E6D3; --muted:#CDB89C; --accent:#C68B59; --accent2:#E8D5B0;
+  --on-accent:#1E140F; --line:rgba(232,213,176,.18); --shadow:rgba(0,0,0,.45);
+}
+:root[data-theme="night"][data-palette="chestnut"]{
+  --bg:#25120E; --bg2:#33190F; --card:#42221A; --card2:#522B20;
+  --text:#F6E7D8; --muted:#D8B9A2; --accent:#D9814E; --accent2:#F0D9B5;
+  --on-accent:#25120E; --line:rgba(240,217,181,.2); --shadow:rgba(0,0,0,.5);
+}
+:root[data-theme="night"][data-palette="mocha"]{
+  --bg:#1B1612; --bg2:#262019; --card:#2F271E; --card2:#3A3025;
+  --text:#EFE3D0; --muted:#C4B49B; --accent:#B8956A; --accent2:#E6D6B8;
+  --on-accent:#1B1612; --line:rgba(230,214,184,.18); --shadow:rgba(0,0,0,.45);
+}
+/* ডে মোড */
+:root[data-theme="day"][data-palette="espresso"]{
+  --bg:#EFE2CF; --bg2:#E6D5BC; --card:#F7EDDD; --card2:#FBF4E8;
+  --text:#2A1B14; --muted:#5E4637; --accent:#8A4B2A; --accent2:#5A3A2B;
+  --on-accent:#FBF4E8; --line:rgba(42,27,20,.18); --shadow:rgba(60,35,20,.25);
+}
+:root[data-theme="day"][data-palette="chestnut"]{
+  --bg:#F2E3D3; --bg2:#E9D2BC; --card:#FAEEE1; --card2:#FDF6EC;
+  --text:#2E1710; --muted:#654435; --accent:#8F3F20; --accent2:#5E2A17;
+  --on-accent:#FDF6EC; --line:rgba(46,23,16,.18); --shadow:rgba(70,30,15,.25);
+}
+:root[data-theme="day"][data-palette="mocha"]{
+  --bg:#EDE3D2; --bg2:#E2D5BE; --card:#F6EFE1; --card2:#FAF5EA;
+  --text:#2A2118; --muted:#5B4C3A; --accent:#7A5A34; --accent2:#4C3820;
+  --on-accent:#FAF5EA; --line:rgba(42,33,24,.18); --shadow:rgba(60,45,25,.25);
+}
+
+/* =====================================================================
+   ২. বেস
+   ===================================================================== */
+*,*::before,*::after{box-sizing:border-box}
+html{
+  /* ফ্লুইড রুট সাইজ: ছোট স্ক্রিনে 16px, 4K-তে 32px পর্যন্ত বাড়ে */
+  font-size:clamp(16px, 0.5vw + 12px, 32px);
+  scroll-behavior:smooth; scroll-padding-top:5rem;
+  -webkit-text-size-adjust:100%;
+}
+body{
+  margin:0; font-family:var(--font-body); color:var(--text);
+  background:var(--bg); line-height:1.7; overflow-x:hidden;
+  min-height:100vh; position:relative; isolation:isolate;
+  transition:background-color .4s var(--ease), color .4s var(--ease);
+}
+img,svg,video{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3,h4{font-family:var(--font-head);line-height:1.2;margin:0 0 .5em;letter-spacing:.01em}
+p{margin:0 0 1em}
+ul{margin:0;padding:0;list-style:none}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:.35rem}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.container{width:min(100% - 2*var(--gutter), var(--maxw));margin-inline:auto}
+section{padding-block:clamp(3.5rem,8vw,7rem);position:relative}
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:clamp(1.5rem,3vw,2.5rem)}
+.sec-title{font-size:clamp(1.9rem,2.2vw + 1.2rem,3.2rem);margin:0;position:relative;padding-bottom:.4em}
+.sec-title::after{content:"";position:absolute;left:0;bottom:0;width:3.2rem;height:.2rem;background:var(--accent);border-radius:9px}
+.sec-sub{color:var(--muted);margin:0 0 .4rem;max-width:42rem}
+
+/* ম্যাট টেক্সচার (ডিফল্ট ব্যাকগ্রাউন্ড): সূক্ষ্ম গ্রেইন, JS থেকে --tex-matt সেট হয় */
+body::before{
+  content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background-image:var(--tex-matt, none);
+  background-size:220px 220px;
+  opacity:.55; mix-blend-mode:overlay;
+}
+:root[data-theme="day"] body::before{opacity:.35;mix-blend-mode:multiply}
+
+/* লেদার টেক্সচার: দানাদার গ্রেইন + আলোর হাইলাইট + ভিগনেট */
+:root[data-bg="leather"] body{
+  background-color:var(--bg);
+  background-image:
+    radial-gradient(120% 80% at 50% -10%, rgba(255,214,170,.18), transparent 60%),
+    radial-gradient(140% 120% at 50% 120%, rgba(0,0,0,.45), transparent 60%),
+    var(--tex-leather, none);
+  background-size:auto, auto, 340px 340px;
+  background-attachment:fixed;
+  background-blend-mode:normal, multiply, soft-light;
+}
+:root[data-bg="leather"] body::before{
+  background-image:var(--tex-grain, none);background-size:140px 140px;opacity:.7;mix-blend-mode:overlay;
+}
+:root[data-bg="leather"][data-theme="day"] body::before{opacity:.45;mix-blend-mode:multiply}
+:root[data-bg="leather"] body::after{
+  content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+  box-shadow:inset 0 0 12rem rgba(0,0,0,.55);
+}
+:root[data-bg="leather"][data-theme="day"] body::after{box-shadow:inset 0 0 10rem rgba(90,50,20,.35)}
+
+/* =====================================================================
+   ৩. কার্ড ও বাটন
+   ===================================================================== */
+.card{
+  position:relative;background:linear-gradient(160deg,var(--card2),var(--card));
+  border:1px solid var(--line);border-radius:var(--radius);
+  box-shadow:0 .8rem 2rem -1rem var(--shadow), inset 0 1px 0 rgba(255,255,255,.06);
+  transition:transform .35s var(--ease), box-shadow .35s var(--ease), border-color .35s;
+}
+/* লেদার মোডে কার্ডে সেলাইয়ের (stitched) বর্ডার */
+:root[data-bg="leather"] .card::after{
+  content:"";position:absolute;inset:.45rem;border:2px dashed var(--accent2);opacity:.32;
+  border-radius:calc(var(--radius) - .3rem);pointer-events:none;
+}
+:root[data-bg="leather"] .card{
+  box-shadow:0 .9rem 2rem -.8rem var(--shadow), inset 0 .12rem .3rem rgba(255,255,255,.1), inset 0 -.3rem .8rem rgba(0,0,0,.28);
+}
+.btn{
+  --h:2.9rem; display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
+  min-height:max(44px,var(--h));padding:0 1.4rem;border-radius:999px;border:1px solid transparent;
+  font:600 1rem/1 var(--font-body);cursor:pointer;text-decoration:none;
+  transition:transform .25s var(--ease), box-shadow .25s, background .25s, color .25s;
+}
+.btn-primary{background:var(--accent);color:var(--on-accent);box-shadow:0 .5rem 1.2rem -.5rem var(--shadow)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 .8rem 1.5rem -.5rem var(--shadow)}
+.btn-ghost{background:transparent;color:var(--text);border-color:var(--line)}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent2);transform:translateY(-2px)}
+.btn[disabled]{opacity:.55;cursor:not-allowed;transform:none}
+.tag{display:inline-block;font-size:.78rem;padding:.2rem .7rem;border-radius:999px;border:1px solid var(--line);color:var(--accent2);background:rgba(0,0,0,.12)}
+:root[data-theme="day"] .tag{background:rgba(255,255,255,.4);color:var(--accent2)}
+
+/* =====================================================================
+   ৪. নেভিগেশন
+   ===================================================================== */
+.nav{position:fixed;inset:0 0 auto 0;z-index:50;backdrop-filter:blur(14px) saturate(1.2);
+  background:color-mix(in srgb,var(--bg) 78%,transparent);border-bottom:1px solid var(--line)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;gap:1rem;min-height:4rem}
+.brand{font-family:var(--font-head);font-weight:700;font-size:1.3rem;text-decoration:none;color:var(--text);letter-spacing:.04em}
+.brand span{color:var(--accent)}
+.nav-links{display:flex;gap:.2rem;align-items:center}
+.nav-links a{padding:.5rem .8rem;border-radius:999px;text-decoration:none;color:var(--muted);font-weight:500;transition:color .2s,background .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--text);background:rgba(255,255,255,.07)}
+:root[data-theme="day"] .nav-links a:hover,:root[data-theme="day"] .nav-links a.active{background:rgba(0,0,0,.07)}
+.nav-actions{display:flex;gap:.4rem;align-items:center}
+.icon-btn{width:max(44px,2.7rem);height:max(44px,2.7rem);display:grid;place-items:center;border-radius:50%;
+  border:1px solid var(--line);background:transparent;color:var(--text);cursor:pointer;transition:transform .35s var(--ease),border-color .2s}
+.icon-btn:hover{border-color:var(--accent);transform:rotate(30deg)}
+.icon-btn svg{width:1.3rem;height:1.3rem}
+.hamburger{display:none}
+@media (max-width:900px){
+  .hamburger{display:grid}
+  .nav-links{position:fixed;top:4rem;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;padding:.6rem var(--gutter) 1.2rem;
+    background:var(--bg);border-bottom:1px solid var(--line);transform:translateY(-120%);opacity:0;visibility:hidden;
+    transition:transform .35s var(--ease),opacity .25s,visibility .35s}
+  .nav-links.open{transform:none;opacity:1;visibility:visible}
+  .nav-links a{padding:.9rem 1rem;min-height:44px;border-radius:.6rem}
+}
+
+/* =====================================================================
+   ৫. Hero
+   ===================================================================== */
+.hero{padding-top:clamp(7rem,12vw,10rem);min-height:100vh;display:flex;align-items:center}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(2rem,5vw,5rem);align-items:center}
+.eyebrow{display:inline-block;color:var(--accent);font-weight:600;letter-spacing:.2em;text-transform:uppercase;font-size:.85rem;margin-bottom:1rem}
+.hero h1{font-size:clamp(2.4rem,4vw + 1rem,5.4rem);margin-bottom:.3em}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero p.lead{font-size:clamp(1.05rem,.6vw + .9rem,1.5rem);color:var(--muted);max-width:40rem}
+.hero-cta{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:1.6rem}
+.hero-stats{display:flex;gap:clamp(1rem,3vw,2.5rem);margin-top:2.2rem;flex-wrap:wrap}
+.hero-stats b{display:block;font:700 clamp(1.6rem,1.4vw + 1rem,2.6rem)/1 var(--font-head);color:var(--accent2)}
+.hero-stats span{color:var(--muted);font-size:.9rem}
+.portrait{position:relative;justify-self:center;width:min(100%,30rem);aspect-ratio:1/1.1}
+.portrait-frame{position:absolute;inset:0;border-radius:2rem;overflow:hidden;border:1px solid var(--line);
+  box-shadow:0 2rem 4rem -1.5rem var(--shadow), inset 0 0 0 .5rem rgba(0,0,0,.12);background:var(--card)}
+:root[data-bg="leather"] .portrait-frame::after{content:"";position:absolute;inset:.6rem;border:2px dashed var(--accent2);opacity:.45;border-radius:1.4rem;pointer-events:none}
+.portrait img{width:100%;height:100%;object-fit:cover}
+.portrait::before{content:"";position:absolute;inset:-.8rem -.8rem .8rem .8rem;border:2px solid var(--accent);border-radius:2rem;opacity:.5;z-index:-1}
+.avatar-fallback{position:absolute;inset:0;display:none;place-items:center;font:700 6rem var(--font-head);color:var(--accent);background:linear-gradient(150deg,var(--card2),var(--bg2))}
+.portrait.noimg .avatar-fallback{display:grid}
+@media (max-width:900px){.hero-grid{grid-template-columns:1fr}.portrait{order:-1;width:min(70%,20rem)}.hero{min-height:auto}}
+
+/* About / Skills / Timeline */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,4vw,4rem)}
+.about-grid .card{padding:clamp(1.3rem,2.4vw,2.2rem)}
+.fact-list li{display:flex;justify-content:space-between;gap:1rem;padding:.7rem 0;border-bottom:1px solid var(--line)}
+.fact-list li:last-child{border:0}.fact-list span{color:var(--muted)}
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,17rem),1fr));gap:1.2rem}
+.skill-card{padding:1.4rem}
+.skill-card h3{font-size:1.2rem;display:flex;align-items:center;gap:.5rem}
+.bar{height:.45rem;border-radius:9px;background:rgba(255,255,255,.1);overflow:hidden;margin:.2rem 0 .9rem}
+:root[data-theme="day"] .bar{background:rgba(0,0,0,.1)}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:9px;transition:width 1.1s var(--ease)}
+.skill-row{display:flex;justify-content:space-between;font-size:.92rem}
+.timeline{position:relative;display:grid;gap:1.2rem;padding-left:1.8rem}
+.timeline::before{content:"";position:absolute;left:.45rem;top:.4rem;bottom:.4rem;width:2px;background:var(--line)}
+.t-item{padding:1.3rem 1.5rem}
+.t-item::before{content:"";position:absolute;left:-1.78rem;top:1.7rem;width:.9rem;height:.9rem;border-radius:50%;background:var(--accent);box-shadow:0 0 0 .3rem var(--bg)}
+.t-item h3{font-size:1.2rem;margin-bottom:.1rem}
+.t-meta{color:var(--accent2);font-size:.9rem;margin-bottom:.5rem}
+.t-item li{padding-left:1.1rem;position:relative;color:var(--muted)}
+.t-item li::before{content:"–";position:absolute;left:0;color:var(--accent)}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,4vw,4rem)}
+@media (max-width:900px){.about-grid,.two-col{grid-template-columns:1fr}}
+
+/* =====================================================================
+   ৬. Projects
+   ===================================================================== */
+.proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1rem,2vw,2rem);transition:opacity .28s,transform .28s var(--ease)}
+.proj-grid.leaving{opacity:0;transform:translateY(10px)}
+@media (max-width:1023px){.proj-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:599px){.proj-grid{grid-template-columns:1fr}}
+.proj-card{display:flex;flex-direction:column;overflow:hidden;cursor:pointer;text-align:left;padding:0;color:inherit;font:inherit;width:100%}
+.proj-card:hover,.cert-card:hover{transform:translateY(-6px);border-color:var(--accent)}
+.proj-thumb{aspect-ratio:16/10;overflow:hidden;background:var(--bg2);position:relative}
+.proj-thumb img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
+.proj-card:hover .proj-thumb img{transform:scale(1.06)}
+.proj-body{padding:1.2rem 1.3rem 1.4rem;display:flex;flex-direction:column;gap:.5rem;flex:1}
+.proj-body h3{font-size:1.25rem;margin:0}
+.proj-body p{color:var(--muted);margin:0;font-size:.96rem}
+.chips{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:auto;padding-top:.5rem}
+.pager{display:flex;justify-content:center;gap:.5rem;margin-top:2rem;flex-wrap:wrap}
+.pager button{min-width:max(44px,2.8rem);height:max(44px,2.8rem);border-radius:50%;border:1px solid var(--line);background:transparent;color:var(--text);
+  font:600 1rem var(--font-body);cursor:pointer;transition:all .25s var(--ease)}
+.pager button:hover{border-color:var(--accent)}
+.pager button[aria-current="page"]{background:var(--accent);color:var(--on-accent);border-color:var(--accent);transform:scale(1.08)}
+
+/* Certificates */
+.cert-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,18rem),1fr));gap:1.4rem}
+.cert-card{overflow:hidden;cursor:pointer;padding:0;text-align:left;color:inherit;font:inherit;width:100%}
+.cert-thumb{aspect-ratio:4/3;background:var(--bg2);overflow:hidden}
+.cert-thumb img{width:100%;height:100%;object-fit:cover}
+.cert-body{padding:1rem 1.2rem 1.2rem}
+.cert-body h3{font-size:1.1rem;margin-bottom:.2rem}
+.cert-body p{color:var(--muted);margin:0;font-size:.92rem}
+.ph{display:grid;place-items:center;width:100%;height:100%;min-height:8rem;color:var(--muted);font-size:.9rem;text-align:center;padding:1rem;
+  background:repeating-linear-gradient(45deg,rgba(255,255,255,.04) 0 .6rem,transparent .6rem 1.2rem)}
+
+/* =====================================================================
+   ৭. Contact (নতুন মেসেজ ফর্ম)
+   ===================================================================== */
+.contact-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(1.5rem,4vw,4rem);align-items:start}
+.contact-info{padding:clamp(1.4rem,2.4vw,2.2rem)}
+.contact-info li{display:flex;gap:.9rem;align-items:center;padding:.8rem 0;border-bottom:1px solid var(--line)}
+.contact-info li:last-child{border:0}
+.contact-info svg{width:1.4rem;height:1.4rem;color:var(--accent);flex:none}
+.contact-info a{text-decoration:none;word-break:break-word}.contact-info a:hover{color:var(--accent2)}
+.contact-form{padding:clamp(1.4rem,2.6vw,2.4rem);display:grid;gap:1.1rem}
+.field{display:grid;gap:.4rem}
+.field label{font-weight:600}
+.field label small{color:var(--muted);font-weight:400}
+.input{width:100%;font:inherit;color:var(--text);background:rgba(0,0,0,.18);border:1px solid var(--line);border-radius:.8rem;
+  padding:.85rem 1rem;min-height:44px;transition:border-color .2s, box-shadow .2s, background .2s}
+:root[data-theme="day"] .input{background:rgba(255,255,255,.55)}
+.input::placeholder{color:var(--muted);opacity:.75}
+.input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 35%,transparent)}
+textarea.input{min-height:9rem;resize:vertical}
+.input[aria-invalid="true"]{border-color:#E8896B}
+.err{color:#F0A38A;font-size:.88rem;min-height:1.1em}
+:root[data-theme="day"] .err{color:#9C2F12}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.form-foot{display:flex;gap:1rem;align-items:center;flex-wrap:wrap}
+.status{flex:1;min-width:12rem;font-size:.95rem;padding:.2rem 0}
+.status.ok{color:#9ED8A5}.status.bad{color:#F0A38A}.status.info{color:var(--accent2)}
+:root[data-theme="day"] .status.ok{color:#1F6B2D}:root[data-theme="day"] .status.bad{color:#9C2F12}
+.spinner{width:1rem;height:1rem;border:2px solid currentColor;border-right-color:transparent;border-radius:50%;animation:spin .7s linear infinite;display:none}
+.btn.loading .spinner{display:inline-block}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media (max-width:900px){.contact-grid{grid-template-columns:1fr}}
+
+footer{padding:2rem 0 3rem;border-top:1px solid var(--line);color:var(--muted)}
+.foot-in{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+
+/* =====================================================================
+   ৮. মডাল (প্রজেক্ট + সার্টিফিকেট) ও Settings
+   ===================================================================== */
+.overlay{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:clamp(.6rem,2vw,2rem);
+  background:rgba(10,5,2,.72);backdrop-filter:blur(6px)}
+.overlay.show{display:flex;animation:fade .25s}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.modal{position:relative;width:min(100%,72rem);max-height:min(92vh,60rem);overflow:hidden;display:grid;grid-template-columns:1.05fr .95fr;
+  background:linear-gradient(160deg,var(--card2),var(--card));border:1px solid var(--line);border-radius:1.3rem;box-shadow:0 3rem 6rem -2rem #000;
+  animation:pop .35s var(--ease)}
+@keyframes pop{from{opacity:0;transform:translateY(16px) scale(.97)}to{opacity:1;transform:none}}
+.m-media{background:var(--bg2);padding:1rem;display:flex;flex-direction:column;gap:.8rem;min-height:0;overflow:auto}
+.m-main{flex:1;min-height:14rem;border-radius:.9rem;overflow:hidden;background:rgba(0,0,0,.2);display:grid;place-items:center}
+.m-main img,.m-main video{width:100%;height:100%;max-height:34rem;object-fit:contain}
+.m-thumbs{display:flex;gap:.5rem;flex-wrap:wrap}
+.m-thumbs button{width:4.2rem;height:3.2rem;padding:0;border-radius:.5rem;overflow:hidden;border:2px solid transparent;cursor:pointer;background:var(--bg)}
+.m-thumbs button[aria-current="true"]{border-color:var(--accent)}
+.m-thumbs img{width:100%;height:100%;object-fit:cover}
+.m-info{padding:clamp(1.3rem,2.2vw,2.2rem);overflow-y:auto;min-height:0}
+.m-info h3{font-size:clamp(1.5rem,1vw + 1.1rem,2.2rem);margin-bottom:.3rem}
+.m-info h4{font-size:1.05rem;margin:1.2rem 0 .4rem;color:var(--accent2)}
+.m-info ul.bul li{padding-left:1.2rem;position:relative;margin-bottom:.3rem}
+.m-info ul.bul li::before{content:"";position:absolute;left:0;top:.7em;width:.45rem;height:.45rem;border-radius:50%;background:var(--accent)}
+.m-close{position:absolute;top:.7rem;right:.7rem;z-index:3;width:max(44px,2.6rem);height:max(44px,2.6rem);border-radius:50%;border:1px solid var(--line);
+  background:var(--bg);color:var(--text);font-size:1.4rem;cursor:pointer;line-height:1}
+.m-close:hover{border-color:var(--accent);color:var(--accent)}
+.zoomwrap{cursor:zoom-in;overflow:auto;max-height:34rem;width:100%;height:100%;display:grid;place-items:center}
+.zoomwrap.zoomed{cursor:zoom-out;place-items:start}
+.zoomwrap.zoomed img{width:190%;max-width:none;height:auto;max-height:none}
+@media (max-width:820px){
+  .modal{grid-template-columns:1fr;grid-template-rows:auto 1fr;overflow-y:auto;max-height:94vh}
+  .m-media{overflow:visible}
+  .m-info{overflow:visible}
+  .m-main{min-height:11rem}
+  .m-main img,.m-main video{max-height:18rem}
+}
+body.lock{overflow:hidden}
+
+.settings{position:fixed;top:4.4rem;right:var(--gutter);z-index:90;width:min(22rem,calc(100vw - 2*var(--gutter)));padding:1.3rem;
+  background:var(--card);border:1px solid var(--line);border-radius:1.1rem;box-shadow:0 2rem 4rem -1.5rem #000;
+  transform:translateY(-10px) scale(.97);opacity:0;visibility:hidden;transform-origin:top right;transition:all .28s var(--ease)}
+.settings.open{transform:none;opacity:1;visibility:visible}
+.settings h3{font-size:1.2rem;margin-bottom:.8rem}
+.set-group{margin-bottom:1.1rem}
+.set-group > span{display:block;font-weight:600;margin-bottom:.45rem;color:var(--accent2)}
+.seg{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:.35rem;background:rgba(0,0,0,.2);padding:.3rem;border-radius:999px}
+:root[data-theme="day"] .seg{background:rgba(0,0,0,.08)}
+.seg button{min-height:44px;border:0;border-radius:999px;background:transparent;color:var(--muted);font:600 .95rem var(--font-body);cursor:pointer;transition:all .25s}
+.seg button[aria-pressed="true"]{background:var(--accent);color:var(--on-accent)}
+.swatches{display:flex;gap:.6rem}
+.swatch{width:max(44px,2.8rem);height:max(44px,2.8rem);border-radius:50%;border:2px solid var(--line);cursor:pointer;padding:0;position:relative}
+.swatch[aria-pressed="true"]{outline:3px solid var(--accent);outline-offset:2px}
+.swatch[data-p="espresso"]{background:linear-gradient(135deg,#C68B59 50%,#33231A 50%)}
+.swatch[data-p="chestnut"]{background:linear-gradient(135deg,#D9814E 50%,#42221A 50%)}
+.swatch[data-p="mocha"]{background:linear-gradient(135deg,#B8956A 50%,#2F271E 50%)}
+
+/* স্ক্রল রিভিল */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+  .reveal{opacity:1;transform:none}
+}
+
+/* =====================================================================
+   ৯. শ্যাডো মোড: ডিফল্ট / ইনার (চেপে বসানো) / আউটার (ভেসে থাকা)
+   data-shadow="default" হলে নিচের কোনো নিয়মই কাজ করে না, অর্থাৎ বর্তমান ডিজাইন হুবহু থাকে।
+   শ্যাডোর রং বদলাতে শুধু --sd (অন্ধকার) ও --sl (আলো) এডিট করুন।
+   ===================================================================== */
+:root{
+  --sd:rgba(0,0,0,.6); --sl:rgba(255,222,185,.10);
+  --ts-in:0 -1px 1px rgba(0,0,0,.7), 0 1px 0 rgba(255,222,185,.16);
+  --ts-out:0 2px 2px rgba(0,0,0,.55), 0 7px 14px rgba(0,0,0,.45);
+  --ts-in-on:0 1px 0 rgba(255,255,255,.28);
+  --ts-out-on:0 1px 2px rgba(0,0,0,.3);
+}
+:root[data-theme="day"]{
+  --sd:rgba(80,45,22,.40); --sl:rgba(255,255,255,.8);
+  --ts-in:0 -1px 1px rgba(70,40,20,.38), 0 1px 0 rgba(255,255,255,.85);
+  --ts-out:0 2px 2px rgba(80,45,25,.28), 0 7px 14px rgba(80,45,25,.24);
+  --ts-in-on:0 -1px 1px rgba(0,0,0,.45);
+  --ts-out-on:0 1px 2px rgba(0,0,0,.35);
+}
+/* চারপাশে আরও নরম কার্ভ */
+:root[data-shadow="inner"],:root[data-shadow="outer"]{--radius:1.4rem}
+:root[data-shadow="inner"] .modal,:root[data-shadow="outer"] .modal{border-radius:1.7rem}
+:root[data-shadow="inner"] .settings,:root[data-shadow="outer"] .settings{border-radius:1.6rem}
+:root[data-shadow="inner"] .portrait-frame,:root[data-shadow="outer"] .portrait-frame{border-radius:2.4rem}
+
+/* ---------- টেক্সট ---------- */
+:root[data-shadow="inner"] body{text-shadow:var(--ts-in)}
+:root[data-shadow="outer"] body{text-shadow:var(--ts-out)}
+:root[data-shadow="inner"] :is(button,.btn,a),:root[data-shadow="outer"] :is(button,.btn,a){text-shadow:inherit}
+:root[data-shadow] :is(input,textarea,select){text-shadow:none}
+:root[data-shadow="inner"] :is(.btn-primary,.seg button[aria-pressed="true"],.pager button[aria-current="page"]){text-shadow:var(--ts-in-on)}
+:root[data-shadow="outer"] :is(.btn-primary,.seg button[aria-pressed="true"],.pager button[aria-current="page"]){text-shadow:var(--ts-out-on)}
+
+/* ---------- ইনার: কার্ড/মডাল/সেটিংস লেদার-ম্যাটে চেপে বসানো ---------- */
+:root[data-shadow="inner"] :is(.card,.modal,.settings,.portrait-frame){
+  background:linear-gradient(145deg,color-mix(in srgb,var(--card) 90%,#000),var(--card));
+  box-shadow:inset .5rem .6rem 1.2rem -.15rem var(--sd), inset -.4rem -.5rem 1rem -.25rem var(--sl), 0 1px 0 var(--sl);
+}
+/* ছবির উপরেও যেন একই চাপা ভাব থাকে */
+:root[data-shadow="inner"] :is(.cert-thumb,.m-main){position:relative}
+:root[data-shadow="inner"] :is(.proj-thumb,.cert-thumb,.m-main)::after,
+:root[data-shadow="inner"] .portrait-frame::before{
+  content:"";position:absolute;inset:0;z-index:2;pointer-events:none;border-radius:inherit;
+  box-shadow:inset .4rem .5rem 1rem -.2rem var(--sd), inset -.3rem -.4rem .8rem -.2rem var(--sl);
+}
+:root[data-shadow="inner"] :is(.icon-btn,.pager button,.m-close,.tag,.btn-ghost,.swatch,.m-thumbs button){
+  box-shadow:inset .15rem .2rem .4rem var(--sd), inset -.12rem -.15rem .3rem var(--sl);
+}
+:root[data-shadow="inner"] .btn-primary{
+  box-shadow:inset .18rem .22rem .45rem rgba(0,0,0,.38), inset -.14rem -.16rem .35rem rgba(255,255,255,.22);
+}
+:root[data-shadow="inner"] :is(.btn-primary,.btn-ghost):hover{transform:none}
+:root[data-shadow="inner"] .seg{box-shadow:inset .2rem .25rem .5rem var(--sd), inset -.15rem -.18rem .4rem var(--sl)}
+:root[data-shadow="inner"] .seg button[aria-pressed="true"]{
+  box-shadow:inset .12rem .16rem .35rem rgba(0,0,0,.35), inset -.1rem -.12rem .25rem rgba(255,255,255,.2);
+}
+:root[data-shadow="inner"] .input{box-shadow:inset .25rem .3rem .6rem var(--sd), inset -.15rem -.2rem .4rem var(--sl)}
+:root[data-shadow="inner"] .input:focus{
+  box-shadow:inset .25rem .3rem .6rem var(--sd), inset -.15rem -.2rem .4rem var(--sl), 0 0 0 3px color-mix(in srgb,var(--accent) 35%,transparent);
+}
+:root[data-shadow="inner"] .nav{box-shadow:inset 0 -.3rem .7rem -.3rem var(--sd), inset 0 .15rem .3rem var(--sl)}
+:root[data-shadow="inner"] .t-item::before{box-shadow:0 0 0 .3rem var(--bg), inset .08rem .1rem .2rem rgba(0,0,0,.55)}
+:root[data-shadow="inner"] .sec-title::after{box-shadow:inset 0 .08rem .12rem rgba(0,0,0,.45)}
+:root[data-shadow="inner"] .bar i{box-shadow:inset 0 .12rem .2rem rgba(0,0,0,.35)}
+
+/* ---------- আউটার: সবকিছু ব্যাকগ্রাউন্ডের উপরে ভেসে আছে ---------- */
+:root[data-shadow="outer"] :is(.card,.modal,.settings,.portrait-frame){
+  box-shadow:0 .12rem .25rem var(--sd), 0 .9rem 1.5rem -.45rem var(--sd), 0 2.2rem 3.2rem -1.4rem var(--sd),
+             inset 0 1px 0 var(--sl), inset 0 -.3rem .7rem -.3rem rgba(0,0,0,.2);
+}
+:root[data-shadow="outer"] :is(.proj-card,.cert-card):hover{
+  box-shadow:0 .15rem .3rem var(--sd), 0 1.4rem 2.2rem -.5rem var(--sd), 0 3rem 4rem -1.5rem var(--sd),
+             inset 0 1px 0 var(--sl), inset 0 -.3rem .7rem -.3rem rgba(0,0,0,.2);
+}
+:root[data-shadow="outer"] :is(.icon-btn,.pager button,.m-close,.tag,.btn-ghost,.swatch,.m-thumbs button,.btn-primary){
+  box-shadow:0 .3rem .6rem -.12rem var(--sd), 0 .08rem .16rem var(--sd), inset 0 1px 0 var(--sl);
+}
+:root[data-shadow="outer"] :is(.icon-btn,.btn-ghost,.pager button:not([aria-current])){
+  background:linear-gradient(160deg,var(--card2),var(--card));
+}
+:root[data-shadow="outer"] :is(.btn-primary,.btn-ghost,.icon-btn,.pager button):hover{
+  box-shadow:0 .55rem 1rem -.15rem var(--sd), 0 .12rem .22rem var(--sd), inset 0 1px 0 var(--sl);
+}
+:root[data-shadow="outer"] .seg{box-shadow:inset .12rem .16rem .35rem var(--sd), inset -.1rem -.12rem .25rem var(--sl)}
+:root[data-shadow="outer"] .seg button[aria-pressed="true"]{
+  box-shadow:0 .3rem .6rem -.1rem var(--sd), 0 .08rem .15rem var(--sd), inset 0 1px 0 rgba(255,255,255,.3);
+}
+:root[data-shadow="outer"] .input{box-shadow:0 .3rem .7rem -.25rem var(--sd), inset 0 1px 0 var(--sl)}
+:root[data-shadow="outer"] .input:focus{
+  box-shadow:0 .3rem .7rem -.25rem var(--sd), 0 0 0 3px color-mix(in srgb,var(--accent) 35%,transparent);
+}
+:root[data-shadow="outer"] .nav{box-shadow:0 .7rem 1.6rem -.7rem var(--sd), inset 0 -1px 0 var(--sl)}
+:root[data-shadow="outer"] .t-item::before{box-shadow:0 0 0 .3rem var(--bg), 0 .3rem .5rem var(--sd)}
+:root[data-shadow="outer"] .sec-title::after{box-shadow:0 .15rem .3rem var(--sd)}
+:root[data-shadow="outer"] .bar i{box-shadow:inset 0 .12rem .15rem rgba(255,255,255,.35), inset 0 -.12rem .15rem rgba(0,0,0,.25)}
+
+/* প্রোগ্রেস বার: দুই মোডেই খাঁজের মতো বসানো */
+:root[data-shadow="inner"] .bar,:root[data-shadow="outer"] .bar{
+  box-shadow:inset .12rem .15rem .3rem var(--sd), inset -.08rem -.1rem .2rem var(--sl);
+}
+/* মোবাইল মেনু */
+@media (max-width:900px){
+  :root[data-shadow="outer"] .nav-links{box-shadow:0 1rem 1.6rem -.8rem var(--sd)}
+  :root[data-shadow="inner"] .nav-links{box-shadow:inset 0 -.3rem .7rem -.3rem var(--sd), inset 0 .12rem .25rem var(--sl)}
+}
+</style>
+</head>
+<body>
+<a class="sr-only" href="#main" data-i18n="skip"></a>
+
+<header class="nav">
+  <div class="container nav-in">
+    <a class="brand" href="#home" id="brand"></a>
+    <nav class="nav-links" id="navLinks" data-i18n-attr="aria-label:navAria">
+      <a href="#home" data-i18n="n_home">Home</a><a href="#about" data-i18n="n_about">About</a><a href="#skills" data-i18n="n_skills">Skills</a>
+      <a href="#experience" data-i18n="n_experience">Experience</a><a href="#education" data-i18n="n_education">Education</a>
+      <a href="#projects" data-i18n="n_projects">Projects</a><a href="#certificates" data-i18n="n_certificates">Certificates</a><a href="#contact" data-i18n="n_contact">Contact</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn" id="settingsBtn" data-i18n-attr="aria-label:openSettings" aria-expanded="false" aria-controls="settings">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.9l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.9.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.9-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.9V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>
+      </button>
+      <button class="icon-btn hamburger" id="hamburger" data-i18n-attr="aria-label:openMenu" aria-expanded="false" aria-controls="navLinks">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Settings প্যানেল -->
+<aside class="settings" id="settings" aria-label="Settings" role="dialog" aria-modal="false">
+  <h3 data-i18n="settings">Settings</h3>
+  <div class="set-group"><span data-i18n="language">Language</span>
+    <div class="seg" data-key="lang">
+      <button type="button" data-v="en" aria-pressed="true">English</button>
+      <button type="button" data-v="bn" aria-pressed="false">বাংলা</button>
+    </div></div>
+  <div class="set-group"><span data-i18n="bg">Background</span>
+    <div class="seg" data-key="bg">
+      <button type="button" data-v="matt" aria-pressed="true" data-i18n="matt">Matte</button>
+      <button type="button" data-v="leather" aria-pressed="false" data-i18n="leather">Leather</button>
+    </div></div>
+  <div class="set-group"><span data-i18n="theme">Theme</span>
+    <div class="seg" data-key="theme">
+      <button type="button" data-v="night" aria-pressed="false" data-i18n="night">Night</button>
+      <button type="button" data-v="day" aria-pressed="true" data-i18n="day">Day</button>
+    </div></div>
+  <div class="set-group"><span data-i18n="shadow">Shadow</span>
+    <div class="seg" data-key="shadow">
+      <button type="button" data-v="default" aria-pressed="true" data-i18n="shDefault">Default</button>
+      <button type="button" data-v="inner" aria-pressed="false" data-i18n="inner">Inner</button>
+      <button type="button" data-v="outer" aria-pressed="false" data-i18n="outer">Outer</button>
+    </div></div>
+  <div class="set-group"><span data-i18n="palette">Color preset</span>
+    <div class="swatches" data-key="palette">
+      <button type="button" class="swatch" data-p="espresso" aria-label="Espresso" aria-pressed="true"></button>
+      <button type="button" class="swatch" data-p="chestnut" aria-label="Chestnut" aria-pressed="false"></button>
+      <button type="button" class="swatch" data-p="mocha" aria-label="Mocha" aria-pressed="false"></button>
+    </div></div>
+  <button type="button" class="btn btn-ghost" id="resetBtn" style="width:100%" data-i18n="reset">Reset to default</button>
+</aside>
+
+<main id="main">
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="container hero-grid">
+      <div class="reveal">
+        <span class="eyebrow" id="hRole"></span>
+        <h1 id="hTitle"></h1>
+        <p class="lead" id="hLead"></p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#contact" data-i18n="ctaContact">Contact me</a>
+          <a class="btn btn-ghost" href="#projects" data-i18n="ctaWork">View my work</a>
+        </div>
+        <div class="hero-stats" id="hStats"></div>
+      </div>
+      <div class="portrait reveal" id="portrait">
+        <div class="portrait-frame">
+          <!-- প্রোফাইল ছবি: লিংক বদলাতে নিচের JS-এর D().profile.photo এডিট করুন -->
+          <img id="profileImg" data-i18n-attr="alt:profileAlt" width="480" height="528" decoding="async" referrerpolicy="no-referrer">
+          <div class="avatar-fallback" id="avatarFb" aria-hidden="true"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about"><div class="container">
+    <div class="sec-head reveal"><h2 class="sec-title" data-i18n="n_about">About</h2></div>
+    <div class="about-grid">
+      <div class="card reveal"><div id="aboutText"></div></div>
+      <div class="card reveal"><ul class="fact-list" id="aboutFacts"></ul></div>
+    </div>
+  </div></section>
+
+  <section id="skills"><div class="container">
+    <div class="sec-head reveal"><h2 class="sec-title" data-i18n="n_skills">Skills</h2></div>
+    <div class="skills-grid" id="skillsGrid"></div>
+  </div></section>
+
+  <section id="experience"><div class="container">
+    <div class="sec-head reveal"><h2 class="sec-title" data-i18n="n_experience">Experience</h2></div>
+    <div class="timeline" id="expList"></div>
+  </div></section>
+
+  <section id="education"><div class="container">
+    <div class="sec-head reveal"><h2 class="sec-title" data-i18n="n_education">Education</h2></div>
+    <div class="timeline" id="eduList"></div>
+  </div></section>
+
+  <section id="projects"><div class="container">
+    <div class="sec-head reveal">
+      <h2 class="sec-title" data-i18n="n_projects">Projects</h2>
+      <button class="btn btn-ghost" id="seeMore" type="button">See More →</button>
+    </div>
+    <div class="proj-grid" id="projGrid" aria-live="polite"></div>
+    <nav class="pager" id="pager" data-i18n-attr="aria-label:pagerAria"></nav>
+  </div></section>
+
+  <section id="certificates"><div class="container">
+    <div class="sec-head reveal"><h2 class="sec-title" data-i18n="n_certificates">Certificates</h2></div>
+    <div class="cert-grid" id="certGrid"></div>
+  </div></section>
+
+  <!-- CONTACT: ক্লায়েন্ট সরাসরি মেসেজ পাঠানোর বক্স -->
+  <section id="contact"><div class="container">
+    <div class="sec-head reveal">
+      <h2 class="sec-title" data-i18n="n_contact">Contact</h2>
+      <p class="sec-sub" data-i18n="contactSub"></p>
+    </div>
+    <div class="contact-grid">
+      <div class="card contact-info reveal"><ul id="contactList"></ul></div>
+
+      <form class="card contact-form reveal" id="contactForm" novalidate aria-labelledby="formTitle">
+        <h3 id="formTitle" style="margin:0" data-i18n="formTitle"></h3>
+        <div class="field">
+          <label for="cName"><span data-i18n="lblName"></span> <small data-i18n="required"></small></label>
+          <input class="input" id="cName" name="name" type="text" autocomplete="name" maxlength="80" data-i18n-attr="placeholder:phName" required aria-describedby="eName">
+          <div class="err" id="eName" aria-live="polite"></div>
+        </div>
+        <div class="field">
+          <label for="cEmail"><span data-i18n="lblEmail"></span> <small data-i18n="required"></small></label>
+          <input class="input" id="cEmail" name="email" type="email" autocomplete="email" inputmode="email" maxlength="120" placeholder="you@example.com" required aria-describedby="eEmail">
+          <div class="err" id="eEmail" aria-live="polite"></div>
+        </div>
+        <div class="field">
+          <label for="cMsg"><span data-i18n="lblMsg"></span> <small data-i18n="required"></small></label>
+          <textarea class="input" id="cMsg" name="message" maxlength="3000" data-i18n-attr="placeholder:phMsg" required aria-describedby="eMsg"></textarea>
+          <div class="err" id="eMsg" aria-live="polite"></div>
+        </div>
+        <!-- স্প্যাম ফাঁদ: মানুষ এটা দেখে না -->
+        <div class="hp" aria-hidden="true"><label>Website <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+        <div class="form-foot">
+          <button class="btn btn-primary" type="submit" id="sendBtn"><span class="spinner" aria-hidden="true"></span><span id="sendLabel" data-i18n="send">Send Message</span></button>
+          <div class="status" id="formStatus" role="status" aria-live="polite"></div>
+        </div>
+      </form>
+    </div>
+  </div></section>
+</main>
+
+<footer><div class="container foot-in">
+  <span id="footName"></span><span>© <span id="year"></span> <span data-i18n="rights"></span></span>
+</div></footer>
+
+<!-- মডাল কন্টেইনার -->
+<div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-labelledby="mTitle">
+  <div class="modal" id="modal"></div>
+</div>
+
+<script>
+"use strict";
+/* =====================================================================
+   ডেটা ও কনফিগ: সব এডিটযোগ্য কনটেন্ট এখানে।
+   নাম, অভিজ্ঞতা, শিক্ষা, স্কিল ও সার্টিফিকেট নিচের DATA অবজেক্ট থেকে এডিট করুন।
+   ===================================================================== */
+const CONFIG = {
+  /* কন্টাক্ট ফর্ম কীভাবে মেসেজ পাঠাবে:
+     ১) formEndpoint-এ Formspree/Web3Forms ইত্যাদির URL দিলে মেসেজ সরাসরি আপনার ইনবক্সে যাবে।
+        উদাহরণ: "https://formspree.io/f/xxxxxxx"
+     ২) formEndpoint খালি থাকলে ইউজারের ইমেইল অ্যাপ খুলে মেসেজ তৈরি হয়ে যাবে (mailto ফলব্যাক)। */
+  formEndpoint: "",
+  receiverEmail: "prantoislamnt51@gmail.com"
+};
+
+const DATA = {
+  profile: {
+    name: "Md. Pranto Ali",
+    brand: "Pranto",          /* নেভবারে যে নাম দেখাবে */
+    initials: "P",
+    role: "CSE শিক্ষার্থী ও ওয়েব ডেভেলপার",
+    tagline: "IUBAT-এ কম্পিউটার সায়েন্স অ্যান্ড ইঞ্জিনিয়ারিং পড়ছি। HTML, CSS ও JavaScript দিয়ে ওয়েব ডিজাইন ও ডেভেলপমেন্ট করি এবং নতুন প্রযুক্তি শিখতে ভালোবাসি।",
+    /* প্রোফাইল ছবি (সরাসরি ইমেজ লিংক)। নিরাপদ থাকতে ছবিটি ডাউনলোড করে assets/profile.png হিসেবে রেখে
+       এখানে "assets/profile.png" লিখে দিন, কারণ Kommodo লিংকের মেয়াদ ২ ডিসেম্বর ২০২৬-এ শেষ হবে। */
+    photo: "https://kommodo.ai/i/uiplXWZt9IfIsd4agYeL",
+    /* ব্যাকআপ লিংক: প্রথম লিংক না খুললে এগুলো পরপর চেষ্টা হবে। শেষে ইনিশিয়াল দেখাবে। */
+    photoFallbacks: ["assets/profile.png", "https://plain-apac-prod-public.komododecks.com/202611/02/uiplXWZt9IfIsd4agYeL/image.png"],
+    stats: [ {n:"৩.৭২", l:"ডিপ্লোমা রেজাল্ট (৪.০০-এর মধ্যে)"}, {n:"৮", l:"সার্টিফিকেট"}, {n:"৬ মাস", l:"ইন্টার্নশিপ"} ]
+  },
+  about: {
+    paragraphs: [
+      "আমি কম্পিউটার সায়েন্স অ্যান্ড ইঞ্জিনিয়ারিং (CSE)-এর শিক্ষার্থী। কম্পিউটার টেকনোলজিতে ডিপ্লোমা শেষ করে এখন ইন্টারন্যাশনাল ইউনিভার্সিটি অব বিজনেস অ্যাগ্রিকালচার অ্যান্ড টেকনোলজি (IUBAT)-এ বি.এসসি. করছি।",
+      "নিজের পেশাগত ক্যারিয়ার গড়তে আমি খুবই আগ্রহী। ইতিবাচক শেখার পরিবেশ তৈরিতে সহায়তা করতে চাই। আমি সৎ এবং প্রতিষ্ঠানের লক্ষ্য অর্জনে কঠোর পরিশ্রম করতে প্রস্তুত।",
+      "গল্পের বই পড়া, নতুন দক্ষতা শেখা, নতুন প্রযুক্তি ও সফটওয়্যার নিয়ে ঘাঁটাঘাঁটি করা এবং গান শোনা আমার শখ।"
+    ],
+    facts: [ ["শিক্ষা","বি.এসসি. CSE (চলমান), IUBAT"], ["বিশেষত্ব","ওয়েব ডিজাইন ও ডেভেলপমেন্ট"], ["বর্তমান ঠিকানা","উত্তরা, ঢাকা"], ["স্থায়ী ঠিকানা","কুষ্টিয়া, খুলনা বিভাগ"], ["ভাষা","বাংলা, ইংরেজি"] ]
+  },
+  /* স্কিল: items-এ শুধু নাম লিখলে ট্যাগ হিসেবে দেখায়। [নাম, শতাংশ] লিখলে প্রগ্রেস বার দেখায়। */
+  skills: [
+    { group:"Web Design", items:["HTML","CSS","JavaScript"] },
+    { group:"Operating System", items:["Windows XP থেকে Windows 11","Linux"] },
+    { group:"Application Software", items:["Microsoft Office 2007/2013/2016","Adobe Photoshop 7","Adobe Photoshop CS6"] },
+    { group:"Hardware", items:["PC কনফিগারেশন","প্রসেসর ও মাদারবোর্ড","মেমোরি","ইনপুট/আউটপুট ডিভাইস"] },
+    { group:"Internet & E-mail", items:["ইন্টারনেট ব্রাউজিং","ইমেইল পাঠানো","ফাইল ডাউনলোড","LAN / ওয়্যারলেস"] }
+  ],
+  experience: [
+    { title:"ইন্টার্ন", org:"Kodeeo Limited", period:"ডিসেম্বর ২০২২ – মে ২০২৩ (৬ মাস)", points:[] }
+  ],
+  education: [
+    { title:"বি.এসসি. ইন কম্পিউটার সায়েন্স অ্যান্ড ইঞ্জিনিয়ারিং", org:"ইন্টারন্যাশনাল ইউনিভার্সিটি অব বিজনেস অ্যাগ্রিকালচার অ্যান্ড টেকনোলজি (IUBAT)", period:"চলমান", points:[] },
+    { title:"ডিপ্লোমা ইন ইঞ্জিনিয়ারিং (কম্পিউটার টেকনোলজি)", org:"কামরুল ইসলাম সিদ্দিকী পলিটেকনিক ইনস্টিটিউট", period:"২০২৩", points:["ফলাফল: ৩.৭২ (৪.০০-এর মধ্যে)"] },
+    { title:"মাধ্যমিক স্কুল সার্টিফিকেট (SSC), মানবিক বিভাগ", org:"সাতারপাড়া উচ্চ বিদ্যালয়", period:"২০১৮", points:["ফলাফল: GPA ৩.০৬ (৫.০০-এর মধ্যে)"] }
+  ],
+  /* প্রজেক্ট: নতুন প্রজেক্ট যোগ করতে শুধু একটি অবজেক্ট কপি করে নিচে বসান। পেজ সংখ্যা নিজে নিজে বাড়বে।
+     images: ছবির URL-এর তালিকা (খালি থাকলে অটো প্লেসহোল্ডার)। video: ভিডিও URL (ঐচ্ছিক)। demo: লাইভ লিংক (ঐচ্ছিক) */
+  projects: [
+    { id:"pos", title:"SmartPOS", category:"Software", tagline:"দোকানের বিক্রি, স্টক ও হিসাব এক জায়গায়",
+      tech:["PHP","MySQL","JS"], images:[], video:"", demo:"",
+      desc:"SmartPOS একটি পূর্ণাঙ্গ পয়েন্ট অফ সেল সফটওয়্যার, যা ছোট থেকে মাঝারি দোকানের প্রতিদিনের বিক্রি ও হিসাব সহজ করে। বারকোড স্ক্যান করে দ্রুত বিল তৈরি, স্টক ট্র্যাকিং এবং ক্রেতা ও সরবরাহকারীর বকেয়া হিসাব এখানে স্বয়ংক্রিয়ভাবে হয়। দৈনিক, মাসিক ও পণ্যভিত্তিক রিপোর্ট দেখে ব্যবসার অবস্থা এক নজরে বোঝা যায়। ইন্টারনেট না থাকলেও মূল বিক্রয় চালু রাখা যায়। ইন্টারফেস এত সহজ যে নতুন কর্মচারীও কয়েক মিনিটে শিখে নিতে পারে।",
+      features:["বারকোড স্ক্যান ও দ্রুত ইনভয়েস","রিয়েল-টাইম স্টক ও লো-স্টক অ্যালার্ট","বাকি/জমার ক্রেতা ও সরবরাহকারী হিসাব","দৈনিক-মাসিক লাভ-ক্ষতির রিপোর্ট","ইউজার রোল ও ক্যাশিয়ার লগ"],
+      benefits:["বিল তৈরিতে সময় সাশ্রয়","হিসাবের ভুল ও চুরি কমে","ইনস্টলেশন, ট্রেনিং ও সাপোর্ট"] },
+    { id:"sms", title:"EduManage", category:"Software", tagline:"স্কুলের সব কাজ এক ড্যাশবোর্ডে",
+      tech:["Laravel","MySQL","Bootstrap"], images:[], video:"", demo:"",
+      desc:"EduManage স্কুলের ভর্তি, ক্লাস, রেজাল্ট, ফি ও অ্যাটেনডেন্স পরিচালনার একটি কেন্দ্রীয় সিস্টেম। শিক্ষক, অভিভাবক ও অ্যাডমিন প্রত্যেকের জন্য আলাদা লগইন ও ড্যাশবোর্ড রয়েছে। পরীক্ষার নম্বর তুলে দিলেই মার্কশিট ও ট্যাবুলেশন শিট তৈরি হয়ে যায়। ফি আদায়ের রসিদ ও বকেয়া তালিকা মুহূর্তে পাওয়া যায়। অভিভাবকরা এসএমএসের মাধ্যমে সন্তানের উপস্থিতি ও ফলাফল জানতে পারেন।",
+      features:["ভর্তি ও স্টুডেন্ট প্রোফাইল ম্যানেজমেন্ট","অটো রেজাল্ট, মার্কশিট ও ট্যাবুলেশন","ফি কালেকশন ও বকেয়া ট্র্যাকিং","অভিভাবক এসএমএস নোটিফিকেশন","শিক্ষক-ক্লাস রুটিন ম্যানেজমেন্ট"],
+      benefits:["কাগজের কাজ প্রায় শূন্যে নামে","স্বচ্ছ ও দ্রুত রেজাল্ট প্রকাশ","ডেটা ব্যাকআপ ও নিয়মিত সাপোর্ট"] },
+    { id:"school-site", title:"School Web Presence", category:"Web", tagline:"আধুনিক ও দ্রুত স্কুল ওয়েবসাইট",
+      tech:["HTML","CSS","JS"], images:[], video:"", demo:"",
+      desc:"স্কুলের পরিচিতি, নোটিশ, ভর্তি তথ্য ও গ্যালারি নিয়ে সাজানো একটি আধুনিক ও মোবাইল-ফ্রেন্ডলি ওয়েবসাইট। অ্যাডমিন প্যানেল থেকে নোটিশ, ইভেন্ট ও ছবি সহজেই আপডেট করা যায়। পেজ দ্রুত লোড হয় এবং সার্চ ইঞ্জিনে ভালো র‍্যাংক করার জন্য এসইও সাজানো। ভর্তি ফর্ম অনলাইনে জমা নেওয়ার ব্যবস্থাও আছে। অভিভাবকরা যেকোনো ডিভাইস থেকে প্রয়োজনীয় তথ্য পেয়ে যান।",
+      features:["রেসপনসিভ ডিজাইন","নোটিশ বোর্ড ও ইভেন্ট ক্যালেন্ডার","ফটো/ভিডিও গ্যালারি","অনলাইন ভর্তি ফর্ম","অ্যাডমিন প্যানেল"],
+      benefits:["প্রতিষ্ঠানের বিশ্বাসযোগ্য অনলাইন উপস্থিতি","সহজ আপডেট, কোডিং ছাড়াই","ডোমেইন ও হোস্টিং সহায়তা"] },
+    { id:"ecom", title:"ShopNest", category:"Web", tagline:"পণ্য বিক্রির পূর্ণাঙ্গ অনলাইন দোকান",
+      tech:["PHP","MySQL","JS"], images:[], video:"", demo:"",
+      desc:"ShopNest একটি পূর্ণাঙ্গ ই-কমার্স ওয়েবসাইট, যেখানে ক্রেতা পণ্য খুঁজে, কার্টে যোগ করে এবং নিরাপদে অর্ডার দিতে পারে। অ্যাডমিন প্যানেলে পণ্য, অর্ডার, স্টক ও ডেলিভারি স্ট্যাটাস এক জায়গা থেকে নিয়ন্ত্রণ করা যায়। বিকাশ, নগদ ও ক্যাশ অন ডেলিভারির মতো স্থানীয় পেমেন্ট অপশন যুক্ত করা যায়। মোবাইলে কেনাকাটার অভিজ্ঞতা বিশেষভাবে মসৃণ। অর্ডারের প্রতিটি ধাপে ক্রেতা নোটিফিকেশন পান।",
+      features:["পণ্য ক্যাটাগরি, সার্চ ও ফিল্টার","কার্ট ও চেকআউট","স্থানীয় পেমেন্ট গেটওয়ে ইন্টিগ্রেশন","অর্ডার ট্র্যাকিং","অ্যাডমিন ড্যাশবোর্ড ও রিপোর্ট"],
+      benefits:["২৪ ঘণ্টা বিক্রির সুযোগ","ইনভেন্টরি ও অর্ডারে সম্পূর্ণ নিয়ন্ত্রণ","লঞ্চ-পরবর্তী সাপোর্ট"] },
+    { id:"att-dev", title:"AttendPro Device", category:"Hardware", tagline:"স্বয়ংক্রিয় উপস্থিতি রেকর্ড ডিভাইস",
+      tech:["ESP32","C++","MySQL"], images:[], video:"", demo:"",
+      desc:"AttendPro একটি স্বতন্ত্র হার্ডওয়্যার ডিভাইস, যা কর্মী বা শিক্ষার্থীর উপস্থিতি স্বয়ংক্রিয়ভাবে রেকর্ড করে। ডিভাইসটি ওয়াইফাই দিয়ে সার্ভারে ডেটা পাঠায় এবং ইন্টারনেট না থাকলে অফলাইনে জমা রেখে পরে সিঙ্ক করে। ছোট ডিসপ্লেতে নাম ও সময় দেখায় এবং বিপ প্রযুক্তিতে নিশ্চিত করে। বিদ্যুৎ-সাশ্রয়ী ডিজাইনের কারণে ব্যাকআপ ব্যাটারিতে অনেকক্ষণ চলে। ম্যানুয়াল খাতার ঝামেলা থেকে পুরোপুরি মুক্তি দেয়।",
+      features:["অফলাইন মোডে ডেটা সংরক্ষণ ও অটো সিঙ্ক","ডিসপ্লে ও বাজার ফিডব্যাক","ওয়াইফাই কানেকটিভিটি","ব্যাটারি ব্যাকআপ","ওয়েব ড্যাশবোর্ডে লাইভ রিপোর্ট"],
+      benefits:["সময় ও কাগজ সাশ্রয়","নির্ভুল উপস্থিতির রেকর্ড","ইনস্টলেশন ও রক্ষণাবেক্ষণ"] },
+    { id:"rfid-fp", title:"BioTag Verify", category:"Hardware", tagline:"RFID + ফিঙ্গারপ্রিন্টে দ্বৈত যাচাই",
+      tech:["RFID","Fingerprint","ESP32"], images:[], video:"", demo:"",
+      desc:"BioTag Verify RFID কার্ড ও ফিঙ্গারপ্রিন্ট দুটি পদ্ধতি একসাথে ব্যবহার করে উপস্থিতি নিশ্চিত করে, ফলে অন্যের কার্ড দিয়ে হাজিরা দেওয়ার সুযোগ থাকে না। কার্ড স্ক্যানের পর আঙুলের ছাপ মিললে তবেই উপস্থিতি গৃহীত হয়। প্রতিটি এন্ট্রির সময় ও ব্যক্তির তথ্য ক্লাউডে নিরাপদে জমা হয়। অ্যাডমিন সহজেই ব্যবহারকারী যোগ বা বাতিল করতে পারেন। উচ্চ নিরাপত্তা প্রয়োজন এমন প্রতিষ্ঠানের জন্য আদর্শ।",
+      features:["দ্বৈত যাচাই: কার্ড + ফিঙ্গারপ্রিন্ট","প্রক্সি হাজিরা প্রতিরোধ","রিয়েল-টাইম ক্লাউড লগ","ব্যবহারকারী এনরোলমেন্ট প্যানেল","রিপোর্ট ও এক্সপোর্ট"],
+      benefits:["উচ্চতর নিরাপত্তা ও স্বচ্ছতা","প্রতারণামুক্ত হাজিরা","ইনস্টলেশন, ট্রেনিং ও সাপোর্ট"] },
+    { id:"gate", title:"GatePass RFID", category:"Hardware", tagline:"কার্ড দেখালেই খুলে যায় গেট",
+      tech:["RFID","Relay","Arduino"], images:[], video:"", demo:"",
+      desc:"GatePass স্টুডেন্ট এন্ট্রির জন্য একটি স্বয়ংক্রিয় গেট সিস্টেম: শিক্ষার্থী RFID কার্ড স্ক্যান করলে সিস্টেম তথ্য যাচাই করে এবং বৈধ হলে সঙ্গে সঙ্গে গেট খুলে দেয়। অবৈধ বা বাতিল কার্ডে গেট বন্ধ থাকে এবং সতর্কবার্তা দেখায়। প্রতিটি প্রবেশ ও প্রস্থানের লগ সংরক্ষিত হয়, যা নিরাপত্তা ও উপস্থিতির কাজে লাগে। অভিভাবকরা চাইলে সন্তানের আসা-যাওয়ার নোটিফিকেশন পেতে পারেন। বিদ্যুৎ চলে গেলেও ম্যানুয়াল ওভাররাইড কাজ করে।",
+      features:["কার্ড যাচাই করে অটো গেট খোলা","আসা-যাওয়ার লগ ও রিপোর্ট","অবৈধ কার্ড অ্যালার্ট","অভিভাবক নোটিফিকেশন (ঐচ্ছিক)","ম্যানুয়াল ওভাররাইড"],
+      benefits:["স্কুলের নিরাপত্তা বৃদ্ধি","অপরিচিতের প্রবেশ রোধ","ইনস্টলেশন ও রক্ষণাবেক্ষণ"] },
+    { id:"demo1", title:"InvenTrack", category:"Software", tagline:"গুদাম ও ইনভেন্টরি ট্র্যাকিং ড্যাশবোর্ড",
+      tech:["PHP","MySQL","Chart.js"], images:[], video:"", demo:"",
+      desc:"(ডেমো প্রজেক্ট) InvenTrack গুদামের পণ্য আসা-যাওয়ার হিসাব রাখে এবং স্টক কমে গেলে সতর্ক করে। ড্যাশবোর্ডে চার্ট দেখে সহজেই বোঝা যায় কোন পণ্য বেশি চলছে। একাধিক শাখার স্টক আলাদাভাবে ও একসাথে দেখা যায়। বারকোড লেবেল প্রিন্ট করার সুবিধাও আছে। আপনার আসল প্রজেক্ট দিয়ে এটি বদলে নিন।",
+      features:["মাল্টি-ব্রাঞ্চ স্টক","লো-স্টক অ্যালার্ট","বারকোড লেবেল","চার্টভিত্তিক রিপোর্ট"],
+      benefits:["অপচয় ও ঘাটতি কমে","দ্রুত সিদ্ধান্ত","সাপোর্ট ও ট্রেনিং"] },
+    { id:"demo2", title:"SmartLock Access", category:"Hardware", tagline:"কার্ড ও পিনে অফিস দরজা নিয়ন্ত্রণ",
+      tech:["ESP32","RFID","Keypad"], images:[], video:"", demo:"",
+      desc:"(ডেমো প্রজেক্ট) SmartLock Access অফিস বা ল্যাবের দরজায় কার্ড ও পিন দিয়ে প্রবেশ নিয়ন্ত্রণ করে। কে কখন ঢুকেছে তার পূর্ণ লগ ওয়েব থেকে দেখা যায়। হারানো কার্ড দূর থেকে বাতিল করা যায়। নির্দিষ্ট সময়ে নির্দিষ্ট ব্যক্তির প্রবেশাধিকার সাজানো যায়। আপনার আসল প্রজেক্ট দিয়ে এটি বদলে নিন।",
+      features:["কার্ড + পিন যাচাই","এক্সেস লগ","রিমোট কার্ড বাতিল","সময়ভিত্তিক অনুমতি"],
+      benefits:["নিরাপদ প্রবেশ নিয়ন্ত্রণ","চাবির ঝামেলা নেই","ইনস্টলেশন ও সাপোর্ট"] }
+  ],
+  /* সার্টিফিকেট: image-এ ছবির URL বসান। লোড না হলে সুন্দর প্লেসহোল্ডার দেখাবে।
+     learned (কী শিখেছি) ঐচ্ছিক: খালি রাখলে সেই অংশ দেখাবে না। */
+  certificates: [
+    { title:"Web Design & Development for Freelancing (Level 3)", issuer:"NSDA, বাংলাদেশ সরকার · Touch And Solve", date:"২৯ আগস্ট ২০২৬", image:"", learned:[] },
+    { title:"Introduction to Generative AI Studio", issuer:"Google", date:"১৭ সেপ্টেম্বর ২০২৬", image:"", learned:[] },
+    { title:"Copilot Foundation", issuer:"Microsoft", date:"১৮ সেপ্টেম্বর ২০২৬", image:"", learned:[] },
+    { title:"Introduction to Prompt Engineering with GitHub Copilot", issuer:"Microsoft", date:"১৭ সেপ্টেম্বর ২০২৬", image:"", learned:[] },
+    { title:"Introduction to MS Excel", issuer:"Microsoft", date:"১৮ সেপ্টেম্বর ২০২৬", image:"", learned:[] },
+    { title:"Understanding Placement Groups", issuer:"AWS", date:"১৮ সেপ্টেম্বর ২০২৬", image:"", learned:[] },
+    { title:"Canva Essentials", issuer:"Canva", date:"১০ সেপ্টেম্বর ২০২৬", image:"", learned:[] },
+    { title:"Teacher Essentials", issuer:"Canva", date:"৩১ জুলাই ২০২৪", image:"", learned:[] }
+  ],
+  contact: [
+    { icon:"mail", label:"ইমেইল", value:"prantoislamnt51@gmail.com", href:"mailto:prantoislamnt51@gmail.com" },
+    { icon:"phone", label:"ফোন / হোয়াটসঅ্যাপ", value:"+880 1979-728818", href:"tel:+8801979728818" },
+    { icon:"pin", label:"ঠিকানা", value:"উত্তরা, ঢাকা-১২৩০", href:"#contact" }
+  ]
+};
+
+/* =====================================================================
+   ভাষা (English / বাংলা): ডিফল্ট English
+   - বাংলা কনটেন্ট উপরের DATA-তে, ইংরেজি কনটেন্ট নিচের EN-এ।
+   - ইন্টারফেসের লেখা T-তে। নতুন কিছু যোগ করলে দুই ভাষাতেই যোগ করুন।
+   ===================================================================== */
+const EN = {
+  profile: {
+    role: "CSE Student & Web Developer",
+    tagline: "I'm studying Computer Science & Engineering at IUBAT. I design and develop websites with HTML, CSS and JavaScript, and I love learning new technologies.",
+    stats: [ {n:"3.72", l:"Diploma result (out of 4.00)"}, {n:"8", l:"Certificates"}, {n:"6 months", l:"Internship"} ]
+  },
+  about: {
+    paragraphs: [
+      "I am a Computer Science & Engineering (CSE) student. After completing a diploma in Computer Technology, I am now pursuing my B.Sc. at the International University of Business Agriculture and Technology (IUBAT).",
+      "I am very interested in building my professional career and would welcome the chance to help create a positive learning environment. I am honest and ready to work hard to help the organization achieve its goals.",
+      "I enjoy reading storybooks, learning new skills, exploring new technologies and software, and listening to music."
+    ],
+    facts: [ ["Education","B.Sc. in CSE (ongoing), IUBAT"], ["Specialty","Web design & development"], ["Present address","Uttara, Dhaka"], ["Permanent address","Kushtia, Khulna Division"], ["Languages","Bengali, English"] ]
+  },
+  skills: [
+    { group:"Web Design", items:["HTML","CSS","JavaScript"] },
+    { group:"Operating System", items:["Windows XP to Windows 11","Linux"] },
+    { group:"Application Software", items:["Microsoft Office 2007/2013/2016","Adobe Photoshop 7","Adobe Photoshop CS6"] },
+    { group:"Hardware", items:["PC configuration","Processor & motherboard","Memory","Input/output devices"] },
+    { group:"Internet & E-mail", items:["Internet browsing","Sending e-mail","Downloading files","LAN / Wireless"] }
+  ],
+  experience: [ { title:"Intern", org:"Kodeeo Limited", period:"December 2022 – May 2023 (6 months)", points:[] } ],
+  education: [
+    { title:"B.Sc. in Computer Science & Engineering", org:"International University of Business Agriculture and Technology (IUBAT)", period:"Ongoing", points:[] },
+    { title:"Diploma in Engineering (Computer Technology)", org:"Kamrul Islam Siddiqui Polytechnic Institute", period:"2023", points:["Result: 3.72 out of 4.00"] },
+    { title:"Secondary School Certificate (SSC), Arts Group", org:"Satarpara High School", period:"2018", points:["Result: GPA 3.06 out of 5.00"] }
+  ],
+  certificates: [
+    { issuer:"NSDA, Government of Bangladesh · Touch And Solve", date:"August 29, 2026" },
+    { issuer:"Google", date:"September 17, 2026" },
+    { issuer:"Microsoft", date:"September 18, 2026" },
+    { issuer:"Microsoft", date:"September 17, 2026" },
+    { issuer:"Microsoft", date:"September 18, 2026" },
+    { issuer:"AWS", date:"September 18, 2026" },
+    { issuer:"Canva", date:"September 10, 2026" },
+    { issuer:"Canva", date:"July 31, 2024" }
+  ],
+  contact: [ { label:"Email" }, { label:"Phone / WhatsApp" }, { label:"Address", value:"Uttara, Dhaka-1230" } ],
+  projects: {
+    "pos": { tagline:"Sales, stock and accounts in one place",
+      desc:"SmartPOS is a complete point-of-sale software that simplifies the daily sales and accounting of small and medium shops. It creates bills quickly by scanning barcodes, tracks stock, and automatically handles customer and supplier dues. Daily, monthly and product-wise reports show the state of the business at a glance. Core sales keep running even without internet. The interface is so simple that a new employee can learn it in minutes.",
+      features:["Barcode scanning and fast invoicing","Real-time stock and low-stock alerts","Customer and supplier credit/debit accounts","Daily and monthly profit & loss reports","User roles and cashier logs"],
+      benefits:["Saves time on billing","Fewer accounting errors and less theft","Installation, training and support"] },
+    "sms": { tagline:"Everything a school needs on one dashboard",
+      desc:"EduManage is a central system for managing school admission, classes, results, fees and attendance. Teachers, parents and admins each get their own login and dashboard. Enter exam marks and the marksheet and tabulation sheet are generated automatically. Fee receipts and due lists are available instantly. Parents can learn their child's attendance and results by SMS.",
+      features:["Admission and student profile management","Auto results, marksheets and tabulation","Fee collection and due tracking","Parent SMS notifications","Teacher and class routine management"],
+      benefits:["Paperwork drops to almost zero","Transparent and fast result publishing","Data backup and regular support"] },
+    "school-site": { tagline:"A modern and fast school website",
+      desc:"A modern, mobile-friendly website organized around the school's introduction, notices, admission information and gallery. Notices, events and photos can be updated easily from the admin panel. Pages load fast and are SEO-ready to rank well in search engines. Online admission form submission is also available. Parents can get the information they need from any device.",
+      features:["Responsive design","Notice board and event calendar","Photo/video gallery","Online admission form","Admin panel"],
+      benefits:["A trustworthy online presence for the institution","Easy updates, no coding needed","Domain and hosting assistance"] },
+    "ecom": { tagline:"A complete online store for selling products",
+      desc:"ShopNest is a complete e-commerce website where customers can search for products, add them to the cart and order securely. From the admin panel you can control products, orders, stock and delivery status in one place. Local payment options such as bKash, Nagad and cash on delivery can be added. The shopping experience on mobile is especially smooth. Customers get notifications at every step of the order.",
+      features:["Product categories, search and filters","Cart and checkout","Local payment gateway integration","Order tracking","Admin dashboard and reports"],
+      benefits:["Sell 24 hours a day","Full control over inventory and orders","Post-launch support"] },
+    "att-dev": { tagline:"An automatic attendance recording device",
+      desc:"AttendPro is a standalone hardware device that automatically records the attendance of staff or students. It sends data to the server over Wi-Fi, and when there is no internet it stores records offline and syncs later. A small display shows the name and time, and a beep confirms the entry. Thanks to its power-saving design it runs a long time on backup battery. It frees you completely from manual attendance registers.",
+      features:["Offline data storage and auto sync","Display and buzzer feedback","Wi-Fi connectivity","Battery backup","Live reports on the web dashboard"],
+      benefits:["Saves time and paper","Accurate attendance records","Installation and maintenance"] },
+    "rfid-fp": { tagline:"Dual verification with RFID + fingerprint",
+      desc:"BioTag Verify confirms attendance using both an RFID card and a fingerprint, so nobody can mark attendance with someone else's card. After the card is scanned, attendance is accepted only if the fingerprint matches. The time and person details of every entry are stored securely in the cloud. Admins can easily add or revoke users. Ideal for organizations that need high security.",
+      features:["Dual verification: card + fingerprint","Prevents proxy attendance","Real-time cloud log","User enrollment panel","Reports and export"],
+      benefits:["Higher security and transparency","Fraud-free attendance","Installation, training and support"] },
+    "gate": { tagline:"Show the card and the gate opens",
+      desc:"GatePass is an automatic gate system for student entry: when a student scans an RFID card, the system verifies the details and opens the gate immediately if valid. For an invalid or cancelled card the gate stays closed and a warning is shown. A log of every entry and exit is saved, useful for security and attendance. Parents can optionally receive notifications when their child arrives or leaves. The manual override works even during a power cut.",
+      features:["Card verification with automatic gate opening","Entry/exit log and reports","Invalid card alerts","Parent notifications (optional)","Manual override"],
+      benefits:["Improved school security","Prevents entry of strangers","Installation and maintenance"] },
+    "demo1": { tagline:"Warehouse and inventory tracking dashboard",
+      desc:"(Demo project) InvenTrack keeps track of goods coming into and going out of the warehouse and alerts you when stock runs low. Charts on the dashboard make it easy to see which products move the most. Stock of multiple branches can be viewed separately and together. Barcode label printing is also supported. Replace this with your real project.",
+      features:["Multi-branch stock","Low-stock alerts","Barcode labels","Chart-based reports"],
+      benefits:["Less waste and shortage","Faster decisions","Support and training"] },
+    "demo2": { tagline:"Office door control with card and PIN",
+      desc:"(Demo project) SmartLock Access controls entry to an office or lab door with a card and PIN. A full log of who entered and when can be viewed from the web. Lost cards can be revoked remotely. Access can be scheduled for specific people at specific times. Replace this with your real project.",
+      features:["Card + PIN verification","Access log","Remote card revocation","Time-based permissions"],
+      benefits:["Secure access control","No hassle with keys","Installation and support"] }
+  }
+};
+const DATA_EN = {
+  profile: { ...DATA.profile, ...EN.profile },
+  about: EN.about, skills: EN.skills, experience: EN.experience, education: EN.education,
+  projects: DATA.projects.map(p => ({ ...p, ...(EN.projects[p.id] || {}) })),
+  certificates: DATA.certificates.map((c,i) => ({ ...c, ...(EN.certificates[i] || {}), learned: [] })),
+  contact: DATA.contact.map((c,i) => ({ ...c, ...(EN.contact[i] || {}) }))
+};
+const D = () => settings.lang === "en" ? DATA_EN : DATA;
+
+/* ইন্টারফেসের লেখা */
+const T = {
+  en: {
+    skip:"Skip to main content", navAria:"Main navigation", openSettings:"Open settings", openMenu:"Open menu",
+    n_home:"Home", n_about:"About", n_skills:"Skills", n_experience:"Experience", n_education:"Education", n_projects:"Projects", n_certificates:"Certificates", n_contact:"Contact",
+    settings:"Settings", language:"Language", bg:"Background", matt:"Matte", leather:"Leather", theme:"Theme", night:"Night", day:"Day",
+    shadow:"Shadow", shDefault:"Default", inner:"Inner", outer:"Outer", palette:"Color preset", reset:"Reset to default",
+    ctaContact:"Contact me", ctaWork:"View my work", hello:"Hello, I'm ", profileAlt:"Profile photo",
+    seeMore:"See More →", allShown:"All shown", backFirst:"← Back to first page", pagerAria:"Project pages", pageN:"Page ",
+    contactSub:"Have a project to discuss or a work proposal? Send me a message using the form below.",
+    formTitle:"Send me a message", lblName:"Your name", lblEmail:"Email address", lblMsg:"Message", required:"(required)",
+    phName:"e.g. Rahim Uddin", phMsg:"Write about your project or requirement...", send:"Send Message", sending:"Sending…", rights:"All rights reserved",
+    certPh:"Add certificate image", certAlt:" certificate", certNF:"Certificate image not found", projAlt:" project image", imgNF:"Image not found",
+    close:"Close", zoomIn:"View larger", zoomOut:"Zoom out", imgN:"Image ", mFeatures:"Key features", mOffer:"What we provide", mLive:"View live demo", mLearned:"What I learned",
+    eName:"Please enter your name.", eEmail:"Please enter a valid email address.", eMsg:"Message must be at least 10 characters.",
+    fixErrors:"Please fix the errors in the form and try again.", wait:"Please wait a moment before sending again.",
+    okSent:"Thank you! Your message has been sent. I'll reply soon.", mailOpen:"Your email app is opening. Press 'Send' there to deliver the message.",
+    failed:"Sorry, the message could not be sent. Check your internet or email me directly.",
+    mailSubject:"Message from portfolio: ", mailName:"Name: ", mailEmail:"Email: "
+  },
+  bn: {
+    skip:"মূল কনটেন্টে যান", navAria:"প্রধান নেভিগেশন", openSettings:"সেটিংস খুলুন", openMenu:"মেনু খুলুন",
+    n_home:"হোম", n_about:"পরিচিতি", n_skills:"স্কিল", n_experience:"অভিজ্ঞতা", n_education:"শিক্ষা", n_projects:"প্রজেক্ট", n_certificates:"সার্টিফিকেট", n_contact:"যোগাযোগ",
+    settings:"সেটিংস", language:"ভাষা", bg:"ব্যাকগ্রাউন্ড", matt:"ম্যাট", leather:"লেদার", theme:"থিম", night:"নাইট", day:"ডে",
+    shadow:"শ্যাডো", shDefault:"ডিফল্ট", inner:"ইনার", outer:"আউটার", palette:"কালার প্রিসেট", reset:"ডিফল্টে ফিরুন",
+    ctaContact:"যোগাযোগ করুন", ctaWork:"কাজগুলো দেখুন", hello:"হ্যালো, আমি ", profileAlt:"প্রোফাইল ছবি",
+    seeMore:"আরও দেখুন →", allShown:"সব দেখানো হয়েছে", backFirst:"← প্রথম পেজে ফিরুন", pagerAria:"প্রজেক্ট পেজ", pageN:"পেজ ",
+    contactSub:"প্রজেক্ট নিয়ে আলোচনা বা কাজের প্রস্তাব থাকলে নিচের ফর্মে সরাসরি মেসেজ পাঠান।",
+    formTitle:"আমাকে মেসেজ পাঠান", lblName:"আপনার নাম", lblEmail:"ইমেইল অ্যাড্রেস", lblMsg:"মেসেজ", required:"(আবশ্যক)",
+    phName:"যেমন: রহিম উদ্দিন", phMsg:"আপনার প্রজেক্ট বা প্রয়োজনের কথা লিখুন...", send:"মেসেজ পাঠান", sending:"পাঠানো হচ্ছে…", rights:"সর্বস্বত্ব সংরক্ষিত",
+    certPh:"সার্টিফিকেটের ছবি যোগ করুন", certAlt:" সার্টিফিকেট", certNF:"সার্টিফিকেটের ছবি পাওয়া যায়নি", projAlt:" প্রজেক্টের ছবি", imgNF:"ছবি পাওয়া যায়নি",
+    close:"বন্ধ করুন", zoomIn:"বড় করে দেখুন", zoomOut:"ছোট করুন", imgN:"ছবি ", mFeatures:"মূল ফিচার", mOffer:"আমরা কী প্রদান করি", mLive:"লাইভ ডেমো দেখুন", mLearned:"কী কী শিখেছি",
+    eName:"অনুগ্রহ করে আপনার নাম লিখুন।", eEmail:"সঠিক ইমেইল অ্যাড্রেস দিন।", eMsg:"মেসেজ কমপক্ষে ১০ অক্ষরের হতে হবে।",
+    fixErrors:"ফর্মের ভুলগুলো ঠিক করে আবার চেষ্টা করুন।", wait:"একটু অপেক্ষা করে আবার পাঠান।",
+    okSent:"ধন্যবাদ! আপনার মেসেজ পাঠানো হয়েছে। খুব শিগগিরই উত্তর দেব।", mailOpen:"আপনার ইমেইল অ্যাপ খুলছে। সেখানে 'Send' চাপলেই মেসেজ চলে যাবে।",
+    failed:"দুঃখিত, মেসেজ পাঠানো যায়নি। ইন্টারনেট দেখে আবার চেষ্টা করুন বা সরাসরি ইমেইল করুন।",
+    mailSubject:"পোর্টফোলিও থেকে মেসেজ: ", mailName:"নাম: ", mailEmail:"ইমেইল: "
+  }
+};
+const tr = k => (T[settings.lang] || T.en)[k] ?? k;
+const META_DESC = {
+  en:"Portfolio of Md. Pranto Ali: CSE student and web developer. Education, skills, certificates and contact.",
+  bn:"Md. Pranto Ali-এর পোর্টফোলিও: CSE শিক্ষার্থী ও ওয়েব ডেভেলপার। শিক্ষা, স্কিল, সার্টিফিকেট ও যোগাযোগ।"
+};
+/* স্ট্যাটিক HTML-এর লেখা (data-i18n / data-i18n-attr) বদলায় */
+function applyI18n(){
+  $$("[data-i18n]").forEach(el => { el.textContent = tr(el.dataset.i18n); });
+  $$("[data-i18n-attr]").forEach(el => el.dataset.i18nAttr.split(";").forEach(pair => {
+    const [a,k] = pair.split(":"); el.setAttribute(a, tr(k));
+  }));
+  document.documentElement.lang = settings.lang;
+  const md = $('meta[name="description"]'); if(md) md.content = META_DESC[settings.lang];
+}
+
+/* =====================================================================
+   ইউটিলিটি
+   ===================================================================== */
+const $ = (s, r=document) => r.querySelector(s);
+const $$ = (s, r=document) => [...r.querySelectorAll(s)];
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const store = {
+  get(k){ try{ return localStorage.getItem(k) }catch(e){ return null } },
+  set(k,v){ try{ localStorage.setItem(k,v) }catch(e){} },
+  del(k){ try{ localStorage.removeItem(k) }catch(e){} }
+};
+const ICONS = {
+  mail:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>',
+  phone:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>',
+  pin:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>',
+  link:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>'
+};
+
+/* টেক্সচার তৈরি (SVG ফিল্টার, বাইরের ছবি লাগে না) */
+function svgUri(svg){ return 'url("data:image/svg+xml,' + encodeURIComponent(svg) + '")'; }
+function buildTextures(){
+  const root = document.documentElement.style;
+  // ম্যাট: সূক্ষ্ম গ্রেইন
+  root.setProperty("--tex-matt", svgUri(
+    '<svg xmlns="http://www.w3.org/2000/svg" width="220" height="220"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="3" stitchTiles="stitch"/><feColorMatrix values="0 0 0 0 .5  0 0 0 0 .5  0 0 0 0 .5  0 0 0 .9 0"/></filter><rect width="100%" height="100%" filter="url(#n)"/></svg>'));
+  // লেদার: দানাদার ডেপথ (ডিফিউজ লাইটিং) + শিরার মতো ফাটল
+  root.setProperty("--tex-leather", svgUri(
+    '<svg xmlns="http://www.w3.org/2000/svg" width="340" height="340"><filter id="l" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".055 .06" numOctaves="4" seed="7" result="t"/><feDiffuseLighting in="t" surfaceScale="3.2" diffuseConstant="1.1" lighting-color="#fff"><feDistantLight azimuth="235" elevation="52"/></feDiffuseLighting></filter><rect width="100%" height="100%" filter="url(#l)"/></svg>'));
+  // লেদারের মিহি গ্রেইন (ওভারলে)
+  root.setProperty("--tex-grain", svgUri(
+    '<svg xmlns="http://www.w3.org/2000/svg" width="140" height="140"><filter id="g" x="0" y="0" width="100%" height="100%"><feTurbulence type="turbulence" baseFrequency=".62" numOctaves="2" seed="3" result="t"/><feDiffuseLighting in="t" surfaceScale="1.6" diffuseConstant="1" lighting-color="#fff"><feDistantLight azimuth="45" elevation="60"/></feDiffuseLighting></filter><rect width="100%" height="100%" filter="url(#g)"/></svg>'));
+}
+
+/* ডেমো ছবির জন্য প্লেসহোল্ডার ইলাস্ট্রেশন (কোনো ইমেজ না দিলে) */
+const PH_COLORS = [["#5A3A2B","#C68B59"],["#3D2A1F","#E8D5B0"],["#6B4330","#D9A777"],["#2F271E","#B8956A"]];
+function placeholderImg(title, idx=0, w=800, h=500){
+  const [a,b] = PH_COLORS[idx % PH_COLORS.length];
+  const t = esc(String(title).slice(0,22));
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${a}"/><stop offset="1" stop-color="#1E140F"/></linearGradient></defs><rect width="100%" height="100%" fill="url(#g)"/><g fill="none" stroke="${b}" stroke-opacity=".5" stroke-width="3" stroke-dasharray="10 8"><rect x="28" y="28" width="${w-56}" height="${h-56}" rx="22"/></g><rect x="${w/2-120}" y="${h/2-70}" width="240" height="140" rx="14" fill="${b}" fill-opacity=".14" stroke="${b}" stroke-opacity=".6" stroke-width="3"/><circle cx="${w/2}" cy="${h/2-22}" r="22" fill="${b}"/><rect x="${w/2-70}" y="${h/2+18}" width="140" height="12" rx="6" fill="${b}" fill-opacity=".7"/><rect x="${w/2-45}" y="${h/2+40}" width="90" height="10" rx="5" fill="${b}" fill-opacity=".4"/><text x="50%" y="${h-48}" text-anchor="middle" font-family="Georgia,serif" font-size="30" fill="${b}">${t}</text></svg>`;
+  return "data:image/svg+xml," + encodeURIComponent(svg);
+}
+const safeUrl = u => /^(https?:|data:image\/|\.{0,2}\/|assets\/)/i.test(u||"") ? u : "";
+
+/* ছবি লোড না হলে ফলব্যাক (error ইভেন্ট bubble করে না, তাই capture) */
+document.addEventListener("error", e => {
+  const el = e.target;
+  if(!(el instanceof HTMLImageElement)) return;
+  if(el.id === "profileImg"){
+    const next = (D().profile.photoFallbacks || []).map(safeUrl).filter(Boolean)[(+el.dataset.try || 0)];
+    if(next){ el.dataset.try = (+el.dataset.try || 0) + 1; el.src = next; return; }
+    $("#portrait").classList.add("noimg"); el.style.display = "none"; return;
+  }
+  if(el.dataset.fb){
+    const ph = document.createElement("div"); ph.className = "ph"; ph.textContent = el.dataset.fb;
+    el.replaceWith(ph);
+  }
+}, true);
+
+/* =====================================================================
+   রেন্ডার: Hero → Certificates
+   ===================================================================== */
+function renderStatic(){
+  const p = D().profile;
+  document.title = p.name + " | " + p.role;
+  $("#brand").innerHTML = esc(p.brand || p.name.split(" ")[0]) + "<span>.</span>";
+  $("#hRole").textContent = p.role;
+  $("#hTitle").innerHTML = esc(tr("hello")) + "<em>" + esc(p.name) + "</em>";
+  $("#hLead").textContent = p.tagline;
+  $("#hStats").innerHTML = p.stats.map(s => `<div><b>${esc(s.n)}</b><span>${esc(s.l)}</span></div>`).join("");
+  $("#avatarFb").textContent = p.initials;
+  const img = $("#profileImg");
+  const url = safeUrl(p.photo);
+  if(url){ img.src = url; } else { $("#portrait").classList.add("noimg"); img.style.display = "none"; }
+  $("#footName").textContent = p.name;
+  $("#year").textContent = new Date().getFullYear();
+
+  $("#aboutText").innerHTML = D().about.paragraphs.map(t => `<p>${esc(t)}</p>`).join("");
+  $("#aboutFacts").innerHTML = D().about.facts.map(f => `<li><span>${esc(f[0])}</span><b>${esc(f[1])}</b></li>`).join("");
+
+  $("#skillsGrid").innerHTML = D().skills.map(g => {
+    const bars = g.items.filter(i => Array.isArray(i)), tags = g.items.filter(i => !Array.isArray(i));
+    return `
+    <div class="card skill-card reveal"><h3>${esc(g.group)}</h3>
+    ${bars.map(i => `<div class="skill-row"><span>${esc(i[0])}</span><span>${+i[1]}%</span></div><div class="bar"><i data-w="${+i[1]}"></i></div>`).join("")}
+    ${tags.length ? `<div class="chips" style="margin-top:.2rem">${tags.map(t => `<span class="tag">${esc(t)}</span>`).join("")}</div>` : ""}
+    </div>`;
+  }).join("");
+
+  const tl = list => list.map(e => `
+    <article class="card t-item reveal"><h3>${esc(e.title)}</h3><div class="t-meta">${esc(e.org)} · ${esc(e.period)}</div>
+    ${(e.points||[]).length ? `<ul>${e.points.map(x => `<li>${esc(x)}</li>`).join("")}</ul>` : ""}</article>`).join("");
+  $("#expList").innerHTML = tl(D().experience);
+  $("#eduList").innerHTML = tl(D().education);
+
+  $("#certGrid").innerHTML = D().certificates.map((c,i) => {
+    const u = safeUrl(c.image);
+    return `<button type="button" class="card cert-card reveal" data-cert="${i}" aria-haspopup="dialog">
+      <div class="cert-thumb">${u ? `<img src="${esc(u)}" alt="${esc(c.title)}${esc(tr('certAlt'))}" loading="lazy" data-fb="${esc(tr('certNF'))}">` : `<div class="ph">${esc(tr('certPh'))}</div>`}</div>
+      <div class="cert-body"><h3>${esc(c.title)}</h3><p>${esc(c.issuer)} · ${esc(c.date)}</p></div></button>`;
+  }).join("");
+
+  $("#contactList").innerHTML = D().contact.map(c =>
+    `<li>${ICONS[c.icon]||""}<div><small style="color:var(--muted)">${esc(c.label)}</small><br><a href="${esc(c.href)}">${esc(c.value)}</a></div></li>`).join("");
+}
+
+/* =====================================================================
+   Projects: পেজিনেশন
+   ===================================================================== */
+const PAGE_SIZE = 6;
+let page = 1;
+const totalPages = () => Math.max(1, Math.ceil(D().projects.length / PAGE_SIZE));
+
+function projCard(p, idx){
+  const first = safeUrl(p.images && p.images[0]) || placeholderImg(p.title, idx);
+  return `<button type="button" class="card proj-card" data-proj="${idx}" aria-haspopup="dialog">
+    <div class="proj-thumb"><img src="${esc(first)}" alt="${esc(p.title)}${esc(tr('projAlt'))}" loading="lazy" width="800" height="500" data-fb="${esc(tr('imgNF'))}"></div>
+    <div class="proj-body"><h3>${esc(p.title)}</h3><p>${esc(p.tagline)}</p>
+    <div class="chips">${p.tech.map(t => `<span class="tag">${esc(t)}</span>`).join("")}</div></div></button>`;
+}
+function renderProjects(animate=true){
+  const grid = $("#projGrid");
+  const draw = () => {
+    const start = (page-1)*PAGE_SIZE;
+    grid.innerHTML = D().projects.slice(start, start+PAGE_SIZE).map((p,i) => projCard(p, start+i)).join("");
+    grid.classList.remove("leaving");
+  };
+  if(animate && !matchMedia("(prefers-reduced-motion: reduce)").matches){
+    grid.classList.add("leaving"); setTimeout(draw, 260);
+  } else draw();
+  const pager = $("#pager"); pager.innerHTML = "";
+  for(let i=1;i<=totalPages();i++){
+    const b = document.createElement("button");
+    b.type = "button"; b.textContent = i; b.setAttribute("aria-label", tr("pageN")+i);
+    if(i===page) b.setAttribute("aria-current","page");
+    b.addEventListener("click", () => { if(i!==page){ page = i; renderProjects(); } });
+    pager.appendChild(b);
+  }
+  const sm = $("#seeMore");
+  const last = page === totalPages();
+  sm.textContent = totalPages() === 1 ? tr("allShown") : (last ? tr("backFirst") : tr("seeMore"));
+  sm.disabled = totalPages() === 1;
+}
+$("#seeMore").addEventListener("click", () => {
+  page = page >= totalPages() ? 1 : page + 1;
+  renderProjects();
+});
+
+/* =====================================================================
+   মডাল (ফোকাস ট্র্যাপ, Esc, বাইরে ক্লিক, স্ক্রল লক)
+   ===================================================================== */
+const overlay = $("#overlay"), modal = $("#modal");
+let lastTrigger = null;
+const FOCUSABLE = 'a[href],button:not([disabled]),textarea,input,select,video[controls],[tabindex]:not([tabindex="-1"])';
+
+function openModal(html, trigger){
+  lastTrigger = trigger || document.activeElement;
+  modal.innerHTML = html + '<button type="button" class="m-close" aria-label="' + esc(tr("close")) + '">×</button>';
+  overlay.classList.add("show"); document.body.classList.add("lock");
+  $(".m-close", modal).addEventListener("click", closeModal);
+  const f = $(".m-close", modal); f && f.focus();
+  bindModalInner();
+}
+function closeModal(){
+  overlay.classList.remove("show"); document.body.classList.remove("lock");
+  const v = $("video", modal); if(v) v.pause();
+  modal.innerHTML = "";
+  if(lastTrigger && lastTrigger.focus) lastTrigger.focus();
+}
+overlay.addEventListener("mousedown", e => { if(e.target === overlay) closeModal(); });
+document.addEventListener("keydown", e => {
+  if(e.key === "Escape"){
+    if(overlay.classList.contains("show")) closeModal();
+    else if($("#settings").classList.contains("open")) toggleSettings(false);
+    else closeMenu();
+  }
+  if(e.key === "Tab" && overlay.classList.contains("show")){
+    const els = $$(FOCUSABLE, modal).filter(el => el.offsetParent !== null);
+    if(!els.length) return;
+    const first = els[0], last = els[els.length-1];
+    if(e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
+    else if(!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
+  }
+});
+
+function bindModalInner(){
+  // গ্যালারি থাম্বনেইল
+  $$(".m-thumbs button", modal).forEach(b => b.addEventListener("click", () => {
+    const src = b.dataset.src;
+    $(".m-main", modal).innerHTML = `<img src="${esc(src)}" alt="${esc(b.dataset.alt)}" data-fb="${esc(tr('imgNF'))}">`;
+    $$(".m-thumbs button", modal).forEach(x => x.setAttribute("aria-current", x===b ? "true":"false"));
+  }));
+  // সার্টিফিকেট জুম
+  const zw = $(".zoomwrap", modal);
+  if(zw){
+    const toggle = () => { zw.classList.toggle("zoomed"); zw.setAttribute("aria-label", zw.classList.contains("zoomed") ? tr("zoomOut") : tr("zoomIn")); };
+    zw.addEventListener("click", toggle);
+    zw.addEventListener("keydown", e => { if(e.key==="Enter"||e.key===" "){ e.preventDefault(); toggle(); } });
+  }
+}
+
+function projectModal(i, trigger){
+  const p = D().projects[i]; if(!p) return;
+  const imgs = (p.images||[]).map(safeUrl).filter(Boolean);
+  const gallery = imgs.length ? imgs : [placeholderImg(p.title, i, 1000, 650)];
+  const main = safeUrl(p.video)
+    ? `<video controls preload="metadata" playsinline poster="${esc(gallery[0])}"><source src="${esc(p.video)}"></video>`
+    : `<img src="${esc(gallery[0])}" alt="${esc(p.title)}" data-fb="${esc(tr('imgNF'))}">`;
+  const thumbs = gallery.length > 1 ? `<div class="m-thumbs">${gallery.map((g,k)=>`<button type="button" data-src="${esc(g)}" data-alt="${esc(p.title)} ${k+1}" aria-label="${esc(tr('imgN'))}${k+1}" aria-current="${k===0}"><img src="${esc(g)}" alt="" loading="lazy"></button>`).join("")}</div>` : "";
+  openModal(`
+    <div class="m-media"><div class="m-main">${main}</div>${thumbs}</div>
+    <div class="m-info">
+      <span class="tag">${esc(p.category)}</span>
+      <h3 id="mTitle" style="margin-top:.6rem">${esc(p.title)}</h3>
+      <div class="chips" style="margin:.4rem 0 .8rem">${p.tech.map(t=>`<span class="tag">${esc(t)}</span>`).join("")}</div>
+      <p>${esc(p.desc)}</p>
+      <h4>${esc(tr("mFeatures"))}</h4><ul class="bul">${p.features.map(f=>`<li>${esc(f)}</li>`).join("")}</ul>
+      <h4>${esc(tr("mOffer"))}</h4><ul class="bul">${p.benefits.map(f=>`<li>${esc(f)}</li>`).join("")}</ul>
+      ${safeUrl(p.demo) ? `<p style="margin-top:1.2rem"><a class="btn btn-primary" href="${esc(p.demo)}" target="_blank" rel="noopener noreferrer">${esc(tr("mLive"))}</a></p>` : ""}
+    </div>`, trigger);
+}
+function certModal(i, trigger){
+  const c = D().certificates[i]; if(!c) return;
+  const u = safeUrl(c.image);
+  openModal(`
+    <div class="m-media"><div class="m-main">${u
+      ? `<div class="zoomwrap" tabindex="0" role="button" aria-label="${esc(tr('zoomIn'))}"><img src="${esc(u)}" alt="${esc(c.title)}${esc(tr('certAlt'))}" data-fb="${esc(tr('certNF'))}"></div>`
+      : `<div class="ph">${esc(tr('certPh'))}</div>`}</div></div>
+    <div class="m-info">
+      <span class="tag">${esc(c.date)}</span>
+      <h3 id="mTitle" style="margin-top:.6rem">${esc(c.title)}</h3>
+      <p style="color:var(--accent2)">${esc(c.issuer)}</p>
+      ${(c.learned||[]).length ? `<h4>${esc(tr("mLearned"))}</h4><ul class="bul">${c.learned.map(l=>`<li>${esc(l)}</li>`).join("")}</ul>` : ""}
+    </div>`, trigger);
+}
+document.addEventListener("click", e => {
+  const pc = e.target.closest("[data-proj]"); if(pc){ projectModal(+pc.dataset.proj, pc); return; }
+  const cc = e.target.closest("[data-cert]"); if(cc){ certModal(+cc.dataset.cert, cc); }
+});
+
+/* =====================================================================
+   Settings (লোকাল স্টোরেজে সংরক্ষণ, ব্যর্থ হলে ডিফল্ট)
+   ===================================================================== */
+const DEFAULTS = { bg:"matt", theme:"day", palette:"espresso", shadow:"default", lang:"en" };
+const VALID = { bg:["matt","leather"], theme:["night","day"], palette:["espresso","chestnut","mocha"], shadow:["default","inner","outer"], lang:["en","bn"] };
+let settings = {...DEFAULTS};
+function loadSettings(){
+  try{
+    const raw = store.get("portfolio-settings");
+    const s = raw ? JSON.parse(raw) : {};
+    for(const k in DEFAULTS) settings[k] = VALID[k].includes(s[k]) ? s[k] : DEFAULTS[k];
+  }catch(e){ settings = {...DEFAULTS}; }
+}
+let appliedLang = null, appReady = false;
+function applySettings(){
+  const r = document.documentElement;
+  r.dataset.bg = settings.bg; r.dataset.theme = settings.theme; r.dataset.palette = settings.palette; r.dataset.shadow = settings.shadow; r.dataset.lang = settings.lang;
+  if(appliedLang !== settings.lang){
+    appliedLang = settings.lang; applyI18n();
+    if(appReady){ renderStatic(); renderProjects(false); observeNew(); }
+  }
+  $$('.seg[data-key]').forEach(seg => $$("button", seg).forEach(b => b.setAttribute("aria-pressed", String(b.dataset.v === settings[seg.dataset.key]))));
+  $$('.swatches .swatch').forEach(b => b.setAttribute("aria-pressed", String(b.dataset.p === settings.palette)));
+  const tc = getComputedStyle(r).getPropertyValue("--bg").trim();
+  const m = $('meta[name="theme-color"]'); if(m && tc) m.content = tc;
+}
+function saveSettings(){ store.set("portfolio-settings", JSON.stringify(settings)); }
+$$('.seg[data-key]').forEach(seg => seg.addEventListener("click", e => {
+  const b = e.target.closest("button[data-v]"); if(!b) return;
+  settings[seg.dataset.key] = b.dataset.v; applySettings(); saveSettings();
+}));
+$(".swatches").addEventListener("click", e => {
+  const b = e.target.closest(".swatch"); if(!b) return;
+  settings.palette = b.dataset.p; applySettings(); saveSettings();
+});
+$("#resetBtn").addEventListener("click", () => { settings = {...DEFAULTS}; store.del("portfolio-settings"); applySettings(); });
+function toggleSettings(open){
+  const el = $("#settings"), btn = $("#settingsBtn");
+  const willOpen = typeof open === "boolean" ? open : !el.classList.contains("open");
+  el.classList.toggle("open", willOpen); btn.setAttribute("aria-expanded", String(willOpen));
+  if(willOpen) closeMenu();
+}
+$("#settingsBtn").addEventListener("click", e => { e.stopPropagation(); toggleSettings(); });
+document.addEventListener("click", e => {
+  if(!e.target.closest("#settings") && !e.target.closest("#settingsBtn")) toggleSettings(false);
+});
+
+/* মোবাইল মেনু */
+function closeMenu(){ $("#navLinks").classList.remove("open"); $("#hamburger").setAttribute("aria-expanded","false"); }
+$("#hamburger").addEventListener("click", e => {
+  e.stopPropagation();
+  const open = $("#navLinks").classList.toggle("open");
+  $("#hamburger").setAttribute("aria-expanded", String(open));
+  if(open) toggleSettings(false);
+});
+$$("#navLinks a").forEach(a => a.addEventListener("click", closeMenu));
+
+/* স্ক্রল স্পাই ও রিভিল */
+let rev;
+function observeNew(){ $$(".reveal:not(.in)").forEach(el => rev.observe(el)); }
+function setupObservers(){
+  const links = $$("#navLinks a");
+  const secs = links.map(a => $(a.getAttribute("href")));
+  const spy = new IntersectionObserver(es => es.forEach(en => {
+    if(en.isIntersecting){
+      const id = "#" + en.target.id;
+      links.forEach(a => a.classList.toggle("active", a.getAttribute("href") === id));
+    }
+  }), { rootMargin:"-45% 0px -50% 0px" });
+  secs.forEach(s => s && spy.observe(s));
+
+  rev = new IntersectionObserver(es => es.forEach(en => {
+    if(en.isIntersecting){
+      en.target.classList.add("in");
+      $$(".bar i", en.target).forEach(i => i.style.width = i.dataset.w + "%");
+      rev.unobserve(en.target);
+    }
+  }), { threshold:.12 });
+  $$(".reveal").forEach(el => rev.observe(el));
+}
+
+/* =====================================================================
+   Contact ফর্ম: ভ্যালিডেশন ও সেন্ড
+   ===================================================================== */
+(function contactForm(){
+  const form = $("#contactForm"), status = $("#formStatus"), btn = $("#sendBtn"), label = $("#sendLabel");
+  const f = { name:$("#cName"), email:$("#cEmail"), msg:$("#cMsg") };
+  const errs = { name:$("#eName"), email:$("#eEmail"), msg:$("#eMsg") };
+  const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+  let lastSent = 0;
+
+  function setErr(k, text){ errs[k].textContent = text || ""; f[k].setAttribute("aria-invalid", text ? "true" : "false"); }
+  function validate(){
+    let ok = true;
+    const n = f.name.value.trim(), m = f.email.value.trim(), t = f.msg.value.trim();
+    if(n.length < 2){ setErr("name", tr("eName")); ok=false } else setErr("name");
+    if(!emailRe.test(m)){ setErr("email", tr("eEmail")); ok=false } else setErr("email");
+    if(t.length < 10){ setErr("msg", tr("eMsg")); ok=false } else setErr("msg");
+    return ok;
+  }
+  Object.values(f).forEach(el => el.addEventListener("input", () => { if(el.getAttribute("aria-invalid")==="true") validate(); }));
+  const show = (cls, text) => { status.className = "status " + cls; status.textContent = text; };
+
+  form.addEventListener("submit", async e => {
+    e.preventDefault();
+    if(form.website.value) return;                       // স্প্যাম বট ধরা
+    if(!validate()){ show("bad", tr("fixErrors")); const bad = $('[aria-invalid="true"]', form); bad && bad.focus(); return; }
+    if(Date.now() - lastSent < 15000){ show("info", tr("wait")); return; }
+
+    const payload = { name:f.name.value.trim(), email:f.email.value.trim(), message:f.msg.value.trim() };
+    btn.disabled = true; btn.classList.add("loading"); label.textContent = tr("sending"); show("info","");
+
+    try{
+      if(CONFIG.formEndpoint){
+        const res = await fetch(CONFIG.formEndpoint, {
+          method:"POST", headers:{ "Content-Type":"application/json", "Accept":"application/json" },
+          body: JSON.stringify(payload)
+        });
+        if(!res.ok) throw new Error("HTTP " + res.status);
+        lastSent = Date.now(); form.reset();
+        show("ok", tr("okSent"));
+      } else {
+        // ব্যাকএন্ড ছাড়া ফলব্যাক: ইউজারের ইমেইল অ্যাপে মেসেজ তৈরি হয়
+        const subject = encodeURIComponent(tr("mailSubject") + payload.name);
+        const body = encodeURIComponent(tr("mailName") + payload.name + "\n" + tr("mailEmail") + payload.email + "\n\n" + payload.message);
+        lastSent = Date.now();
+        window.location.href = "mailto:" + CONFIG.receiverEmail + "?subject=" + subject + "&body=" + body;
+        show("info", tr("mailOpen"));
+      }
+    }catch(err){
+      show("bad", tr("failed"));
+    }finally{
+      btn.disabled = false; btn.classList.remove("loading"); label.textContent = tr("send");
+    }
+  });
+})();
+
+/* =====================================================================
+   শুরু
+   ===================================================================== */
+buildTextures();
+loadSettings(); applySettings();
+renderStatic();
+renderProjects(false);
+setupObservers();
+appReady = true;
+</script>
+</body>
+</html>

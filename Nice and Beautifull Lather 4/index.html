@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@500;800&display=swap" rel="stylesheet">
+<title>Md. Pranto Ali — Portfolio</title>
+<style>
+:root{
+  --leather:#4a2517;--leather-l:#6b3826;--leather-d:#2e170e;--ink:#f1dcc8;--hi:rgba(255,255,255,.14);--lo:rgba(0,0,0,.75);
+  --stitch:#e6b93e;--acc:#fff1a8;--sheen:.16;--bt:#e6b93e;--bts:0 1px 1px rgba(0,0,0,.8);
+  --foil:linear-gradient(110deg,#9a6d12 0%,#e6b93e 20%,#fff1a8 34%,#e6b93e 50%,#9a6d12 66%,#e6b93e 82%,#fff1a8 100%);
+  --tf:drop-shadow(0 1px 0 rgba(0,0,0,.7)) drop-shadow(0 0 1px rgba(0,0,0,.45));
+  --grain-matte:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' seed='4'/><feColorMatrix values='0 0 0 0 .1  0 0 0 0 .04  0 0 0 0 .02  0 0 0 .5 -.12'/></filter><rect width='220' height='220' filter='url(%23n)'/></svg>");
+  --grain-img:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' seed='4'/><feColorMatrix values='0 0 0 0 .1  0 0 0 0 .04  0 0 0 0 .02  0 0 0 1.6 -.55'/></filter><rect width='220' height='220' filter='url(%23n)'/></svg>");
+}
+:root{--csh:0 14px 28px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,225,190,.25),inset 0 -2px 6px rgba(0,0,0,.45);--bsh:inset 0 2px 5px rgba(0,0,0,.65),0 1px 0 var(--hi),0 0 0 1px rgba(0,0,0,.25);--psh:inset 0 6px 14px rgba(0,0,0,.7)}
+html[data-shadow=inner]{--csh:inset 0 6px 16px rgba(0,0,0,.7),inset 0 -1px 0 var(--hi),0 1px 0 var(--hi);--bsh:inset 0 4px 9px rgba(0,0,0,.85),0 1px 0 var(--hi);--psh:inset 0 10px 22px rgba(0,0,0,.85);--sheen:.05}
+html[data-shadow=outer]{--csh:0 22px 40px rgba(0,0,0,.6),0 6px 0 rgba(0,0,0,.3),inset 0 2px 0 rgba(255,235,210,.35),inset 0 -5px 10px rgba(0,0,0,.45);--bsh:0 5px 10px rgba(0,0,0,.55),inset 0 1px 0 var(--hi),inset 0 -2px 4px rgba(0,0,0,.4);--psh:0 10px 20px rgba(0,0,0,.65),inset 0 2px 0 var(--hi);--sheen:.22}
+html[data-surface=matte]{--sheen:0;--grain-img:var(--grain-matte)}
+*{box-sizing:border-box}
+html,body{margin:0;max-width:100%;overflow-x:clip}
+body{font:600 16px/1.7 Georgia,"Noto Serif Bengali","Nirmala UI","Kohinoor Bangla",serif;color:var(--bt);background:var(--grain-img),radial-gradient(1200px 700px at 50% 0,var(--leather-l),var(--leather) 45%,var(--leather-d));background-attachment:fixed}
+h1,h2,h3,p,li,small{background:var(--foil);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;filter:var(--tf)}
+li::marker{color:var(--bt)}
+h1,h2,h3{font-weight:800;letter-spacing:.04em;margin:0 0 .4em;text-transform:uppercase}
+h1{font-size:clamp(2rem,5.6vw,3.8rem);line-height:1.06}h2{font-size:clamp(1.4rem,3.2vw,2.1rem)}h3{font-size:1.05rem}
+p{margin:.3em 0}a{color:inherit}small{font-weight:700;letter-spacing:.06em}
+.card{position:relative;border-radius:30px;padding:32px 30px;background:var(--grain-img),linear-gradient(150deg,rgba(255,200,160,var(--sheen)),transparent 40%,rgba(0,0,0,.2)),var(--leather);box-shadow:var(--csh)}
+.card::before{content:"";position:absolute;inset:10px;border-radius:21px;pointer-events:none;border:2px dashed var(--stitch);opacity:.85;filter:drop-shadow(0 1px 0 rgba(0,0,0,.6))}
+.card>*{position:relative}
+.btn,.pill,.stat{color:var(--bt);text-shadow:var(--bts)}
+.btn{cursor:pointer;font:800 .8rem Georgia,"Noto Serif Bengali","Nirmala UI","Kohinoor Bangla",serif;letter-spacing:.08em;text-transform:uppercase;padding:9px 18px;border-radius:999px;border:0;text-decoration:none;display:inline-block;background:var(--grain-img),var(--leather-d);box-shadow:var(--bsh)}
+.btn[aria-pressed=true],.pager .btn[aria-current=true]{box-shadow:inset 0 4px 9px rgba(0,0,0,.85),0 0 0 2px var(--stitch);color:var(--acc)}
+/* top floating strap menu (bottom bar on small screens) */
+#rail{position:fixed;top:12px;left:0;right:0;margin:0 auto;width:fit-content;max-width:calc(100% - 20px);z-index:30;display:flex;align-items:center;gap:4px;padding:8px 14px;border-radius:999px}
+#rail::before{inset:4px;border-radius:999px}
+#rail a,#rail button{display:flex;align-items:center;gap:6px;padding:8px 15px;border-radius:999px;text-decoration:none;border:0;background:none;cursor:pointer;font:800 .74rem Georgia,"Noto Serif Bengali","Nirmala UI","Kohinoor Bangla",serif;letter-spacing:.08em;text-transform:uppercase;color:var(--bt);text-shadow:var(--bts)}
+#rail a b{display:none}#rail b{font-size:1rem}
+#rail a.on{background:var(--leather-d);box-shadow:inset 0 3px 8px rgba(0,0,0,.75),0 0 0 2px var(--stitch);color:var(--acc)}
+#rail .mono{font:800 1.15rem Georgia,"Noto Serif Bengali","Nirmala UI","Kohinoor Bangla",serif;padding:0 14px 0 6px;margin-right:6px;color:var(--bt);text-shadow:var(--bts);border-right:2px dashed var(--stitch)}
+main{max-width:100%;padding-top:84px}.wrap{width:min(1080px,94%);margin:0 auto;padding-bottom:70px}
+section{padding-top:64px;scroll-margin-top:84px}#about{padding-top:20px}
+.sh{text-align:center;margin-bottom:30px}.sh small{display:block;margin-bottom:2px}
+h2.u::after{content:"";display:block;margin:10px auto 0;border-top:2px dashed var(--stitch);opacity:.85;width:120px}
+.head{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;margin-bottom:30px}.head .sh{margin:0}.head>div:last-child{text-align:right}
+/* hero medallion */
+.hero{display:grid;grid-template-columns:330px 1fr;gap:34px;align-items:center;padding:42px 38px}
+.medal{padding:14px;text-align:center}
+.disc{width:min(260px,100%);aspect-ratio:1;margin:0 auto;border-radius:50%;position:relative;overflow:hidden;display:grid;place-items:center;font:800 4.4rem Georgia,"Noto Serif Bengali","Nirmala UI","Kohinoor Bangla",serif;color:var(--bt);text-shadow:var(--bts);
+  background:var(--grain-img),var(--leather-d);box-shadow:var(--psh),0 0 0 6px var(--leather),0 0 0 9px var(--stitch),0 0 0 14px var(--leather-d)}
+.disc img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:inherit}
+.ribbon{display:inline-block;margin-top:30px;padding:9px 34px;font:800 .8rem Georgia,"Noto Serif Bengali","Nirmala UI","Kohinoor Bangla",serif;letter-spacing:.06em;text-transform:uppercase;color:var(--bt);text-shadow:var(--bts);
+  background:var(--grain-img),var(--leather-d);clip-path:polygon(0 0,100% 0,94% 50%,100% 100%,0 100%,6% 50%)}
+.pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+.pill{padding:5px 14px;border-radius:999px;font-size:.8rem;background:var(--leather-d);box-shadow:var(--bsh)}
+.stats{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+.stat{flex:1 1 100px;padding:14px 8px;border-radius:24px;text-align:center;background:var(--leather-d);box-shadow:var(--bsh);font-size:.74rem;text-transform:uppercase;letter-spacing:.05em;font-weight:800}
+.stat b{display:block;font-size:1.7rem;letter-spacing:0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:24px}
+.grid.two{grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr))}
+.grid.three{grid-template-columns:repeat(auto-fit,minmax(min(230px,100%),1fr))}
+.sk0{grid-column:1/-1}
+.chips{display:flex;flex-wrap:wrap;gap:10px}.chips .pill{border-radius:16px;padding:7px 14px}
+/* zig-zag timeline */
+.tl{position:relative;display:grid;gap:26px}
+.tl::before{content:"";position:absolute;left:50%;top:8px;bottom:8px;border-left:3px dashed var(--stitch)}
+.ti{position:relative;width:calc(50% - 34px)}.ti:nth-child(even){margin-left:auto}
+.ti::before{content:"";position:absolute;top:28px;right:-44px;width:20px;height:20px;border-radius:50%;background:radial-gradient(circle at 35% 30%,var(--acc),var(--stitch));box-shadow:0 2px 4px rgba(0,0,0,.6),0 0 0 3px var(--leather-d)}
+.ti:nth-child(even)::before{right:auto;left:-44px}
+/* project cards & certificate badges */
+.tile{cursor:pointer;padding:0;overflow:hidden}
+.tile .ph{position:relative;height:230px;display:grid;place-items:center;background-size:cover;background-position:center;box-shadow:inset 0 -40px 50px rgba(0,0,0,.35)}
+.ch{font:800 3rem Georgia,"Noto Serif Bengali","Nirmala UI","Kohinoor Bangla",serif;color:var(--bt);text-shadow:var(--bts)}
+.no{position:absolute;top:16px;left:16px;width:38px;height:38px;border-radius:50%;display:grid;place-items:center;font:800 .85rem Georgia,"Noto Serif Bengali","Nirmala UI","Kohinoor Bangla",serif;color:#2a1806;background:radial-gradient(circle at 35% 30%,var(--acc),var(--stitch));box-shadow:0 2px 4px rgba(0,0,0,.6)}
+.tile .cap{margin:-38px 16px 16px;padding:16px 20px;border-radius:22px;background:var(--grain-img),var(--leather);box-shadow:0 10px 20px rgba(0,0,0,.5),inset 0 1px 0 var(--hi)}
+.tile.badge .ph{width:120px;height:120px;border-radius:50%;margin:32px auto 0;box-shadow:var(--psh),0 0 0 4px var(--leather),0 0 0 6px var(--stitch)}
+.tile.badge .cap{margin:0;padding:16px 24px 28px;background:none;box-shadow:none;text-align:center}
+.tile:focus-visible{outline:3px solid var(--stitch);outline-offset:3px}
+.pager{display:flex;justify-content:center;gap:10px;margin-top:28px;flex-wrap:wrap}
+form{display:grid;gap:12px}
+input,textarea{width:100%;padding:12px 16px;border-radius:16px;border:0;font:600 1rem Georgia,"Noto Serif Bengali","Nirmala UI","Kohinoor Bangla",serif;color:var(--bt);background:var(--grain-img),var(--leather-d);box-shadow:var(--bsh)}
+::placeholder{color:var(--bt);opacity:.6}
+.soc{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}footer{text-align:center;padding:0 0 40px}
+/* overlays: overlay scrolls, so stitching moves with the card */
+#pop,#set{position:fixed;inset:0;z-index:50;display:none;align-items:flex-start;justify-content:center;padding:16px;overflow:auto;background:rgba(15,5,2,.72)}
+#pop.on,#set.on{display:flex}
+#pop .card,#set .card{width:min(860px,100%);margin:auto;padding:0}#set .card{padding:30px;width:min(660px,100%)}
+.pg{display:grid;grid-template-columns:1fr 1.15fr}
+#pim{min-height:320px;display:grid;place-items:center;font:800 3rem Georgia,"Noto Serif Bengali","Nirmala UI","Kohinoor Bangla",serif;color:var(--bt);background-size:cover;background-position:center;border-radius:30px 0 0 30px;box-shadow:inset -8px 0 18px rgba(0,0,0,.5)}
+#pop .tx{padding:32px 32px 32px 28px}#pop ul{padding-left:20px;margin:.4em 0}
+#x,#sx{position:absolute;top:16px;right:16px;z-index:3}
+#set h3{margin-top:18px}.opt{display:flex;gap:10px;flex-wrap:wrap}
+.sw{display:grid;grid-template-columns:repeat(auto-fill,minmax(104px,1fr));gap:10px}
+.sw button{cursor:pointer;border:0;border-radius:14px;padding:8px;font:700 .7rem Georgia,"Noto Serif Bengali","Nirmala UI","Kohinoor Bangla",serif;color:var(--bt);background:var(--leather-d);box-shadow:var(--bsh)}
+.sw i{display:block;height:28px;border-radius:8px;margin-bottom:6px}.sw button[aria-pressed=true]{outline:3px solid var(--stitch)}
+html[data-anim=on] :is(h1,h2,h3,p,li,small){background-size:250% 100%;animation:shn 4.5s ease-in-out infinite alternate}
+@keyframes shn{from{background-position:0% 0}to{background-position:100% 0}}
+html[lang=bn] *{letter-spacing:0!important}
+h1,h2,h3,p,li,small,.pill,.btn,.stat,.sw button,#rail a,#rail button{overflow-wrap:anywhere;word-break:break-word}
+.grid>*,.hero>*,.tile>*,.stat,.pill{min-width:0}
+.pill,.btn{max-width:100%;white-space:normal;text-align:center}.chips .pill{text-align:left}
+@media(max-width:960px){
+  #rail{top:auto;bottom:8px;width:calc(100% - 16px);max-width:560px;padding:6px 8px;gap:0;justify-content:space-between;border-radius:26px}#rail::before{border-radius:21px}
+  #rail .mono{display:none}
+  #rail a,#rail button{flex-direction:column;gap:0;padding:6px 2px;flex:1 1 0;min-width:0;font-size:.58rem;letter-spacing:0;text-align:center;border-radius:18px}
+  #rail a b{display:block;font-size:.85rem}
+  main{padding-top:16px}.wrap{padding-bottom:100px}section{scroll-margin-top:16px}
+  .hero{grid-template-columns:1fr;text-align:center;padding:34px 22px}.hero .pills{justify-content:center}
+  .pg{grid-template-columns:1fr}#pim{border-radius:30px 30px 0 0;min-height:220px}
+  .tl{padding-left:38px}.tl::before{left:10px}.ti,.ti:nth-child(even){width:100%;margin-left:0}
+  .ti::before,.ti:nth-child(even)::before{left:-38px;right:auto;width:18px;height:18px}
+}
+#pgrid{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media(max-width:700px){#pgrid{grid-template-columns:1fr}}
+@media(max-width:640px){.head{grid-template-columns:1fr}.head>span{display:none}.head>div:last-child{text-align:center;margin-top:14px}}
+@media(max-width:480px){h1{font-size:1.8rem}.card{padding:26px 18px}.card::before{inset:7px;border-radius:23px}.hero{padding:28px 16px}.stat{font-size:.6rem;padding:10px 3px;flex-basis:84px}.stat b{font-size:1.35rem}
+  .tile .ph{height:190px}.tile .cap{margin:-32px 12px 12px;padding:14px 16px}.tl{padding-left:32px}.ti::before,.ti:nth-child(even)::before{left:-32px}
+  #set .card{padding:24px 16px}#pop .tx{padding:24px 18px}.sw{grid-template-columns:repeat(auto-fill,minmax(92px,1fr))}.ribbon{padding:8px 26px}}
+</style>
+</head>
+<body>
+<nav id="rail" class="card" aria-label="Main">
+<div class="mono">PA</div>
+<a href="#about" data-s="about"><b>01</b><span data-i="n_about">About</span></a><a href="#edu" data-s="edu"><b>02</b><span data-i="n_edu">Journey</span></a><a href="#projects" data-s="projects"><b>03</b><span data-i="n_proj">Projects</span></a>
+<a href="#certs" data-s="certs"><b>04</b><span data-i="n_cert">Certs</span></a><a href="#skills" data-s="skills"><b>05</b><span data-i="n_skill">Skills</span></a><a href="#contact" data-s="contact"><b>06</b><span data-i="n_contact">Contact</span></a>
+<button id="gear" type="button" aria-label="Settings"><b>⚙</b><span data-i="settings">Settings</span></button></nav>
+<main><div class="wrap">
+<section id="about"><div class="card hero">
+  <div class="medal"><div class="disc">PA<img id="photo" alt="MD Pranto Ali" referrerpolicy="no-referrer" onerror="this.remove()"></div><span class="ribbon" data-i="role"></span></div>
+  <div><small data-i="hello"></small><h1>Md. Pranto Ali</h1>
+    <p data-i="obj"></p>
+    <div class="pills"><span class="pill" data-i="pl1"></span><span class="pill" data-i="pl2"></span><span class="pill" data-i="pl3"></span><span class="pill" data-i="pl4"></span></div>
+    <div class="stats"><div class="stat"><b id="n-p">0</b><span data-i="st_p"></span></div><div class="stat"><b id="n-c">0</b><span data-i="st_c"></span></div><div class="stat"><b>3.72</b><span data-i="st_g"></span></div></div></div>
+</div></section>
+<section id="edu"><div class="sh"><small>01</small><h2 class="u" data-i="h_edu"></h2></div><div class="tl" id="timeline"></div></section>
+<section id="projects"><div class="head"><span></span><div class="sh"><small>02</small><h2 class="u" data-i="h_proj"></h2></div><div><button class="btn" id="more" type="button">See more</button></div></div>
+<div class="grid two" id="pgrid"></div><div class="pager" id="ppager"></div></section>
+<section id="certs"><div class="sh"><small>03</small><h2 class="u" data-i="h_cert"></h2></div><div class="grid three" id="cgrid"></div></section>
+<section id="skills"><div class="sh"><small>04</small><h2 class="u" data-i="h_skill"></h2></div><div class="grid" id="skgrid"></div></section>
+<section id="contact"><div class="sh"><small>05</small><h2 class="u" data-i="h_contact"></h2></div><div class="grid two">
+  <form class="card" id="form" autocomplete="on"><h3 data-i="send_h"></h3>
+    <input name="name" data-ph="ph_name" required><input name="email" type="email" data-ph="ph_email" required>
+    <textarea name="msg" rows="5" data-ph="ph_msg" required></textarea><button class="btn" type="submit" data-i="send"></button><small id="sent"></small></form>
+  <div class="card"><h3 data-i="info_h"></h3>
+    <p><span data-i="email"></span> <a id="em"></a></p><p><span data-i="phone"></span> <a id="ph"></a></p>
+    <p data-i="addr1"></p><p data-i="addr2"></p><div class="soc" id="soc"></div></div></div></section>
+</div><footer><p data-i="foot"></p></footer></main>
+
+<div id="pop" role="dialog" aria-modal="true"><div class="card"><button class="btn" id="x" type="button" aria-label="Close">X</button>
+<div class="pg"><div id="pim"></div><div class="tx"><h2 id="pt"></h2><small id="pm"></small><div id="pd"></div><div class="pills" id="ptag"></div></div></div></div></div>
+<div id="set" role="dialog" aria-modal="true"><div class="card"><button class="btn" id="sx" type="button" aria-label="Close">X</button><h2 data-i="s_title"></h2>
+<h3 data-i="s_surface"></h3><div class="opt" id="o-surface"></div><h3 data-i="s_mode"></h3><div class="opt" id="o-mode"></div>
+<h3 data-i="s_text"></h3><div class="opt" id="o-text"></div>
+<div id="row-shine"><h3 data-i="s_shine"></h3><div class="opt" id="o-shine"></div></div>
+<div id="row-stype"><h3 data-i="s_stype"></h3><div class="opt" id="o-stype"></div></div>
+<div id="row-anim"><h3 data-i="s_anim"></h3><div class="opt" id="o-anim"></div></div>
+<h3 data-i="s_shadow"></h3><div class="opt" id="o-shadow"></div><h3 data-i="s_lang"></h3><div class="opt" id="o-lang"></div>
+<h3 data-i="s_lc"></h3><div class="sw" id="o-theme"></div>
+<p style="margin-top:20px"><button class="btn" id="reset" type="button" data-i="reset"></button></p></div></div>
+
+<script>
+/* ===== EDIT HERE ===== */
+const CONFIG={
+  photo:"https://plain-apac-prod-public.komododecks.com/202611/02/J53acXZYBTZMw8ts4DLN/image.png",
+  email:"prantoislamnt51@gmail.com", phone:"+8801979728818", whatsapp:"https://wa.me/8801979728818",
+  linkedin:"#", instagram:"#", facebook:"#", github:"#"
+};
+const PER=4;
+/* t title, s short line, d description ("- " lines become bullets), m meta, tags, img (url or ""), h placeholder hue */
+const PROJECTS=[
+ {t:"POS System Software",s:"Point-of-sale software for shops.",m:"Desktop / Web · Demo",tags:["POS","Billing","Inventory"],img:"",h:18,
+  d:"A point-of-sale system that speeds up billing and keeps stock under control.\n- Fast product search and barcode-ready billing\n- Stock tracking and low-stock alerts\n- Daily sales and profit reports\nBenefits:\n- Fewer billing errors\n- Clear view of daily business"},
+ {t:"School Management System",s:"Students, staff, results and fees in one place.",m:"Web App · Demo",tags:["School","Admin","Results"],img:"",h:28,
+  d:"A complete system for running a school day to day.\n- Student and teacher records\n- Result sheets and fee collection\n- Notices and class routines\nBenefits:\n- Less paperwork\n- Quick access to records"},
+ {t:"School Website",s:"A clean public website for a school.",m:"Website · Demo",tags:["HTML","CSS","JS"],img:"",h:200,
+  d:"A responsive website presenting a school to parents and visitors.\n- About, admission and notice pages\n- Gallery and contact form\n- Works on mobile and desktop\nBenefits:\n- Stronger online presence"},
+ {t:"E-commerce Website",s:"Online store with cart and checkout.",m:"Website · Demo",tags:["Shop","Cart","Responsive"],img:"",h:340,
+  d:"An online shop where customers can browse and order.\n- Product pages and categories\n- Cart and checkout flow\n- Mobile-friendly layout\nBenefits:\n- Sell 24/7"},
+ {t:"Attendance Management Device",s:"RFID and fingerprint attendance.",m:"Hardware + Software · Demo",tags:["RFID","Fingerprint","IoT"],img:"",h:160,
+  d:"A device that confirms attendance by RFID card or fingerprint.\n- Instant identity check\n- Automatic attendance records\n- Reports for teachers and admins\nBenefits:\n- No proxy attendance\n- Saves time"},
+ {t:"Student Entry Pass Gate",s:"Gate opens with an entry pass or RFID card.",m:"Hardware + Software · Demo",tags:["RFID","Access control","Gate"],img:"",h:250,
+  d:"A gate system where a student shows an entry pass or RFID card and the gate opens.\n- Card verification at the gate\n- Entry log with time\n- Unauthorized cards rejected\nBenefits:\n- Safer campus\n- Automatic entry records"},
+ {t:"Demo Project 7",s:"Add your own project here.",m:"Demo",tags:["Demo"],img:"",h:60,d:"Replace this entry in the PROJECTS array.\n- One line adds a card\n- Pages grow automatically"},
+ {t:"Demo Project 8",s:"Add your own project here.",m:"Demo",tags:["Demo"],img:"",h:100,d:"Replace this entry in the PROJECTS array.\n- One line adds a card\n- Pages grow automatically"}
+];
+const CERTS=[
+ {t:"NSDA — Web Design & Development for Freelancing (Level 3)",s:"Govt. of Bangladesh · 29 Aug 2026",m:"Assessment passed at Touch And Solve · 29 Aug 2026",tags:["NSDA","Web","Freelancing"],img:"",h:30,d:"Successfully passed the assessment under the National Skills Development Authority (NSDA), Government of the People's Republic of Bangladesh.\n- Web design and development basics\n- Preparing for freelance work"},
+ {t:"Google — Introduction to Generative AI Studio",s:"Sep 17, 2026",m:"Google · Sep 17, 2026",tags:["Google","AI"],img:"",h:210,d:"Introduction to Generative AI Studio.\n- Core ideas of generative AI\n- Working with AI Studio"},
+ {t:"Microsoft — Copilot Foundation",s:"Sep 18, 2026",m:"Microsoft · Sep 18, 2026",tags:["Microsoft","Copilot"],img:"",h:200,d:"Foundations of Microsoft Copilot.\n- What Copilot does\n- Using it in daily work"},
+ {t:"Microsoft — Intro to Prompt Engineering with GitHub Copilot",s:"Sep 17, 2026",m:"Microsoft · Sep 17, 2026",tags:["Microsoft","GitHub Copilot"],img:"",h:220,d:"Prompt engineering with GitHub Copilot.\n- Writing clear prompts\n- Getting better code suggestions"},
+ {t:"Microsoft — Introduction to MS Excel",s:"Sep 18, 2026",m:"Microsoft · Sep 18, 2026",tags:["Microsoft","Excel"],img:"",h:130,d:"Introduction to MS Excel.\n- Sheets and formulas\n- Organizing data"},
+ {t:"AWS — Understanding Placement Groups",s:"Sep 18, 2026",m:"AWS · Sep 18, 2026",tags:["AWS","Cloud"],img:"",h:35,d:"Understanding Placement Groups.\n- How instances are placed\n- Performance and availability"},
+ {t:"Canva — Teacher Essentials",s:"Jul 31, 2024",m:"Canva · Jul 31, 2024",tags:["Canva","Design"],img:"",h:280,d:"Canva Teacher Essentials.\n- Designing learning material"},
+ {t:"Canva — Canva Essentials",s:"Sep 10, 2026",m:"Canva · Sep 10, 2026",tags:["Canva","Design"],img:"",h:300,d:"Canva Essentials.\n- Layouts, text and images"}
+];
+const TL=[
+ ["B.Sc. in Computer Science & Engineering (Running)","IUBAT — International University of Business Agriculture and Technology"],
+ ["Diploma in Engineering, Computer Technology · 2023","Kamrul Islam Siddiqui Polytechnic Institute · Result 3.72 / 4.00"],
+ ["Secondary School Certificate (SSC) · 2018","Satarpara High School · Arts · GPA 3.06 / 5.00"],
+ ["Intern · Dec 2022 – May 2023 (6 months)","Kodeeo Limited"]
+];
+const SK=[
+ ["Skills",["Operating System: Windows XP to Windows 11, Linux","Internet & E-mail: browsing, sending mail, downloading files, LAN/Wireless","Application Software: Microsoft Office 2007/2013/2016, Adobe Photoshop-7, CS6","Hardware: PC configuration (processor, motherboard, memory, I/O devices)","Web Design: HTML, CSS and JavaScript"]],
+ ["Languages",["Bengali","English"]],
+ ["Hobbies",["Reading storybooks and learning new skills","Exploring new technologies and software","Listening to music"]]
+];
+/* Bengali text (optional per item; missing fields fall back to English) */
+const TL_BN=[
+ ["B.Sc. in CSE (চলমান)","IUBAT — ইন্টারন্যাশনাল ইউনিভার্সিটি অব বিজনেস অ্যাগ্রিকালচার অ্যান্ড টেকনোলজি"],
+ ["ডিপ্লোমা ইন ইঞ্জিনিয়ারিং, কম্পিউটার টেকনোলজি · ২০২৩","কামরুল ইসলাম সিদ্দিকী পলিটেকনিক ইনস্টিটিউট · ফলাফল ৩.৭২ / ৪.০০"],
+ ["এসএসসি · ২০১৮","সাতারপাড়া উচ্চ বিদ্যালয় · আর্টস · জিপিএ ৩.০৬ / ৫.০০"],
+ ["ইন্টার্ন · ডিসেম্বর ২০২২ – মে ২০২৩ (৬ মাস)","Kodeeo Limited"]];
+const SK_BN=[
+ ["দক্ষতা",["অপারেটিং সিস্টেম: Windows XP থেকে Windows 11, Linux","ইন্টারনেট ও ইমেইল: ব্রাউজিং, মেইল পাঠানো, ফাইল ডাউনলোড, LAN/ওয়্যারলেস","অ্যাপ্লিকেশন সফটওয়্যার: Microsoft Office 2007/2013/2016, Adobe Photoshop-7, CS6","হার্ডওয়্যার: পিসি কনফিগারেশন (প্রসেসর, মাদারবোর্ড, মেমোরি, I/O ডিভাইস)","ওয়েব ডিজাইন: HTML, CSS ও JavaScript"]],
+ ["ভাষা",["বাংলা","ইংরেজি"]],
+ ["শখ",["গল্পের বই পড়া ও নতুন দক্ষতা শেখা","নতুন প্রযুক্তি ও সফটওয়্যার নিয়ে কাজ করা","গান শোনা"]]];
+const PROJECTS_BN=[
+ {t:"পিওএস সিস্টেম সফটওয়্যার",s:"দোকানের জন্য পয়েন্ট-অফ-সেল সফটওয়্যার।",m:"ডেস্কটপ / ওয়েব · ডেমো",d:"একটি পয়েন্ট-অফ-সেল সিস্টেম যা বিলিং দ্রুত করে এবং স্টক নিয়ন্ত্রণে রাখে।\n- দ্রুত পণ্য খোঁজা ও বারকোড-রেডি বিলিং\n- স্টক ট্র্যাকিং ও কম স্টকের সতর্কতা\n- দৈনিক বিক্রি ও লাভের রিপোর্ট\nসুবিধা:\n- বিলিংয়ে ভুল কম\n- প্রতিদিনের ব্যবসার পরিষ্কার চিত্র"},
+ {t:"স্কুল ম্যানেজমেন্ট সিস্টেম",s:"শিক্ষার্থী, কর্মী, ফলাফল ও ফি এক জায়গায়।",m:"ওয়েব অ্যাপ · ডেমো",d:"একটি স্কুলের প্রতিদিনের কাজ পরিচালনার সম্পূর্ণ সিস্টেম।\n- শিক্ষার্থী ও শিক্ষকের তথ্য\n- ফলাফল ও ফি সংগ্রহ\n- নোটিশ ও ক্লাস রুটিন\nসুবিধা:\n- কাগজের কাজ কম\n- দ্রুত তথ্য খুঁজে পাওয়া"},
+ {t:"স্কুলের ওয়েবসাইট",s:"একটি স্কুলের জন্য পরিষ্কার পাবলিক ওয়েবসাইট।",m:"ওয়েবসাইট · ডেমো",d:"অভিভাবক ও দর্শনার্থীদের কাছে স্কুলকে তুলে ধরার রেসপন্সিভ ওয়েবসাইট।\n- পরিচিতি, ভর্তি ও নোটিশ পেজ\n- গ্যালারি ও যোগাযোগ ফর্ম\n- মোবাইল ও ডেস্কটপে সুন্দরভাবে চলে\nসুবিধা:\n- অনলাইনে শক্তিশালী উপস্থিতি"},
+ {t:"ই-কমার্স ওয়েবসাইট",s:"কার্ট ও চেকআউটসহ অনলাইন দোকান।",m:"ওয়েবসাইট · ডেমো",d:"যেখানে ক্রেতারা ঘুরে দেখে অর্ডার করতে পারেন এমন অনলাইন শপ।\n- পণ্যের পেজ ও ক্যাটাগরি\n- কার্ট ও চেকআউট\n- মোবাইল-ফ্রেন্ডলি লেআউট\nসুবিধা:\n- ২৪/৭ বিক্রির সুযোগ"},
+ {t:"অ্যাটেনডেন্স ম্যানেজমেন্ট ডিভাইস",s:"আরএফআইডি ও ফিঙ্গারপ্রিন্টে উপস্থিতি।",m:"হার্ডওয়্যার + সফটওয়্যার · ডেমো",d:"আরএফআইডি কার্ড বা ফিঙ্গারপ্রিন্টে উপস্থিতি নিশ্চিত করার ডিভাইস।\n- তাৎক্ষণিক পরিচয় যাচাই\n- স্বয়ংক্রিয় উপস্থিতির রেকর্ড\n- শিক্ষক ও অ্যাডমিনের জন্য রিপোর্ট\nসুবিধা:\n- প্রক্সি উপস্থিতি বন্ধ\n- সময় সাশ্রয়"},
+ {t:"স্টুডেন্ট এন্ট্রি পাস গেট",s:"এন্ট্রি পাস বা আরএফআইডি কার্ডে গেট খোলে।",m:"হার্ডওয়্যার + সফটওয়্যার · ডেমো",d:"শিক্ষার্থী এন্ট্রি পাস বা আরএফআইডি কার্ড দেখালে গেট খুলে যায়।\n- গেটে কার্ড যাচাই\n- সময়সহ প্রবেশের লগ\n- অননুমোদিত কার্ড প্রত্যাখ্যান\nসুবিধা:\n- নিরাপদ ক্যাম্পাস\n- স্বয়ংক্রিয় প্রবেশের রেকর্ড"},
+ {t:"ডেমো প্রজেক্ট ৭",s:"এখানে আপনার নিজের প্রজেক্ট যোগ করুন।",m:"ডেমো",d:"PROJECTS অ্যারেতে এই এন্ট্রি বদলে নিন।\n- এক লাইন যোগ করলেই কার্ড তৈরি হয়\n- পেজ নম্বর নিজে থেকে বাড়ে"},
+ {t:"ডেমো প্রজেক্ট ৮",s:"এখানে আপনার নিজের প্রজেক্ট যোগ করুন।",m:"ডেমো",d:"PROJECTS অ্যারেতে এই এন্ট্রি বদলে নিন।\n- এক লাইন যোগ করলেই কার্ড তৈরি হয়\n- পেজ নম্বর নিজে থেকে বাড়ে"}];
+const CERTS_BN=[
+ {t:"NSDA — ফ্রিল্যান্সিংয়ের জন্য ওয়েব ডিজাইন ও ডেভেলপমেন্ট (লেভেল ৩)",s:"বাংলাদেশ সরকার · ২৯ আগস্ট ২০২৬",m:"টাচ অ্যান্ড সলভ-এ মূল্যায়নে উত্তীর্ণ · ২৯ আগস্ট ২০২৬",d:"বাংলাদেশ সরকারের জাতীয় দক্ষতা উন্নয়ন কর্তৃপক্ষ (NSDA)-এর অধীনে মূল্যায়নে সফলভাবে উত্তীর্ণ।\n- ওয়েব ডিজাইন ও ডেভেলপমেন্টের মৌলিক বিষয়\n- ফ্রিল্যান্স কাজের প্রস্তুতি"},
+ {t:"Google — Generative AI Studio পরিচিতি",s:"১৭ সেপ্টেম্বর ২০২৬",m:"Google · ১৭ সেপ্টেম্বর ২০২৬",d:"Generative AI Studio-র পরিচিতি।\n- জেনারেটিভ এআই-এর মূল ধারণা\n- AI Studio-তে কাজ করা"},
+ {t:"Microsoft — Copilot Foundation",s:"১৮ সেপ্টেম্বর ২০২৬",m:"Microsoft · ১৮ সেপ্টেম্বর ২০২৬",d:"Microsoft Copilot-এর ভিত্তি।\n- Copilot কী করে\n- প্রতিদিনের কাজে ব্যবহার"},
+ {t:"Microsoft — GitHub Copilot দিয়ে প্রম্পট ইঞ্জিনিয়ারিং পরিচিতি",s:"১৭ সেপ্টেম্বর ২০২৬",m:"Microsoft · ১৭ সেপ্টেম্বর ২০২৬",d:"GitHub Copilot-এর সাথে প্রম্পট ইঞ্জিনিয়ারিং।\n- পরিষ্কার প্রম্পট লেখা\n- ভালো কোড পরামর্শ পাওয়া"},
+ {t:"Microsoft — MS Excel পরিচিতি",s:"১৮ সেপ্টেম্বর ২০২৬",m:"Microsoft · ১৮ সেপ্টেম্বর ২০২৬",d:"MS Excel-এর পরিচিতি।\n- শিট ও ফর্মুলা\n- তথ্য সাজানো"},
+ {t:"AWS — Placement Groups বোঝা",s:"১৮ সেপ্টেম্বর ২০২৬",m:"AWS · ১৮ সেপ্টেম্বর ২০২৬",d:"Placement Groups বোঝা।\n- ইনস্ট্যান্স কীভাবে বসানো হয়\n- পারফরম্যান্স ও সহজলভ্যতা"},
+ {t:"Canva — Teacher Essentials",s:"৩১ জুলাই ২০২৪",m:"Canva · ৩১ জুলাই ২০২৪",d:"Canva Teacher Essentials।\n- শিক্ষা-উপকরণ ডিজাইন"},
+ {t:"Canva — Canva Essentials",s:"১০ সেপ্টেম্বর ২০২৬",m:"Canva · ১০ সেপ্টেম্বর ২০২৬",d:"Canva Essentials।\n- লেআউট, লেখা ও ছবি"}];
+/* ===== END EDIT ===== */
+const THEMES=[
+["Classic Leather","#3b1a10","#7a3f29","#e3b98f"],["Copper Ember","#37322E","#7C3306","#D9A066"],
+["Terracotta","#3A2525","#713A32","#D4A07A"],["Rose Wine","#2B1A1A","#59252D","#CDA6A4"],
+["Mauve Plum","#2C1B2F","#5E3A5C","#B47A9A"],["Royal Purple","#220135","#520380","#C9A6E8"],
+["Navy Mirage","#141E30","#35577D","#9BB7D6"],["Slate Mist","#1D2B3A","#38506A","#B8C4CF"],
+["Midnight Blue","#0A1024","#344879","#B7C4D9"],["Crimson Velvet","#2C0F12","#6B1E23","#D99A9F"],
+["Emerald Depth","#0F2027","#28623A","#9FD0AA"],["Forest Gold","#0B3D2E","#1F6E52","#C9A227"],
+["Deep Teal Silk","#0B3037","#134E5E","#8FD0D9"],["Sea Glass","#123B43","#28626B","#B9C9BE"],
+["Sunset Amber","#3D1A05","#B45A1C","#FFCF8A"],["Sapphire","#0B1B3F","#1E4FA8","#8FB8FF"],
+["Rose Gold","#3A1F20","#B76E79","#F6D1C1"],["Jade Mint","#0D3B33","#1FA58A","#AEF0DC"],["Graphite Steel","#16171A","#4A4F57","#C7CCD4"]];
+/* text colours: [name, light, base, dark] — null = classic pressed ink */
+const TEXTS=[["Gold","#fff1a8","#e6b93e","#9a6d12"],["Silver","#ffffff","#c9d1da","#7d8896"],["Rose Gold","#ffe3da","#e8a99b","#a8605a"],
+["Copper","#ffd2a8","#d98445","#8a4217"],["Champagne","#fffbe6","#ecd9a0","#b39650"],["Classic Ink",null]];
+const I18N={
+en:{n_about:"About",n_edu:"Journey",n_proj:"Projects",n_cert:"Certs",n_skill:"Skills",n_contact:"Contact",settings:"Settings",
+hello:"Hello, I am",role:"CSE Student · Web Designer",
+obj:"I am very much interested in developing my professional career. I would welcome the opportunity to help create a positive learning environment. I am honest and prepared to work hard for the organization and achieve my goals.",
+pl1:"HTML · CSS · JS",pl2:"Web Design",pl3:"NSDA Certified",pl4:"Bengali · English",st_p:"Projects",st_c:"Certificates",st_g:"Diploma CGPA",
+h_edu:"Education & Experience",h_proj:"Projects",h_cert:"Certificates & Achievements",h_skill:"Skills, Languages & Hobbies",h_contact:"Contact",
+more:"See more",back:"Back to first",send_h:"Send a message",ph_name:"Your name",ph_email:"Your email",ph_msg:"Your message",send:"Send",sent:"Opening your email app…",
+info_h:"Contact information",email:"Email:",phone:"Phone:",
+addr1:"Present address: House No-18, Road No: 10, Uttara Sector 10, Dhaka-1230",
+addr2:"Permanent address: Vill: Hridoypur, P.O: Satarpara, District: Kushtia, Division: Khulna",foot:"© Md. Pranto Ali",
+s_title:"Settings",s_surface:"Surface",leather:"Leather",matte:"Matte",s_mode:"Mode",day:"Day",night:"Night",s_text:"Text colour",s_lc:"Leather colour",
+s_shine:"Shine",on:"On",off:"Off",s_anim:"Shine animation",s_stype:"Shine type",st_part:"Partial shine",st_full:"Full text shine",s_shadow:"Shadow",sh_def:"Default",sh_in:"Inner shadow",sh_out:"Outer shadow",s_lang:"Language",reset:"Reset to default",
+t0:"Gold",t1:"Silver",t2:"Rose Gold",t3:"Copper",t4:"Champagne",t5:"Classic Ink"},
+bn:{n_about:"পরিচিতি",n_edu:"যাত্রা",n_proj:"প্রজেক্ট",n_cert:"সার্টিফিকেট",n_skill:"দক্ষতা",n_contact:"যোগাযোগ",settings:"সেটিংস",
+hello:"হ্যালো, আমি",role:"CSE শিক্ষার্থী · ওয়েব ডিজাইনার",
+obj:"আমি আমার পেশাগত ক্যারিয়ার গড়ে তুলতে অত্যন্ত আগ্রহী। একটি ইতিবাচক শেখার পরিবেশ গড়ে তুলতে সাহায্য করার সুযোগকে আমি স্বাগত জানাব। আমি সৎ এবং প্রতিষ্ঠানের জন্য কঠোর পরিশ্রম করে নিজের লক্ষ্য অর্জনে প্রস্তুত।",
+pl1:"HTML · CSS · JS",pl2:"ওয়েব ডিজাইন",pl3:"NSDA সনদপ্রাপ্ত",pl4:"বাংলা · ইংরেজি",st_p:"প্রজেক্ট",st_c:"সার্টিফিকেট",st_g:"ডিপ্লোমা CGPA",
+h_edu:"শিক্ষা ও অভিজ্ঞতা",h_proj:"প্রজেক্ট",h_cert:"সার্টিফিকেট ও অ্যাচিভমেন্ট",h_skill:"দক্ষতা, ভাষা ও শখ",h_contact:"যোগাযোগ",
+more:"আরও দেখুন",back:"প্রথমে ফিরুন",send_h:"বার্তা পাঠান",ph_name:"আপনার নাম",ph_email:"আপনার ইমেইল",ph_msg:"আপনার বার্তা",send:"পাঠান",sent:"আপনার ইমেইল অ্যাপ খুলছে…",
+info_h:"যোগাযোগের তথ্য",email:"ইমেইল:",phone:"ফোন:",
+addr1:"বর্তমান ঠিকানা: বাড়ি নং-১৮, রোড নং: ১০, উত্তরা সেক্টর ১০, ঢাকা-১২৩০",
+addr2:"স্থায়ী ঠিকানা: গ্রাম: হৃদয়পুর, ডাকঘর: সাতারপাড়া, জেলা: কুষ্টিয়া, বিভাগ: খুলনা",foot:"© Md. Pranto Ali",
+s_title:"সেটিংস",s_surface:"সারফেস",leather:"লেদার",matte:"ম্যাট",s_mode:"মোড",day:"দিন",night:"রাত",s_text:"লেখার রং",s_lc:"লেদারের রং",
+s_shine:"শাইনিং",on:"চালু",off:"বন্ধ",s_anim:"শাইনিং অ্যানিমেশন",s_stype:"শাইনিংয়ের ধরন",st_part:"আংশিক শাইনিং",st_full:"পুরো টেক্সট শাইনিং",s_shadow:"শ্যাডো",sh_def:"ডিফল্ট",sh_in:"ইনার শ্যাডো",sh_out:"আউটার শ্যাডো",s_lang:"ভাষা",reset:"ডিফল্টে ফিরুন",
+t0:"সোনালি",t1:"রুপালি",t2:"রোজ গোল্ড",t3:"তামাটে",t4:"শ্যাম্পেন",t5:"ক্লাসিক কালি"}};
+const DEF={surface:"leather",mode:"night",theme:0,text:0,shine:"on",stype:"part",anim:"off",shadow:"default",lang:"en"};
+let ST=Object.assign({},DEF);
+try{const j=JSON.parse(localStorage.getItem("pa-set2")||"null");if(j)ST=Object.assign(ST,j)}catch(e){}
+if(!THEMES[ST.theme])ST.theme=0;if(!TEXTS[ST.text])ST.text=0;
+const $=s=>document.querySelector(s),esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const T=k=>(I18N[ST.lang]&&I18N[ST.lang][k])||I18N.en[k]||k;
+const bn=()=>ST.lang==="bn";
+const hx=h=>[1,3,5].map(i=>parseInt(h.slice(i,i+2),16));
+const mix=(a,b,t)=>{const A=hx(a),B=hx(b);return "#"+A.map((v,i)=>Math.round(v+(B[i]-v)*t).toString(16).padStart(2,"0")).join("")};
+function applySet(){
+  const [,d,m,l]=THEMES[ST.theme],X=TEXTS[ST.text],r=document.documentElement,v=(k,x)=>r.style.setProperty(k,x),night=ST.mode==="night",mt=ST.surface==="matte"?.55:1;
+  const hiS="rgba(255,255,255,"+(night?.14:.4)*mt+")",loS="rgba(0,0,0,"+(night?.75:.45)*mt+")";
+  v("--hi",hiS);v("--lo",loS);
+  if(night){v("--leather",mix(m,"#000000",.5));v("--leather-l",mix(m,"#000000",.3));v("--leather-d",mix(d,"#000000",.4))}
+  else{v("--leather",mix(m,"#ffffff",.5));v("--leather-l",mix(m,"#ffffff",.62));v("--leather-d",mix(m,"#ffffff",.35))}
+  const ink=night?mix(l,"#ffffff",.35):mix(d,"#000000",.5);v("--ink",ink);
+  const A=X[1]?[X[1],X[2],X[3]].map((c,i)=>night?c:mix(c,"#000000",[.35,.5,.65][i])):null;
+  const flat=ST.shine==="off",full=!!A&&!flat&&ST.stype==="full";
+  v("--foil",A?(flat?`linear-gradient(${A[1]},${A[1]})`:full?`linear-gradient(180deg,${A[0]} 0%,${A[1]} 55%,${A[0]} 100%)`:`linear-gradient(110deg,${A[2]} 0%,${A[1]} 20%,${A[0]} 34%,${A[1]} 50%,${A[2]} 66%,${A[1]} 82%,${A[0]} 100%)`):`linear-gradient(${ink},${ink})`);
+  v("--bt",A?A[1]:ink);v("--stitch",A?A[1]:(night?mix(l,"#ffffff",.2):mix(d,m,.35)));v("--acc",A?(night?A[0]:A[2]):(night?mix(l,"#ffffff",.6):d));
+  let tf,bts;
+  if(ST.shadow==="inner"){tf=`drop-shadow(0 -1px 0 rgba(0,0,0,.8)) drop-shadow(0 1px 0 ${hiS})`;bts=`0 -1px 0 rgba(0,0,0,.8),0 1px 0 ${hiS}`}
+  else if(ST.shadow==="outer"){tf=`drop-shadow(0 2px 2px rgba(0,0,0,.75)) drop-shadow(0 -1px 0 ${hiS})`;bts=`0 2px 2px rgba(0,0,0,.7),0 -1px 0 ${hiS}`}
+  else if(A){tf=`drop-shadow(0 1px 0 rgba(0,0,0,${night?.7:.35})) drop-shadow(0 0 1px rgba(0,0,0,.3))`;bts=`0 1px 1px rgba(0,0,0,${night?.8:.3})`}
+  else{tf=`drop-shadow(0 1px 0 ${hiS}) drop-shadow(0 -1px 1px ${loS})`;bts=`0 1px 0 ${hiS},0 -1px 1px ${loS}`}
+  if(full)tf+=` drop-shadow(0 0 5px ${A[1]}${night?"88":"55"})`;
+  v("--tf",tf);v("--bts",bts);
+  r.dataset.surface=ST.surface;r.dataset.shadow=ST.shadow;r.dataset.anim=(A&&!flat&&!full&&ST.anim==="on")?"on":"off";
+  $("#row-shine").style.display=A?"":"none";$("#row-stype").style.display=(A&&!flat)?"":"none";$("#row-anim").style.display=(A&&!flat&&!full)?"":"none";
+  try{localStorage.setItem("pa-set2",JSON.stringify(ST))}catch(e){}
+  drawSet();
+}
+function drawSet(){
+  const o=(id,arr,key)=>{$(id).innerHTML=arr.map(([v,n])=>`<button class="btn" type="button" data-k="${key}" data-v="${v}" aria-pressed="${String(ST[key])===String(v)}">${n}</button>`).join("")};
+  const onoff=[["on",T("on")],["off",T("off")]];
+  o("#o-surface",[["leather",T("leather")],["matte",T("matte")]],"surface");o("#o-mode",[["day",T("day")],["night",T("night")]],"mode");
+  o("#o-text",TEXTS.map((t,i)=>[i,T("t"+i)]),"text");o("#o-shine",onoff,"shine");o("#o-stype",[["part",T("st_part")],["full",T("st_full")]],"stype");o("#o-anim",onoff,"anim");
+  o("#o-shadow",[["default",T("sh_def")],["inner",T("sh_in")],["outer",T("sh_out")]],"shadow");o("#o-lang",[["bn","বাংলা"],["en","English"]],"lang");
+  $("#o-theme").innerHTML=THEMES.map((t,i)=>`<button type="button" data-t="${i}" aria-pressed="${ST.theme===i}" aria-label="${t[0]}"><i style="background:linear-gradient(90deg,${t[1]},${t[2]},${t[3]})"></i>${t[0]}</button>`).join("");
+}
+const setEl=$("#set"),pop=$("#pop");
+$("#gear").onclick=()=>{setEl.classList.add("on");document.body.style.overflow="hidden";$("#sx").focus()};
+const closeSet=()=>{setEl.classList.remove("on");document.body.style.overflow=""};
+$("#sx").onclick=closeSet;
+setEl.addEventListener("click",e=>{
+  if(e.target===setEl)return closeSet();
+  const b=e.target.closest("button");if(!b)return;
+  if(b.dataset.k){ST[b.dataset.k]=b.dataset.k==="text"?+b.dataset.v:b.dataset.v;applySet();if(b.dataset.k==="lang")applyLang()}
+  else if(b.dataset.t){ST.theme=+b.dataset.t;applySet()}
+  else if(b.id==="reset"){ST=Object.assign({},DEF);applySet();applyLang()}
+});
+
+$("#photo").src=CONFIG.photo;
+$("#em").textContent=CONFIG.email;$("#em").href="mailto:"+CONFIG.email;$("#ph").textContent=CONFIG.phone;$("#ph").href="tel:"+CONFIG.phone;
+$("#soc").innerHTML=[["LinkedIn",CONFIG.linkedin],["Instagram",CONFIG.instagram],["Facebook",CONFIG.facebook],["WhatsApp",CONFIG.whatsapp],["GitHub",CONFIG.github]].map(([n,u])=>`<a class="btn" target="_blank" rel="noopener" href="${esc(u)}">${n}</a>`).join("");
+$("#n-p").textContent=PROJECTS.length;$("#n-c").textContent=CERTS.length;
+const V=(o,i,B)=>bn()&&B[i]?Object.assign({},o,B[i]):o;
+const bgOf=o=>o.img?`background-image:url('${esc(o.img).replace(/'/g,"%27")}')`:`background:linear-gradient(135deg,hsl(${o.h},40%,38%),hsl(${o.h},45%,22%))`;
+function cardHTML(o,k,i){
+  const row=k==="c";
+  return `<article class="card tile${row?" badge":""}" tabindex="0" data-k="${k}" data-i="${i}"><div class="ph" style="${bgOf(o)}">${row?"":`<span class="no">${String(i+1).padStart(2,"0")}</span>`}<span class="ch">${o.img?"":esc(o.t[0])}</span></div><div class="cap"><h3>${esc(o.t)}</h3><p>${esc(o.s)}</p></div></article>`;
+}
+let page=0;const pages=()=>Math.max(1,Math.ceil(PROJECTS.length/PER));
+function renderProjects(){
+  $("#pgrid").innerHTML=PROJECTS.slice(page*PER,page*PER+PER).map((o,j)=>{const i=page*PER+j;return cardHTML(V(o,i,PROJECTS_BN),"p",i)}).join("");
+  const n=pages();$("#ppager").innerHTML=n>1?Array.from({length:n},(_,i)=>`<button class="btn" type="button" data-p="${i}" ${i===page?'aria-current="true"':""}>${i+1}</button>`).join(""):"";
+  $("#more").style.display=n>1?"":"none";$("#more").textContent=page>=n-1?T("back"):T("more");
+}
+function renderAll(){
+  $("#timeline").innerHTML=(bn()?TL_BN:TL).map(([a,b])=>`<div class="ti"><div class="card"><h3>${esc(a)}</h3><p>${esc(b)}</p></div></div>`).join("");
+  $("#skgrid").innerHTML=(bn()?SK_BN:SK).map(([h,l],i)=>`<div class="card${i?"":" sk0"}"><h3>${esc(h)}</h3><div class="chips">${l.map(x=>`<span class="pill">${esc(x)}</span>`).join("")}</div></div>`).join("");
+  $("#cgrid").innerHTML=CERTS.map((o,i)=>cardHTML(V(o,i,CERTS_BN),"c",i)).join("");
+  renderProjects();drawSet();
+}
+function applyLang(){
+  document.documentElement.lang=bn()?"bn":"en";
+  document.querySelectorAll("[data-i]").forEach(e=>{e.textContent=T(e.dataset.i)});
+  document.querySelectorAll("[data-ph]").forEach(e=>{e.placeholder=T(e.dataset.ph)});
+  renderAll();
+}
+$("#more").onclick=()=>{page=page>=pages()-1?0:page+1;renderProjects()};
+$("#ppager").onclick=e=>{const b=e.target.closest("[data-p]");if(b){page=+b.dataset.p;renderProjects()}};
+function open(k,i){
+  const o=k==="p"?V(PROJECTS[i],i,PROJECTS_BN):V(CERTS[i],i,CERTS_BN);
+  $("#pim").style.cssText=bgOf(o);$("#pim").textContent=o.img?"":o.t[0];
+  $("#pt").textContent=o.t;$("#pm").textContent=o.m;
+  let h="",ul=false;
+  o.d.split("\n").forEach(l=>{if(l.startsWith("- ")){if(!ul){h+="<ul>";ul=true}h+=`<li>${esc(l.slice(2))}</li>`}else{if(ul){h+="</ul>";ul=false}h+=`<p>${esc(l)}</p>`}});
+  $("#pd").innerHTML=h+(ul?"</ul>":"");$("#ptag").innerHTML=o.tags.map(t=>`<span class="pill">${esc(t)}</span>`).join("");
+  pop.classList.add("on");document.body.style.overflow="hidden";$("#x").focus();
+}
+function close(){pop.classList.remove("on");document.body.style.overflow=""}
+document.addEventListener("click",e=>{const c=e.target.closest(".tile");if(c)open(c.dataset.k,+c.dataset.i)});
+document.addEventListener("keydown",e=>{
+  if(e.key==="Escape"){close();closeSet()}
+  if(e.key==="Enter"&&e.target.classList&&e.target.classList.contains("tile"))open(e.target.dataset.k,+e.target.dataset.i);
+});
+$("#x").onclick=close;pop.addEventListener("click",e=>{if(e.target===pop)close()});
+$("#form").onsubmit=e=>{e.preventDefault();const f=new FormData(e.target);
+  location.href=`mailto:${CONFIG.email}?subject=${encodeURIComponent("Message from "+f.get("name"))}&body=${encodeURIComponent(f.get("msg")+"\n\n"+f.get("name")+" ("+f.get("email")+")")}`;
+  $("#sent").textContent=T("sent")};
+/* active menu item follows the section on screen */
+const links=[...document.querySelectorAll("#rail a")],secs=links.map(a=>document.getElementById(a.dataset.s));
+function spy(){
+  let cur=0;secs.forEach((s,i)=>{if(s.getBoundingClientRect().top<=innerHeight*.4)cur=i});
+  if(innerHeight+scrollY>=document.documentElement.scrollHeight-4)cur=secs.length-1;
+  links.forEach((a,i)=>a.classList.toggle("on",i===cur));
+}
+addEventListener("scroll",spy,{passive:true});addEventListener("resize",spy);
+links.forEach(a=>a.addEventListener("click",()=>{links.forEach(x=>x.classList.toggle("on",x===a))}));
+applySet();applyLang();spy();
+</script>
+</body>
+</html>
