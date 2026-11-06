@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Md. Pranto Ali – CSE Student &amp; Web / Embedded Developer</title>
+<meta name="description" content="Portfolio of Md. Pranto Ali: POS software, school management, e-commerce, and RFID + fingerprint attendance systems.">
+<meta property="og:title" content="Md. Pranto Ali – Portfolio">
+<meta property="og:description" content="Web, software and RFID attendance systems.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Playfair+Display:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ===== Tokens (set by JS from PRESETS) ===== */
+:root{--fg:var(--tx);--bg:#26303B;--sf:#1d262f;--tx:#EBEBDD;--ac:#9A694E;--mu:color-mix(in srgb,var(--tx) 72%,var(--bg));--ln:color-mix(in srgb,var(--tx) 16%,transparent);--lb:color-mix(in srgb,var(--ac) 55%,#000);--r:1rem}
+*{box-sizing:border-box;margin:0}
+html{font-size:clamp(15px,.35vw + 11px,30px);scroll-behavior:smooth;scroll-padding-top:4.5rem}
+body{font:400 1rem/1.65 'Plus Jakarta Sans','Hind Siliguri',sans-serif;background:var(--bg);color:var(--fg);overflow-x:hidden;min-height:100vh}
+h1,h2,h3{font-family:'Playfair Display','Hind Siliguri',serif;line-height:1.2}
+/* Matte (default): fine grain. Leather: base brown from accent + coarse and fine grain + vignette */
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.22;mix-blend-mode:overlay;
+background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+/* Leather: embossed pebble grain (SVG lighting) on page, header, cards and dialogs */
+body[data-bg=leather]{--lg:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='420' height='420'%3E%3Cfilter id='l' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.07' numOctaves='3' seed='4' result='n'/%3E%3CfeDiffuseLighting in='n' lighting-color='%23fff' surfaceScale='2.6'%3E%3CfeDistantLight azimuth='225' elevation='52'/%3E%3C/feDiffuseLighting%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23l)'/%3E%3C/svg%3E");background-color:var(--lb);background-image:radial-gradient(ellipse at 25% 0,#ffffff30,transparent 55%),radial-gradient(ellipse at 50% 115%,#000a,transparent 60%),var(--lg);background-blend-mode:normal,normal,multiply;background-attachment:fixed}
+body[data-bg=leather]::before{opacity:.55;mix-blend-mode:multiply;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='l' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.55' numOctaves='3' seed='4' result='n'/%3E%3CfeDiffuseLighting in='n' lighting-color='%23fff' surfaceScale='1.3'%3E%3CfeDistantLight azimuth='225' elevation='52'/%3E%3C/feDiffuseLighting%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23l)'/%3E%3C/svg%3E")}
+body[data-bg=leather] :is(.box,.card,.dlg,header){background-color:var(--lc);background-image:var(--lg);background-blend-mode:multiply;background-size:320px}
+body[data-bg=leather] :is(.box,.card){border-color:#0007;outline:1.5px dashed color-mix(in srgb,var(--tx) 42%,transparent);outline-offset:-.5rem;box-shadow:0 .7rem 1.5rem #0008,inset 0 1px 0 #ffffff30,inset 0 -3px 8px #0007}
+body[data-bg=leather] :is(.ib,#pager button,.th2 button){background-color:var(--lc);background-image:var(--lg);background-blend-mode:multiply}
+body[data-bg=leather] :is(input,textarea){background:#0003;border-color:#0006}
+/* ===== Text/Element effects (Settings → Text effect). data-fx = off | in | out ===== */
+/* INNER: everything looks pressed (debossed) into the surface: tone-on-tone text, light lower edge, dark upper edge, inset plates */
+body[data-fx=in]{--fg:var(--dc);--mu:color-mix(in srgb,var(--fg) 82%,var(--bg));text-shadow:0 1px 0 rgba(255,255,255,.32),0 -1px 1px rgba(0,0,0,.7),0 -2px 3px rgba(0,0,0,.35)}
+body[data-fx=in] :is(.box,.card,.dlg,.ci .row){box-shadow:inset 0 .35rem .9rem #000b,inset 0 -1px 0 #ffffff38,inset 0 0 0 1px #0005}
+body[data-fx=in] :is(.btn,.chip,.ib,#pager button,.th2 button,.soc a,.ico,.soc a b,input,textarea,.sw){box-shadow:inset 0 3px 7px #000c,inset 0 -1px 0 #ffffff40}
+body[data-fx=in] .card:hover{transform:none}
+body[data-fx=in] .card{position:relative}body[data-fx=in] .card::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 .4rem 1rem #000c,inset 0 -1px 0 #ffffff38;pointer-events:none}
+body[data-fx=in] .pf{box-shadow:0 1px 0 #ffffff40}
+body[data-fx=in] .pf::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 .5rem 1.4rem #000d,inset 0 -1px 0 #fff3;pointer-events:none}
+/* OUTER: everything is raised (embossed) with a bevelled plate edge and 3D lift */
+body[data-fx=out]{text-shadow:-1px -1px 0 rgba(255,255,255,.24),1px 2px 0 rgba(0,0,0,.6),2px 4px 5px rgba(0,0,0,.5)}
+body[data-fx=out] :is(.box,.card,.dlg,.ci .row){border:1px solid #ffffff2e;box-shadow:0 .9rem 1.8rem #000a,0 2px 0 #0007,inset 2px 2px 1px #ffffff3a,inset -2px -3px 4px #0008}
+body[data-fx=out] :is(.btn,.chip,.ib,#pager button,.th2 button,.soc a,.ico,input,textarea){box-shadow:0 4px 8px #000a,0 1px 0 #0008,inset 1px 1px 1px #ffffff55,inset -1px -2px 3px #0007}
+body[data-fx=out] .card:hover{transform:translateY(-6px)}
+body[data-fx=out] .pf{box-shadow:0 1.2rem 2.4rem #000b,0 2px 0 #0008,inset 2px 2px 2px #ffffff40}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--ac);outline-offset:3px}
+.wrap{width:min(92%,80rem);margin-inline:auto}
+section{padding:clamp(3rem,7vw,6rem) 0}
+section+section{border-top:1px solid var(--ln)}
+.sh{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:2rem;flex-wrap:wrap}
+h2{font-size:clamp(1.7rem,3vw + .6rem,3rem)}
+.btn{min-height:44px;min-width:44px;padding:.6rem 1.3rem;border-radius:99px;border:1.5px solid var(--ac);background:var(--ac);color:var(--bg);font:600 .95rem 'Plus Jakarta Sans',sans-serif;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:.4rem;transition:transform .2s,background .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn.o{background:transparent;color:var(--fg)}
+.box,.card{background:var(--sf);border:1px solid var(--ln);border-radius:var(--r);box-shadow:0 .5rem 1.2rem #0003}
+/* Nav */
+header{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--ln)}
+nav{display:flex;align-items:center;justify-content:space-between;min-height:4rem;gap:1rem}
+.logo{font:700 1.3rem 'Playfair Display',serif;text-decoration:none}
+.links{display:flex;gap:.3rem;list-style:none;padding:0;margin-left:auto}
+.links a{padding:.6rem .8rem;border-radius:99px;text-decoration:none;font-size:.9rem;display:inline-block}
+.links a:hover{background:var(--ln)}
+.ib{width:44px;height:44px;border-radius:50%;border:1px solid var(--ln);background:var(--sf);color:var(--fg);cursor:pointer;font-size:1.2rem}
+#burger{display:none}
+@media(max-width:860px){#burger{display:block}.links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;background:var(--bg);padding:.8rem 4%;border-bottom:1px solid var(--ln)}.links.open{display:flex}.links a{display:block;padding:.8rem}}
+/* Hero */
+.hero{display:grid;grid-template-columns:1.2fr .8fr;gap:clamp(1.5rem,4vw,4rem);align-items:center}
+.hero h1{font-size:clamp(2.2rem,4vw + 1rem,4.6rem)}
+.hero p{max-width:34rem;color:var(--mu);margin:1rem 0 1.6rem;font-size:1.1rem}
+.cta{display:flex;gap:.8rem;flex-wrap:wrap}
+.pf{position:relative;justify-self:center;width:min(100%,24rem);aspect-ratio:1/1.1;border-radius:2rem;overflow:hidden;border:2px dashed var(--ac);outline:.5rem solid var(--sf);outline-offset:-.9rem;box-shadow:0 1rem 2.5rem #0006}
+.pf img{width:100%;height:100%;object-fit:cover;display:block}
+.ph{display:grid;place-items:center;width:100%;height:100%;font-size:2.6rem;background:linear-gradient(135deg,var(--ac),var(--sf));color:var(--fg)}
+@media(max-width:780px){.hero{grid-template-columns:1fr}.pf{order:-1;width:min(70%,16rem)}}
+/* Generic grids */
+.g2{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
+@media(max-width:780px){.g2{grid-template-columns:1fr}}
+.box{padding:1.5rem}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.8rem}
+.chip{padding:.25rem .8rem;border-radius:99px;border:1px solid var(--ln);font-size:.82rem;background:color-mix(in srgb,var(--ac) 18%,transparent)}
+.tl{border-left:2px solid var(--ac);padding-left:1.2rem;display:grid;gap:1.2rem}
+.tl small{color:var(--mu)}
+/* Projects */
+#pg,#cg{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;transition:opacity .25s,transform .25s}
+#pg.out{opacity:0;transform:translateY(8px)}
+@media(max-width:1000px){#pg,#cg{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){#pg,#cg{grid-template-columns:1fr}}
+.card{display:block;text-align:left;color:inherit;font:inherit;cursor:pointer;overflow:hidden;padding:0;transition:transform .25s,border-color .25s}
+.card:hover{transform:translateY(-4px);border-color:var(--ac)}
+.card .th{display:block;aspect-ratio:16/10;overflow:hidden}
+.card .th img{width:100%;height:100%;object-fit:cover}
+.card .in{display:block;padding:1.1rem 1.2rem 1.3rem}
+.card h3{font-size:1.2rem;margin-bottom:.3rem}
+.card .tg{color:var(--mu);font-size:.92rem;display:block}
+#pager{display:flex;justify-content:center;gap:.5rem;margin-top:2rem;flex-wrap:wrap}
+#pager button{min-width:44px;min-height:44px;border-radius:50%;border:1px solid var(--ln);background:var(--sf);color:var(--fg);font:600 1rem inherit;cursor:pointer}
+#pager button[aria-current=page]{background:var(--ac);color:var(--bg);border-color:var(--ac)}
+/* Dialog */
+.ov{position:fixed;inset:0;z-index:50;background:#000a;display:grid;place-items:center;padding:3vh 3vw}
+.ov[hidden]{display:none}
+.dlg{position:relative;background:var(--sf);color:var(--fg);border:1px solid var(--ac);border-radius:1.2rem;width:min(100%,68rem);max-height:94vh;overflow:hidden;display:grid;grid-template-columns:1fr 1.15fr;animation:pop .25s}
+.dlg.s{width:min(100%,28rem);display:block;padding:1.5rem;overflow:auto}
+@keyframes pop{from{opacity:0;transform:scale(.96)}}
+.dlg .md{background:color-mix(in srgb,var(--bg) 70%,#000);display:flex;flex-direction:column;min-height:0}
+.dlg .md .m{flex:1;min-height:14rem;display:grid;place-items:center;overflow:auto}
+.dlg .md img,.dlg .md video{width:100%;height:100%;object-fit:contain;display:block}
+.dlg .md img.z{cursor:zoom-in}.dlg .md img.z.on{width:200%;max-width:none;height:auto;cursor:zoom-out}
+.th2{display:flex;gap:.4rem;padding:.5rem;overflow-x:auto}
+.th2 button{width:56px;height:44px;border:1px solid var(--ln);background:var(--sf);color:var(--fg);border-radius:.5rem;cursor:pointer}
+.dlg .tx{padding:1.6rem 1.8rem;overflow:auto;max-height:94vh}
+.dlg h3{font-size:1.7rem;margin-bottom:.4rem}
+.dlg h4{margin:1.1rem 0 .3rem;font-size:1rem;color:var(--ac)}
+.dlg ul{padding-left:1.2rem}
+.x{position:absolute;top:.6rem;right:.6rem;z-index:2}
+@media(max-width:780px){.dlg{grid-template-columns:1fr;overflow:auto}.dlg .tx{max-height:none;overflow:visible}.dlg .md .m{min-height:11rem;max-height:40vh}}
+.dlg.big{width:min(100%,96rem);height:min(92vh,64rem);grid-template-columns:1.7fr 1fr;grid-template-rows:100%}
+.dlg.big .md{min-height:0;overflow:hidden}.dlg.big .md .m{min-height:0}.dlg.big .tx{max-height:none}
+@media(max-width:780px){.dlg.big{height:auto;grid-template-rows:none}.dlg.big .md .m{min-height:50vh;max-height:60vh}}
+/* Settings */
+.opt{display:flex;gap:.5rem;flex-wrap:wrap;margin:.5rem 0 1.2rem}
+.opt button[aria-pressed=true]{background:var(--ac);color:var(--bg)}
+.sw{width:44px;height:44px;border-radius:50%;border:2px solid var(--ln);cursor:pointer}
+.sw[aria-pressed=true]{outline:3px solid var(--tx)}
+/* Contact */
+form{display:grid;gap:.9rem}
+label{font-size:.9rem;font-weight:600}
+input,textarea{width:100%;min-height:44px;padding:.7rem .9rem;border-radius:.7rem;border:1px solid var(--ln);background:color-mix(in srgb,var(--bg) 70%,#000 0%);color:var(--fg);font:inherit}
+.ci{display:grid;gap:1rem;align-content:start}
+.ci .row{display:flex;align-items:center;gap:1rem;padding:.9rem 1rem;border-radius:.9rem;background:color-mix(in srgb,var(--ac) 14%,transparent);border:1px solid var(--ln)}
+.ci .row>div{flex:1;min-width:0}.ci small{display:block;color:var(--mu)}.ci .row a{font-weight:600;overflow-wrap:anywhere;text-decoration:none}
+.ico{width:48px;height:48px;border-radius:50%;background:var(--ac);color:var(--bg);display:grid;place-items:center;font-size:1.3rem;flex:none}
+.cp{padding:.4rem 1rem;font-size:.85rem}.cp.ok{background:var(--ac);color:var(--bg)}
+.ci h4{color:var(--ac);margin-top:.4rem}
+.soc{display:flex;gap:.6rem;flex-wrap:wrap}
+.soc a{min-height:44px;padding:.3rem 1rem .3rem .4rem;border-radius:99px;border:1px solid var(--ac);display:flex;align-items:center;gap:.5rem;text-decoration:none;font-size:.9rem;transition:transform .2s}
+.soc a b{width:34px;height:34px;border-radius:50%;background:var(--ac);color:var(--bg);display:grid;place-items:center;font-size:.8rem}
+.soc a:hover{transform:translateY(-2px);background:color-mix(in srgb,var(--ac) 20%,transparent)}
+footer{padding:2rem 0;text-align:center;color:var(--mu);border-top:1px solid var(--ln);font-size:.9rem}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body data-bg="matte">
+<header><div class="wrap"><nav aria-label="Main">
+<a class="logo" href="#home">Pranto Ali</a>
+<ul class="links" id="links">
+<li><a href="#about">About</a></li><li><a href="#skills">Skills</a></li><li><a href="#experience">Experience</a></li><li><a href="#education">Education</a></li><li><a href="#projects">Projects</a></li><li><a href="#certificates">Certificates</a></li><li><a href="#contact">Contact</a></li>
+</ul>
+<button class="ib" id="burger" aria-label="Menu" aria-expanded="false">☰</button>
+<button class="ib" id="setBtn" aria-label="Open settings">⚙</button>
+</nav></div></header>
+
+<main>
+<section id="home"><div class="wrap hero">
+<div><h1>Md. Pranto Ali</h1>
+<p>CSE student and computer technology diploma holder. I build business software, school systems, websites and RFID / fingerprint attendance devices.</p>
+<div class="cta"><a class="btn" href="#projects">View projects</a><a class="btn o" href="#contact">Contact me</a></div></div>
+<div class="pf" id="pf"></div>
+</div></section>
+
+<section id="about"><div class="wrap"><div class="sh"><h2>About</h2></div>
+<div class="g2"><div class="box"><p>I am keen to grow my professional career and work hard for the organization I join. I like helping to create a positive learning environment, and I enjoy learning new skills and exploring new technologies and software.</p></div>
+<div class="box"><h3>Languages</h3><div class="chips"><span class="chip">Bengali</span><span class="chip">English</span></div></div></div></div></section>
+
+<section id="skills"><div class="wrap"><div class="sh"><h2>Skills</h2></div><div class="g2" id="sk"></div></div></section>
+<section id="experience"><div class="wrap"><div class="sh"><h2>Experience</h2></div><div class="tl" id="ex"></div></div></section>
+<section id="education"><div class="wrap"><div class="sh"><h2>Education</h2></div><div class="tl" id="ed"></div></div></section>
+
+<section id="projects"><div class="wrap">
+<div class="sh"><h2>Projects</h2><button class="btn o" id="more">See More</button></div>
+<div id="pg" aria-live="polite"></div><nav id="pager" aria-label="Project pages"></nav>
+</div></section>
+
+<section id="certificates"><div class="wrap"><div class="sh"><h2>Certificates</h2></div><div id="cg"></div></div></section>
+
+<section id="contact"><div class="wrap"><div class="sh"><h2>Contact</h2></div>
+<div class="g2">
+<form class="box" id="cf"><div><label for="n">Name</label><input id="n" required autocomplete="name"></div>
+<div><label for="e">Email</label><input id="e" type="email" required autocomplete="email"></div>
+<div><label for="m">Message</label><textarea id="m" rows="5" required></textarea></div>
+<button class="btn" type="submit">Send message</button><p id="st" role="status"></p></form>
+<div class="box ci"><h3>Contact information</h3>
+<div class="row"><span class="ico" aria-hidden="true">✉</span><div><small>Email</small><a href="mailto:prantoislamnt51@gmail.com">prantoislamnt51@gmail.com</a></div><button type="button" class="btn o cp" data-copy="prantoislamnt51@gmail.com" aria-label="Copy email address">Copy</button></div>
+<div class="row"><span class="ico" aria-hidden="true">☎</span><div><small>Phone / WhatsApp</small><a href="tel:+8801979728818">+880 1979 728818</a></div><button type="button" class="btn o cp" data-copy="+8801979728818" aria-label="Copy phone number">Copy</button></div>
+<h4>Find me online</h4><div class="soc" id="soc"></div></div></div></div></section>
+</main>
+<footer><div class="wrap">© <span id="yr"></span> Md. Pranto Ali. All rights reserved.</div></footer>
+
+<div class="ov" id="ov" hidden><div class="dlg" id="dlg" role="dialog" aria-modal="true" aria-label="Details"></div></div>
+
+<script>
+/* =====================================================================
+   CONTENT DATA — edit here. Add a project/certificate = add one object.
+   media: image or .mp4/.webm URLs (empty = placeholder). img: certificate image URL.
+   ===================================================================== */
+const PROFILE_IMG="https://plain-apac-prod-public.komododecks.com/202611/02/uiplXWZt9IfIsd4agYeL/image.png"; // temporary link (expires Dec 2, 2026) — replace with your own hosted file
+const SOCIAL=[["LinkedIn","in","https://www.linkedin.com/in/your-username"],["Instagram","ig","https://www.instagram.com/your-username"],["Facebook","f","https://www.facebook.com/your-username"],["WhatsApp","wa","https://wa.me/8801979728818"],["GitHub","gh","https://github.com/your-username"]];
+const SKILLS=[["Operating systems","Windows XP to 11, Linux"],["Web design","HTML, CSS, JavaScript"],["Application software","MS Office 2007/2013/2016, Adobe Photoshop 7 / CS6"],["Hardware","PC configuration: processor, motherboard, memory, I/O devices"],["Internet & email","Browsing, mail, downloads, LAN / wireless"],["Tools","Generative AI, GitHub Copilot, Canva, MS Excel"]];
+const EXP=[["Intern — Kodeeo Limited","Dec 2022 – May 2023 · 6 months"]];
+const EDU=[["B.Sc. in Computer Science & Engineering (running)","IUBAT — International University of Business Agriculture and Technology"],["Diploma in Engineering, Computer Technology","Kamrul Islam Siddiqui Polytechnic Institute · 2023 · CGPA 3.72 / 4.00"],["Secondary School Certificate (Arts)","Satarpara High School · 2018 · GPA 3.06 / 5.00"]];
+const PROJECTS=[
+{t:"Smart POS Software",tag:"Fast billing and stock control for shops.",cat:"Desktop software",tech:["Software","Database","Billing"],ico:"🧾",media:[],
+ d:"A point-of-sale system built for retail counters. It handles quick billing, barcode lookup, stock levels, supplier purchases and daily sales reports in one place. The interface is simple enough for new staff to learn in an hour, and every sale is recorded so owners can see profit and stock at any time.",
+ f:["Barcode and keyword product search","Invoice printing and discounts","Live stock alerts","Daily, monthly and profit reports"],b:["Fewer billing mistakes","Clear view of stock and cash","Training and support included"]},
+{t:"School Management System",tag:"Students, fees and results in one dashboard.",cat:"Web application",tech:["HTML","CSS","JavaScript","Database"],ico:"🏫",media:[],
+ d:"A complete platform for running a school. Office staff manage admissions, classes, fees and exam results, while teachers record attendance and marks. Reports and printable result sheets save hours of manual paperwork each term and keep records safe and searchable.",
+ f:["Student and teacher records","Fee collection and due tracking","Marks entry and result sheets","Role-based login"],b:["Less paperwork","Accurate, searchable records","Custom setup for your school"]},
+{t:"School Website",tag:"A clear public face for your institution.",cat:"Website",tech:["HTML","CSS","JavaScript"],ico:"🎓",media:[],
+ d:"A responsive website that presents a school to parents and the community. It carries notices, admission details, teacher profiles, photo galleries and contact information, and it loads quickly on low-cost phones. Content is easy to update without touching code.",
+ f:["Notice board and news","Admission information","Photo gallery","Mobile-first layout"],b:["Better trust from parents","Easy content updates","Domain and hosting guidance"]},
+{t:"E-commerce Website",tag:"Online store with cart and checkout.",cat:"Website",tech:["HTML","CSS","JavaScript","Payments"],ico:"🛒",media:[],
+ d:"An online shop where customers browse products, add items to a cart and place orders. The store owner manages products, prices and orders from an admin area. Pages are designed to be quick and clear on mobile, where most shoppers browse.",
+ f:["Product catalogue and search","Cart and checkout","Order management","Responsive design"],b:["Sell around the clock","Simple order tracking","Launch support"]},
+{t:"Attendance Management Device",tag:"A standalone device that logs attendance.",cat:"Embedded hardware",tech:["Microcontroller","Hardware","Software"],ico:"📟",media:[],
+ d:"A compact attendance device that records arrival and departure automatically. It stores each entry with the time and sends the data to software where managers review daily and monthly attendance. It replaces paper registers and removes manual counting.",
+ f:["Automatic time stamping","Daily and monthly reports","Works as a standalone unit","Simple wiring and setup"],b:["No paper registers","Trusted time records","Installation and maintenance"]},
+{t:"RFID + Fingerprint Attendance",tag:"Two-step verification, no proxy attendance.",cat:"Embedded hardware",tech:["RFID","Fingerprint","Microcontroller"],ico:"🖐",media:[],
+ d:"This system confirms attendance with two checks: an RFID card and a fingerprint. Both must match the same person, so one person cannot mark attendance for another. Records flow into a report dashboard for schools and offices that need dependable data.",
+ f:["Card plus fingerprint match","Blocks proxy attendance","Instant log and report","Easy user enrolment"],b:["Higher accuracy","Accountability for staff and students","Setup and training provided"]},
+{t:"Student Entry Pass Gate",tag:"Tap an RFID card, the gate opens.",cat:"Embedded hardware",tech:["RFID","Gate control","Microcontroller"],ico:"🚪",media:[],
+ d:"Students receive an entry pass or RFID card. At the gate they tap the card; the system checks it, and if it is valid, the gate opens and the entry is logged. Unknown cards are refused, which keeps the campus secure and gives staff a record of arrivals.",
+ f:["RFID card verification","Automatic gate opening","Entry log with time","Invalid card rejection"],b:["Safer campus","Faster entry at peak hours","Card printing and installation"]},
+{t:"Demo: Library Manager",tag:"Track books, members and returns.",cat:"Demo · Web application",tech:["JavaScript","Database"],ico:"📚",media:[],
+ d:"A demo library system for schools and small institutions. Staff add books, issue them to members and track returns and late fees. Members can search the catalogue by title or author. Replace this demo with your real project.",
+ f:["Book catalogue and search","Issue and return tracking","Late fee calculation","Member records"],b:["Know where every book is","Fewer lost books","Customizable to your needs"]},
+{t:"Demo: Inventory Tracker",tag:"Stock in, stock out, always accurate.",cat:"Demo · Web application",tech:["JavaScript","Reports"],ico:"📦",media:[],
+ d:"A demo inventory tool for small businesses. It records incoming and outgoing stock, warns when items run low and produces simple reports. Replace this demo with your real project.",
+ f:["Stock in / out records","Low-stock warnings","Exportable reports","Multiple categories"],b:["Avoid stock-outs","Save time on counting","Easy to extend"]}
+];
+const CERTS=[
+{t:"Introduction to Generative AI Studio",by:"Google",date:"September 17, 2026",img:"",l:["What generative AI is and how it works","Using Generative AI Studio to test prompts"]},
+{t:"Copilot Foundation",by:"Microsoft",date:"September 18, 2026",img:"",l:["Core Copilot features","Using AI assistance in daily tasks"]},
+{t:"Intro to Prompt Engineering with GitHub Copilot",by:"Microsoft",date:"September 17, 2026",img:"",l:["Writing clear prompts for code","Reviewing and improving AI suggestions"]},
+{t:"Introduction to MS Excel",by:"Microsoft",date:"September 18, 2026",img:"",l:["Spreadsheet basics","Formulas and simple data tools"]},
+{t:"Understanding Placement Groups",by:"AWS",date:"September 18, 2026",img:"",l:["How placement groups affect instance placement","Choosing a strategy for performance or resilience"]},
+{t:"Canva Essentials",by:"Canva",date:"September 10, 2026",img:"",l:["Designing with templates","Layout, text and colour basics"]},
+{t:"Canva Teacher Essentials",by:"Canva",date:"July 31, 2024",img:"",l:["Creating classroom materials","Designing for education"]},
+{t:"Web Design & Development for Freelancing — Level 3",by:"NSDA, Government of Bangladesh",date:"August 29, 2026",img:"",l:["Assessment passed at Touch And Solve","Building websites for freelance clients"]}
+];
+/* Presets: [night bg, night surface, night text, night accent, day bg, day surface, day text, day accent] — from your palette images */
+const PRESETS={
+ "Slate & Copper":["#26303B","#1d262f","#EBEBDD","#9A694E","#EBEBDD","#f6f6ec","#26303B","#8a5a40"],
+ "Royal Purple":["#11010C","#220135","#EFE6F7","#B573E6","#F3EAF9","#ffffff","#1A0129","#520380"],
+ "Indigo & Crimson":["#0D0D0D","#1A1A2E","#F4F4F4","#E94560","#FBEFF1","#ffffff","#16213E","#B8304A"],
+ "Navy & Gold":["#182B49","#12223A","#ffffff","#E5C06A","#ffffff","#f3f0e4","#182B49","#8a6a12"],
+ "Emerald":["#000000","#00401F","#E8FFF3","#00FF7B","#E8FFF3","#ffffff","#00401F","#00803E"],
+ "Olive & Amber":["#283618","#323f1e","#FEFAE0","#DDA15E","#FEFAE0","#ffffff","#283618","#BC6C25"],
+ "Deep Teal":["#153A4C","#102f3e","#EFEFEF","#9fd3e6","#EFEFEF","#ffffff","#153A4C","#153A4C"],
+ "Ember":["#1a0002","#5A0006","#FFF1E8","#F37100","#FFF1E8","#ffffff","#5A0006","#D92200"]};
+const DEF={fx:"off",bg:"matte",mode:"night",preset:"Slate & Copper"},PER=6;
+
+/* ===== helpers ===== */
+const $=s=>document.querySelector(s),ph=i=>`<div class="ph" aria-hidden="true">${i}</div>`;
+const pic=(src,alt,ico,c="")=>src?`<img src="${src}" alt="${alt}" class="${c}" loading="lazy" data-i="${ico}" onerror="this.outerHTML='<div class=ph>'+this.dataset.i+'</div>'">`:ph(ico);
+const isVid=u=>/\.(mp4|webm)(\?|$)/i.test(u);
+
+/* ===== static sections ===== */
+$("#pf").innerHTML=pic(PROFILE_IMG,"Portrait of Md. Pranto Ali","PA");
+$("#sk").innerHTML=SKILLS.map(s=>`<div class="box"><h3>${s[0]}</h3><p style="color:var(--mu)">${s[1]}</p></div>`).join("");
+const tl=a=>a.map(x=>`<div><h3 style="font-size:1.2rem">${x[0]}</h3><small>${x[1]}</small></div>`).join("");
+$("#ex").innerHTML=tl(EXP);$("#ed").innerHTML=tl(EDU);
+$("#soc").innerHTML=SOCIAL.map(s=>`<a href="${s[2]}" target="_blank" rel="noopener" aria-label="${s[0]}"><b aria-hidden="true">${s[1]}</b>${s[0]}</a>`).join("");
+$("#yr").textContent=new Date().getFullYear();
+
+/* ===== settings state ===== */
+let S={...DEF};
+try{Object.assign(S,JSON.parse(localStorage.getItem("pf")||"{}"))}catch(e){}
+if(!PRESETS[S.preset])S=({...DEF});
+function apply(){const p=PRESETS[S.preset],n=S.mode==="night",o=n?0:4,r=document.documentElement.style;
+ r.setProperty("--bg",p[o]);r.setProperty("--sf",p[o+1]);r.setProperty("--tx",p[o+2]);r.setProperty("--ac",p[o+3]);
+ r.setProperty("--dc",n?`color-mix(in srgb,${p[2]} 72%,#000)`:p[6]);r.setProperty("--lc",n?"color-mix(in srgb,var(--lb) 78%,#000)":"color-mix(in srgb,var(--lb) 80%,#fff)");r.setProperty("--lb",n?`color-mix(in srgb,${p[3]} 50%,#000)`:`color-mix(in srgb,${p[7]} 45%,${p[4]})`);
+ document.body.dataset.bg=S.bg;document.body.dataset.fx=S.fx;
+ try{localStorage.setItem("pf",JSON.stringify(S))}catch(e){}}
+/* button text on accent must contrast: use bg color (set in .btn) */
+
+/* ===== projects + pagination ===== */
+let page=1;const pages=()=>Math.ceil(PROJECTS.length/PER);
+function renderProjects(anim){const g=$("#pg");
+ const draw=()=>{g.innerHTML=PROJECTS.slice((page-1)*PER,page*PER).map((p,i)=>{const k=(page-1)*PER+i;return `<button class="card" data-k="${k}" aria-label="Open ${p.t}"><span class="th">${pic(p.media[0],p.t,p.ico)}</span><span class="in"><h3>${p.t}</h3><span class="tg">${p.tag}</span><span class="chips">${p.tech.map(t=>`<span class="chip">${t}</span>`).join("")}</span></span></button>`}).join("");g.classList.remove("out")};
+ if(anim){g.classList.add("out");setTimeout(draw,220)}else draw();
+ $("#pager").innerHTML=Array.from({length:pages()},(_,i)=>`<button ${i+1===page?'aria-current="page"':""} aria-label="Page ${i+1}" data-p="${i+1}">${i+1}</button>`).join("");
+ $("#more").textContent=page>=pages()?"Back to first":"See More";$("#more").style.display=pages()<2?"none":""}
+$("#more").onclick=()=>{page=page>=pages()?1:page+1;renderProjects(true)};
+$("#pager").onclick=e=>{const b=e.target.closest("button");if(b){page=+b.dataset.p;renderProjects(true)}};
+$("#pg").onclick=e=>{const c=e.target.closest(".card");if(c)openProject(PROJECTS[+c.dataset.k],c)};
+
+/* ===== certificates ===== */
+$("#cg").innerHTML=CERTS.map((c,i)=>`<button class="card" data-c="${i}" aria-label="Open ${c.t}"><span class="in"><span style="font-size:1.8rem" aria-hidden="true">🏅</span><h3 style="margin-top:.4rem">${c.t}</h3><span class="tg">${c.by} · ${c.date}</span></span></button>`).join("");
+$("#cg").onclick=e=>{const c=e.target.closest(".card");if(c)openCert(CERTS[+c.dataset.c],c)};
+
+/* ===== dialog (shared) with focus trap, Esc, outside click, scroll lock ===== */
+let lastFocus=null;
+function openDlg(html,cls,from){lastFocus=from||document.activeElement;const d=$("#dlg");d.className="dlg "+(cls||"");
+ d.innerHTML=`<button class="ib x" aria-label="Close" id="xb">✕</button>`+html;$("#ov").hidden=false;document.body.style.overflow="hidden";$("#xb").focus()}
+function closeDlg(){$("#ov").hidden=true;document.body.style.overflow="";$("#dlg").innerHTML="";if(lastFocus)lastFocus.focus()}
+$("#ov").addEventListener("mousedown",e=>{if(e.target.id==="ov")closeDlg()});
+$("#dlg").addEventListener("click",e=>{if(e.target.closest("#xb"))closeDlg()});
+document.addEventListener("keydown",e=>{if($("#ov").hidden)return;
+ if(e.key==="Escape")return closeDlg();
+ if(e.key==="Tab"){const f=[...$("#dlg").querySelectorAll("button,a,input,textarea,[tabindex='0']")].filter(x=>!x.disabled);if(!f.length)return;
+  const a=f[0],z=f[f.length-1];if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus()}else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus()}}});
+
+function mediaHTML(u,alt,ico){return isVid(u)?`<video controls preload="metadata" src="${u}"></video>`:pic(u,alt,ico)}
+function openProject(p,from){const m=p.media.length?p.media:[""];
+ openDlg(`<div class="md"><div class="m" id="mm">${mediaHTML(m[0],p.t,p.ico)}</div>${m.length>1?`<div class="th2">${m.map((_,i)=>`<button data-m="${i}" aria-label="Show media ${i+1}">${i+1}</button>`).join("")}</div>`:""}</div>
+ <div class="tx"><h3>${p.t}</h3><p style="color:var(--ac)">${p.cat}</p><div class="chips">${p.tech.map(t=>`<span class="chip">${t}</span>`).join("")}</div>
+ <h4>Overview</h4><p>${p.d}</p><h4>Features</h4><ul>${p.f.map(x=>`<li>${x}</li>`).join("")}</ul>
+ <h4>What you get</h4><ul>${p.b.map(x=>`<li>${x}</li>`).join("")}</ul>${p.link?`<p style="margin-top:1.2rem"><a class="btn" href="${p.link}" target="_blank" rel="noopener">Live demo</a></p>`:""}</div>`,"",from);
+ $("#dlg").onclick=e=>{const b=e.target.closest("[data-m]");if(b)$("#mm").innerHTML=mediaHTML(m[+b.dataset.m],p.t,p.ico);if(e.target.closest("#xb"))closeDlg()}}
+function openCert(c,from){
+ openDlg(`<div class="md"><div class="m">${pic(c.img,c.t+" certificate","🏅","z")}</div><p style="padding:.4rem .8rem;font-size:.8rem;color:var(--mu)">${c.img?"Click image to zoom":"Add your certificate image URL in CERTS"}</p></div>
+ <div class="tx"><h3>${c.t}</h3><p style="color:var(--ac)">${c.by} · ${c.date}</p><h4>What I learned</h4><ul>${c.l.map(x=>`<li>${x}</li>`).join("")}</ul></div>`,"big",from);
+ $("#dlg").onclick=e=>{const i=e.target.closest("img.z");if(i)i.classList.toggle("on");if(e.target.closest("#xb"))closeDlg()}}
+
+/* ===== settings panel ===== */
+function openSettings(){
+ const tg=(k,v,l)=>`<button class="btn o" data-k="${k}" data-v="${v}" aria-pressed="${S[k]===v}">${l}</button>`;
+ openDlg(`<h3>Settings</h3><h4>Background</h4><div class="opt">${tg("bg","matte","Matte")}${tg("bg","leather","Leather")}</div>
+ <h4>Text effect</h4><div class="opt">${tg("fx","off","Default")}${tg("fx","in","Inner shadow")}${tg("fx","out","Outer shadow")}</div>
+ <h4>Mode</h4><div class="opt">${tg("mode","night","Night")}${tg("mode","day","Day")}</div>
+ <h4>Color theme</h4><div class="opt">${Object.keys(PRESETS).map(k=>`<button class="sw" title="${k}" aria-label="${k}" data-k="preset" data-v="${k}" aria-pressed="${S.preset===k}" style="background:linear-gradient(135deg,${PRESETS[k][0]} 50%,${PRESETS[k][3]} 50%)"></button>`).join("")}</div>
+ <button class="btn o" data-reset="1">Reset to default</button>`,"s",$("#setBtn"));
+ $("#dlg").onclick=e=>{if(e.target.closest("#xb"))return closeDlg();const b=e.target.closest("[data-k],[data-reset]");if(!b)return;
+  if(b.dataset.reset)S={...DEF};else S[b.dataset.k]=b.dataset.v;apply();const keep=lastFocus;openSettings();lastFocus=keep}}
+$("#setBtn").onclick=openSettings;
+
+/* ===== nav + contact ===== */
+$("#burger").onclick=()=>{const o=$("#links").classList.toggle("open");$("#burger").setAttribute("aria-expanded",o)};
+$("#links").onclick=e=>{if(e.target.tagName==="A")$("#links").classList.remove("open")};
+/* No backend: opens the visitor's email app with the message filled in. */
+$("#cf").onsubmit=e=>{e.preventDefault();const b=`Name: ${$("#n").value}\nEmail: ${$("#e").value}\n\n${$("#m").value}`;
+ location.href=`mailto:prantoislamnt51@gmail.com?subject=${encodeURIComponent("Portfolio message from "+$("#n").value)}&body=${encodeURIComponent(b)}`;
+ $("#st").textContent="Your email app should open with the message ready to send."};
+
+/* Copy buttons: clipboard API with fallback */
+document.addEventListener("click",async e=>{const b=e.target.closest("[data-copy]");if(!b)return;const t=b.dataset.copy;
+ try{await navigator.clipboard.writeText(t)}catch(_){const a=document.createElement("textarea");a.value=t;document.body.appendChild(a);a.select();try{document.execCommand("copy")}catch(_){}a.remove()}
+ b.textContent="Copied ✓";b.classList.add("ok");setTimeout(()=>{b.textContent="Copy";b.classList.remove("ok")},1600)});
+apply();renderProjects(false);
+</script>
+</body>
+</html>

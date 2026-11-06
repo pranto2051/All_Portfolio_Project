@@ -9,7 +9,7 @@
   <img src="https://img.shields.io/badge/Author-Md._Pranto_Ali-blue?style=for-the-badge" alt="Author" />
 </p>
 
-Welcome to the **All Portfolio Projects** repository! This repository is a curated collection of **31 unique web portfolio designs, operating system simulations, tactile leather interfaces, and interactive web utilities** created by **Md. Pranto Ali (MD. Pranto Islam)**. 
+Welcome to the **All Portfolio Projects** repository! This repository is a curated collection of **33 unique web portfolio designs, operating system simulations, tactile leather interfaces, and interactive web utilities** created by **Md. Pranto Ali (MD. Pranto Islam)**. 
 
 Each project showcases distinct design philosophies — ranging from **Windows & macOS desktop operating system replicas**, **tactile Skeuomorphic Leather & Stitched Patches UI**, **Neumorphic (Soft-UI) interfaces**, **Cyberpunk Neon aesthetic**, **Modern Bento Grid layouts**, to **Corporate Executive CV designs** and **Web Utility Applications**.
 
@@ -30,12 +30,14 @@ Each project showcases distinct design philosophies — ranging from **Windows &
   - [V5 Portfolio (Executive Curriculum Vitae)](#-v5-portfolio-executive-curriculum-vitae)
 - [🛠️ 3. Web Tools & Interactive Utilities](#3-web-tools--interactive-utilities)
   - [Student ID Card Generator](#-student-id-card-generator)
-- [🛋️ 4. "Nice & Beautiful Leather" Series (Tactile Skeuomorphic UI)](#4-nice--beautiful-leather-series-tactile-skeuomorphic-ui)
+- [🛋️ 4. "Leather" Series (Tactile Skeuomorphic UI)](#4-leather-series-tactile-skeuomorphic-ui)
   - [Nice and Beautifull Lather (Master Leather UI)](#-nice-and-beautifull-lather-master-leather-ui)
   - [Nice and Beautifull Lather 1 (Bilingual English/Bangla Edition)](#-nice-and-beautifull-lather-1-bilingual-englishbangla-edition)
   - [Nice and Beautifull Lather 2 (Minimalist Cardfolio)](#-nice-and-beautifull-lather-2-minimalist-cardfolio)
   - [Nice and Beautifull Lather 3 (Numbered Architectural Nav)](#-nice-and-beautifull-lather-3-numbered-architectural-nav)
   - [Nice and Beautifull Lather 4 (Editorial Serif & Stats Dashboard)](#-nice-and-beautifull-lather-4-editorial-serif--stats-dashboard)
+  - [Leather V1 (Classic Warm Serif & Earthy Leather)](#-leather-v1-classic-warm-serif--earthy-leather)
+  - [Leather V2 (Embossed Pebble Grain & SVG Lighting)](#-leather-v2-embossed-pebble-grain--svg-lighting)
 - [🚀 5. "Same Type 1" Design Series (V1 – V11)](#5-same-type-1-design-series-v1--v11)
   - [Same Type 1 – V1](#-same-type-1--v1-classic-clean-grid)
   - [Same Type 1 – V2](#-same-type-1--v2-sidebar-dashboard)
@@ -74,28 +76,30 @@ Each project showcases distinct design philosophies — ranging from **Windows &
 | 7 | **V4** | Terminal Mono & Circular Gauges | `./V4/` | `index.html` | [View Demo](#-v4-portfolio-mono-terminal--dynamic-gauges) |
 | 8 | **V5** | Formal Executive CV / Resume | `./V5/` | `MD. Pranto Ali...html` | [View Demo](#-v5-portfolio-executive-curriculum-vitae) |
 | 9 | **ID Card Generator** | Interactive Web Tool / Card Printer | `./ID Card Generator/` | `index.html` | [View Demo](#-student-id-card-generator) |
-| 10 | **Nice and Beautifull Lather** | Luxury Leather & Stitched Patches UI | `./Nice and Beautifull Lather/` | `index.html` | [View Demo](#-nice-and-beautifull-lather-master-leather-ui) |
-| 11 | **Nice and Beautifull Lather 1** | Bilingual (English/বাংলা) Leather UI | `./Nice and Beautifull Lather 1/` | `index.html` | [View Demo](#-nice-and-beautifull-lather-1-bilingual-englishbangla-edition) |
-| 12 | **Nice and Beautifull Lather 2** | Minimalist Leather Cardfolio | `./Nice and Beautifull Lather 2/` | `index.html` | [View Demo](#-nice-and-beautifull-lather-2-minimalist-cardfolio) |
-| 13 | **Nice and Beautifull Lather 3** | Numbered Architectural Leather Nav | `./Nice and Beautifull Lather 3/` | `index.html` | [View Demo](#-nice-and-beautifull-lather-3-numbered-architectural-nav) |
-| 14 | **Nice and Beautifull Lather 4** | Editorial Serif & Stats Leather UI | `./Nice and Beautifull Lather 4/` | `index.html` | [View Demo](#-nice-and-beautifull-lather-4-editorial-serif--stats-dashboard) |
-| 15 | **Same Type 1 (V1)** | Classic Clean Minimalist Grid | `./Same Type 1/V1/` | `index.html` | [View Demo](#-same-type-1--v1-classic-clean-grid) |
-| 16 | **Same Type 1 (V2)** | Sidebar Navigation & Live Time | `./Same Type 1/V2/` | `index.html` | [View Demo](#-same-type-1--v2-sidebar-dashboard) |
-| 17 | **Same Type 1 (V3)** | Sidebar & Performance Metrics | `./Same Type 1/V3/` | `index.html` | [View Demo](#-same-type-1--v3-interactive-sidebar--stats) |
-| 18 | **Same Type 1 (V4)** | Open-to-Work Sidebar UI | `./Same Type 1/V4/` | `index.html` | [View Demo](#-same-type-1--v4-open-to-work-sidebar) |
-| 19 | **Same Type 1 (V5)** | Modern Top-Nav & Hero Showcase | `./Same Type 1/V5/` | `index.html` | [View Demo](#-same-type-1--v5-modern-top-nav--hero) |
-| 20 | **Same Type 1 (V6)** | Numbered Architectural Navigation | `./Same Type 1/V6/` | `index.html` | [View Demo](#-same-type-1--v6-architectural-numbered-nav) |
-| 21 | **Same Type 1 (V7)** | Sora Typography & Floating Elements | `./Same Type 1/V7/` | `index.html` | [View Demo](#-same-type-1--v7-sora-typography--ambient-orbs) |
-| 22 | **Same Type 1 (V8)** | Soft-UI Neumorphism (10 Themes) | `./Same Type 1/V8/` | `index.html` | [View Demo](#-same-type-1--v8-advanced-soft-ui-neumorphism) |
-| 23 | **Same Type 1 (V9)** | Corporate Tech & Minimal Resume | `./Same Type 1/V9/` | `index.html` | [View Demo](#-same-type-1--v9-corporate-tech--career-resume) |
-| 24 | **Same Type 1 (V10)** | Flagship Multi-Module Single Page | `./Same Type 1/V10/` | `index.html` | [View Demo](#-same-type-1--v10-flagship-multi-module-portfolio) |
-| 25 | **Same Type 1 (V11)** | Optimized "Open to Work" Edition | `./Same Type 1/V11/` | `index.html` | [View Demo](#-same-type-1--v11-performance-optimized-open-to-work) |
-| 26 | **Same Type 2 (V1)** | Star Sparkle Hero & Tabbed Milestones | `./Same Type 2/V1/` | `index.html` | [View Demo](#-same-type-2--v1-creative-sparkle--badge) |
-| 27 | **Same Type 2 (V2)** | Streamlined Creative Developer UI | `./Same Type 2/V2/` | `index.html` | [View Demo](#-same-type-2--v2-streamlined-developer-layout) |
-| 28 | **Same Type 2 (V3)** | Service-Oriented Freelancer Layout | `./Same Type 2/V3/` | `Pranto Ali...html` | [View Demo](#-same-type-2--v3-service-oriented-freelance-portfolio) |
-| 29 | **Same Type 2 (V4)** | Creative Agency & Project Showcase | `./Same Type 2/V4/` | `Pranto Ali...html` | [View Demo](#-same-type-2--v4-agency-style-portfolio) |
-| 30 | **Same Type 3 (Design 1)** | Earth-Tone Tech Mono Bento | `./Same Type 3/New Layout Design 1/` | `index.html` | [View Demo](#-same-type-3--new-layout-design-1-modern-mono-bento) |
-| 31 | **Same Type 3 (Design 2)** | Bold Editorial Brutalist with Syne | `./Same Type 3/New Layout Design 2/` | `index.html` | [View Demo](#-same-type-3--new-layout-design-2-editorial-brutalist) |
+| 10 | **Nice and Beautifull Lather** | Luxury Leather & Stitched Patches UI | `./Leather/Nice and Beautifull Lather/` | `index.html` | [View Demo](#-nice-and-beautifull-lather-master-leather-ui) |
+| 11 | **Nice and Beautifull Lather 1** | Bilingual (English/বাংলা) Leather UI | `./Leather/Nice and Beautifull Lather 1/` | `index.html` | [View Demo](#-nice-and-beautifull-lather-1-bilingual-englishbangla-edition) |
+| 12 | **Nice and Beautifull Lather 2** | Minimalist Leather Cardfolio | `./Leather/Nice and Beautifull Lather 2/` | `index.html` | [View Demo](#-nice-and-beautifull-lather-2-minimalist-cardfolio) |
+| 13 | **Nice and Beautifull Lather 3** | Numbered Architectural Leather Nav | `./Leather/Nice and Beautifull Lather 3/` | `index.html` | [View Demo](#-nice-and-beautifull-lather-3-numbered-architectural-nav) |
+| 14 | **Nice and Beautifull Lather 4** | Editorial Serif & Stats Leather UI | `./Leather/Nice and Beautifull Lather 4/` | `index.html` | [View Demo](#-nice-and-beautifull-lather-4-editorial-serif--stats-dashboard) |
+| 15 | **Leather V1** | Classic Warm Serif & Earthy Leather | `./Leather/V1/` | `index.html` | [View Demo](#-leather-v1-classic-warm-serif--earthy-leather) |
+| 16 | **Leather V2** | Embossed Pebble Grain & SVG Lighting | `./Leather/V2/` | `index.html` | [View Demo](#-leather-v2-embossed-pebble-grain--svg-lighting) |
+| 17 | **Same Type 1 (V1)** | Classic Clean Minimalist Grid | `./Same Type 1/V1/` | `index.html` | [View Demo](#-same-type-1--v1-classic-clean-grid) |
+| 18 | **Same Type 1 (V2)** | Sidebar Navigation & Live Time | `./Same Type 1/V2/` | `index.html` | [View Demo](#-same-type-1--v2-sidebar-dashboard) |
+| 19 | **Same Type 1 (V3)** | Sidebar & Performance Metrics | `./Same Type 1/V3/` | `index.html` | [View Demo](#-same-type-1--v3-interactive-sidebar--stats) |
+| 20 | **Same Type 1 (V4)** | Open-to-Work Sidebar UI | `./Same Type 1/V4/` | `index.html` | [View Demo](#-same-type-1--v4-open-to-work-sidebar) |
+| 21 | **Same Type 1 (V5)** | Modern Top-Nav & Hero Showcase | `./Same Type 1/V5/` | `index.html` | [View Demo](#-same-type-1--v5-modern-top-nav--hero) |
+| 22 | **Same Type 1 (V6)** | Numbered Architectural Navigation | `./Same Type 1/V6/` | `index.html` | [View Demo](#-same-type-1--v6-architectural-numbered-nav) |
+| 23 | **Same Type 1 (V7)** | Sora Typography & Floating Elements | `./Same Type 1/V7/` | `index.html` | [View Demo](#-same-type-1--v7-sora-typography--ambient-orbs) |
+| 24 | **Same Type 1 (V8)** | Soft-UI Neumorphism (10 Themes) | `./Same Type 1/V8/` | `index.html` | [View Demo](#-same-type-1--v8-advanced-soft-ui-neumorphism) |
+| 25 | **Same Type 1 (V9)** | Corporate Tech & Minimal Resume | `./Same Type 1/V9/` | `index.html` | [View Demo](#-same-type-1--v9-corporate-tech--career-resume) |
+| 26 | **Same Type 1 (V10)** | Flagship Multi-Module Single Page | `./Same Type 1/V10/` | `index.html` | [View Demo](#-same-type-1--v10-flagship-multi-module-portfolio) |
+| 27 | **Same Type 1 (V11)** | Optimized "Open to Work" Edition | `./Same Type 1/V11/` | `index.html` | [View Demo](#-same-type-1--v11-performance-optimized-open-to-work) |
+| 28 | **Same Type 2 (V1)** | Star Sparkle Hero & Tabbed Milestones | `./Same Type 2/V1/` | `index.html` | [View Demo](#-same-type-2--v1-creative-sparkle--badge) |
+| 29 | **Same Type 2 (V2)** | Streamlined Creative Developer UI | `./Same Type 2/V2/` | `index.html` | [View Demo](#-same-type-2--v2-streamlined-developer-layout) |
+| 30 | **Same Type 2 (V3)** | Service-Oriented Freelancer Layout | `./Same Type 2/V3/` | `Pranto Ali...html` | [View Demo](#-same-type-2--v3-service-oriented-freelance-portfolio) |
+| 31 | **Same Type 2 (V4)** | Creative Agency & Project Showcase | `./Same Type 2/V4/` | `Pranto Ali...html` | [View Demo](#-same-type-2--v4-agency-style-portfolio) |
+| 32 | **Same Type 3 (Design 1)** | Earth-Tone Tech Mono Bento | `./Same Type 3/New Layout Design 1/` | `index.html` | [View Demo](#-same-type-3--new-layout-design-1-modern-mono-bento) |
+| 33 | **Same Type 3 (Design 2)** | Bold Editorial Brutalist with Syne | `./Same Type 3/New Layout Design 2/` | `index.html` | [View Demo](#-same-type-3--new-layout-design-2-editorial-brutalist) |
 
 ---
 
@@ -222,73 +226,99 @@ Each project showcases distinct design philosophies — ranging from **Windows &
 
 ---
 
-## 4. "Nice & Beautiful Leather" Series (Tactile Skeuomorphic UI)
+## 4. "Leather" Series (Tactile Skeuomorphic UI)
 
-The **Nice and Beautiful Leather** series introduces a tactile, skeuomorphic aesthetic where the interface resembles a continuous sheet of handcrafted leather. Typography is pressed into the surface, cards are textured stitched patches, and buttons are plates and straps with dynamic grain and lighting controls.
+The **Leather** series introduces an exquisite, tactile skeuomorphic aesthetic where the interface resembles handcrafted leather. Typography is pressed into textured surfaces, cards appear as stitched patches or raised bevels, and controls function like metal plates and straps with dynamic grain and lighting filters.
 
 ---
 
 ### 🛋️ Nice and Beautifull Lather (Master Leather UI)
-- **Folder Path:** `Nice and Beautifull Lather/`
-- **Entry File:** [`Nice and Beautifull Lather/index.html`](./Nice%20and%20Beautifull%20Lather/index.html) *(also available as [`iindex.html`](./Nice%20and%20Beautifull%20Lather/iindex.html))*
+- **Folder Path:** `Leather/Nice and Beautifull Lather/`
+- **Entry File:** [`Leather/Nice and Beautifull Lather/index.html`](./Leather/Nice%20and%20Beautifull%20Lather/index.html) *(also [`iindex.html`](./Leather/Nice%20and%20Beautifull%20Lather/iindex.html))*
 - **Design & Features:**
   - A handcrafted luxury skeuomorphic portfolio crafted like a continuous sheet of embossed leather with stitched card patches, metal button plates, and `Bodoni Moda` typography.
   - Features interactive surface customization (grain strength slider, leather stitching toggle, matte vs leather textures), dynamic day/night lighting, and rich color palette controls.
 
 <p align="center">
-  <img src="./Nice%20and%20Beautifull%20Lather/Demo.png" alt="Nice and Beautifull Lather Master Demo" width="900" style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);" />
+  <img src="./Leather/Nice%20and%20Beautifull%20Lather/Demo.png" alt="Nice and Beautifull Lather Master Demo" width="900" style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);" />
 </p>
 
 ---
 
 ### 🛋️ Nice and Beautifull Lather 1 (Bilingual English/Bangla Edition)
-- **Folder Path:** `Nice and Beautifull Lather 1/`
-- **Entry File:** [`Nice and Beautifull Lather 1/index.html`](./Nice%20and%20Beautifull%20Lather%201/index.html)
+- **Folder Path:** `Leather/Nice and Beautifull Lather 1/`
+- **Entry File:** [`Leather/Nice and Beautifull Lather 1/index.html`](./Leather/Nice%20and%20Beautifull%20Lather%201/index.html)
 - **Design & Features:**
   - Elegant bilingual portfolio (instant English ↔ বাংলা language toggle) styled with `Playfair Display` and `Hind Siliguri` fonts over a premium leather backdrop.
   - Offers advanced tactile shadow controls (Default / Inner / Outer shadows), matte/glossy leather toggle, and comprehensive academic and experience timelines.
 
 <p align="center">
-  <img src="./Nice%20and%20Beautifull%20Lather%201/Demo.png" alt="Nice and Beautifull Lather 1 Demo" width="900" style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);" />
+  <img src="./Leather/Nice%20and%20Beautifull%20Lather%201/Demo.png" alt="Nice and Beautifull Lather 1 Demo" width="900" style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);" />
 </p>
 
 ---
 
 ### 🛋️ Nice and Beautifull Lather 2 (Minimalist Cardfolio)
-- **Folder Path:** `Nice and Beautifull Lather 2/`
-- **Entry File:** [`Nice and Beautifull Lather 2/index.html`](./Nice%20and%20Beautifull%20Lather%202/index.html)
+- **Folder Path:** `Leather/Nice and Beautifull Lather 2/`
+- **Entry File:** [`Leather/Nice and Beautifull Lather 2/index.html`](./Leather/Nice%20and%20Beautifull%20Lather%202/index.html)
 - **Design & Features:**
   - A streamlined, card-focused leather portfolio emphasizing career objectives, core competencies, and professional education milestones.
   - Built with clean tactile bevels, quick settings drawer, responsive project showcase cards, and instant direct contact channels.
 
 <p align="center">
-  <img src="./Nice%20and%20Beautifull%20Lather%202/Demo.png" alt="Nice and Beautifull Lather 2 Demo" width="900" style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);" />
+  <img src="./Leather/Nice%20and%20Beautifull%20Lather%202/Demo.png" alt="Nice and Beautifull Lather 2 Demo" width="900" style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);" />
 </p>
 
 ---
 
 ### 🛋️ Nice and Beautifull Lather 3 (Numbered Architectural Nav)
-- **Folder Path:** `Nice and Beautifull Lather 3/`
-- **Entry File:** [`Nice and Beautifull Lather 3/index.html`](./Nice%20and%20Beautifull%20Lather%203/index.html)
+- **Folder Path:** `Leather/Nice and Beautifull Lather 3/`
+- **Entry File:** [`Leather/Nice and Beautifull Lather 3/index.html`](./Leather/Nice%20and%20Beautifull%20Lather%203/index.html)
 - **Design & Features:**
   - Architectural portfolio layout featuring numbered index navigation (01 About, 02 Journey, 03 Projects, 04 Certs, 05 Skills, 06 Contact) with a floating settings panel.
   - Combines embossed leather aesthetics with structured engineering credentials, interactive skill chips, and fluid responsive adaptability.
 
 <p align="center">
-  <img src="./Nice%20and%20Beautifull%20Lather%203/Demo.png" alt="Nice and Beautifull Lather 3 Demo" width="900" style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);" />
+  <img src="./Leather/Nice%20and%20Beautifull%20Lather%203/Demo.png" alt="Nice and Beautifull Lather 3 Demo" width="900" style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);" />
 </p>
 
 ---
 
 ### 🛋️ Nice and Beautifull Lather 4 (Editorial Serif & Stats Dashboard)
-- **Folder Path:** `Nice and Beautifull Lather 4/`
-- **Entry File:** [`Nice and Beautifull Lather 4/index.html`](./Nice%20and%20Beautifull%20Lather%204/index.html)
+- **Folder Path:** `Leather/Nice and Beautifull Lather 4/`
+- **Entry File:** [`Leather/Nice and Beautifull Lather 4/index.html`](./Leather/Nice%20and%20Beautifull%20Lather%204/index.html)
 - **Design & Features:**
   - High-end editorial design integrating `Noto Serif Bengali` with bold Roman numerals, prominent metric counters (3.72 CGPA), and interactive modal lightboxes.
   - Delivers a deep tactile leather aesthetic with raised card elevations, expandable project drawers ("See more"), and smooth navigation.
 
 <p align="center">
-  <img src="./Nice%20and%20Beautifull%20Lather%204/Demo.png" alt="Nice and Beautifull Lather 4 Demo" width="900" style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);" />
+  <img src="./Leather/Nice%20and%20Beautifull%20Lather%204/Demo.png" alt="Nice and Beautifull Lather 4 Demo" width="900" style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);" />
+</p>
+
+---
+
+### 🛋️ Leather V1 (Classic Warm Serif & Earthy Leather)
+- **Folder Path:** `Leather/V1/`
+- **Entry File:** [`Leather/V1/index.html`](./Leather/V1/index.html)
+- **Design & Features:**
+  - Classic warm serif portfolio built with `Fraunces` and `Public Sans` typography, featuring warm earthy paper-and-leather tactile card aesthetics.
+  - Showcases formal portrait profile, academic achievements (3.72 CGPA), detailed internship experience, and structured contact section with responsive layout.
+
+<p align="center">
+  <img src="./Leather/V1/Demo.png" alt="Leather V1 Demo" width="900" style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);" />
+</p>
+
+---
+
+### 🛋️ Leather V2 (Embossed Pebble Grain & SVG Lighting)
+- **Folder Path:** `Leather/V2/`
+- **Entry File:** [`Leather/V2/index.html`](./Leather/V2/index.html)
+- **Design & Features:**
+  - Advanced embossed pebble-grain leather portfolio powered by SVG lighting filters, dynamic vignette effects, and `Playfair Display` + `Plus Jakarta Sans` typography.
+  - Features an interactive settings drawer with presets (Matte vs Leather mode, custom accent palettes), responsive card grid, and embedded/web development showcase.
+
+<p align="center">
+  <img src="./Leather/V2/Demo.png" alt="Leather V2 Demo" width="900" style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);" />
 </p>
 
 ---
@@ -536,8 +566,8 @@ The **Same Type 3** series explores modern editorial, retro-modern, and brutalis
 
 - **Core Technologies:** HTML5 Semantic Markup, CSS3 Custom Properties (Variables), Vanilla JavaScript (ES6+).
 - **Zero Heavy Dependencies:** High-performance, lightweight, self-contained single-page templates without complex framework builds.
-- **Modern Typography:** Google Fonts (`Bodoni Moda`, `Playfair Display`, `Hind Siliguri`, `Noto Serif Bengali`, `Sora`, `JetBrains Mono`, `Syne`, `Bricolage Grotesque`, `Manrope`, `Orbitron`, `Roboto`, `Instrument Sans`).
-- **Icons & Visuals:** Font Awesome 6, SVG vector icons, dynamic canvas / CSS animations, tactile leather textures.
+- **Modern Typography:** Google Fonts (`Bodoni Moda`, `Playfair Display`, `Hind Siliguri`, `Noto Serif Bengali`, `Fraunces`, `Public Sans`, `Plus Jakarta Sans`, `Sora`, `JetBrains Mono`, `Syne`, `Bricolage Grotesque`, `Manrope`, `Orbitron`, `Roboto`, `Instrument Sans`).
+- **Icons & Visuals:** Font Awesome 6, SVG vector icons, dynamic canvas / CSS animations, tactile leather textures, and SVG lighting filters.
 - **Theming & Responsiveness:** Fully responsive across mobile, tablet, and widescreen desktop devices with seamless dark/light mode switching and texture controls.
 
 ---
